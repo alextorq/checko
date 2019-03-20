@@ -1,0 +1,30 @@
+.el-table__fixed::before,
+.el-table__fixed-right::before {
+  background-color: inherit;
+}
+
+
+.el-input__inner {
+  border-color: $borderColor !important;
+  background-color: transparent !important;
+  color: $textColor !important;
+}
+
+
+
+
+
+
+.popper__arrow::after {
+  border-bottom-color: $headerColor !important;
+}
+
+
+.el-row {
+  display: flex;
+  flex-grow: 1;
+}
+.el-container {
+  overflow: hidden;
+
+}

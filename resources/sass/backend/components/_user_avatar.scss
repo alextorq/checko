@@ -1,0 +1,16 @@
+.avatar-container {
+  margin-left: auto;
+  .avatar-wrapper span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: tomato;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+  }
+}

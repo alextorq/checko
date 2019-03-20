@@ -1,0 +1,11 @@
+button.default {
+    background-color: #0ED0B5;
+    border: none;
+    color: white;
+    height: 40px;
+    &:hover {
+        background-color: $mainColorHover;
+        color: white;
+    }
+}
+

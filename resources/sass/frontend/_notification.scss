@@ -1,0 +1,32 @@
+.my-style {
+  .notification-title {
+    background: red;
+    color: red;
+  }
+  &.success {
+    display: flex;
+    .notification-content {
+      padding: 0 20px;
+      box-shadow: 0 0 8px rgba(164, 183, 190, 0.09);
+      border-radius: 5px;
+      background-color: #ccefe2;
+      text-align: center;
+      line-height: 40px;
+      color: rgba(#01b06d, 0.9);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.09px;
+    }
+  }
+
+  &.my-type {
+
+
+  }
+}
+.notification-wrapper {
+  margin-top: 5px !important;
+}
+.notifications {
+  top: 90px !important;
+}

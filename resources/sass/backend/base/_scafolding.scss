@@ -1,0 +1,138 @@
+body{
+  font-family: Source Sans Pro;
+  background-color: #212533;
+}
+
+.content{
+  height: 100%;
+  background-color: $contentColor;
+  line-height: 1.2;
+  text-align: left;
+  position: relative;
+  overflow: auto;
+  box-shadow: 0 0 27px 6px #1e212d;
+}
+
+h1 {
+  font-size: 24px;
+  color: $headerColor;
+}
+.main{
+  background-color: $wrapperColor;
+  text-align: center;
+}
+
+.el-main {
+  overflow: hidden;
+  background: $mainColor;
+  color: $textColor;
+}
+
+.main-container {
+  will-change: width;
+  width: 100%;
+  transition: max-width .3s linear;
+}
+
+
+.fas{
+  margin-right: 10px;
+  width: 24px;
+  text-align: center;
+  font-size: 18px;
+  vertical-align: middle;
+}
+.wrapper{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+
+* {
+  &::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 25px;
+  }
+  &::-webkit-scrollbar-track {
+    background: grey;
+    opacity: 40%;
+    border-radius: 125px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #2b2f3e;
+    border-radius: 125px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: $mainColorHover;
+  }
+}
+
+.elements-navigation {
+  display: flex;
+  align-items: center;
+  padding-bottom: 25px;
+  background-color: $wrapperColor;
+}
+
+.grid {
+  padding: 20px;
+}
+
+.bottom-fixed-button {
+  padding: 10px;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 50%;
+
+  &:hover {
+    &:after {
+      transform: scale(1);
+
+    }
+    &:before {
+      transform: scale(0);
+
+    }
+  }
+  button {
+    position: relative;
+    z-index: 2;
+  }
+  &:before {
+    position: absolute;
+    content: '';
+    transition: all 0.3s;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale(1);
+    border-radius: 50%;
+    background: rgba($textColor, 0.1);
+    z-index: 1;
+  }
+  &:after {
+    position: absolute;
+    content: '';
+    transition: all 0.3s;
+    transition-delay: 0.2s;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale(0);
+    border-radius: 50%;
+    background: rgba($textColor, 0.1);
+    z-index: 1;
+  }
+}
+
+
+.el-notification {
+  text-align: left;
+}

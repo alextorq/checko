@@ -1,0 +1,25 @@
+$headerHeight: 50px;
+
+
+$mainColor: #f0f2f5;
+$textColor: #606266;
+
+
+$mainColorHover: #38e8d0;
+$backgroundColor: #2b2f3e;
+$backgroundColorLight: #404558;
+$wrapperColor: #212533;
+$fontMainColor: #81869a;
+$headerColor: #e0e3f7;
+$contentColor: #383d4e;
+
+
+$borderColor: #dcdfe6;
+
+
+
+// sizes
+$width-aside: 240px;
+$width-aside-small: 50px;
+$width-main-content: calc(100% - #{$width-aside});
+$width-main-content-big: calc(100% - #{$width-aside-small})

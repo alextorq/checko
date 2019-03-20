@@ -1,0 +1,36 @@
+.scrollbar-wrapper {
+    background: #2b2f3e;
+    height: 100vh ;
+}
+.el-submenu__title, .el-menu-item {
+    background-color: $backgroundColor !important;
+    font-size: 16px !important;
+}
+
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    min-height: 400px;
+}
+
+.aside {
+    width: 100%;
+    max-width: $width-aside;
+    flex-shrink: 0;
+    transition: max-width .3s linear;
+    will-change: max-width;
+    &.small {
+        max-width: $width-aside-small;
+    }
+}
+
+.el-aside {
+    background-color: $backgroundColor;
+    color: #333;
+    text-align: center;
+
+    overflow: hidden !important;
+}
+
+.el-menu-item:hover {
+    background: linear-gradient(to right, $contentColor, $backgroundColor)  !important;
+}
+

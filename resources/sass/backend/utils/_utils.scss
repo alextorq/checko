@@ -1,0 +1,5 @@
+@for $var from 1 to 5 {
+    .m-r-#{$var} {
+        margin-right: (5 * $var) + px;
+    }
+}
