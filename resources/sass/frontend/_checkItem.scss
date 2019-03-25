@@ -1,0 +1,180 @@
+.check-item__label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  input {
+    margin-right: 10px;
+    position: absolute;
+    opacity: 0;
+  }
+}
+
+.check-item {
+  border-bottom: 1px solid #e8f0f3;
+  padding: 10px 0 10px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  .left-col {
+    padding-left: 10px;
+  }
+  input[type="text"] {
+    width:100%;
+    border: none;
+    color: #0c0f14;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+  }
+}
+
+/*Animation appear*/
+
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+  svg {
+    polyline {
+      stroke-dashoffset: 100 !important;
+    }
+  }
+}
+.list-enter, .list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+  position: absolute;
+}
+/*Animation appear end*/
+
+
+/*Delete item button*/
+
+.check-item {
+  &:hover {
+    .check-item__delete {
+      opacity: 1;
+    }
+  }
+}
+.check-item__delete {
+  border: none;
+  padding: 0;
+  background: transparent;
+  margin: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  opacity: 0;
+  transition: all 0.4s;
+  transform: translate3d(200%, -50%, 0);
+  .icon {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    display: block;
+    transform: rotate(45deg);
+    &:after {
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background-color: #cdd9dd;
+      content: '';
+      top: 0;
+      left: calc(50% - 1px);
+    }
+    &:before {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #cdd9dd;
+      content: '';
+      top: calc(50% - 1px);
+      left: 0;
+    }
+  }
+}
+/*Delete item button end*/
+
+
+
+
+/*CheckBox complete*/
+.checklist__item-list.complete {
+
+  .check-item__data-complete {
+    flex-shrink: 0;
+  }
+  input {
+    color: #a4b5be;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+    text-decoration: line-through;
+    letter-spacing: 0.03px;
+  }
+  span {
+    color: #a4b5be;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0.03px;
+  }
+  .checklist__description {
+    width: 72px;
+    height: 15px;
+    color: #a4b5be;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0.03px;
+  }
+  .checkbox-svg-wrapper {
+    svg {
+      polyline {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+}
+
+.checkbox-svg-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+  &:after {
+    position: absolute;
+    width: 96%;
+    height: 96%;
+    left: 10%;
+    top: 2%;
+    z-index: -1;
+    content: '';
+    border: 1px solid #cdd9dd;
+    border-radius: 50%;
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+    transition: all 1s;
+    polyline {
+      fill: none;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      stroke: $color_1;
+      stroke-width: 2;
+      transition: all 1s;
+      transition-delay: 0s;
+    }
+  }
+}
+
+
+/*CheckBox complete end*/

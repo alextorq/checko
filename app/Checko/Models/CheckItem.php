@@ -16,10 +16,9 @@ class CheckItem extends Model
     protected $table = 'check_items';
     protected $primaryKey = 'check_item_id';
 
-    protected $hidden = [
-        'check_item_id',
-        'check_lists_id'
-    ];
+    protected $guarded = ['check_item_id', 'check_list_id'];
+
+    protected $fillable = ['name', 'complete', 'description', 'check_list_id', 'order', 'timestamp_id', 'date_complete'];
 
     public function cheklist()
     {

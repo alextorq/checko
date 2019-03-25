@@ -3,10 +3,13 @@
   position: fixed;
   top: 0;
   background: #fff;
-  z-index: 1;
+  z-index: 10;
   width: 100%;
   padding: 10px 40px;
   box-shadow: 0 0 12px 6px rgba(164, 183, 190, 0.2);
+  @include phone {
+    padding: 10px 20px;
+  }
 }
 .navbar .content {
   display: flex;
@@ -32,6 +35,9 @@
   align-items: center;
   >*{
     margin-right: 30px !important;
+    @include phone {
+      margin-right: 15px !important;
+    }
     &:last-child {
       margin-right: 0;
     }
@@ -188,6 +194,9 @@
 
 .navbar__autosave-icon {
   display: flex;
+  @include phone {
+    display: none;
+  }
   img {
     width: 28px;
     height: 20px;

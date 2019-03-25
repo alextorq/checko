@@ -27,7 +27,7 @@ class Adduserownertochecklist extends Migration
     public function down()
     {
         Schema::table('check_lists', function (Blueprint $table) {
-            $table->dropColumn('user');
+            $table->dropColumn('user_id');
         });
     }
 }

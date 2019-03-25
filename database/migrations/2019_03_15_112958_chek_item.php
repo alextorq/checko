@@ -16,9 +16,12 @@ class ChekItem extends Migration
         Schema::create('check_items', function (Blueprint $table) {
             $table->increments('check_item_id');
             $table->string('name');
-            $table->string('complete');
+            $table->boolean('complete');
             $table->string('description');
-            $table->foreign('check_item_id')->references('check_list_id')->on('check_lists');
+            $table->bigInteger('timestamp_id')->unsigned();
+            $table->bigInteger('date_complete')->unsigned()->nullable();
+            $table->integer('check_list_id')->unsigned();
+            $table->foreign('check_list_id')->references('check_list_id')->on('check_lists');
             $table->timestamps();
         });
     }

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './FrontApp';
 import axios from 'axios';
+import Vuex from './store/Frontend'
 import Notifications from 'vue-notification'
 
 window.axios = axios;
@@ -22,5 +23,7 @@ Vue.use(Notifications);
 
 const app = new Vue({
     el: '#app',
+    store: Vuex,
     render: h => h(App)
 });
+

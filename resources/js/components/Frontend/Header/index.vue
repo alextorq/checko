@@ -2,19 +2,22 @@
     <nav class="navbar">
         <div class="content">
             <div class="left-col">
-                <a class="navbar__logo" href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo.svg') }}" alt="checko logo">
+                <a class="navbar__logo" href="/">
+                    <img src="/images/logo.svg" alt="checko logo">
                 </a>
             </div>
             <div class="right_col">
-                    <span class="navbar__autosave-icon">
-                        <img src="{{ asset('images/save.svg') }}" alt="cloud save">
+                <span class="navbar__autosave-icon">
+                        <img src="/images/save.svg" alt="cloud save">
                     </span>
-                <button aria-label="Add new checklist" class="navbar__add-new" type="button"></button>
-                <button class="navbar__share" type="button" aria-label="share checklist in soc network">
-                    <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 47.1 49.9" style="enable-background:new 0 0 47.1 49.9;" xml:space="preserve">
+                <a  href="/" target="_blank" aria-label="Add new checklist" class="navbar__add-new" type="button"></a>
+
+                <div class="button-wrapper" :class="isShareOpenStatus" @click="isShareOpen = !isShareOpen">
+                    <button class="navbar__share"
+                            type="button" aria-label="share checklist in soc network">
+                        <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 47.1 49.9" style="enable-background:new 0 0 47.1 49.9;" xml:space="preserve">
                             <path class="st1" d="M38.1,31.9c-2.8,0-5.3,1.2-7.1,3.4l-13.4-7.5c0.3-0.9,0.5-1.9,0.5-2.9c0-1-0.2-1.9-0.5-2.9L31,14.6
                                 c1.7,2.2,4.3,3.4,7.1,3.4c5,0,9-4,9-9s-4-9-9-9s-9,4-9,9c0,1,0.2,2,0.5,2.9l-13.4,7.5c-1.7-2.2-4.3-3.4-7.1-3.4c-5,0-9,4-9,9
                                 s4.1,9,9,9c2.8,0,5.4-1.3,7.1-3.4L29.5,38C29.2,39,29,39.9,29,40.9c0,5,4,9,9,9s9-4,9-9S43,31.9,38.1,31.9z M44,40.9
@@ -22,11 +25,43 @@
                                 C41.3,3.1,44,5.8,44,9S41.3,15,38.1,15C34.8,15,32.1,12.3,32.1,9z M15,25c0,3.3-2.7,5.9-5.9,5.9S3.1,28.2,3.1,25S5.8,19,9,19
                                 S15,21.7,15,25z"/>
                             </svg>
-                </button>
-                <button class="navbar__settings" type="button" aria-label="open menu settings">
-                    <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 52 56.1" style="enable-background:new 0 0 52 56.1;" xml:space="preserve">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-menu__item" @click="copyLink">
+                            <span class="icon">
+                                <img src="/images/copy.svg" alt="">
+                            </span>
+                            copy link
+                        </li>
+                        <li class="dropdown-menu__item" @click="">
+                            <a href="tg://msg?text='asd'">
+                                <span class="icon">
+                                     <img src="/images/telegram.svg" alt="">
+                                </span>
+                                telegram
+                            </a>
+                        </li>
+                        <li class="dropdown-menu__item">
+                            <span class="icon">
+                                 <img src="/images/facebook.svg" alt="">
+                            </span>
+                            facebook
+                        </li>
+                        <li class="dropdown-menu__item">
+                            <span class="icon">
+                                 <img src="/images/whatsapp.svg" alt="">
+                            </span>
+                            whatsapp
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="navbar__settings-wrapper">
+                    <button class="navbar__settings" @click="isMenuOpen = !isMenuOpen"
+                            type="button" aria-label="open menu settings">
+                        <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 52 56.1" style="enable-background:new 0 0 52 56.1;" xml:space="preserve">
                         <g>
                             <path class="st1" d="M50.5,45.3H24.7c-0.1,0-0.1,0-0.2,0C23.7,41.1,20,38,15.6,38c-4.4,0-8.1,3.1-8.9,7.3H1.5C0.7,45.3,0,46,0,46.8
                                 c0,0.8,0.7,1.5,1.5,1.5h5.2c0.6,4.4,4.4,7.8,8.9,7.8c4.6,0,8.3-3.4,9-7.8c0,0,0.1,0,0.1,0h25.8c0.8,0,1.5-0.7,1.5-1.5
@@ -39,7 +74,35 @@
                                 c3.3,0,6,2.7,6,6s-2.7,6-6,6s-6-2.7-6-6S12.3,3,15.6,3z"/>
                             </g>
                         </svg>
-                </button>
+                    </button>
+                    <div @click="isMenuOpen = !isMenuOpen" class="overlay" :class="isMenuOpenStatus"></div>
+                    <ul class="navbar__settings-menu" :class="isMenuOpenStatus">
+                        <li class="navbar__settings-menu__item">
+                            Language
+
+                        </li>
+                        <li class="navbar__settings-menu__item">
+                            Date format
+                            <AppSelect :list="settingsDateFormat" :default_value="settingsDateFormatDefault"
+                                       @change="updateSettings" name_setting="dateFormat"></AppSelect>
+                        </li>
+                        <li class="navbar__settings-menu__item">
+                            Add new items to the end of the list
+                            <CheckBoxButton @update="updateCheckBoxButton" name="sortIncomplete"></CheckBoxButton>
+                        </li>
+                        <li class="navbar__settings-menu__item">
+                            Move selected items to the end of the list
+                            <CheckBoxButton @update="updateCheckBoxButton" name="moveCompleteToList"></CheckBoxButton>
+                        </li>
+                        <li class="navbar__settings-menu__item">
+                            Progress display
+                            <AppSelect :list="getProgressDisplay" name_setting="progressDisplay"
+                                       :default_value="settingsProgressDisplayDefault"
+                                       @change="updateSettings"></AppSelect>
+                        </li>
+                    </ul>
+                </div>
+
                 <button class="navbar__menu" type="button" aria-label="open menu settings">
                     <div class="hamburger-box">
                         <div class="hamburger-inner"></div>
@@ -51,11 +114,70 @@
 </template>
 
 <script>
+    import CheckBoxButton from '../ChekBoxButton'
+    import AppSelect from '../Select'
+
     export default {
-        name: "index"
+        name: "index",
+        data() {
+            return {
+                isShareOpen: false,
+                isMenuOpen: false,
+                list: ['test', 'test2']
+            }
+        },
+        computed: {
+            isShareOpenStatus() {
+                return {
+                    open: this.isShareOpen
+                }
+            },
+            settingsDateFormat() {
+              return this.$store.getters.getDateFormat
+            },
+            settingsDateFormatDefault() {
+                return this.$store.getters.getDateFormatDefault;
+            },
+            getProgressDisplay() {
+                return this.$store.getters.getProgressDisplay
+            },
+            settingsProgressDisplayDefault() {
+                return this.$store.getters.getProgressDisplayDefault;
+            },
+            isMenuOpenStatus() {
+                return {
+                    open: this.isMenuOpen
+                }
+            }
+        },
+        methods: {
+            shareByTelegram() {
+                // tg://msg?text='+encodeURIComponent(TEXT);
+            },
+            updateSettings(payload) {
+                this.$store.commit('updateSettings', payload)
+            },
+            updateCheckBoxButton(payload) {
+                console.log(payload);
+            },
+            copyLink() {
+                let dummy = document.createElement('input'),
+                    text = window.location.href;
+                document.body.appendChild(dummy);
+                dummy.value = text;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+                this.$notify({
+                    duration: 1000,
+                    type: 'success',
+                    text: 'Link copied to clipboard',
+                });
+            }
+        },
+        components: {
+            CheckBoxButton,
+            AppSelect
+        }
     }
 </script>
-
-<style scoped>
-
-</style>
