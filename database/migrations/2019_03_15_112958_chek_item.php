@@ -15,7 +15,7 @@ class ChekItem extends Migration
     {
         Schema::create('check_items', function (Blueprint $table) {
             $table->increments('check_item_id');
-            $table->string('name');
+            $table->string('name', 500);
             $table->boolean('complete');
             $table->string('description');
             $table->bigInteger('timestamp_id')->unsigned();

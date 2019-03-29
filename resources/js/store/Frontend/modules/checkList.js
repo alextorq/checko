@@ -1,9 +1,19 @@
-function pushPathToNavigate(title, id) {
-    document.title = title;
-    window.history.pushState({
-        "pageTitle": title
-    },
-        title, `/frontend/checklist/${id}`);
+import router from '../../../router/Frontend'
+
+function runLoader(context) {
+    let status = context.rootGetters.isLoad;
+    if (!status) {
+        context.commit('updateLoadStatus', true);
+    }
+    window.countLoad = window.countLoad + 1;
+}
+
+
+function stopLoader(context) {
+    window.countLoad = window.countLoad - 1;
+    if (window.countLoad < 1) {
+        context.commit('updateLoadStatus', false);
+    }
 }
 
 const checkList = {
@@ -46,6 +56,10 @@ const checkList = {
         },
         updateCheckList(state, data) {
             state.list = {...data};
+        },
+        updateCheckListField(state, data) {
+            let field = data.field;
+            state.list[field] = data.value;
         }
     },
     actions: {
@@ -60,7 +74,7 @@ const checkList = {
                             type: 'success',
                             text: 'CheckList created',
                         });
-                        pushPathToNavigate(context.state.list.name, context.state.list.check_list_id);
+                        router.push({name: 'CheckList', params: { list_id: context.state.list.check_list_id }});
                         resolve(context.state.list.check_list_id);
                     }).catch((err) => {
                         this._vm.$notify({
@@ -72,15 +86,19 @@ const checkList = {
                     });
             });
         },
-        saveCheckList(context) {
+        updateCheckListField(context, payload) {
+            runLoader(context);
             axios
-                .put(`${context.state.URI.pref}${context.state.URI.PUT.edit}`, this.checkList)
+                .put(`${context.state.URI.pref}${context.state.URI.PUT.edit}`, context.state.list)
                 .then(response => {
-                    console.log(response.data);
+                    // console.log(response.data);
                 }).catch((err) => {
                     console.log(err);
-            });
-        }
+                }).finally(() => {
+                    stopLoader(context);
+                });
+        },
+
     }
 };
 

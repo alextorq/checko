@@ -14,17 +14,20 @@ let store = new Vuex.Store({
         settings
     },
     state: {
-
+        isLoad: false
     },
     getters: {
-
-
+        isLoad(state) {
+            return state.isLoad;
+        }
     },
     actions: {
 
     },
     mutations: {
-
+        updateLoadStatus(state, payload) {
+            state.isLoad = payload;
+        }
     }
 
 });

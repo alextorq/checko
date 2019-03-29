@@ -81,23 +81,59 @@ body {
   border-bottom: none;
 }
 
+main {
+  padding-top: 150px;
+  height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-face-color: #0c0f14;
+  scrollbar-track-color: #0c0f14;
+}
+
+main::-webkit-scrollbar {
+  width: 5px;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #01b06d;
+  border-radius: 5px;
+}
+
+main::-webkit-scrollbar-track {
+  background: #e8f0f3;
+  border-radius: 5px;
+}
+
 main .container {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 
+@media only screen and (max-width: 767px) {
+  main .container {
+    width: 90%;
+  }
+}
+
 main .container .content {
-  margin-top: 150px;
+  max-width: 100%;
+  padding-bottom: 80px;
 }
 
 .left-col {
   min-width: 40px;
 }
 
+input {
+  font-family: 'Open Sans', sans-serif;
+}
+
 textarea {
   white-space: pre;
   width: 100%;
+  font-family: 'Open Sans', sans-serif;
   resize: none;
+  outline: none;
 }
 
 .my-style .notification-title {
@@ -163,7 +199,7 @@ textarea {
 .percent-progress {
   opacity: 0.8;
   color: #01b06d;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 35px;
   letter-spacing: 0.09px;
@@ -203,6 +239,15 @@ textarea {
           align-items: center;
 }
 
+.checklist__name-wrapper .left-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .checklist__name-wrapper .icon {
   width: 20px;
   height: 20px;
@@ -223,7 +268,7 @@ textarea {
   position: absolute;
   left: -2px;
   top: -4px;
-  z-index: 0;
+  z-index: 3;
 }
 
 .checklist__name-wrapper .icon svg polyline {
@@ -290,6 +335,7 @@ textarea {
 
 .checklist__item-list {
   margin-top: 53px;
+  position: relative;
 }
 
 .checklist__add-new-item {
@@ -428,36 +474,138 @@ textarea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   position: relative;
-}
-
-.check-item .left-col {
-  padding-left: 10px;
-}
-
-.check-item input[type="text"] {
-  width: 100%;
-  border: none;
+  max-width: 100%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   color: #0c0f14;
   font-size: 14px;
   font-weight: 400;
   line-height: 25px;
 }
 
+.check-item a {
+  color: #0c0f14;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+}
+
+.check-item .left-col {
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.check-item textarea {
+  width: 100%;
+  border: none;
+  color: #0c0f14;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+@media only screen and (max-width: 767px) {
+  .check-item {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding-right: 20px;
+  }
+
+  .check-item .check-item__name-wrapper {
+    width: 80%;
+  }
+}
+
+.check-item__name-wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.check-item__name-wrapper:not(.edit) textarea {
+  display: none;
+}
+
+.check-item__name-wrapper.edit .check-item__name-parse {
+  display: none;
+  line-height: 0;
+  font-size: 0;
+  visibility: hidden;
+}
+
+/*Handle*/
+
+.check-item.sortable-ghost {
+  -webkit-box-shadow: 0 0 6px 6px rgba(164, 183, 190, 0.1);
+          box-shadow: 0 0 6px 6px rgba(164, 183, 190, 0.1);
+}
+
+.check-item.sortable-ghost .handle {
+  opacity: 0 !important;
+}
+
+.check-item .handle {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 16px;
+  height: 14px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#a4b7be), color-stop(20%, #a4b7be), color-stop(20%, transparent), color-stop(40%, transparent), color-stop(40%, #a4b7be), color-stop(60%, #a4b7be), color-stop(60%, transparent), color-stop(80%, transparent), color-stop(80%, #a4b7be), to(#a4b7be));
+  background: linear-gradient(to bottom, #a4b7be 0%, #a4b7be 20%, transparent 20%, transparent 40%, #a4b7be 40%, #a4b7be 60%, transparent 60%, transparent 80%, #a4b7be 80%, #a4b7be 100%);
+  opacity: 0;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  cursor: pointer;
+  background-clip: content-box;
+}
+
+@media only screen and (max-width: 767px) {
+  .check-item {
+    padding-left: 10px;
+  }
+
+  .check-item .handle {
+    opacity: 1;
+    left: -5px;
+    top: 15px;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+.check-item:hover .handle {
+  opacity: 1;
+}
+
+/*Handle end*/
+
 /*Animation appear*/
 
 .list-enter-active,
 .list-leave-active {
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  width: 100%;
 }
 
 .list-enter-active svg polyline,
 .list-leave-active svg polyline {
-  stroke-dashoffset: 100 !important;
+  stroke-dashoffset: 100;
+}
+
+.list-leave-active svg polyline {
+  stroke-dashoffset: 0 !important;
 }
 
 .list-enter,
@@ -466,6 +614,7 @@ textarea {
   -webkit-transform: translateY(30px);
           transform: translateY(30px);
   position: absolute;
+  width: 100%;
 }
 
 /*Animation appear end*/
@@ -490,6 +639,15 @@ textarea {
   transition: all 0.4s;
   -webkit-transform: translate3d(200%, -50%, 0);
           transform: translate3d(200%, -50%, 0);
+}
+
+@media only screen and (max-width: 767px) {
+  .check-item__delete {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+    top: 15px;
+  }
 }
 
 .check-item__delete .icon {
@@ -548,13 +706,71 @@ textarea {
 }
 
 .checklist__item-list.complete .checklist__description {
-  width: 72px;
-  height: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #a4b5be;
   font-size: 14px;
   font-weight: 400;
   line-height: 25px;
   letter-spacing: 0.03px;
+  cursor: pointer;
+}
+
+.checklist__item-list.complete .checklist__description .left-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.checklist__item-list.complete .checklist__description .left-col .arrow {
+  width: 12px;
+  height: 8px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  position: relative;
+  display: block;
+}
+
+.checklist__item-list.complete .checklist__description .left-col .arrow:after {
+  content: '';
+  width: 9px;
+  left: 0;
+  height: 1px;
+  position: absolute;
+  background-color: #cdd9dd;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+}
+
+.checklist__item-list.complete .checklist__description .left-col .arrow:before {
+  content: '';
+  width: 9px;
+  height: 1px;
+  right: 0;
+  position: absolute;
+  background-color: #cdd9dd;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+}
+
+.checklist__item-list.complete .checklist__description .left-col.open .selected-list {
+  display: block;
+}
+
+.checklist__item-list.complete .checklist__description .left-col.open .arrow {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .checklist__item-list.complete .checkbox-svg-wrapper svg polyline {
@@ -597,10 +813,8 @@ textarea {
   stroke-dashoffset: 100;
   stroke: #01b06d;
   stroke-width: 2;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 
 /*CheckBox complete end*/
@@ -790,6 +1004,10 @@ textarea {
 .navbar__logo img {
   width: 95px;
   height: 24px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 /*left column end*/
@@ -1036,6 +1254,60 @@ textarea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
+  width: 28px;
+  height: 28px;
+}
+
+.navbar__autosave-icon .loading-icon {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  will-change: transform;
+  border-radius: 50%;
+  background: #0c0f14;
+  padding: 1px;
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.navbar__autosave-icon .loading-icon span {
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.navbar__autosave-icon .loading-icon:after {
+  position: absolute;
+  content: '';
+  right: 0;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  background: #fff;
+}
+
+.navbar__autosave-icon.loading .loading-icon {
+  -webkit-animation: rotate 3s linear 0s infinite;
+          animation: rotate 3s linear 0s infinite;
+  opacity: 1;
+}
+
+.navbar__autosave-icon.loading img {
+  opacity: 0;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1045,8 +1317,45 @@ textarea {
 }
 
 .navbar__autosave-icon img {
-  width: 28px;
-  height: 20px;
+  width: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 .navbar__add-new {

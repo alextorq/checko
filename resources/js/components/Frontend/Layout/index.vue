@@ -1,21 +1,30 @@
 <template>
-    <main>
-        <div class="container">
-            <div class="content">
-                <CheckList></CheckList>
+    <div id="app">
+        <notifications position="top right" classes="my-style"/>
+        <Header></Header>
+        <main>
+            <div class="container">
+                <div class="content">
+                    <router-view></router-view>
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </template>
 
 <script>
-    import CheckList from '../CheckList'
+    import Header from '../Header'
 
     export default {
-        name: "index",
+        name: "Layout",
         components: {
-            CheckList
+            Header,
+        },
+        created() {
+            this.$store.commit('loadSettings');
         }
+
     }
+
 </script>
 

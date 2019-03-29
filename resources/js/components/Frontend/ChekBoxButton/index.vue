@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: "index",
+        name: "checkbox",
         data() {
             return {
                 status: false
@@ -22,8 +22,8 @@
         methods: {
             update() {
                this.$emit('update', {
-                   name: this.name,
-                   value: this.status
+                   value: this.status,
+                   nameSetting: this.name,
                });
             }
         },
@@ -32,14 +32,14 @@
                 type: String,
                 required: true
             },
-            defaultValue: {
+            default_value: {
                 type: Boolean,
                 default: false,
                 required: false
             }
         },
         created() {
-            this.status = this.defaultValue;
+            this.status = this.default_value;
         }
     }
 </script>

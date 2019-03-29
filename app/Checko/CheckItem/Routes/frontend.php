@@ -9,7 +9,8 @@
 
 Route::group(['prefix' => 'frontend/checkitem',  'as'=> 'checkitem.'], function () {
     Route::post('/create', ['uses' => 'CheckItemController@createItem', 'as' => 'create']);
-    Route::put('/edit/{id}', ['uses' => 'CheckItemController@editItem', 'as' => 'edit']);
+    Route::post('/order', ['uses' => 'CheckItemController@changeOrder', 'as' => 'create']);
+    Route::post('/edit/{id}', ['uses' => 'CheckItemController@editItem', 'as' => 'edit']);
     Route::delete('/delete/{id}', ['uses' => 'CheckItemController@deleteItem', 'as' => 'delete']);
 
 });

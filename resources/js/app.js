@@ -3,6 +3,10 @@ import App from './FrontApp';
 import axios from 'axios';
 import Vuex from './store/Frontend'
 import Notifications from 'vue-notification'
+import VueAutosize from'vue-autosize'
+import router from './router/Frontend';
+
+
 
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -19,11 +23,15 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
+window.countLoad = 0;
+
 Vue.use(Notifications);
+Vue.use(VueAutosize);
 
 const app = new Vue({
     el: '#app',
     store: Vuex,
+    router,
     render: h => h(App)
 });
 

@@ -35,6 +35,18 @@ class CheckItemController extends BaseController
         $checkItem = CheckItem::findOrFail($id);
         $checkItem->delete();
         return response()->json(true);
+    }
+
+    public function changeOrder(Request $request)
+    {
+        $items = $request->input('items');
+        foreach ($items as $item) {
+            $id = $item['check_item_id'];
+            $checkItem = CheckItem::findOrFail($id);
+            $item = array_diff_key($item, array_flip(['check_list_id', 'check_item_id']));
+            $checkItem->update($item);
+        }
+        return response()->json(true);
 
     }
 }

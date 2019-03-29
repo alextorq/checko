@@ -16,14 +16,15 @@ use Illuminate\Support\Facades\Auth;
 class CheckListController extends BaseController
 {
 
-    public function index(Request $request, $checklist)
+    public function index()
     {
-        if($request->ajax()){
-            $checklist = CheckList::with('checkItems')->whereIn('check_list_id', [$checklist])->first();
-            return response()->json($checklist);
-        }
-
         return view('welcome');
+    }
+
+    public function indexPost($checklist)
+    {
+        $checklist = CheckList::with('checkItems')->whereIn('check_list_id', [$checklist])->first();
+        return response()->json($checklist);
     }
 
     public function createCheckList(Request $request)
@@ -42,7 +43,7 @@ class CheckListController extends BaseController
     public function editCheckList(Request $request)
     {
         $inputParam = $request->all();
-        $checklist = CheckList::findOrFail($inputParam['id']);
+        $checklist = CheckList::findOrFail($inputParam['check_list_id']);
         $checklist->update($inputParam);
         return response()->json($checklist);
 

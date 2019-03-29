@@ -68,7 +68,6 @@ body {
     font-weight: 400;
     line-height: 45px;
     letter-spacing: 0.09px;
-
     &:last-child {
       border-bottom: none;
     }
@@ -76,25 +75,51 @@ body {
 }
 
 main {
+  padding-top: 150px;
+  height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-face-color: $color_3;
+  scrollbar-track-color: $color_3;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color_1;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $color_6;
+    border-radius: 5px;
+  }
+
   .container {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
+    @include phone {
+      width: 90%;
+    }
     .content {
-      margin-top: 150px;
+      max-width: 100%;
+      padding-bottom: 80px;
     }
   }
 }
-
 
 .left-col {
   min-width: $left-col;
 }
 
+
+input {
+  font-family: 'Open Sans', sans-serif;
+}
 textarea {
   white-space: pre;
   width: 100%;
-
+  font-family: 'Open Sans', sans-serif;
   resize: none;
+  outline: none;
 }
 
 

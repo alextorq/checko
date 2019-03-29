@@ -20,6 +20,10 @@
 .checklist__name-wrapper {
   display: flex;
   align-items: center;
+  .left-col {
+    display: flex;
+    justify-content: center;
+  }
   .icon {
     width: 20px;
     height: 20px;
@@ -35,7 +39,7 @@
       position: absolute;
       left: -2px;
       top: -4px;
-      z-index: 0;
+      z-index: 3;
       polyline {
         fill: none;
         stroke-dasharray: 100;
@@ -104,6 +108,7 @@
 
 .checklist__item-list {
   margin-top: 53px;
+  position: relative;
 }
 
 .checklist__add-new-item {

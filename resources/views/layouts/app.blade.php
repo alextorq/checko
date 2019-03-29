@@ -13,7 +13,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/default.js') }}" defer></script>
 
-
+    <link rel="shortcut icon" href="{{ asset('/images/favicon_16.png') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/images/favicon_72.png') }}">
+    <link rel="apple-touch-icon" sizes="115x115" href="{{ asset('/images/favicon_115.png') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

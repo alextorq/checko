@@ -4,12 +4,16 @@
             <div class="left-col">
                 <a class="navbar__logo" href="/">
                     <img src="/images/logo.svg" alt="checko logo">
+
                 </a>
             </div>
             <div class="right_col">
-                <span class="navbar__autosave-icon">
-                        <img src="/images/save.svg" alt="cloud save">
+                <span class="navbar__autosave-icon" :class="{'loading': isLoading}">
+                     <img src="/images/save.svg" alt="cloud save">
+                    <span class="loading-icon">
+                        <span></span>
                     </span>
+                </span>
                 <a  href="/" target="_blank" aria-label="Add new checklist" class="navbar__add-new" type="button"></a>
 
                 <div class="button-wrapper" :class="isShareOpenStatus" @click="isShareOpen = !isShareOpen">
@@ -84,19 +88,22 @@
                         <li class="navbar__settings-menu__item">
                             Date format
                             <AppSelect :list="settingsDateFormat" :default_value="settingsDateFormatDefault"
-                                       @change="updateSettings" name_setting="dateFormat"></AppSelect>
+                                       @change="updateSettings" name="dateFormat"></AppSelect>
                         </li>
                         <li class="navbar__settings-menu__item">
                             Add new items to the end of the list
-                            <CheckBoxButton @update="updateCheckBoxButton" name="sortIncomplete"></CheckBoxButton>
+                            <CheckBoxButton @update="updateSettings" :default_value="getOrderCreateSettingDefault"
+                                            name="addToEndList"></CheckBoxButton>
                         </li>
-                        <li class="navbar__settings-menu__item">
-                            Move selected items to the end of the list
-                            <CheckBoxButton @update="updateCheckBoxButton" name="moveCompleteToList"></CheckBoxButton>
-                        </li>
+                        <!--<li class="navbar__settings-menu__item">-->
+                            <!--Move selected items to the end of the list-->
+                            <!--<CheckBoxButton @update="updateSettings"-->
+                                            <!--:default_value="getNewListForComplete"-->
+                                            <!--name="newListForComplete"></CheckBoxButton>-->
+                        <!--</li>-->
                         <li class="navbar__settings-menu__item">
                             Progress display
-                            <AppSelect :list="getProgressDisplay" name_setting="progressDisplay"
+                            <AppSelect :list="getProgressDisplay" name="progressDisplay"
                                        :default_value="settingsProgressDisplayDefault"
                                        @change="updateSettings"></AppSelect>
                         </li>
@@ -118,7 +125,7 @@
     import AppSelect from '../Select'
 
     export default {
-        name: "index",
+        name: "Header",
         data() {
             return {
                 isShareOpen: false,
@@ -132,6 +139,12 @@
                     open: this.isShareOpen
                 }
             },
+            isLoading() {
+                return this.$store.getters.isLoad;
+            },
+            getOrderCreateSettingDefault() {
+                return this.$store.getters.getOrderCreateSetting;
+            },
             settingsDateFormat() {
               return this.$store.getters.getDateFormat
             },
@@ -143,6 +156,9 @@
             },
             settingsProgressDisplayDefault() {
                 return this.$store.getters.getProgressDisplayDefault;
+            },
+            getNewListForComplete() {
+                return  this.$store.getters.getNewListForComplete;
             },
             isMenuOpenStatus() {
                 return {
@@ -156,9 +172,6 @@
             },
             updateSettings(payload) {
                 this.$store.commit('updateSettings', payload)
-            },
-            updateCheckBoxButton(payload) {
-                console.log(payload);
             },
             copyLink() {
                 let dummy = document.createElement('input'),

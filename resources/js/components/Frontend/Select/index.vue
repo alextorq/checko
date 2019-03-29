@@ -34,7 +34,7 @@
               if (item !== this.item) {
                   this.item = item;
                   this.$emit('change', {
-                      nameSetting: this.name_setting,
+                      nameSetting: this.name,
                       value: this.item.value,
                       name: this.item.name
                   });
@@ -49,7 +49,7 @@
                 type: Array,
                 required: true
             },
-            name_setting: {
+            name: {
                 type: String,
                 required: true
             },

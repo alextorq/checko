@@ -2,20 +2,32 @@
     <div class="progress-bar">
         <div class="left-col">
             <span class="percent-progress">
-                {{complete_type}}
+                {{completePercentView}}
             </span>
         </div>
-
         <div class="progress-bar__wrapper">
-            <span :style="{width: percent + '%'}" class="progress-bar__progress"></span>
+            <span :style="{width: widthPercent}" class="progress-bar__progress"></span>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "index",
-        props: ['percent', 'complete_type']
+        name: "Progress Bar",
+        computed: {
+            widthPercent() {
+                return this.$store.getters.completePercent + '%';
+            },
+            completePercentView() {
+                let config = this.$store.getters.completeViewProgress;
+                if (this.$store.getters.settingProgressViewType === '%') {
+                    return this.$store.getters.completePercent + '%';
+                }
+                else {
+                    return `${config.complete}/${config.all}`
+                }
+            },
+        },
     }
 </script>
 
