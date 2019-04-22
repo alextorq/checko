@@ -26,9 +26,12 @@
               }
           }  
         },
+
+
+
         created() {
-            this.checkCheckList();
             this.$store.commit('loadSettings');
+            this.$store.dispatch('getUser');
         }
     }
 </script>

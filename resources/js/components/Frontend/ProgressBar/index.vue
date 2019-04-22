@@ -8,12 +8,13 @@
         <div class="progress-bar__wrapper">
             <span :style="{width: widthPercent}" class="progress-bar__progress"></span>
         </div>
+
     </div>
 </template>
 
 <script>
     export default {
-        name: "Progress Bar",
+        name: "ProgressBar",
         computed: {
             widthPercent() {
                 return this.$store.getters.completePercent + '%';
@@ -27,6 +28,13 @@
                     return `${config.complete}/${config.all}`
                 }
             },
+            completeCheckList() {
+                if (this.$store.getters.completeDone) {
+                    console.log('done check list');
+                }
+                console.log(this.$store.getters.completeDone);
+                return this.$store.getters.completeDone
+            }
         },
     }
 </script>

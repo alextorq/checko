@@ -1,0 +1,41 @@
+.settings.account {
+  padding-left: 30px;
+  width: 60%;
+
+  .avatar-wrapper {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
+    background-color: #01b06d;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 8px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+    user-select: none;
+    margin-right: 20px;
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: white;
+    transform: translateY(20%);
+  }
+  .account-info {
+    display: flex;
+    align-items: center;
+  }
+  h3 {
+    margin-bottom: 40px;
+    opacity: 0.9;
+    color: #14171b;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.09px;
+  }
+
+}

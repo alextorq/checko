@@ -13,7 +13,6 @@ function runLoader(context) {
     window.countLoad = window.countLoad + 1;
 }
 
-
 function stopLoader(context) {
     window.countLoad = window.countLoad - 1;
     if (window.countLoad < 1) {
@@ -132,7 +131,7 @@ const checkItems = {
             runLoader(context);
             axios.post(`${context.state.URI.pref}${context.state.URI.POST.order}`, {items: payload})
                 .then(response => {
-                    console.log(response);
+
                 }).catch((err) => {
                     this._vm.$notify({
                         duration: 3000,

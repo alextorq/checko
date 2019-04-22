@@ -12,16 +12,16 @@
   .arrow {
     width: 12px;
     height: 8px;
-
     transition: all 0.4s;
     position: relative;
+    margin-left: 40px;
     &:after {
       content: '';
       width: 9px;
       left: 0;
       height: 1px;
       position: absolute;
-      background-color: #cdd9dd;
+      background-color: $color_7;
       transform: rotate(45deg);
       transform-origin: left top;
     }
@@ -31,7 +31,7 @@
       height: 1px;
       right: 0;
       position: absolute;
-      background-color: #cdd9dd;
+      background-color: $color_7;
       transform: rotate(-45deg);
       transform-origin: right top;
     }

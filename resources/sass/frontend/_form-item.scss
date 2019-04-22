@@ -1,0 +1,189 @@
+$label-top: -22px;
+$left-offset: 24px;
+
+.form-item {
+  margin-bottom: 35px;
+  position: relative;
+  &.focus {
+    input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #cdd9dd;
+    }
+    label {
+        top: $label-top;
+        font-size: 12px;
+      }
+  }
+  &.error {
+    input {
+      border-bottom: 1px solid #f83f51;
+    }
+    .icon {
+      svg {
+          fill: #f83f51;
+      }
+    }
+
+  }
+  .icon {
+    width: 15px;
+    height: 18px;
+    position: absolute;
+    display: flex;
+    top: 0;
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: #a4b5be;
+    }
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #cdd9dd;
+    transition: all 0.4s;
+    padding-left: $left-offset;
+    color: #0c0f14;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.03px;
+
+    &:focus {
+      outline: none;
+      + label {
+        top: $label-top;
+        font-size: 12px;
+      }
+    }
+  }
+  label {
+    position: absolute;
+    top: -8px;
+    left: $left-offset;
+    will-change: transform;
+    transition: all 0.4s;
+    color: #a4b5be;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2.5;
+    letter-spacing: 0.03px;
+
+  }
+
+  .correct-icon {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    display: flex;
+    .correct {
+      width: 12px;
+      height: 11px;
+      display: flex;
+      visibility: hidden;
+      position: relative;
+      fill:#01B06D;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .incorrect {
+      width: 11px;
+      height: 11px;
+      display: flex;
+      position: absolute;
+      visibility: hidden;
+      fill: #f83f51;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+      //&:after {
+      //  content: '';
+      //  width: 15.5px;
+      //  background-color: #f83f51;
+      //  height: 1px;
+      //  left: 0;
+      //  top: 10px;
+      //  position: absolute;
+      //  transform: rotate(-45deg);
+      //  transform-origin: top left ;
+      //  border-radius: 2px;
+      //}
+      //&:before {
+      //  content: '';
+      //  height: 1px;
+      //  width: 15.5px;
+      //  background-color: #f83f51;
+      //  position: absolute;
+      //  transform: rotate(45deg);
+      //  right: 0;
+      //  top: 10px;
+      //  transform-origin: top right;
+      //  border-radius: 2px;
+      //}
+    }
+  }
+  &.focus {
+    .correct-icon {
+      .correct {
+        visibility: visible;
+      }
+      .incorrect {
+        visibility: hidden;
+      }
+    }
+  }
+  &.error {
+    .correct-icon {
+      .incorrect {
+        visibility: visible;
+      }
+      .correct {
+        visibility: hidden;
+      }
+    }
+  }
+
+
+  .error-message {
+    color: #f84759;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0.03px;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+}
+
+
+
+.form-item.password {
+  input {
+    user-select: none;
+  }
+  .icon {
+    width: 18px;
+    height: 20px;
+  }
+  .show-password {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    width: 22px;
+    height: 13px;
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: #a4b5be;
+    }
+  }
+}

@@ -2,10 +2,9 @@
     <nav class="navbar">
         <div class="content">
             <div class="left-col">
-                <a class="navbar__logo" href="/">
+                <router-link to="/" class="navbar__logo">
                     <img src="/images/logo.svg" alt="checko logo">
-
-                </a>
+                </router-link>
             </div>
             <div class="right_col">
                 <span class="navbar__autosave-icon" :class="{'loading': isLoading}">
@@ -61,8 +60,7 @@
                 </div>
 
                 <div class="navbar__settings-wrapper">
-                    <button class="navbar__settings" @click="isMenuOpen = !isMenuOpen"
-                            type="button" aria-label="open menu settings">
+                    <button class="navbar__settings" @click="goToSettings">
                         <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                              viewBox="0 0 52 56.1" style="enable-background:new 0 0 52 56.1;" xml:space="preserve">
@@ -79,42 +77,20 @@
                             </g>
                         </svg>
                     </button>
-                    <div @click="isMenuOpen = !isMenuOpen" class="overlay" :class="isMenuOpenStatus"></div>
-                    <ul class="navbar__settings-menu" :class="isMenuOpenStatus">
-                        <li class="navbar__settings-menu__item">
-                            Language
 
-                        </li>
-                        <li class="navbar__settings-menu__item">
-                            Date format
-                            <AppSelect :list="settingsDateFormat" :default_value="settingsDateFormatDefault"
-                                       @change="updateSettings" name="dateFormat"></AppSelect>
-                        </li>
-                        <li class="navbar__settings-menu__item">
-                            Add new items to the end of the list
-                            <CheckBoxButton @update="updateSettings" :default_value="getOrderCreateSettingDefault"
-                                            name="addToEndList"></CheckBoxButton>
-                        </li>
-                        <!--<li class="navbar__settings-menu__item">-->
-                            <!--Move selected items to the end of the list-->
-                            <!--<CheckBoxButton @update="updateSettings"-->
-                                            <!--:default_value="getNewListForComplete"-->
-                                            <!--name="newListForComplete"></CheckBoxButton>-->
-                        <!--</li>-->
-                        <li class="navbar__settings-menu__item">
-                            Progress display
-                            <AppSelect :list="getProgressDisplay" name="progressDisplay"
-                                       :default_value="settingsProgressDisplayDefault"
-                                       @change="updateSettings"></AppSelect>
-                        </li>
-                    </ul>
                 </div>
 
-                <button class="navbar__menu" type="button" aria-label="open menu settings">
-                    <div class="hamburger-box">
-                        <div class="hamburger-inner"></div>
-                    </div>
-                </button>
+                <div class="navbar__menu-wrapper">
+                    <button class="navbar__menu-button" type="button" aria-label="open menu settings"
+                            :class="isMenuOpenStatus" @click="isMenuOpen = !isMenuOpen">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                    </button>
+                    <Menu :open="isMenuOpen" @close="isMenuOpen = !isMenuOpen"></Menu>
+               </div>
+
+
             </div>
         </div>
     </nav>
@@ -123,6 +99,7 @@
 <script>
     import CheckBoxButton from '../ChekBoxButton'
     import AppSelect from '../Select'
+    import Menu from  '../Menu'
 
     export default {
         name: "Header",
@@ -130,7 +107,7 @@
             return {
                 isShareOpen: false,
                 isMenuOpen: false,
-                list: ['test', 'test2']
+                lastRoute: ''
             }
         },
         computed: {
@@ -141,24 +118,6 @@
             },
             isLoading() {
                 return this.$store.getters.isLoad;
-            },
-            getOrderCreateSettingDefault() {
-                return this.$store.getters.getOrderCreateSetting;
-            },
-            settingsDateFormat() {
-              return this.$store.getters.getDateFormat
-            },
-            settingsDateFormatDefault() {
-                return this.$store.getters.getDateFormatDefault;
-            },
-            getProgressDisplay() {
-                return this.$store.getters.getProgressDisplay
-            },
-            settingsProgressDisplayDefault() {
-                return this.$store.getters.getProgressDisplayDefault;
-            },
-            getNewListForComplete() {
-                return  this.$store.getters.getNewListForComplete;
             },
             isMenuOpenStatus() {
                 return {
@@ -173,6 +132,28 @@
             updateSettings(payload) {
                 this.$store.commit('updateSettings', payload)
             },
+
+            /*
+               * Если перешли не со страницы настроек то
+               * при повторном клике возвращаемся на нее иначе на главную
+           * */
+            goToSettings() {
+                let pathToNavigate = '/';
+                let fromSettingsPage = this.$route.fullPath.includes('/settings');
+
+                if (!fromSettingsPage) {
+                    this.lastRoute = this.$route.fullPath;
+                    pathToNavigate = '/settings';
+                }else {
+                    if(this.lastRoute) {
+                        pathToNavigate = this.lastRoute;
+                        this.lastRoute = null;
+                    }
+                }
+
+                this.$router.push(pathToNavigate);
+            },
+
             copyLink() {
                 let dummy = document.createElement('input'),
                     text = window.location.href;
@@ -190,7 +171,8 @@
         },
         components: {
             CheckBoxButton,
-            AppSelect
+            AppSelect,
+            Menu
         }
     }
 </script>

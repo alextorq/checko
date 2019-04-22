@@ -1,4 +1,5 @@
 import router from '../../../router/Frontend'
+import store from "../index";
 
 function runLoader(context) {
     let status = context.rootGetters.isLoad;
@@ -86,7 +87,18 @@ const checkList = {
                     });
             });
         },
-        updateCheckListField(context, payload) {
+        checkCheckListOnComplete(context, payload) {
+            let value = (payload === 100);
+            //Если статус не изменился то ничего не делаем
+            if (context.state.list.complete != value)  {
+                context.commit('updateCheckListField', {
+                    field: 'complete',
+                    value: value
+                });
+                context.dispatch('updateCheckListField');
+            }
+        },
+        updateCheckListField(context) {
             runLoader(context);
             axios
                 .put(`${context.state.URI.pref}${context.state.URI.PUT.edit}`, context.state.list)
@@ -101,5 +113,7 @@ const checkList = {
 
     }
 };
+
+
 
 export default checkList

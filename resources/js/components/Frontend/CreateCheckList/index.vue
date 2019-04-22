@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        name: "Button Create CheckList",
+        name: "ButtonCreateCheckList",
         methods: {
             addItem() {
                 this.$store.commit('clearItems');

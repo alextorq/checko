@@ -9,10 +9,11 @@
 
 <script>
     export default {
-        name: "Add CheckItem",
+        name: "AddCheckItem",
         methods: {
             addItem() {
                 this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
+                this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
             }
         }
     }

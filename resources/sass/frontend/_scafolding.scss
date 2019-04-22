@@ -102,6 +102,7 @@ main {
     .content {
       max-width: 100%;
       padding-bottom: 80px;
+      min-height: calc(100vh - 150px);
     }
   }
 }
@@ -110,6 +111,16 @@ main {
   min-width: $left-col;
 }
 
+.flex-row {
+  display: flex;
+}
+
+.jcb {
+  justify-content: space-between;
+}
+.aic {
+ align-items: center;
+}
 
 input {
   font-family: 'Open Sans', sans-serif;
@@ -121,8 +132,6 @@ textarea {
   resize: none;
   outline: none;
 }
-
-
 
 
 

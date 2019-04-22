@@ -166,6 +166,10 @@ return [
          * Package Service Providers...
          */
 
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
+
+
 
         /*
          * Debug bar
@@ -187,11 +191,13 @@ return [
 
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+
 
         App\Checko\CheckList\Providers\Frontend\CheckListProvider::class,
-        App\Checko\CheckItem\Providers\Frontend\CheckItemProvider::class
+        App\Checko\CheckItem\Providers\Frontend\CheckItemProvider::class,
 
+        App\Checko\Authorization\Providers\AuthorizationRouteServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
     ],
 
     /*
@@ -242,6 +248,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

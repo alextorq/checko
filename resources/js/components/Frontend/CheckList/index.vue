@@ -69,9 +69,13 @@
         methods: {
             updateItem(data) {
                 this.$store.dispatch('updateCheckItemField', data);
+                if (data.update === true)  {
+                    this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
+                }
             },
             deleteItem(id) {
                 this.$store.dispatch('deleteCheckItem', id);
+                this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
             },
             checkCheckList() {
                 if (!this.$store.getters.checkListId) {

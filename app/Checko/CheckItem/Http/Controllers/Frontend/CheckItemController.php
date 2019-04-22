@@ -11,12 +11,16 @@ namespace App\Checko\CheckItem\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use App\Checko\Models\CheckItem;
+use Illuminate\Support\Facades\Auth;
 
 class CheckItemController extends BaseController
 {
     public function createItem(Request $request)
     {
         $item = $request->all();
+
+//        dd(Auth::user());
+
         $checkItem = CheckItem::create($item);
         return response()->json($checkItem);
     }

@@ -26,7 +26,6 @@
 
         computed: {
             getActiveLink() {
-                console.log(this.$route);
                 return  this.$route.name || this.$route.path;
             },
             permission_routers() {

@@ -1,0 +1,8 @@
+.settings-layout {
+  display: flex;
+}
+
+.settings-content__wrapper {
+  padding-left: calc(240px - 10vw);
+  flex-grow: 1;
+}

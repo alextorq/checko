@@ -44,4 +44,17 @@ return [
         ],
     ],
 
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_CALLBACK_URL'),
+    ],
+
+    'google' => [
+        'client_id'     => env('369425810235-0tq48fbdjen7k4io3ucmck2t70k6vj86.apps.googleusercontent.com'),
+        'client_secret' => env('-s1pXe10wkyg4AAalRwoX3NJ'),
+        'redirect'      => env('GOOGLE_REDIRECT')
+    ],
+
 ];

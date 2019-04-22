@@ -22,6 +22,7 @@ class UsersProvider extends ServiceProvider
     public function map()
     {
         $this->adminPanelRoutes();
+        $this->Frontend();
     }
     /**
      * Define the "web" routes for the application.
@@ -35,4 +36,10 @@ class UsersProvider extends ServiceProvider
             ->group(base_path('app/Checko/Users/routes/adminPanel.php'));
     }
 
+    protected function Frontend()
+    {
+        Route::middleware('web')
+            ->namespace('App\Checko\Users\Http\Controllers\Frontend')
+            ->group(base_path('app/Checko/Users/routes/frontend.php'));
+    }
 }

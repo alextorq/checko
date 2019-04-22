@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import checkList from './modules/checkList'
 import checkItem from './modules/checkItem'
 import settings from  './modules/settings'
+import user from './modules/user'
 
 Vue.use(Vuex);
 
@@ -11,7 +12,8 @@ let store = new Vuex.Store({
     modules: {
         checkList,
         checkItem,
-        settings
+        settings,
+        user
     },
     state: {
         isLoad: false
@@ -31,5 +33,6 @@ let store = new Vuex.Store({
     }
 
 });
+
 
 export default store;

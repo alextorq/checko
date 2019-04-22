@@ -5,7 +5,10 @@
         <main>
             <div class="container">
                 <div class="content">
-                    <router-view></router-view>
+                    <transition name="fade">
+                        <router-view></router-view>
+                    </transition>
+
                 </div>
             </div>
         </main>
@@ -20,9 +23,6 @@
         components: {
             Header,
         },
-        created() {
-            this.$store.commit('loadSettings');
-        }
 
     }
 

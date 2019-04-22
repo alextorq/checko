@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
+use App\Checko\Models\UserProfile;
+use App\Checko\Models\CheckList;
 
 class User extends Authenticatable
 {
@@ -42,8 +44,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     public function checklists() {
-//        return $this->hasMany(Profile::class, 'user_id', 'user_id');
+        return $this->hasMany(CheckList::class, 'user_id', 'user_id');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class, 'user_profile_id', 'user_id');
     }
 }

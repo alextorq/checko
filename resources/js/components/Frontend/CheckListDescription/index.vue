@@ -14,7 +14,7 @@
     import  marked from 'marked'
 
     export default {
-        name: "CheckList Description",
+        name: "CheckListDescription",
         data() {
             return {
                 checkListDescriptionEditStatus: false,
@@ -55,9 +55,9 @@
                 if (event.target.closest('.checklist__description-markdown')) {
                     this.checkListDescriptionEditStatus = !this.checkListDescriptionEditStatus;
                     if (this.checkListDescriptionEditStatus) {
-                        setTimeout(() => {
+                        this.$nextTick(() => {
                             this.$refs.description.focus();
-                        }, 100)
+                        });
                     }
                 }
             }

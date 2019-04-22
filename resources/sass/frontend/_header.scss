@@ -107,7 +107,6 @@
   margin: 0;
   width: 40px;
   height: 40px;
-  box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
   background-color: #e8f0f3;
   border-radius: 50%;
   padding: 10px;
@@ -115,6 +114,9 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
+  }
   svg {
     width: 100%;
     height: 100%;
@@ -124,52 +126,31 @@
   }
 }
 
-.navbar__menu {
+.navbar__menu-button {
   border: none;
   margin: 0;
   width: 40px;
   height: 40px;
   background-color: transparent;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 10px 5px;
   cursor: pointer;
-  .hamburger {
-    font: inherit;
-    display: inline-block;
-    overflow: visible;
-    margin: 0;
-    padding: 15px;
-    cursor: pointer;
-    transition-timing-function: linear;
-    transition-duration: .15s;
-    transition-property: opacity,filter;
-    text-transform: none;
-    color: inherit;
-    border: 0;
+  transition-timing-function: linear;
+  transition-duration: .15s;
+  transition-property: opacity,filter;
+  text-transform: none;
+  border: 0;
+  position: relative;
+  overflow: hidden;
+
+
+  .hamburger-box {
     position: relative;
-  }
-  .hamburger-inner {
-    transition-delay: .22s;
-    background-color: transparent!important;
-    top: 2px;
-    transition: background-color 0s linear .13s;
-    position: absolute;
-    width: 40px;
-    height: 4px;
-    transition-timing-function: ease;
-    transition-duration: .15s;
-    transition-property: transform;
-    border-radius: 4px;
-    background-color: #fff;
-    top: 50%;
-    display: block;
-    margin-top: -2px;
+    width: 100%;
+    height: 100%;
     &:after, &:before {
       position: absolute;
-      width: 40px;
-      height: 4px;
+      width: 100%;
+      height: 2px;
       transition-timing-function: ease;
       transition-duration: .15s;
       transition-property: transform;
@@ -177,8 +158,35 @@
       background-color: $color_3;
       display: block;
       content: "";
+      left: 0;
     }
-    &.active {
+    &:before {
+      top: 0;
+    }
+    &:after {
+      bottom: 0;
+    }
+  }
+  .hamburger-inner {
+    transition-delay: .22s;
+    transition: background-color 0s linear .13s;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    transition-timing-function: ease;
+    transition-duration: .15s;
+    transition-property: transform;
+    border-radius: 4px;
+    background-color: #000;
+    top: 50%;
+    display: block;
+    margin-top: -1px;
+  }
+  &.open {
+    .hamburger-inner {
+      transform: translate3d(50px,0,0);
+    }
+    .hamburger-box {
       &:before {
         top: 0;
         transition: top .1s cubic-bezier(.33333,0,.66667,.33333) .15s,transform .13s cubic-bezier(.215,.61,.355,1) .22s;
@@ -189,8 +197,8 @@
         transition: top .2s cubic-bezier(.33333,0,.66667,.33333),transform .13s cubic-bezier(.215,.61,.355,1) .22s;
         transform: translate3d(0,10px,0) rotate(-45deg);
       }
-      }
     }
+  }
 }
 
 .navbar__autosave-icon {

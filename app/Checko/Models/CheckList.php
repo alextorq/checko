@@ -10,6 +10,7 @@ namespace App\Checko\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Checko\Models\CheckItem;
+use App\User;
 
 class CheckList extends Model
 {
@@ -23,6 +24,11 @@ class CheckList extends Model
     public function checkItems()
     {
         return $this->hasMany(CheckItem::class, 'check_list_id', 'check_list_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'check_list_id');
     }
 
 }

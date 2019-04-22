@@ -15,7 +15,7 @@
 
 <script>
     export default {
-        name: "CheckList Name",
+        name: "CheckListName",
         computed: {
             name: {
                 get() {

@@ -68,10 +68,9 @@
                 if (event.target.closest('.check-item__name-parse')) {
                     this.editStatus = !this.editStatus;
                     if (this.editStatus) {
-                        setTimeout(() => {
+                        this.$nextTick(() => {
                             this.$refs.item.focus();
-
-                        }, 100)
+                        });
                     }
                 }
             },
