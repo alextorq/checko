@@ -22,7 +22,7 @@
 
 
             <div class="flex-row jcb aic">
-                <button>SING UP</button>
+                <button class="button">SING UP</button>
                 <router-link to="/login">I have an account</router-link>
             </div>
 

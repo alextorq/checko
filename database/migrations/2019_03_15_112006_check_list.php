@@ -17,7 +17,7 @@ class CheckList extends Migration
             $table->increments('check_list_id');
             $table->string('name');
             $table->boolean('complete');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

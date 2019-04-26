@@ -30,9 +30,8 @@ class CheckListController extends BaseController
     public function createCheckList(Request $request)
     {
         $inputParam = $request->all();
-        $user = Auth::user();
 
-        if ($user) {
+        if (Auth::check()) {
             $inputParam['user_id'] = Auth::id();
         }
 

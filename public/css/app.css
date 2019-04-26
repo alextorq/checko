@@ -159,6 +159,35 @@ textarea {
   outline: none;
 }
 
+button.button {
+  -webkit-box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
+          box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
+  border-radius: 5px;
+  background-color: #01b06d;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0.16px;
+  padding: 0 15px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.spoiler:not(.open) {
+  overflow: hidden;
+}
+
+.spoiler {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
 .slide-left-enter-active,
 .slide-left-leave-active {
   -webkit-transition: all 0.8s;
@@ -193,9 +222,27 @@ textarea {
   opacity: 0;
 }
 
-.my-style .notification-title {
-  background: red;
-  color: red;
+.my-style .notification-content {
+  padding: 0 20px;
+  -webkit-box-shadow: 0 0 8px rgba(164, 183, 190, 0.09);
+          box-shadow: 0 0 8px rgba(164, 183, 190, 0.09);
+  border-radius: 5px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.09px;
+}
+
+.my-style.error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.my-style.error .notification-content {
+  background: #f84759;
+  color: #fff;
 }
 
 .my-style.success {
@@ -205,17 +252,8 @@ textarea {
 }
 
 .my-style.success .notification-content {
-  padding: 0 20px;
-  -webkit-box-shadow: 0 0 8px rgba(164, 183, 190, 0.09);
-          box-shadow: 0 0 8px rgba(164, 183, 190, 0.09);
-  border-radius: 5px;
   background-color: #ccefe2;
-  text-align: center;
-  line-height: 40px;
   color: rgba(1, 176, 109, 0.9);
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.09px;
 }
 
 .notification-wrapper {
@@ -582,6 +620,44 @@ textarea {
   }
 }
 
+.check-item .context-menu-wrapper {
+  position: relative;
+}
+
+.check-item .context-menu-wrapper .context-menu__list {
+  position: absolute;
+  visibility: hidden;
+  list-style: none;
+  padding-left: 0;
+  width: 141px;
+  -webkit-box-shadow: 0 0 20px 2px rgba(164, 183, 190, 0.45);
+          box-shadow: 0 0 20px 2px rgba(164, 183, 190, 0.45);
+  border-radius: 5px;
+  background-color: #ffffff;
+  right: -40px;
+  z-index: 5;
+}
+
+.check-item .context-menu-wrapper .context-menu__item {
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  opacity: 0.9;
+  color: #0c0f14;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 2.5;
+  letter-spacing: 0.09px;
+}
+
+.check-item .context-menu-wrapper .context-menu__item:hover {
+  background: #c8c8c83d;
+}
+
+.check-item .context-menu-wrapper.open .context-menu__list {
+  visibility: visible;
+}
+
 .check-item__name-wrapper {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -676,15 +752,14 @@ textarea {
 
 /*Animation appear end*/
 
-/*Delete item button*/
+/*Menu item button*/
 
-.check-item:hover .check-item__delete {
+.check-item:hover .check-item__menu {
   opacity: 1;
 }
 
-.check-item__delete {
+.check-item__menu {
   border: none;
-  padding: 0;
   background: transparent;
   margin: 0;
   cursor: pointer;
@@ -696,10 +771,24 @@ textarea {
   transition: all 0.4s;
   -webkit-transform: translate3d(200%, -50%, 0);
           transform: translate3d(200%, -50%, 0);
+  color: #a4b5be;
+  padding: 5px;
+  line-height: 14px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  letter-spacing: 1px;
 }
 
 @media only screen and (max-width: 767px) {
-  .check-item__delete {
+  .check-item__menu {
     opacity: 1;
     -webkit-transform: none;
             transform: none;
@@ -707,7 +796,7 @@ textarea {
   }
 }
 
-.check-item__delete .icon {
+.check-item__menu .icon {
   width: 14px;
   height: 14px;
   position: relative;
@@ -716,7 +805,7 @@ textarea {
           transform: rotate(45deg);
 }
 
-.check-item__delete .icon:after {
+.check-item__menu .icon:after {
   position: absolute;
   width: 2px;
   height: 100%;
@@ -726,7 +815,7 @@ textarea {
   left: calc(50% - 1px);
 }
 
-.check-item__delete .icon:before {
+.check-item__menu .icon:before {
   position: absolute;
   width: 100%;
   height: 2px;
@@ -736,7 +825,11 @@ textarea {
   left: 0;
 }
 
-/*Delete item button end*/
+.check-item__menu.open {
+  opacity: 1;
+}
+
+/*Menu item button end*/
 
 /*CheckBox complete*/
 
@@ -1069,26 +1162,6 @@ textarea {
   max-width: 850px;
 }
 
-.form-registration-wrapper form button {
-  -webkit-box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
-          box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
-  border-radius: 5px;
-  background-color: #01b06d;
-  border: none;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 40px;
-  text-transform: uppercase;
-  letter-spacing: 0.16px;
-  padding: 0 15px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 @media only screen and (max-width: 991px) {
   .form-registration-wrapper form {
     width: 90%;
@@ -1318,6 +1391,10 @@ textarea {
 .form-item.password .show-password svg {
   width: 100%;
   height: 100%;
+  fill: #a4b5be;
+}
+
+.form-item.password .show-password path {
   fill: #a4b5be;
 }
 
@@ -1816,6 +1893,11 @@ textarea {
           transform: translateY(20%);
 }
 
+.navbar__menu .navbar__menu__item.sing-in .avatar-wrapper.image {
+  background-position: center;
+  background-size: cover;
+}
+
 .navbar__menu .navbar__menu__item.sing-in a {
   text-decoration: none;
   opacity: 0.9;
@@ -1933,17 +2015,84 @@ textarea {
 .settings.account {
   padding-left: 30px;
   width: 60%;
+  /*Avatar*/
+  /*Avatar end*/
+  /*Name*/
+  /*Name end*/
+  /* Style for "Log out" */
 }
 
-.settings.account .avatar-wrapper {
+.settings.account .account-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 50px;
-  height: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 70px;
+}
+
+.settings.account .avatar-container {
+  position: relative;
+  /*Avatar preloader*/
+  /*Avatar preloader end*/
+  /*Input file*/
+  /*Input file end*/
+}
+
+.settings.account .avatar-container .loading-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  padding: 37px;
+  will-change: transform;
+  border-radius: 50%;
+  background: rgba(1, 176, 109, 0.5);
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  z-index: 7;
+  overflow: hidden;
+  display: none;
+}
+
+.settings.account .avatar-container .loading-icon span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+}
+
+.settings.account .avatar-container .loading-icon span svg {
+  fill: #fff;
+}
+
+.settings.account .avatar-container.loading .loading-icon {
+  -webkit-animation: rotate 3s linear 0s infinite;
+          animation: rotate 3s linear 0s infinite;
+  opacity: 1;
+  display: block;
+}
+
+.settings.account .avatar-container .avatar-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100px;
+  height: 100px;
   -webkit-box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
           box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
-  background-color: #01b06d;
   border-radius: 50%;
   overflow: hidden;
   padding: 8px;
@@ -1954,38 +2103,155 @@ textarea {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 23px;
+  font-size: 30px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   margin-right: 20px;
+  position: relative;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
 }
 
-.settings.account svg {
+.settings.account .avatar-container .avatar-wrapper .icon svg {
   width: 100%;
   height: 100%;
   fill: white;
-  -webkit-transform: translateY(20%);
-          transform: translateY(20%);
 }
 
-.settings.account .account-info {
+.settings.account .avatar-container .avatar-wrapper .icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  padding: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: rgba(1, 175, 108, 0.5);
 }
 
-.settings.account h3 {
-  margin-bottom: 40px;
+.settings.account .avatar-container .avatar-wrapper:hover .icon {
+  opacity: 1;
+}
+
+.settings.account .avatar-container .custom-file-input {
+  font-size: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 5;
+}
+
+.settings.account .avatar-container .custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.settings.account .avatar-container .errors-list {
+  color: #f84759;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.03px;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  bottom: -100%;
+  width: 100vh;
+  -webkit-transform: translateY(-120%);
+          transform: translateY(-120%);
+}
+
+.settings.account .account-info__name {
+  margin-bottom: 25px;
+  opacity: 0.9;
+  color: #0b0f13;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.11px;
+}
+
+.settings.account .account-info__name .name-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+.settings.account .account-info__name .name-wrapper:hover .icon {
+  opacity: 1;
+}
+
+.settings.account .account-info__name input {
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding-right: 10px;
+}
+
+.settings.account .account-info__name input:focus {
+  outline: none;
+}
+
+.settings.account .account-info__name .error-message {
+  color: #f84759;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0.03px;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.settings.account .account-info__name .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: -16px;
+  cursor: pointer;
+  opacity: 0;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.settings.account .account-info__name svg {
+  width: 100%;
+  height: 100%;
+  fill: #0b0f13;
+}
+
+.settings.account .logout {
   opacity: 0.9;
   color: #14171b;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.5;
   letter-spacing: 0.09px;
+  border: none;
+  background-color: transparent;
+  margin-top: 50px;
+  cursor: pointer;
 }
 

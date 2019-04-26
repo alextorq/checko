@@ -11,7 +11,7 @@
 
 
     <!-- Scripts -->
-    <script src="{{ asset('js/default.js') }}" defer></script>
+    {{--<script src="{{ asset('js/default.js') }}" defer></script>--}}
 
     <link rel="shortcut icon" href="{{ asset('/images/favicon_16.png') }}" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/images/favicon_72.png') }}">
@@ -19,12 +19,23 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&amp;subset=cyrillic" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+@auth
+    <script>
+        let userAuth = true;
+    </script>
+@endauth
+@guest
+    <script>
+        let userAuth = false;
+    </script>
+@endguest
+
     <div id="app">
         <main class="main_content">
             @yield('content')

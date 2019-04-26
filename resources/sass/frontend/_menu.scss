@@ -40,7 +40,10 @@
         fill: white;
         transform: translateY(20%);
       }
-
+      &.image {
+        background-position: center;
+        background-size: cover;
+      }
     }
     a {
       text-decoration: none;

@@ -62,6 +62,45 @@
     }
 
   }
+
+
+  .context-menu-wrapper {
+    position: relative;
+    .context-menu__list {
+      position: absolute;
+      visibility: hidden;
+      list-style: none;
+      padding-left: 0;
+      width: 141px;
+      box-shadow: 0 0 20px 2px rgba(164, 183, 190, 0.45);
+      border-radius: 5px;
+      background-color: #ffffff;
+      right: -40px;
+      z-index: 5;
+    }
+    .context-menu__item {
+      cursor: pointer;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      opacity: 0.9;
+      color: #0c0f14;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 2.5;
+      letter-spacing: 0.09px;
+
+      &:hover {
+        background: #c8c8c83d;
+      }
+    }
+    
+    &.open {
+      .context-menu__list {
+        visibility: visible;
+      }
+    }
+  }
 }
 
 .check-item__name-wrapper {
@@ -151,18 +190,17 @@
 /*Animation appear end*/
 
 
-/*Delete item button*/
+/*Menu item button*/
 
 .check-item {
   &:hover {
-    .check-item__delete {
+    .check-item__menu {
       opacity: 1;
     }
   }
 }
-.check-item__delete {
+.check-item__menu {
   border: none;
-  padding: 0;
   background: transparent;
   margin: 0;
   cursor: pointer;
@@ -172,6 +210,14 @@
   opacity: 0;
   transition: all 0.4s;
   transform: translate3d(200%, -50%, 0);
+  color: #a4b5be;
+  padding: 5px;
+  line-height: 14px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
   @include phone {
     opacity: 1;
     transform: none;
@@ -202,8 +248,11 @@
       left: 0;
     }
   }
+  &.open {
+    opacity: 1;
+  }
 }
-/*Delete item button end*/
+/*Menu item button end*/
 
 
 

@@ -1,21 +1,27 @@
 .my-style {
-  .notification-title {
-    background: red;
-    color: red;
+  .notification-content {
+    padding: 0 20px;
+    box-shadow: 0 0 8px rgba(164, 183, 190, 0.09);
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.09px;
+  }
+
+  &.error {
+    display: flex;
+    .notification-content {
+      background: #f84759;
+      color: #fff;
+    }
   }
   &.success {
     display: flex;
     .notification-content {
-      padding: 0 20px;
-      box-shadow: 0 0 8px rgba(164, 183, 190, 0.09);
-      border-radius: 5px;
       background-color: #ccefe2;
-      text-align: center;
-      line-height: 40px;
       color: rgba(#01b06d, 0.9);
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 0.09px;
     }
   }
 

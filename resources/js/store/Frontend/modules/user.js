@@ -1,4 +1,4 @@
-
+import Router from '../../../router/Frontend/'
 function updateToken(payload) {
     if (payload.token) {
         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = payload.token;
@@ -13,10 +13,15 @@ const user = {
             user_id: null,
             name: ' '
         },
+        userDefault: {
+            user_id: null,
+            name: ' '
+        },
         URI: {
             pref: '/frontend/user/',
             POST: {
-                create: 'create'
+                create: 'create',
+                logout: 'logout'
             },
             GET: {
                 'iam': 'iam',
@@ -32,7 +37,6 @@ const user = {
             return state.user.name;
         },
         userLoginStatus(state) {
-            // return false ;
             return state.user.user_id !== null && state.user.user_id !== undefined;
         },
         userInitials(state) {
@@ -56,18 +60,36 @@ const user = {
                 updateToken(payload);
             }
         },
+        updateUserField(state, payload) {
+            if (payload) {
+                state.user[payload.field] = payload.value;
+            }
+        },
     },
     actions: {
         getUser(context) {
             axios.get(`${context.state.URI.pref}${context.state.URI.GET.iam}`)
                 .then((responce) => {
-                    context.commit('updateUser',responce.data.user)
+                    context.commit('updateUser', responce.data.user);
+                    context.commit('loadUserSettings', responce.data)
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        logout(context) {
+            axios.post(`/${context.state.URI.POST.logout}`)
+                .then((responce) => {
+                    context.commit('updateUser', context.state.userDefault);
+                    updateToken({token: ''});
+                    /*Глобальная пременная устанавливается сервером*/
+                    userAuth = false;
+                    Router.push('/');
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         }
-
     }
 };
 

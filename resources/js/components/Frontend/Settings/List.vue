@@ -62,7 +62,7 @@
         },
         methods: {
             updateSettings(payload) {
-                this.$store.commit('updateSettings', payload)
+                this.$store.dispatch('updateSettings', payload)
             },
         },
         components: {

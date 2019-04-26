@@ -133,5 +133,29 @@ textarea {
   outline: none;
 }
 
+button.button {
+  box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
+  border-radius: 5px;
+  background-color: #01b06d;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0.16px;
+  padding: 0 15px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 
+.spoiler:not(.open) {
+  overflow: hidden;
+}
+.spoiler {
+  transition: all .2s;
+}

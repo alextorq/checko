@@ -42,11 +42,3 @@
     }
 </script>
 
-<style scoped>
-        .spoiler:not(.open) {
-            overflow: hidden;
-        }
-        .spoiler {
-            transition: all .2s;
-        }
-</style>

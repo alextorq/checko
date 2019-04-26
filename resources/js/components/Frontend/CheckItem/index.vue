@@ -19,15 +19,33 @@
                       cols="20" @change="update('name')" ref="item" @blur="editStatus = !editStatus"
                    ></textarea>
         </div>
-        <!--@keyup.delete="rowHeight"-->
-        <button class="check-item__delete" @click="deleteItemEvent">
-            <span class="icon"></span>
-        </button>
+        <div class="context-menu-wrapper" :class="contextMenuOpen">
+            <button class="check-item__menu" :class="contextMenuOpen" ref="contextMenuButton" @click="openContextMenu" >
+                <!--<span class="icon"></span>-->
+                ...
+            </button>
+            <ul class="context-menu__list">
+                <li class="context-menu__item">attach</li>
+                <li class="context-menu__item" @click="debag">comments</li>
+                <li class="context-menu__item" @click="deleteItemEvent">delete</li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <script>
 
+
+    function closeContextMenu(event) {
+        let target = event.target;
+        if (window._self.$refs['contextMenuButton'] !== target) {
+            if(window._self.contextMenuOpenStatus) {
+                window._self.contextMenuOpenStatus = false
+            }
+        }
+        window._self.deleteHandler();
+    }
+    
     export default {
         name: "completeItem",
         data() {
@@ -36,7 +54,8 @@
                     name: null
                 },
                 editStatus: false,
-                height: 10
+                height: 10,
+                contextMenuOpenStatus: false
             }
         },
         computed: {
@@ -56,8 +75,10 @@
                     str = str.replace(regA[key],'<a href=\"'+regA[key]+'\" target=\"_blank\">'+regA[key]+'</a>')
                 }
                 return(str);
+            },
+            contextMenuOpen() {
+                return {'open': this.contextMenuOpenStatus}
             }
-
         },
         methods: {
             onBluer() {
@@ -104,11 +125,29 @@
                     item: this.data,
                     update: true
                 });
+            },
+            openContextMenu(event) {
+                if (!this.contextMenuOpenStatus) {
+                    window._self = this;
+                    event.stopPropagation();
+                    document.addEventListener('click', closeContextMenu, {passive: true});
+                }else {
+                    this.deleteHandler();
+                }
+                this.contextMenuOpenStatus = !this.contextMenuOpenStatus
+            },
+            deleteHandler() {
+                document.removeEventListener('click', closeContextMenu);
+                window._self = null;
+            },
+            debag() {
+                console.log('ddd');
             }
         },
         created() {
             this.cache = JSON.parse(JSON.stringify(this.data));
-            this.rowHeight({target: {value: this.cache.name}});
+         
+            // this.rowHeight({target: {value: this.cache.name}});
         },
         props: ['data']
     }

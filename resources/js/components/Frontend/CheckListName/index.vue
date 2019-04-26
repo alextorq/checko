@@ -8,14 +8,19 @@
                 </svg>
            </span>
         </div>
-        <input class="checklist__name" type="text" v-model="name"
-               @blur=""  @change="endEditName">
+        <input class="checklist__name" type="text" v-model="name" placeholder="CheckList name"
+               @blur="" @focus="select"  @change="endEditName">
     </div>
 </template>
 
 <script>
     export default {
         name: "CheckListName",
+        data() {
+          return {
+
+          }
+        },
         computed: {
             name: {
                 get() {
@@ -24,7 +29,7 @@
                 set(value) {
                     this.$store.commit('updateCheckListField', {
                         field: 'name',
-                        value: value
+                        value: value || this.$store.state.checkList.list.name
                     });
                 }
             },
@@ -35,6 +40,10 @@
         methods: {
             endEditName() {
                 this.$store.dispatch('updateCheckListField')
+            },
+            select(event) {
+                let target = event.target;
+                target.select();
             },
             changeWidthForName() {
                 /*

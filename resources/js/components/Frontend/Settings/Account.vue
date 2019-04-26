@@ -2,38 +2,45 @@
     <div class="settings account">
 
         <div class="account-info" v-if="userLoginStatus">
-            <div class="avatar-wrapper">{{userInitials}}</div>
+            <Avatar></Avatar>
             <div class="info-wrapper">
-                <div>
-                    {{userName}}
+                <div class="account-info__name">
+                    <nameInput :value="userName"></nameInput>
                 </div>
-                <span class="email">
+                <span class="account-info__email">
                     {{userEmail}}
                 </span>
             </div>
         </div>
 
         <h3>Change Password</h3>
-        <form>
+        <form method="post" action="/frontend/user/change_password" @submit.prevent="send">
             <inputFormPassword name="oldPassword" label="Old password" @error="errorUpdate" :min="8"
                                icon="password" ref="oldPassword" :required="true"
-                               :errors="passwordError" v-model="form.oldPassword.value"></inputFormPassword>
+                               :errors="oldPasswordError" v-model="form.oldPassword.value"></inputFormPassword>
 
             <inputFormPassword name="newPassword" label="New password" @error="errorUpdate" :min="8"
                                icon="password" ref="newPassword" :required="true"
-                               :errors="passwordError" v-model="form.newPassword.value"></inputFormPassword>
+                               :errors="newPasswordError" v-model="form.newPassword.value"></inputFormPassword>
 
-            <inputFormPassword name="repeatPassword" label="Repeat password" @error="errorUpdate" :min="8"
-                               icon="password" ref="repeatPassword" :required="true"
-                               :errors="passwordError" v-model="form.repeatPassword.value"></inputFormPassword>
+            <inputFormPassword name="newPassword_confirmation" label="Repeat password" @error="errorUpdate" :min="8"
+                               icon="password" ref="newPassword_confirmation" :required="true" :repeat="form.newPassword.value"
+                               :errors="newPassword_confirmation" v-model="form.newPassword_confirmation.value">
+            </inputFormPassword>
+
+
+            <button class="button" type="submit">Change</button>
         </form>
 
-        <h4>Logout</h4>
+        <button @click="logout" class="logout">Logout</button>
+
     </div>
 </template>
 
 <script>
     import inputFormPassword from '../FormInput/password'
+    import nameInput from  './NameInput'
+    import Avatar from './Avatar'
 
     export default {
         name: "Account",
@@ -50,7 +57,7 @@
                         errors: [],
                         serverErrors: []
                     },
-                    repeatPassword: {
+                    newPassword_confirmation: {
                         value: '',
                         errors: [],
                         serverErrors: []
@@ -59,10 +66,16 @@
             }
         },
         computed: {
-            passwordError() {
+            oldPasswordError() {
                 return this.form.oldPassword.errors.concat(this.form.oldPassword.serverErrors)
             },
-            userName () {
+            newPasswordError() {
+                return this.form.newPassword.errors.concat(this.form.newPassword.serverErrors)
+            },
+            newPassword_confirmation() {
+                return this.form.newPassword_confirmation.errors.concat(this.form.newPassword_confirmation.serverErrors)
+            },
+            userName() {
                 return this.$store.getters.userName;
             },
             userInitials() {
@@ -127,21 +140,36 @@
             },
             send() {
                 if (this.validate()) {
-                    axios.post('/login', {
-                        password: this.form.password.value,
-                        newPassword: this.form.newPassword.value
-                    })
-                        .then((responce) => {
-                            this.$store.commit('updateUser', responce.data);
-                            this.$router.push({
-                                name: 'Blank'
-                            });
-                        })
-                        .catch((error) => {
-                            if (error.response.status === 422) {
-                                this.showErrors(error.response.data.errors)
-                            }
+                    axios.post('/frontend/user/change_password', {
+                        oldPassword: this.form.oldPassword.value,
+                        newPassword: this.form.newPassword.value,
+                        newPassword_confirmation: this.form.newPassword_confirmation.value
+                    }).then(() => {
+                        this.clearForm();
+                        this.$notify({
+                            duration: 1000,
+                            type: 'success',
+                            text: 'Password is change',
                         });
+                    })
+                    .catch((error) => {
+                        if (error.response.status === 422) {
+                            this.showErrors(error.response.data.errors)
+                        }else {
+                            this.$notify({
+                                duration: 1000,
+                                type: 'error',
+                                text: error.response.data.message,
+                            });
+                        }
+                    });
+                }
+            },
+            clearForm() {
+                for (let filed in this.form) {
+                    if (this.form[filed]) {
+                        this.form[filed].value = '';
+                    }
                 }
             },
             showErrors(errors) {
@@ -150,9 +178,14 @@
                     this.form[error].serverErrors.push(...errorMessages);
                 }
             },
+            logout() {
+                this.$store.dispatch('logout');
+            }
         },
         components: {
-            inputFormPassword
+            inputFormPassword,
+            nameInput,
+            Avatar
         }
     }
 </script>

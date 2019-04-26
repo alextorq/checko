@@ -23,14 +23,32 @@
         <span class="check-item__data-complete">
             {{dateFormat}}
         </span>
-        <button class="check-item__delete" @click="deleteItemEvent">
-            <span class="icon"></span>
-        </button>
+        <div class="context-menu-wrapper" :class="contextMenuOpen">
+            <button class="check-item__menu" :class="contextMenuOpen" ref="contextMenuButton" @click="openContextMenu" >
+                <!--<span class="icon"></span>-->
+                ...
+            </button>
+            <ul class="context-menu__list">
+                <li class="context-menu__item">attach</li>
+                <li class="context-menu__item" @click="">comments</li>
+                <li class="context-menu__item" @click="deleteItemEvent">delete</li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <!--@keyup="rowHeight" :style="{ 'min-height': height + 'px' }"-->
 <script>
+    function closeContextMenu(event) {
+        let target = event.target;
+        if (window._self.$refs['contextMenuButton'] !== target) {
+            if(window._self.contextMenuOpenStatus) {
+                window._self.contextMenuOpenStatus = false
+            }
+        }
+        window._self.deleteHandler();
+    }
+
     import moment from 'moment'
     export default {
         name: "completeItem",
@@ -40,14 +58,18 @@
                     name: null
                 },
                 editStatus: false,
-                height: 10
+                height: 10,
+                contextMenuOpenStatus: false
             }
         },
         computed: {
             editClass() {
                 return {
-                    edit: this.editStatus
+                    edit: this.editStatus,
                 }
+            },
+            contextMenuOpen() {
+                return {'open': this.contextMenuOpenStatus}
             },
             dateFormat() {
                 let formatDate = this.$store.getters.getDateFormatDefault.value;
@@ -108,7 +130,21 @@
                     item: this.data,
                     update: true
                 });
-            }
+            },
+            openContextMenu(event) {
+                if (!this.contextMenuOpenStatus) {
+                    window._self = this;
+                    event.stopPropagation();
+                    document.addEventListener('click', closeContextMenu, {passive: true});
+                }else {
+                    this.deleteHandler();
+                }
+                this.contextMenuOpenStatus = !this.contextMenuOpenStatus
+            },
+            deleteHandler() {
+                document.removeEventListener('click', closeContextMenu);
+                window._self = null;
+            },
         },
         created() {
             this.cache = JSON.parse(JSON.stringify(this.data));

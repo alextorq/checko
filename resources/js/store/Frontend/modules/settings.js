@@ -10,12 +10,14 @@ function saveSettings(payload) {
     localStorage.setItem('settings', JSON.stringify(settings));
 }
 
+
+
+
 const userSettings = {
     state: {
-        /*false: localstorage
-        * true: server (если пользователь авторизован)
-        * */
-        locationStore: false,
+        URI: {
+            pref: '/frontend/user/save_settings',
+        },
         settings: {
             addToEndList: {
                 value: true,
@@ -48,28 +50,12 @@ const userSettings = {
                         value: '%'
                     },
                     {
-                        name: 'percent (5/7)',
+                        name: 'number (5/7)',
                         value: '/'
                     }
                 ]
             }
         },
-        user: {
-
-        },
-        URI: {
-            pref: '/frontend/checklist/',
-            POST: {
-                create: 'create'
-            },
-            GET: {
-                'all': 'all',
-            },
-            PUT: {
-                edit: 'edit'
-            },
-            DELETE: {}
-        }
     },
     getters: {
         settingProgressViewType(state) {
@@ -108,6 +94,16 @@ const userSettings = {
             }
             saveSettings(payload);
         },
+        loadUserSettings(state, payload) {
+            if (payload.user.profile && payload.user.profile.user_settings) {
+                try {
+                    let settings = JSON.parse(payload.user.profile.user_settings);
+                    state.settings = settings;
+                }catch (e) {
+                    // console.log(e);
+                }
+            }
+        },
         loadSettings(state) {
             let settings = JSON.parse(localStorage.getItem('settings'));
             if (settings)  {
@@ -122,7 +118,20 @@ const userSettings = {
         }
     },
     actions: {
-
+        updateSettings(context, payload) {
+            let userLoginStatus = context.rootGetters.userLoginStatus;
+            if (userLoginStatus) {
+                axios.post(context.state.URI.pref, {settings: context.state.settings})
+                    .then((responce) => {
+                        // context.commit('updateUser',responce.data.user)
+                        console.log(responce.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+            context.commit('updateSettings', payload);
+        },
     }
 };
 

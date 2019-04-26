@@ -15,8 +15,8 @@
                 </span>
                 <a  href="/" target="_blank" aria-label="Add new checklist" class="navbar__add-new" type="button"></a>
 
-                <div class="button-wrapper" :class="isShareOpenStatus" @click="isShareOpen = !isShareOpen">
-                    <button class="navbar__share"
+                <div class="button-wrapper" :class="isShareOpenStatus" >
+                    <button class="navbar__share" ref="openShareMenu" @click="openShareMenu"
                             type="button" aria-label="share checklist in soc network">
                         <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -89,8 +89,6 @@
                     </button>
                     <Menu :open="isMenuOpen" @close="isMenuOpen = !isMenuOpen"></Menu>
                </div>
-
-
             </div>
         </div>
     </nav>
@@ -101,6 +99,15 @@
     import AppSelect from '../Select'
     import Menu from  '../Menu'
 
+    function closeShareMenu(event) {
+        let target = event.target;
+        if (window._self.$refs['openShareMenu'] !== target) {
+            if(window._self.isShareOpen) {
+                window._self.isShareOpen = false
+            }
+        }
+        window._self.deleteHandler();
+    }
     export default {
         name: "Header",
         data() {
@@ -129,10 +136,20 @@
             shareByTelegram() {
                 // tg://msg?text='+encodeURIComponent(TEXT);
             },
-            updateSettings(payload) {
-                this.$store.commit('updateSettings', payload)
+            openShareMenu() {
+                if (!this.isShareOpen) {
+                    window._self = this;
+                    event.stopPropagation();
+                    document.addEventListener('click', closeShareMenu, {passive: true});
+                }else {
+                    this.deleteHandler();
+                }
+                this.isShareOpen = !this.isShareOpen
             },
-
+            deleteHandler() {
+                document.removeEventListener('click', closeShareMenu);
+                window._self = null;
+            },
             /*
                * Если перешли не со страницы настроек то
                * при повторном клике возвращаемся на нее иначе на главную

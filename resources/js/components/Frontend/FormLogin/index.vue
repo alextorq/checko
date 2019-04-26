@@ -28,7 +28,7 @@
                                :errors="passwordError" v-model="form.password.value"></inputFormPassword>
 
             <div class="flex-row jcb aic">
-                <button>Sign in </button>
+                <button class="button">Sign in </button>
 
                 <div class="form-links">
                     <router-link to="/registration">Create account</router-link>

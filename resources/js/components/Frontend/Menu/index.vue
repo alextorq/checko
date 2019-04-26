@@ -14,8 +14,14 @@
                     </router-link>
                 </div>
                 <div v-else>
-                    <span class="avatar-wrapper">{{userInitials}}</span>
+                    <span v-if="avatarStatus" class="avatar-wrapper image"
+                          :style="{ backgroundImage: 'url(' + avatar + ')' }">
+                    </span>
+                    <span v-else class="avatar-wrapper">
+                        {{userInitials}}
+                    </span>
                     {{userName }}
+
                 </div>
 
             </li>
@@ -46,6 +52,12 @@
                 return {
                     open: this.open
                 }
+            },
+            avatar() {
+                return this.$store.state.user.user.avatar;
+            },
+            avatarStatus() {
+                return !!this.$store.state.user.user.avatar;
             },
             userInitials() {
                 return this.$store.getters.userInitials;
