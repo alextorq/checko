@@ -30,7 +30,7 @@ html {
 
 .overlay {
   position: fixed;
-  z-index: 0;
+  z-index: 2;
   top: 60px;
   bottom: 0;
   left: 0;
@@ -151,6 +151,10 @@ input {
   font-family: 'Open Sans', sans-serif;
 }
 
+input:focus {
+  outline: none;
+}
+
 textarea {
   white-space: pre;
   width: 100%;
@@ -179,6 +183,41 @@ button.button {
   user-select: none;
 }
 
+button.close-delete {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  z-index: 5;
+}
+
+button.close-delete:after,
+button.close-delete:before {
+  position: absolute;
+  content: '';
+  height: 125%;
+  width: 1px;
+  left: calc(50% - (1px / 2));
+  background: #91a0a5;
+  top: -12.5%;
+}
+
+button.close-delete:after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+button.close-delete:before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
 .spoiler:not(.open) {
   overflow: hidden;
 }
@@ -186,6 +225,43 @@ button.button {
 .spoiler {
   -webkit-transition: all .2s;
   transition: all .2s;
+}
+
+.preloader {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.08);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.preloader span {
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-animation: rotate 3s linear 0s infinite;
+          animation: rotate 3s linear 0s infinite;
+}
+
+.preloader svg {
+  fill: #01b06d;
 }
 
 .slide-left-enter-active,
@@ -397,16 +473,31 @@ button.button {
 
 .checklist__description-wrapper {
   padding-left: 40px;
+  color: #a4b5be;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0.05px;
 }
 
 .checklist__description-wrapper textarea {
   overflow: hidden;
   overflow-wrap: break-word;
-  padding: 20px 0;
+  padding: 20px 0 0 0;
+  font-size: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  font-weight: inherit;
+  font-family: inherit;
 }
 
 .checklist__description-wrapper .checklist__description-markdown {
-  padding: 20px 0;
+  padding: 20px 0 0 0;
+  font-size: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  font-weight: inherit;
+  font-family: inherit;
 }
 
 .checklist__description-wrapper:not(.edit) textarea {
@@ -429,7 +520,7 @@ button.button {
 /*CheckBox Description  end*/
 
 .checklist__item-list {
-  margin-top: 53px;
+  margin-top: 30px;
   position: relative;
 }
 
@@ -1367,11 +1458,11 @@ button.button {
   list-style: none;
 }
 
-.form-item.password input {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+/*Элемент формы для ввода пароля*/
+
+.form-item.password {
+  /*Кнопка показать пароль*/
+  /*Кнопка показать пароль end*/
 }
 
 .form-item.password .icon {
@@ -1397,6 +1488,8 @@ button.button {
 .form-item.password .show-password path {
   fill: #a4b5be;
 }
+
+/*Элемент формы для ввода пароля end*/
 
 /*general*/
 
@@ -1840,6 +1933,7 @@ button.button {
           transform: translate3d(100%, 0, 0);
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
+  z-index: 6;
 }
 
 @media only screen and (max-width: 767px) {
@@ -2115,6 +2209,11 @@ button.button {
   background-position: center;
 }
 
+.settings.account .avatar-container .avatar-wrapper.empty {
+  background: #01b06d;
+  color: white;
+}
+
 .settings.account .avatar-container .avatar-wrapper .icon svg {
   width: 100%;
   height: 100%;
@@ -2227,7 +2326,7 @@ button.button {
   width: 16px;
   height: 16px;
   position: absolute;
-  right: -16px;
+  right: 0px;
   cursor: pointer;
   opacity: 0;
   -webkit-transition: all 0.2s;
@@ -2253,5 +2352,198 @@ button.button {
   background-color: transparent;
   margin-top: 50px;
   cursor: pointer;
+}
+
+.comments-layout {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  position: fixed;
+  top: 60px;
+  width: 360px;
+  right: 0;
+  background: #ffffff;
+  bottom: 0;
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  z-index: 5;
+  padding-top: 20px;
+  height: calc(100vh - 60px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  /*Заголовок comments */
+  /*Заголовок comments end*/
+  /*Кнопка закрытия меню*/
+  /*Кнопка закрытия меню end*/
+}
+
+@media only screen and (max-width: 767px) {
+  .comments-layout {
+    width: 100vw;
+  }
+}
+
+.comments-layout.open {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.comments-layout .comments__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.comments-layout h3 {
+  color: rgba(20, 23, 27, 0.9);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.09px;
+  padding-left: 37px;
+  padding-right: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.comments-layout .close-delete {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.comments-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /*form*/
+  /*кнопка отправить*/
+  /*кнопка отправить end*/
+  /*form end*/
+}
+
+.comments-wrapper .comments-form {
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  z-index: auto;
+  width: 100%;
+  background: #ffffff;
+}
+
+.comments-wrapper .comments-form textarea {
+  border: 1px solid #91a0a5;
+  min-height: 30px;
+}
+
+.comments-wrapper .comments-form .max-length {
+  font-size: 10px;
+  position: absolute;
+  color: rgba(0, 0, 0, 0.6);
+  top: 13px;
+  right: 20px;
+}
+
+.comments-wrapper .comments-form-send {
+  margin-left: auto;
+  display: block;
+  line-height: 2.5;
+}
+
+.comments-wrapper .comments-form-send:disabled {
+  background: grey;
+  cursor: default;
+}
+
+.comments-wrapper .comments__list {
+  list-style: none;
+  padding: 30px 30px 100px 30px;
+  margin: 0;
+  height: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-face-color: #0c0f14;
+  scrollbar-track-color: #0c0f14;
+  /*враппер с именем и датой*/
+  /*враппер с именем и датой end*/
+  /*Кнопка удаления комментария*/
+  /*Кнопка удаления комментария end*/
+}
+
+.comments-wrapper .comments__list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.comments-wrapper .comments__list::-webkit-scrollbar-thumb {
+  background: #01b06d;
+  border-radius: 5px;
+}
+
+.comments-wrapper .comments__list::-webkit-scrollbar-track {
+  background: #e8f0f3;
+  border-radius: 5px;
+}
+
+.comments-wrapper .comments__list .comment-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.comments-wrapper .comments__list .comment-user,
+.comments-wrapper .comments__list .comment-date {
+  color: rgba(164, 181, 190, 0.9);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.09px;
+}
+
+.comments-wrapper .comments__list .comments__item {
+  position: relative;
+}
+
+.comments-wrapper .comments__list .comments__item:hover button.close-delete {
+  opacity: 1;
+}
+
+.comments-wrapper .comments__list button.close-delete {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  margin-top: 0;
+  opacity: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  will-change: opacity;
+}
+
+.history-wrapper {
+  padding: 30px 30px 140px 30px;
 }
 

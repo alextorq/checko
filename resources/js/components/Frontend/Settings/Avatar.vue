@@ -8,7 +8,7 @@
             </span>
         </span>
 
-        <div v-if="avatarStatus" class="avatar-wrapper" :style="{ backgroundImage: 'url(' + avatar + ')' }">
+        <div v-if="avatarStatus === true" class="avatar-wrapper" :style="{ backgroundImage: 'url(' + avatar + ')' }">
             <input type="file" class="custom-file-input" name="avatar" @change="onFileChanged"
                    accept=".jpg, .jpeg, .png, .gif, .svg">
 
@@ -18,7 +18,7 @@
             </svg>
         </span>
         </div>
-        <div v-else class="avatar-wrapper">
+        <div v-else class="avatar-wrapper empty">
             {{userInitials}}
             <input type="file" class="custom-file-input" name="avatar" @change="onFileChanged">
             <span class="icon">
@@ -50,7 +50,9 @@
                 return this.$store.state.user.user.avatar;
             },
             avatarStatus() {
+                console.log(this.$store.state.user.user.avatar);
                 return !!this.$store.state.user.user.avatar;
+
             },
             userInitials() {
                 return this.$store.getters.userInitials;

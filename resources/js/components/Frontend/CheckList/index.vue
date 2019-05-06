@@ -42,12 +42,10 @@
     import ProgressBar from '../ProgressBar'
     import CheckListDescription from '../CheckListDescription'
     import CheckListName from '../CheckListName'
+    import { Base64 } from 'js-base64';
 
     export default {
         name: "CheckList",
-        data() {
-          return {}
-        },
         computed: {
             completeItems: {
                 get() {
@@ -77,18 +75,6 @@
                 this.$store.dispatch('deleteCheckItem', id);
                 this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
             },
-            checkCheckList() {
-                if (!this.$store.getters.checkListId) {
-                    axios
-                        .post(document.location.pathname)
-                        .then(response => {
-                            this.$store.commit('initStateCheckItems', response.data.check_items);
-                            this.$store.commit('initStateCheckList', response.data);
-                        }).catch((err) => {
-                            console.log(err)
-                    });
-                }
-            }
         },
         components: {
             CheckItem,
@@ -101,7 +87,7 @@
             CheckListName
         },
         created() {
-            this.checkCheckList();
+            this.$store.dispatch('loadCheckList', this.$route.params.list_id)
         }
     }
 </script>

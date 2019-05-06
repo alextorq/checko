@@ -16,6 +16,7 @@
 //});
 Auth::routes();
 
+
 Route::get('/{front?}', function () {
     return view('welcome');
 })->where('front', '[\/\w\.-]*');

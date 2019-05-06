@@ -8,17 +8,19 @@
                 </svg>
            </span>
         </div>
-        <input class="checklist__name" type="text" v-model="name" placeholder="CheckList name"
-               @blur="" @focus="select"  @change="endEditName">
+        <input class="checklist__name" type="text" :placeholder="placeholder" v-model="name" placeholder="CheckList name"
+               @change="endEditName">
     </div>
 </template>
 
 <script>
+    import {checkList} from 'Core/helpers/defaultValue'
+
     export default {
         name: "CheckListName",
         data() {
           return {
-
+              placeholder: checkList.name
           }
         },
         computed: {
@@ -50,6 +52,6 @@
                 * Изменение длинны инпута для имени
                 * */
             }
-        },
+        }
     }
 </script>

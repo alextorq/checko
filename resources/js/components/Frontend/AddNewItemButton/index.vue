@@ -12,8 +12,15 @@
         name: "AddCheckItem",
         methods: {
             addItem() {
-                this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
-                this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
+                if (this.$store.getters.checkListId) {
+                    this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
+                    this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
+                } else {
+                    this.$store.dispatch('createCheckList').then(() => {
+                        this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
+                        this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
+                    });
+                }
             }
         }
     }

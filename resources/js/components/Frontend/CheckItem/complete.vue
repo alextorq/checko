@@ -17,7 +17,7 @@
             <div class="check-item__name-parse" v-html="parse"></div>
             <textarea wrap="hard" class="check-item__name" rows="1" v-model.trim="cache.name"
                       cols="20" @change="update('name')" ref="item" @blur="editStatus = !editStatus"
-                      v-autosize="cache.name"
+                      v-autosize="cache.name" :placeholder="placeholder"
                    ></textarea>
         </div>
         <span class="check-item__data-complete">
@@ -30,7 +30,7 @@
             </button>
             <ul class="context-menu__list">
                 <li class="context-menu__item">attach</li>
-                <li class="context-menu__item" @click="">comments</li>
+                <li class="context-menu__item" @click="openCommentMenu">comments</li>
                 <li class="context-menu__item" @click="deleteItemEvent">delete</li>
             </ul>
         </div>
@@ -39,6 +39,8 @@
 
 <!--@keyup="rowHeight" :style="{ 'min-height': height + 'px' }"-->
 <script>
+    import {checkItem} from 'Core/helpers/defaultValue'
+
     function closeContextMenu(event) {
         let target = event.target;
         if (window._self.$refs['contextMenuButton'] !== target) {
@@ -57,6 +59,7 @@
                 cache: {
                     name: null
                 },
+                placeholder: checkItem.name,
                 editStatus: false,
                 height: 10,
                 contextMenuOpenStatus: false
@@ -76,7 +79,7 @@
                 return moment(this.cache.date_complete).format(formatDate)
             },
             parse() {
-                let str = this.cache.name;
+                let str = this.cache.name || this.placeholder;
                 let refBr = str.match(/\r\n|\r|\n/g);
                 for (let key in refBr) {
                     str = str.replace(refBr[key],'<br/>')
@@ -99,6 +102,10 @@
                         }, 100)
                     }
                 }
+            },
+            openCommentMenu() {
+                this.$store.commit('toggleComment');
+                this.$store.dispatch('loadComments', this.data.check_item_id);
             },
             updateWithDate(field) {
                 let date = new Date().getTime();

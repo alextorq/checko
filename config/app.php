@@ -195,6 +195,9 @@ return [
 
         App\Checko\CheckList\Providers\Frontend\CheckListProvider::class,
         App\Checko\CheckItem\Providers\Frontend\CheckItemProvider::class,
+        App\Checko\CheckItemComment\Providers\Frontend\CheckItemCommentProvider::class,
+        App\Checko\CheckItemComment\Providers\Frontend\CheckItemCommentPermission::class,
+
 
         App\Checko\Authorization\Providers\AuthorizationRouteServiceProvider::class,
         App\Providers\RouteServiceProvider::class,

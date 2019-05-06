@@ -24,6 +24,9 @@ class CheckListController extends BaseController
     public function indexPost($checklist)
     {
         $checklist = CheckList::with('checkItems')->whereIn('check_list_id', [$checklist])->first();
+        if (!$checklist) {
+            return response()->json(null, 404);
+        }
         return response()->json($checklist);
     }
 

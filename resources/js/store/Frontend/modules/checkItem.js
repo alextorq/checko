@@ -109,7 +109,7 @@ const checkItems = {
                  orderNumber = 0;
              }
             let item = {
-                name: 'Enter task name',
+                name: '',
                 description: "description",
                 complete: false,
                 timestamp_id: new Date().getTime(),

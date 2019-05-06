@@ -14,6 +14,12 @@ const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 
 // Set up the spritemap plugin
 mix.webpackConfig({
+    resolve: {
+        alias: {
+            Core: path.resolve(__dirname, 'resources/js/'),
+            ComponentsF: path.resolve(__dirname, 'resources/js/components/Frontend')
+        }
+    },
     plugins: [
         new SVGSpritemapPlugin({
               src: path.resolve(__dirname, 'resources/assets/*.svg'),
@@ -26,9 +32,9 @@ mix.webpackConfig({
 });
 
 mix.browserSync('checko.loc');
-mix.js('resources/js/main.js', 'public/js')
-    .sass('resources/sass/backend/app.scss', 'public/css/backend')
+// mix.js('resources/js/main.js', 'public/js')
+//     .sass('resources/sass/backend/app.scss', 'public/css/backend');
 
-    .js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/frontend/app.scss', 'public/css');
 

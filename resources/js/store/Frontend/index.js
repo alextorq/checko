@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import checkList from './modules/checkList'
 import checkItem from './modules/checkItem'
 import settings from  './modules/settings'
+import comments from  './modules/comments'
 import user from './modules/user'
 
 Vue.use(Vuex);
@@ -13,10 +14,11 @@ let store = new Vuex.Store({
         checkList,
         checkItem,
         settings,
-        user
+        user,
+        comments
     },
     state: {
-        isLoad: false
+        isLoad: false,
     },
     getters: {
         isLoad(state) {
@@ -29,7 +31,7 @@ let store = new Vuex.Store({
     mutations: {
         updateLoadStatus(state, payload) {
             state.isLoad = payload;
-        }
+        },
     }
 
 });

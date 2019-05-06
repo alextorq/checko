@@ -1,7 +1,8 @@
 <template>
     <div class="name-wrapper" :class="focus">
 
-        <input type="text" name="name" v-autosize="value" ref="name"  @keyup="validate" v-model.trim="name" @blur="changeName"></input>
+        <input type="text" name="name" :size="name.length"
+               ref="name"   @keyup="validate" v-model.trim="name" @blur="changeName"></input>
 
         <span class="icon" @click="focusInput">
             <svg >

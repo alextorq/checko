@@ -18,9 +18,6 @@ class CheckItemController extends BaseController
     public function createItem(Request $request)
     {
         $item = $request->all();
-
-//        dd(Auth::user());
-
         $checkItem = CheckItem::create($item);
         return response()->json($checkItem);
     }
@@ -53,4 +50,5 @@ class CheckItemController extends BaseController
         return response()->json(true);
 
     }
+
 }

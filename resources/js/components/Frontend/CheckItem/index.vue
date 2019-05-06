@@ -12,11 +12,11 @@
                 </span>
             </label>
         </div>
-        <div class="check-item__name-wrapper" :class="editClass"
+        <div class="check-item__name-wrapper" :class="editClass" v-focus="data.check_item_id"
              @click="changeClass">
             <div class="check-item__name-parse" v-html="parse"></div>
             <textarea wrap="hard" v-autosize="cache.name" class="check-item__name" rows="1" v-model.trim="cache.name"
-                      cols="20" @change="update('name')" ref="item" @blur="editStatus = !editStatus"
+                      cols="20" @change="update('name')" ref="item" @blur="editStatus = !editStatus" :placeholder="placeholder"
                    ></textarea>
         </div>
         <div class="context-menu-wrapper" :class="contextMenuOpen">
@@ -26,7 +26,7 @@
             </button>
             <ul class="context-menu__list">
                 <li class="context-menu__item">attach</li>
-                <li class="context-menu__item" @click="debag">comments</li>
+                <li class="context-menu__item" @click="openCommentMenu">comments</li>
                 <li class="context-menu__item" @click="deleteItemEvent">delete</li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-
+    import {checkItem} from 'Core/helpers/defaultValue'
 
     function closeContextMenu(event) {
         let target = event.target;
@@ -53,9 +53,19 @@
                 cache: {
                     name: null
                 },
+                placeholder: checkItem.name,
                 editStatus: false,
                 height: 10,
                 contextMenuOpenStatus: false
+            }
+        },
+        directives: {
+            focus: {
+                inserted: function (el, binding, vnode) {
+                    if (!binding.value) {
+                        vnode.context.newItemFocus();
+                    }
+                }
             }
         },
         computed: {
@@ -65,7 +75,7 @@
                 }
             },
           parse() {
-                let str = this.cache.name;
+                let str = this.cache.name || this.placeholder;
                 let refBr = str.match(/\r\n|\r|\n/g);
                 for (let key in refBr) {
                   str = str.replace(refBr[key],'<br/>')
@@ -82,8 +92,16 @@
         },
         methods: {
             onBluer() {
-                this.rowHeight({target: this.$refs.item});
+                // this.rowHeight({target: this.$refs.item});
                 this.editStatus = !this.editStatus
+            },
+            newItemFocus() {
+                this.editStatus = !this.editStatus;
+                if (this.editStatus) {
+                    this.$nextTick(() => {
+                        this.$refs.item.focus();
+                    });
+                }
             },
             changeClass(event) {
                 if (event.target.closest('.check-item__name-parse')) {
@@ -106,14 +124,14 @@
                 });
                this.update(field);
             },
-            rowHeight(event) {
-                let rowLength = event.target.value.split(/\r\n|\r|\n/g);
-                let height = (rowLength.length * 25);
-                if (event.target.scrollHeight) {
-                    height = Math.min(height, event.target.scrollHeight)
-                }
-                this.height = height;
-            },
+            // rowHeight(event) {
+            //     let rowLength = event.target.value.split(/\r\n|\r|\n/g);
+            //     let height = (rowLength.length * 25);
+            //     if (event.target.scrollHeight) {
+            //         height = Math.min(height, event.target.scrollHeight)
+            //     }
+            //     this.height = height;
+            // },
             deleteItemEvent() {
                 this.$emit('delete', this.data.check_item_id);
             },
@@ -125,6 +143,10 @@
                     item: this.data,
                     update: true
                 });
+            },
+            openCommentMenu() {
+                this.$store.commit('toggleComment');
+                this.$store.dispatch('loadComments', this.data.check_item_id);
             },
             openContextMenu(event) {
                 if (!this.contextMenuOpenStatus) {
@@ -140,9 +162,6 @@
                 document.removeEventListener('click', closeContextMenu);
                 window._self = null;
             },
-            debag() {
-                console.log('ddd');
-            }
         },
         created() {
             this.cache = JSON.parse(JSON.stringify(this.data));

@@ -138,7 +138,7 @@
                    .then((responce) => {
                        this.$store.commit('updateUser', responce.data);
                        this.$router.push({
-                           name: 'Blank'
+                           name: 'CheckList'
                        });
                    })
                    .catch((error) => {

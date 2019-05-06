@@ -31,16 +31,29 @@ const routes = [
             }
         },
         children: [
+            // {
+            //     path: '',
+            //     component: Blank,
+            //     name: 'Blank',
+            //     alias: 't/',
+            //     meta: {title: 'Blank', breadcrumb: true, keepAlive: true,
+            //         permission: {
+            //             hook: null
+            //         }
+            //     },
+            // },
             {
-                path: '',
-                component: Blank,
-                name: 'Blank',
-                meta: {title: 'Blank', breadcrumb: true, keepAlive: true,
+                path: 't/:list_id?',
+                alias: '',
+                component: CheckList,
+                name: 'CheckList',
+                meta: {title: 'CheckList', breadcrumb: true, keepAlive: true,
                     permission: {
                         hook: null
                     }
                 },
             },
+
             {
                 path: '/settings',
                 component: SettingsLayout,
@@ -101,19 +114,9 @@ const routes = [
                                 }
                             },
                         },
-
                 ]
             },
-            {
-                path: 'frontend/checklist/:list_id',
-                component: CheckList,
-                name: 'CheckList',
-                meta: {title: 'CheckList', breadcrumb: true, keepAlive: true,
-                    permission: {
-                        hook: null
-                    }
-                },
-            },
+
             {
                 path: 'registration',
                 component: FormRegistration,
@@ -143,6 +146,11 @@ const routes = [
                 path: '/404',
                 name: '404',
                 component: NotFound,
+                meta: {title: 'Page not found', breadcrumb: true, keepAlive: true,
+                    permission: {
+                        hook: null
+                    }
+                }
             },
             {
                 path: '*',
@@ -171,7 +179,7 @@ router.afterEach((to) => {
 //TODO Test this
 router.beforeEach((to, from, next) => {
     if (to.meta.permission.hook === 'login') {
-        /*Глобальная пременная устанавливается сервером*/
+        /* userAuth Глобальная пременная устанавливается сервером*/
         if (store.getters.userLoginStatus || userAuth) {
             next();
             return

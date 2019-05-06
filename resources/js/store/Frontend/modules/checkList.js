@@ -1,5 +1,6 @@
 import router from '../../../router/Frontend'
 import store from "../index";
+import { Base64 } from 'js-base64';
 
 function runLoader(context) {
     let status = context.rootGetters.isLoad;
@@ -20,7 +21,7 @@ function stopLoader(context) {
 const checkList = {
     state: {
         list: {
-            name: 'CheckList name',
+            name: '',
             check_list_id: null,
             complete: false,
             description: 'description',
@@ -75,7 +76,8 @@ const checkList = {
                             type: 'success',
                             text: 'CheckList created',
                         });
-                        router.push({name: 'CheckList', params: { list_id: context.state.list.check_list_id }});
+                        let hashCodeURI = Base64.encodeURI(context.state.list.check_list_id);
+                        router.push({name: 'CheckList', params: { list_id: hashCodeURI }});
                         resolve(context.state.list.check_list_id);
                     }).catch((err) => {
                         this._vm.$notify({
@@ -86,6 +88,33 @@ const checkList = {
                         reject(err);
                     });
             });
+        },
+        loadCheckList(context, encodeURI) {
+            if (!context.state.list.check_list_id && encodeURI) {
+                let listID;
+                /*Декодируем строку и если не удалось то перекидываем на 404*/
+                try {
+                    listID = Base64.decode(encodeURI);
+                }catch (e) {
+                    router.push({name: '404'});
+                    return
+                }
+                runLoader(context);
+                axios
+                    .post(`${context.state.URI.pref}${listID}`)
+                    .then(response => {
+                        context.commit('initStateCheckItems', response.data.check_items);
+                        context.commit('initStateCheckList', response.data);
+                    }).catch((error) => {
+                        if (error.response.status === 404) {
+                            router.push({name: '404'});
+                        }else {
+                            console.log(error);
+                        }
+                }).finally(() => {
+                    stopLoader(context);
+                });
+            }
         },
         checkCheckListOnComplete(context, payload) {
             let value = (payload === 100);

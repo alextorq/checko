@@ -73,14 +73,29 @@
 
 /*CheckBox Description */
 .checklist__description-wrapper {
-   padding-left: $left-col;
+  padding-left: $left-col;
+  color: #a4b5be;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0.05px;
     textarea {
       overflow: hidden;
       overflow-wrap: break-word;
-      padding: 20px 0;
+      padding: 20px 0 0 0;
+      font-size: inherit;
+      color: inherit;
+      letter-spacing: inherit;
+      font-weight: inherit;
+      font-family: inherit;
     }
     .checklist__description-markdown {
-      padding: 20px 0;
+      padding: 20px 0 0 0;
+      font-size: inherit;
+      color: inherit;
+      letter-spacing: inherit;
+      font-weight: inherit;
+      font-family: inherit;
     }
     &:not(.edit) textarea{
       display: none;
@@ -107,7 +122,7 @@
 
 
 .checklist__item-list {
-  margin-top: 53px;
+  margin-top: 30px;
   position: relative;
 }
 
