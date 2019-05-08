@@ -11,8 +11,6 @@ function saveSettings(payload) {
 }
 
 
-
-
 const userSettings = {
     state: {
         URI: {
@@ -28,16 +26,16 @@ const userSettings = {
                 options: [false, true]
             },
             dateFormat: {
-                value: 'DD-MM-YYYY',
                 name: '31.12.2019',
+                value: 'DD.MM.YYYY',
                 options: [
                     {
                         name: '31.12.2019',
-                        value: 'DD-MM-YYYY'
+                        value: 'DD.MM.YYYY'
                     },
                     {
                         name: '12.31.2019',
-                        value: 'MM-DD-YYYY'
+                        value: 'MM.DD.YYYY'
                     }
                 ]
             },
@@ -100,7 +98,7 @@ const userSettings = {
                     let settings = JSON.parse(payload.user.profile.user_settings);
                     state.settings = settings;
                 }catch (e) {
-                    // console.log(e);
+                    console.log(e);
                 }
             }
         },

@@ -1,0 +1,31 @@
+.general-settings {
+  @include phone {
+    padding-left: 0;
+
+  }
+  .settings-menu__item {
+    display: flex;
+    width: 50%;
+    margin-bottom: 40px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    @include phone {
+      width: 100%;
+      padding-right: 3px;
+    }
+  }
+  .settings-menu__item .settings-menu__item-caption {
+    display: block;
+    width: 100%;
+    /*margin-top: 10px;*/
+    color: #a4b5be;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 0.08px;
+  }
+
+
+}
+

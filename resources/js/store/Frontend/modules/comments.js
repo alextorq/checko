@@ -1,5 +1,21 @@
 import Vue from  'vue'
 
+function runLoader(context) {
+    let status = context.rootGetters.isLoad;
+    if (!status) {
+        context.commit('updateLoadStatus', true);
+    }
+    window.countLoad = window.countLoad + 1;
+}
+
+
+function stopLoader(context) {
+    window.countLoad = window.countLoad - 1;
+    if (window.countLoad < 1) {
+        context.commit('updateLoadStatus', false);
+    }
+}
+
 const comments = {
     state: {
         comment_id: null,
@@ -16,7 +32,7 @@ const comments = {
                 'all': 'comments/',
             },
             PUT: {
-                edit: 'edit'
+                edit: 'comments/'
             },
             DELETE: {
                 delete: 'comments/'
@@ -69,6 +85,14 @@ const comments = {
                 state.comments[check_item_id].splice(commentForDeleteIndex, 1);
             }
         },
+        editComment(state, {check_item_id, comment}) {
+            let commentID = comment.comment_id;
+            let allComment = state.comments[check_item_id];
+            let oldComment = allComment.find((item) => {
+               return commentID === item.comment_id;
+            });
+            oldComment = comment;
+        }
     },
     actions: {
         loadComments(context, id) {
@@ -93,6 +117,7 @@ const comments = {
         },
         addComment(context, comment) {
             return new Promise(function (resolve, reject) {
+                runLoader(context);
                 axios
                     .post(`${context.state.URI.pref}${context.state.URI.POST.create}`, comment)
                     .then(response => {
@@ -101,10 +126,13 @@ const comments = {
                     }).catch((err) => {
                         console.log(err);
                         reject();
+                }).finally(() => {
+                    stopLoader(context);
                 })
             });
         },
         deleteComment(context, id) {
+            runLoader(context);
             axios
                 .delete(`${context.state.URI.pref}${context.state.URI.DELETE.delete}${id}`)
                 .then(response => {
@@ -120,8 +148,28 @@ const comments = {
                         text: errorText,
                     });
             }).finally(() => {
-
+                stopLoader(context);
             });
+        },
+        editComment(context, {id, comment}) {
+            runLoader(context);
+            axios
+                .put(`${context.state.URI.pref}${context.state.URI.PUT.edit}${id}`, comment)
+                .then(response => {
+                    context.commit('editComment', response.data)
+                }).catch((error) => {
+                    let errorText = 'Something was wrong';
+                    if (error.response.status === 422) {
+                        errorText = error.response.data.error
+                    }
+                    this._vm.$notify({
+                        duration: 3000,
+                        type: 'error',
+                        text: errorText,
+                    });
+                }).finally(() => {
+                    stopLoader(context);
+                })
         }
     }
 };

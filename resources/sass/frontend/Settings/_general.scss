@@ -5,4 +5,10 @@
 .settings-content__wrapper {
   padding-left: calc(240px - 10vw);
   flex-grow: 1;
+  @include phone {
+    padding-left: 0;
+    overflow: hidden;
+    width: 100%;
+    flex-grow: unset;
+  }
 }

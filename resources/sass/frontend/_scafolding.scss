@@ -92,7 +92,9 @@ main {
     background: $color_6;
     border-radius: 5px;
   }
-
+  @include phone {
+    padding-top: 100px;
+  }
   .container {
     width: 80%;
     margin: 0 auto;
@@ -136,6 +138,13 @@ textarea {
   outline: none;
 }
 
+
+/*Buttons*/
+button {
+  &:focus {
+    outline: none;
+  }
+}
 button.button {
   box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
   border-radius: 5px;
@@ -188,6 +197,9 @@ button.close-delete {
     transform: rotate(-45deg);
   }
 }
+
+/*Buttons end*/
+
 
 .spoiler:not(.open) {
   overflow: hidden;

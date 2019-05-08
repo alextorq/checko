@@ -37,7 +37,10 @@ const user = {
             return state.user.name;
         },
         userLoginStatus(state) {
-            return state.user.user_id !== null && state.user.user_id !== undefined;
+            return state.user.user_id !== null || userAuth;
+        },
+        userID(state) {
+            return state.user.user_id;
         },
         userInitials(state) {
             if (state.user.name) {

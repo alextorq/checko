@@ -33,8 +33,7 @@ class CheckItemCommentProvider extends ServiceProvider
      */
     protected function frontendRoutes()
     {
-        Route::middleware(['web', 'auth'])
-            ->namespace($this->namespace)
+        Route::namespace($this->namespace)
             ->group(base_path('app/Checko/CheckItemComment/Routes/Frontend/index.php'));
     }
 }

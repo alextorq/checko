@@ -6,7 +6,7 @@
         </span>
 
         <input :type="type" :name="name" :id="name"  @keyup="validate"
-               :value="value"
+               :value="value" :autocomplete="autocomplete"
                @input="$emit('input', $event.target.value)"></input>
 
         <label :for="name">
@@ -145,7 +145,10 @@
                 },
                 required: false,
             },
-
+            autocomplete: {
+                type: String,
+                required: false
+            }
         }
     }
 </script>

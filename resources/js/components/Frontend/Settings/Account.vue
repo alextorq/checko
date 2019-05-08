@@ -16,19 +16,20 @@
         <h3>Change Password</h3>
         <form method="post" action="/frontend/user/change_password" @submit.prevent="send">
             <inputFormPassword name="oldPassword" label="Old password" @error="errorUpdate" :min="8"
-                               icon="password" ref="oldPassword" :required="true"
+                               icon="password" ref="oldPassword" :required="true" autocomplete="current-password"
                                :errors="oldPasswordError" v-model="form.oldPassword.value"></inputFormPassword>
 
             <inputFormPassword name="newPassword" label="New password" @error="errorUpdate" :min="8"
-                               icon="password" ref="newPassword" :required="true"
+                               icon="password" ref="newPassword" :required="true" autocomplete="new-password"
                                :errors="newPasswordError" v-model="form.newPassword.value"></inputFormPassword>
 
             <inputFormPassword name="newPassword_confirmation" label="Repeat password" @error="errorUpdate" :min="8"
-                               icon="password" ref="newPassword_confirmation" :required="true" :repeat="form.newPassword.value"
+                               icon="password" ref="newPassword_confirmation" :required="true"
+                               :repeat="form.newPassword.value" autocomplete="new-password"
                                :errors="newPassword_confirmation" v-model="form.newPassword_confirmation.value">
             </inputFormPassword>
 
-
+            <input type="hidden" name="username" autocomplete="username">
             <button class="button" type="submit">Change</button>
         </form>
 

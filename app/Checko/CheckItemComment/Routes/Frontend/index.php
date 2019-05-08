@@ -9,6 +9,7 @@
 
 Route::group(['prefix' => 'frontend/checkitemcomment',  'as'=> 'checkitemcomment.'], function () {
     Route::post('/comments/', ['uses' => 'CheckItemCommentController@addComment', 'as' => 'addComment']);
+    Route::put('/comments/{id}', ['uses' => 'CheckItemCommentController@edit', 'as' => 'edit']);
     Route::get('/comments/{id}', ['uses' => 'CheckItemCommentController@allComments', 'as' => 'allComments']);
     Route::delete('/comments/{id}', ['uses' => 'CheckItemCommentController@delete', 'as' => 'delete']);
 });

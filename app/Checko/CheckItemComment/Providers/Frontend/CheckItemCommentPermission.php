@@ -35,8 +35,8 @@ class CheckItemCommentPermission extends ServiceProvider
             return  $user->user_id === $comment->user_id || $user->user_id === $comment->checkListOwner->user_id;
         });
 
-        Gate::define('update', function ($user, $comment) {
-            return $user->user_id === $comment->checkListOwner->user_id;
+        Gate::define('edit', function ($user, $comment) {
+            return $user->user_id === $comment->user_id;
         });
 
     }

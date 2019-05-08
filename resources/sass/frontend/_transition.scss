@@ -4,6 +4,9 @@
 
 .slide-left-enter-active, .slide-left-leave-active {
   transition: all 0.8s;
+  @include phone {
+    transition: all 0s;
+  }
 }
 .slide-left-leave-active, .slide-left-leave-to {
   position: absolute;

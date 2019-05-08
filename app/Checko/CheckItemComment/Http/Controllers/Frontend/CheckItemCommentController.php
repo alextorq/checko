@@ -8,6 +8,7 @@
 
 namespace App\Checko\CheckItemComment\Http\Controllers\Frontend;
 
+use function GuzzleHttp\Promise\all;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -18,6 +19,13 @@ use App\Checko\Models\CheckItemComment;
 
 class CheckItemCommentController extends BaseController
 {
+
+    public function __construct()
+    {
+        $this->middleware(['web', 'auth'])->except('allComments');
+        $this->middleware('web')->only('allComments');
+    }
+
     public function addComment(Request $request)
     {
         $data = $request->all();
@@ -35,6 +43,22 @@ class CheckItemCommentController extends BaseController
         return response()->json($comments);
     }
 
+
+    public function edit(Request $request, int $id)
+    {
+        $comment = CheckItemComment::findOrFail($id);
+        $CheckItemID = $comment->checkItem->check_item_id;
+
+        if (Gate::allows('edit', $comment)) {
+            $comment->update($request->all());
+            $comment = $comment->fresh();
+            $comment['owner'] = $comment->owner;
+
+            return response()->json(['comment' => $comment, 'check_item_id' => $CheckItemID]);
+        }else {
+            return response()->json(['error' => 'you don\'t have permissions'], 422);
+        }
+    }
 
     public function delete(int $id)
     {

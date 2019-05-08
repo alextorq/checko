@@ -1,11 +1,13 @@
 .settings.account {
   padding-left: 30px;
-  width: 60%;
-
+  @include phone {
+    padding-left: 0;
+  }
   .account-info {
     display: flex;
     align-items: center;
     margin-bottom: 70px;
+
   }
 
   /*Avatar*/
@@ -123,6 +125,18 @@
     }
   }
   /*Avatar end*/
+
+
+  /*form*/
+  form {
+    width: 45%;
+    @include phone {
+      width: 100%;
+    }
+  }
+  /*form end*/
+
+
 
   /*Name*/
   .account-info__name {

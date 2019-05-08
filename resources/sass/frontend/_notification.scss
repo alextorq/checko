@@ -1,4 +1,5 @@
 .my-style {
+  background-color: transparent !important;
   .notification-content {
     padding: 0 20px;
     box-shadow: 0 0 8px rgba(164, 183, 190, 0.09);
@@ -23,11 +24,10 @@
       background-color: #ccefe2;
       color: rgba(#01b06d, 0.9);
     }
-  }
-
-  &.my-type {
-
-
+    @include phone {
+      justify-content: flex-end;
+      padding-right: 20px;
+    }
   }
 }
 .notification-wrapper {
@@ -35,4 +35,7 @@
 }
 .notifications {
   top: 90px !important;
+  @include phone {
+    top: 70px !important;
+  }
 }

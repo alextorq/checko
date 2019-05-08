@@ -128,9 +128,7 @@
                     })
                     .then((responce) => {
                         this.$store.commit('updateUser', responce.data);
-                        this.$router.push({
-                            name: 'Blank'
-                        });
+                        this.$router.push('/');
                     })
                     .catch((error) => {
                         if (error.response.status === 422) {

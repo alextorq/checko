@@ -1,5 +1,5 @@
 <template>
-    <li class="settings-menu__item" :class="active">
+    <li class="settings-menu__item" :class="active" @click="selectMenu">
         <router-link :to="{name: item.name}">{{item.meta.title}}</router-link>
     </li>
 </template>
@@ -13,6 +13,11 @@
               let status = (currentPath === this.item.name);
               return {active: status}
           }
+        },
+        methods: {
+            selectMenu() {
+                this.$emit('selectMenu')
+            }
         },
         props: {
             item: {

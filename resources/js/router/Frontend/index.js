@@ -7,7 +7,6 @@ import store from '../../store/Frontend/index'
 
 import Layout from  '../../components/Frontend/Layout'
 import CheckList from  '../../components/Frontend/CheckList'
-import Blank from '../../components/Frontend/CheckListBlank'
 import FormRegistration from  '../../components/Frontend/FormRegistration'
 import FormLogin from  '../../components/Frontend/FormLogin'
 import Reglament from  '../../components/Frontend/Reglament'
@@ -31,17 +30,6 @@ const routes = [
             }
         },
         children: [
-            // {
-            //     path: '',
-            //     component: Blank,
-            //     name: 'Blank',
-            //     alias: 't/',
-            //     meta: {title: 'Blank', breadcrumb: true, keepAlive: true,
-            //         permission: {
-            //             hook: null
-            //         }
-            //     },
-            // },
             {
                 path: 't/:list_id?',
                 alias: '',
@@ -53,7 +41,6 @@ const routes = [
                     }
                 },
             },
-
             {
                 path: '/settings',
                 component: SettingsLayout,
@@ -74,18 +61,18 @@ const routes = [
                                 }
                             },
                         },
+                        // {
+                        //     path: '',
+                        //     component: SettingsGeneral,
+                        //     name: 'SettingsGeneral',
+                        //     meta: {title: 'General', breadcrumb: true, keepAlive: true,
+                        //         permission: {
+                        //             hook: null
+                        //         }
+                        //     },
+                        // },
                         {
                             path: '',
-                            component: SettingsGeneral,
-                            name: 'SettingsGeneral',
-                            meta: {title: 'General', breadcrumb: true, keepAlive: true,
-                                permission: {
-                                    hook: null
-                                }
-                            },
-                        },
-                        {
-                            path: 'list',
                             component: SettingsList,
                             name: 'SettingsList',
                             meta: {title: 'Lists & tasks', breadcrumb: true, keepAlive: true,
@@ -175,12 +162,9 @@ router.afterEach((to) => {
     })
 });
 
-
-//TODO Test this
 router.beforeEach((to, from, next) => {
     if (to.meta.permission.hook === 'login') {
-        /* userAuth Глобальная пременная устанавливается сервером*/
-        if (store.getters.userLoginStatus || userAuth) {
+        if (store.getters.userLoginStatus) {
             next();
             return
         }

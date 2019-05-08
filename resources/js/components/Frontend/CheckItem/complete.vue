@@ -16,8 +16,8 @@
              @click="changeClass">
             <div class="check-item__name-parse" v-html="parse"></div>
             <textarea wrap="hard" class="check-item__name" rows="1" v-model.trim="cache.name"
-                      cols="20" @change="update('name')" ref="item" @blur="editStatus = !editStatus"
-                      v-autosize="cache.name" :placeholder="placeholder"
+                      cols="20" @change="update('name')" ref="item" @blur="onBluer"
+                      v-autosize="cache.name" :placeholder="placeholder" @keyup.esc="onBluer(); update('name');"
                    ></textarea>
         </div>
         <span class="check-item__data-complete">
@@ -37,9 +37,10 @@
     </div>
 </template>
 
-<!--@keyup="rowHeight" :style="{ 'min-height': height + 'px' }"-->
+
 <script>
     import {checkItem} from 'Core/helpers/defaultValue'
+    import moment from 'moment'
 
     function closeContextMenu(event) {
         let target = event.target;
@@ -51,7 +52,7 @@
         window._self.deleteHandler();
     }
 
-    import moment from 'moment'
+
     export default {
         name: "completeItem",
         data() {
@@ -84,24 +85,29 @@
                 for (let key in refBr) {
                     str = str.replace(refBr[key],'<br/>')
                 }
-                let regA = str.match(/http\:\/\/[\w\-\.\/]+/g);
-                for (let key in regA) {
-                    str = str.replace(regA[key],'<a href=\"'+regA[key]+'\" target=\"_blank\">'+regA[key]+'</a>')
+                // let regA = str.match(/http\:\/\/[\w\-\.\/]+/g);
+                let regA = str.match(/(http|https|ftp):\/\/[\w\-.\/]+/gim);
+                if (regA) {
+                    for (let key in Array.from(regA)) {
+                        str = str.replace(regA[key],`<a href="${regA[key]}" target="_blank">${regA[key]}</a>`);
+                    }
                 }
                 return(str);
             }
 
         },
         methods: {
-            changeClass(event) {
-                if (event.target.closest('.check-item__name-parse')) {
-                    this.editStatus = !this.editStatus;
-                    if (this.editStatus) {
-                        setTimeout(() => {
-                            this.$refs.item.focus();
-                        }, 100)
-                    }
+            changeClass() {
+                /*Не менять при клике на textarea дважды*/
+                if (!this.editStatus) {
+                    this.editStatus = true;
+                    this.$nextTick(() => {
+                        this.$refs.item.focus();
+                    });
                 }
+            },
+            onBluer() {
+                this.editStatus = !this.editStatus
             },
             openCommentMenu() {
                 this.$store.commit('toggleComment');
@@ -117,14 +123,6 @@
                     update: false
                 });
                 this.update(field);
-            },
-            rowHeight(event) {
-                let rowLength = event.target.value.split(/\r\n|\r|\n/g);
-                let height = (rowLength.length * 25) + 25;
-                // if (event.target.scrollHeight) {
-                //     height = event.target.scrollHeight
-                // }
-                this.height = height;
             },
             deleteItemEvent() {
                 this.$emit('delete', this.data.check_item_id);
@@ -155,7 +153,6 @@
         },
         created() {
             this.cache = JSON.parse(JSON.stringify(this.data));
-            this.rowHeight({target: {value: this.cache.name}});
         },
         props: ['data']
     }

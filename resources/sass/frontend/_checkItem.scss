@@ -17,9 +17,8 @@
 
 .check-item {
   border-bottom: 1px solid #e8f0f3;
-  padding: 10px 0 10px 0;
+  padding: 10px 40px 10px 0;
   display: flex;
-
   position: relative;
   max-width: 100%;
   align-items: flex-start;
@@ -44,7 +43,6 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 25px;
-    //white-space: pre;
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -52,7 +50,6 @@
     padding: 0;
     margin: 0;
     display: block;
-    //box-shadow: inset 0 0 0 1px #0079bf;
   }
   @include phone{
     flex-wrap: wrap;
@@ -60,7 +57,6 @@
     .check-item__name-wrapper {
       width: 80%;
     }
-
   }
 
 
@@ -82,14 +78,12 @@
       cursor: pointer;
       padding-left: 10px;
       padding-right: 10px;
-
       opacity: 0.9;
       color: #0c0f14;
       font-size: 14px;
       font-weight: 400;
       line-height: 2.5;
       letter-spacing: 0.09px;
-
       &:hover {
         background: #c8c8c83d;
       }
@@ -206,11 +200,11 @@
   cursor: pointer;
   position: absolute;
   right: 0;
-  top: 50%;
+  top: 9px;
   opacity: 0;
-  transition: all 0.4s;
+  transition: all 0.2s;
   transform: translate3d(200%, -50%, 0);
-  color: #a4b5be;
+  color: #808f98;
   padding: 5px;
   line-height: 14px;
   text-align: center;
@@ -221,7 +215,7 @@
   @include phone {
     opacity: 1;
     transform: none;
-    top: 15px;
+    top: 2px;
   }
   .icon {
     width: 14px;
@@ -262,6 +256,9 @@
 
   .check-item__data-complete {
     flex-shrink: 0;
+    @include phone {
+      margin-left: auto;
+    }
   }
   input {
     color: #a4b5be;

@@ -26,11 +26,6 @@
             <span class="settings-menu__item-caption">Non-privatized list can be viewed by anyone who has a link to projects</span>
         </li>
 
-
-
-
-
-
     </ul>
 </template>
 
@@ -71,25 +66,3 @@
         }
     }
 </script>
-
-<style scoped>
-    .settings-menu__item {
-        display: flex;
-        width: 50%;
-        margin-bottom: 40px;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-
-    }
-    .settings-menu__item .settings-menu__item-caption {
-        display: block;
-        width: 100%;
-        /*margin-top: 10px;*/
-        color: #a4b5be;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 50px;
-        letter-spacing: 0.08px;
-    }
-</style>

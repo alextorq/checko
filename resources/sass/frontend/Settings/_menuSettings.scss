@@ -8,9 +8,19 @@
   height: 100vh;
   padding-top: 120px;
   list-style: none;
+  @include phone {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.2s;
+    z-index: 6;
+    &.open {
+      width: 100%;
+    }
+  }
   ul {
     padding-left: 0;
     margin: 0;
+    width: 100%;
   }
   li {
     list-style: none;
@@ -33,6 +43,25 @@
     }
     &:hover {
       background-color: rgba(#e8f0f3, 0.7);
+    }
+  }
+  .button {
+    position: fixed;
+    display: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    font-size: 13px;
+    line-height: 1;
+    top: 120px;
+    span {
+      -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+      writing-mode: vertical-lr;
+    }
+    @include phone {
+      display: flex;
     }
   }
 }

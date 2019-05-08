@@ -1,17 +1,9 @@
 <template>
-    <div class="comments-wrapper">
-        <div class="preloader" v-if="loading">
-            <span>
-                <svg >
-                  <use xlink:href="/images/sprites.svg#sprite-circle"></use>
-                </svg>
-            </span>
-        </div>
+    <div class="comments__content">
         <ul class="comments__list">
-            <!--<transition-group name="list" >-->
-            <!--</transition-group>-->
-                <Comment v-for="comment of comments" :comment="comment" :key="comment.comment_id"></Comment>
-
+            <transition-group name="list">
+                <Comment  v-for="comment of comments" :comment="comment" :key="comment.comment_id"></Comment>
+            </transition-group>
         </ul>
         <CommentForm></CommentForm>
     </div>
@@ -26,9 +18,7 @@
           comments() {
               return this.$store.getters.activeComments;
           },
-          loading() {
-              return this.$store.state.comments.loadStatus;
-          }
+
         },
         components: {
             Comment,

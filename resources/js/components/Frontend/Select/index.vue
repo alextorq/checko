@@ -66,6 +66,12 @@
         },
         created() {
             this.item = this.default_value;
+            document.addEventListener('click', (event) => {
+                let target = event.target;
+                if (this.open &&!target.closest('.selected-list-wrapper')) {
+                    this.openList();
+                }
+            })
         }
     }
 </script>

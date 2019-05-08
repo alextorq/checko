@@ -2,13 +2,18 @@
     <div>
         <div  class="overlay" :class="isMenuOpenStatus" @click="closeMenu"></div>
         <div class="comments-layout" :class="isMenuOpenStatus">
+
+            <div class="preloader" v-if="loading">
+                <span>
+                    <svg >
+                      <use xlink:href="/images/sprites.svg#sprite-circle"></use>
+                    </svg>
+                </span>
+            </div>
+
             <button  @click="closeMenu" class="close-delete"></button>
             <h3>Comments</h3>
-            <div class="comments__content">
-                <keep-alive>
-                    <Comments></Comments>
-                </keep-alive>
-            </div>
+            <Comments></Comments>
         </div>
     </div>
 </template>
@@ -33,6 +38,9 @@
                 return {
                     open: this.open
                 }
+            },
+            loading() {
+                return this.$store.state.comments.loadStatus;
             },
             userName () {
                 return this.$store.getters.userName;

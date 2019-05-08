@@ -32,27 +32,27 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-menu__item" @click="copyLink">
                             <span class="icon">
-                                <img src="/images/copy.svg" alt="">
+                                <img src="/images/copy.svg" alt="copy">
                             </span>
                             copy link
                         </li>
                         <li class="dropdown-menu__item" @click="">
-                            <a href="tg://msg?text='asd'">
+                            <a :href="telegramLink">
                                 <span class="icon">
-                                     <img src="/images/telegram.svg" alt="">
+                                     <img src="/images/telegram.svg" alt="telegram">
                                 </span>
                                 telegram
                             </a>
                         </li>
                         <li class="dropdown-menu__item">
                             <span class="icon">
-                                 <img src="/images/facebook.svg" alt="">
+                                 <img src="/images/facebook.svg" alt="facebook">
                             </span>
                             facebook
                         </li>
                         <li class="dropdown-menu__item">
                             <span class="icon">
-                                 <img src="/images/whatsapp.svg" alt="">
+                                 <img src="/images/whatsapp.svg" alt="whatsapp">
                             </span>
                             whatsapp
                         </li>
@@ -60,24 +60,21 @@
                 </div>
 
                 <div class="navbar__settings-wrapper">
-                    <button class="navbar__settings" @click="goToSettings">
-                        <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                             viewBox="0 0 52 56.1" style="enable-background:new 0 0 52 56.1;" xml:space="preserve">
-                        <g>
-                            <path class="st1" d="M50.5,45.3H24.7c-0.1,0-0.1,0-0.2,0C23.7,41.1,20,38,15.6,38c-4.4,0-8.1,3.1-8.9,7.3H1.5C0.7,45.3,0,46,0,46.8
-                                c0,0.8,0.7,1.5,1.5,1.5h5.2c0.6,4.4,4.4,7.8,8.9,7.8c4.6,0,8.3-3.4,9-7.8c0,0,0.1,0,0.1,0h25.8c0.8,0,1.5-0.7,1.5-1.5
-                                C52,46,51.3,45.3,50.5,45.3z M15.6,53.1c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S19,53.1,15.6,53.1z"/>
-                            <path class="st1" d="M50.5,26.3H45c-0.8-4.1-4.5-7.3-8.9-7.3c-4.4,0-8.1,3.1-8.9,7.3H1.5C0.7,26.3,0,27,0,27.8
-                                c0,0.8,0.7,1.5,1.5,1.5h25.7c0.6,4.4,4.4,7.8,8.9,7.8c4.6,0,8.3-3.4,8.9-7.8h5.4c0.8,0,1.5-0.7,1.5-1.5C52,27,51.3,26.3,50.5,26.3z
-                                M36.1,34.1c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S39.5,34.1,36.1,34.1z"/>
-                            <path class="st1" d="M1.5,10.3h5.2c0.6,4.4,4.4,7.8,8.9,7.8c4.6,0,8.3-3.4,8.9-7.8h25.9c0.8,0,1.5-0.7,1.5-1.5
-                                c0-0.8-0.7-1.5-1.5-1.5h-26C23.7,3.1,20,0,15.6,0c-4.4,0-8.1,3.1-8.9,7.3H1.5C0.7,7.3,0,8,0,8.8C0,9.6,0.7,10.3,1.5,10.3z M15.6,3
-                                c3.3,0,6,2.7,6,6s-2.7,6-6,6s-6-2.7-6-6S12.3,3,15.6,3z"/>
-                            </g>
+                    <button class="navbar__settings" @click="goToSettings" :class="isSettingOpenStatus">
+                        <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 52 56.1" style="enable-background:new 0 0 52 56.1;" xml:space="preserve">
+                            <path id="line_x5F_3" class="st0" d="M50.5,45.2H27h-2.7H1.5c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h22.8H27h23.5
+                            c0.8,0,1.5-0.7,1.5-1.5S51.3,45.2,50.5,45.2z"/>
+                            <path id="line_x5F_2" class="st0" d="M50.5,26.3H47h-2.5h-43C0.7,26.3,0,27,0,27.8s0.7,1.5,1.5,1.5h43H47h3.5c0.9,0,1.5-0.7,1.5-1.5
+                            S51.3,26.3,50.5,26.3z"/>
+                            <path id="line_x5F_1" class="st0" d="M50.5,7.3h-24h-2.2H1.5C0.7,7.3,0,8,0,8.8s0.7,1.5,1.5,1.5h22.8h2.2h24c0.8,0,1.5-0.7,1.5-1.5
+                            S51.3,7.3,50.5,7.3z"/>
+                            <circle id="circle_x5F_3" class="st1" cx="14.8" cy="46.7" r="7.4"/>
+                            <circle id="circle_x5F_2" class="st1" cx="37.8" cy="27.8" r="7.4"/>
+                            <circle id="circle_x5F_1" class="st1" cx="14.8" cy="8.4" r="7.4"/>
                         </svg>
-                    </button>
 
+                    </button>
                 </div>
 
                 <div class="navbar__menu-wrapper">
@@ -114,7 +111,8 @@
             return {
                 isShareOpen: false,
                 isMenuOpen: false,
-                lastRoute: ''
+                lastRoute: '',
+                href: ''
             }
         },
         computed: {
@@ -126,15 +124,28 @@
             isLoading() {
                 return this.$store.getters.isLoad;
             },
+            isSettingOpenStatus() {
+                return {
+                    open: this.$route.fullPath.includes('/settings')
+                }
+            },
             isMenuOpenStatus() {
                 return {
                     open: this.isMenuOpen
                 }
+            },
+            telegramLink() {
+                return `tg://msg?url=${this.href}`
+            }
+        },
+        watch:{
+            $route (to, from){
+                this.href = window.location.href;
             }
         },
         methods: {
             shareByTelegram() {
-                // tg://msg?text='+encodeURIComponent(TEXT);
+
             },
             openShareMenu() {
                 if (!this.isShareOpen) {
@@ -190,6 +201,6 @@
             CheckBoxButton,
             AppSelect,
             Menu
-        }
+        },
     }
 </script>

@@ -16,7 +16,7 @@ class CreateUserProfile extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->bigIncrements('user_profile_id');
             $table->bigInteger('user_id')->references('user_id')->on('users')->onDelete('cascade');
-            $table->json('user_settings')->nullable();
+            $table->json('user_settings')->nullable()->default(null);
             $table->timestamps();
         });
     }

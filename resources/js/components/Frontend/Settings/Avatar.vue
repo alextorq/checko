@@ -50,7 +50,6 @@
                 return this.$store.state.user.user.avatar;
             },
             avatarStatus() {
-                console.log(this.$store.state.user.user.avatar);
                 return !!this.$store.state.user.user.avatar;
 
             },

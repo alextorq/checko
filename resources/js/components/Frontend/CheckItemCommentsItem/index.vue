@@ -1,7 +1,14 @@
 <template>
     <li class="comments__item">
         <button class="close-delete" @click="deleteComment"></button>
-        {{comment.content}}
+
+        <div class="comment-content" @click="changeClass" :class="editClass">
+            <div class="comment__name-parse" v-html="parse"></div>
+             <textarea wrap="hard" v-autosize="cache.content"
+                   class="comment__name" rows="1" v-model.trim="cache.content" cols="20" autofocus
+                       @change="update" @blur="onBluer" ref="comment" @keyup.esc="onBluer(); update();"
+             ></textarea>
+        </div>
         <div class="comment-info">
             <div class="comment-user">
                 {{comment.owner.name}}
@@ -11,31 +18,9 @@
                 {{dateFormat}}
             </div>
         </div>
-        <!--<div class="check-item__name-wrapper" :class="editClass"-->
-             <!--@click="changeClass">-->
-            <!--<div class="check-item__name-parse" v-html="parse"></div>-->
-            <!--<textarea wrap="hard" v-autosize="cache.name" class="check-item__name" rows="1" v-model.trim="cache.name"-->
-                      <!--cols="20" @change="update('name')" ref="item" @blur="editStatus = !editStatus"-->
-            <!--&gt;</textarea>-->
-        <!--</div>-->
     </li>
 </template>
-<!--check_item_id: 2-->
-<!--check_list_id: null-->
-<!--comment_id: 5-->
-<!--created_at: "2019-04-29 07:46:05"-->
-<!--name: "szdfdxghdfgh"-->
-<!--owner: {user_id: 1, name: "Alex", email: "xxxxx_07@inbox.ru", avatar: null, email_verified_at: null,…}-->
-<!--avatar: null-->
-<!--created_at: "2019-04-26 14:27:07"-->
-<!--deleted_at: null-->
-<!--email: "xxxxx_07@inbox.ru"-->
-<!--email_verified_at: null-->
-<!--name: "Alex"-->
-<!--updated_at: "2019-04-26 14:27:07"-->
-<!--user_id: 1-->
-<!--updated_at: "2019-04-29 07:46:05"-->
-<!--user_id: 1-->
+
 <script>
     import moment from 'moment'
 
@@ -60,15 +45,19 @@
                 return moment(this.comment.updated_at).format(formatDate)
             },
             parse() {
-                let str = this.cache.name;
+                let str = this.cache.content;
                 let refBr = str.match(/\r\n|\r|\n/g);
                 for (let key in refBr) {
                     str = str.replace(refBr[key],'<br/>')
                 }
-                let regA = str.match(/http\:\/\/[\w\-\.\/]+/);
-                for (let key in regA) {
-                    str = str.replace(regA[key],'<a href=\"'+regA[key]+'\" target=\"_blank\">'+regA[key]+'</a>')
+                // let regA = str.match(/http\:\/\/[\w\-\.\/]+/);
+                let regA = str.match(/(http|https|ftp):\/\/[\w\-.\/]+/gim);
+                if (regA) {
+                    for (let key in Array.from(regA)) {
+                        str = str.replace(regA[key],`<a href="${regA[key]}" target="_blank">${regA[key]}</a>`);
+                    }
                 }
+
                 return(str);
             },
         },
@@ -76,48 +65,30 @@
             deleteComment() {
                 this.$store.dispatch('deleteComment', this.comment.comment_id)
             },
-
-
             onBluer() {
                 this.editStatus = !this.editStatus
             },
-            changeClass(event) {
-                if (event.target.closest('.check-item__name-parse')) {
-                    this.editStatus = !this.editStatus;
-                    if (this.editStatus) {
-                        this.$nextTick(() => {
-                            this.$refs.item.focus();
-                        });
-                    }
+            changeClass() {
+                /*Если это не владелец коментария то ничего не делаем*/
+                //TODO сдеделать GATES
+                if (this.comment.owner.user_id !== this.$store.getters.userID) {
+                    return
+                }
+                /*Не менять при клике на textarea дважды*/
+                if (!this.editStatus) {
+                    this.editStatus = true;
+                    this.$nextTick(() => {
+                        this.$refs.comment.focus();
+                    });
                 }
             },
-            updateWithDate(field) {
-                let date = new Date().getTime();
-                this.$emit('update', {
-                    field: 'date_complete',
-                    value: date,
-                    id: this.data.check_item_id,
-                    item: this.data,
-                    update: false
-                });
-                this.update(field);
-            },
-            deleteItemEvent() {
-                this.$emit('delete', this.data.check_item_id);
-            },
-            update(field) {
-                this.$emit('update', {
-                    field: field,
-                    value: this.cache[field],
-                    id: this.data.check_item_id,
-                    item: this.data,
-                    update: true
-                });
+            update() {
+                this.$store.dispatch('editComment', {id: this.cache.comment_id, comment: this.cache});
             },
         },
-
         created() {
-            // console.log(this.comment);
+            this.cache = this.comment;
+
         },
         props: ['comment']
     }

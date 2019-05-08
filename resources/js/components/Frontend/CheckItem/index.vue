@@ -16,7 +16,8 @@
              @click="changeClass">
             <div class="check-item__name-parse" v-html="parse"></div>
             <textarea wrap="hard" v-autosize="cache.name" class="check-item__name" rows="1" v-model.trim="cache.name"
-                      cols="20" @change="update('name')" ref="item" @blur="editStatus = !editStatus" :placeholder="placeholder"
+                      cols="20" @change="update('name')" ref="item" @blur="onBluer" :placeholder="placeholder"
+                      @keydown.enter="createNewItem"  @keyup.esc="onBluer(); update('name');"
                    ></textarea>
         </div>
         <div class="context-menu-wrapper" :class="contextMenuOpen">
@@ -80,10 +81,14 @@
                 for (let key in refBr) {
                   str = str.replace(refBr[key],'<br/>')
                 }
-                let regA = str.match(/http\:\/\/[\w\-\.\/]+/);
-                for (let key in regA) {
-                    str = str.replace(regA[key],'<a href=\"'+regA[key]+'\" target=\"_blank\">'+regA[key]+'</a>')
+                // let regA = str.match(/http\:\/\/[\w\-\.\/]+/);
+                let regA = str.match(/(http|https|ftp):\/\/[\w\-.\/]+/gim);
+                if (regA) {
+                    for (let key in Array.from(regA)) {
+                        str = str.replace(regA[key],`<a href="${regA[key]}" target="_blank">${regA[key]}</a>`);
+                    }
                 }
+
                 return(str);
             },
             contextMenuOpen() {
@@ -92,7 +97,6 @@
         },
         methods: {
             onBluer() {
-                // this.rowHeight({target: this.$refs.item});
                 this.editStatus = !this.editStatus
             },
             newItemFocus() {
@@ -103,15 +107,15 @@
                     });
                 }
             },
-            changeClass(event) {
-                if (event.target.closest('.check-item__name-parse')) {
-                    this.editStatus = !this.editStatus;
-                    if (this.editStatus) {
-                        this.$nextTick(() => {
-                            this.$refs.item.focus();
-                        });
-                    }
+            changeClass() {
+                /*Не менять при клике на textarea дважды*/
+                if (!this.editStatus) {
+                    this.editStatus = true;
+                    this.$nextTick(() => {
+                        this.$refs.item.focus();
+                    });
                 }
+
             },
             updateWithDate(field) {
                let date = new Date().getTime();
@@ -124,14 +128,6 @@
                 });
                this.update(field);
             },
-            // rowHeight(event) {
-            //     let rowLength = event.target.value.split(/\r\n|\r|\n/g);
-            //     let height = (rowLength.length * 25);
-            //     if (event.target.scrollHeight) {
-            //         height = Math.min(height, event.target.scrollHeight)
-            //     }
-            //     this.height = height;
-            // },
             deleteItemEvent() {
                 this.$emit('delete', this.data.check_item_id);
             },
@@ -143,6 +139,12 @@
                     item: this.data,
                     update: true
                 });
+            },
+            createNewItem(event) {
+                if (!event.shiftKey) {
+                    event.preventDefault();
+                    this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
+                }
             },
             openCommentMenu() {
                 this.$store.commit('toggleComment');
@@ -165,8 +167,6 @@
         },
         created() {
             this.cache = JSON.parse(JSON.stringify(this.data));
-         
-            // this.rowHeight({target: {value: this.cache.name}});
         },
         props: ['data']
     }
