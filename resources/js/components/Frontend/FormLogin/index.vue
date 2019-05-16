@@ -1,5 +1,5 @@
 <template>
-    <div class="form-registration-wrapper">
+    <div class="form-registration-wrapper form-sign">
 
         <form action="/" method="post" @submit.prevent="send">
 

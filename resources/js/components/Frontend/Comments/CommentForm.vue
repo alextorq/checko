@@ -3,8 +3,6 @@
         <textarea wrap="hard" class="check-item__name" rows="1" v-model.trim="name" :maxlength="maxLength"
                   cols="20" @change="" ref="item" @blur="" v-autosize="name" @keydown.enter="sendOrNewLine"></textarea>
 
-        <!--<span class="max-length">{{maxLength - name.length}}</span>-->
-
         <div class="button-wrapper">
             <Preloader :active="load"></Preloader>
             <button v-if="!load" :disabled="disabled" title="send" type="submit" class="comments-form-send">
@@ -50,6 +48,7 @@
             sendOrNewLine(event) {
                 if (!event.shiftKey) {
                     event.preventDefault();
+                    event.stopPropagation();
                     this.send();
                 }
             },
@@ -57,6 +56,9 @@
               return !!this.name
             },
             send() {
+                if (this.load) {
+                    return
+                }
                 if (this.$store.getters.userLoginStatus) {
                     if (this.validate()) {
                             this.load = true;

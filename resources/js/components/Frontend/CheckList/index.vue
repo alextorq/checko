@@ -1,36 +1,38 @@
 <template>
+    <div class="container">
+        <div class="content">
+            <div class="checklist">
+                <CheckListName></CheckListName>
+                <ProgressBar></ProgressBar>
+                <CheckListDescription></CheckListDescription>
+                <div class="checklist__item-list">
+                    <draggable v-model="inCompleteItems" group="incomplete" @start="drag=true" @end="drag=false"
+                               handle=".handle" :sortable="false">
+                        <transition-group name="list" >
+                            <CheckItem v-for="item in inCompleteItems" @update="updateItem" @delete="deleteItem"
+                                       :data="item" :key="item.timestamp_id"></CheckItem>
+                        </transition-group>
+                    </draggable>
+                </div>
 
-    <div class="checklist">
+                <addNewItem v-if="canCreateItem"></addNewItem>
 
-        <CheckListName></CheckListName>
-        <ProgressBar></ProgressBar>
-        <CheckListDescription></CheckListDescription>
-
-        <div class="checklist__item-list">
-            <draggable v-model="inCompleteItems" group="incomplete" @start="drag=true" @end="drag=false"
-                       handle=".handle" :sortable="false">
-                <transition-group name="list" >
-                    <CheckItem v-for="item in inCompleteItems" @update="updateItem" @delete="deleteItem"
-                               :data="item" :key="item.timestamp_id"></CheckItem>
-                </transition-group>
-            </draggable>
-        </div>
-
-        <addNewItem></addNewItem>
-
-        <div class="checklist__item-list complete" v-if="completeItems.length > 0">
-            <Spoiler>
-                <draggable v-model="completeItems" group="complete" @start="drag=true" @end="drag=false"
-                           handle=".handle" :sortable="false">
-                    <transition-group name="list" >
-                        <CheckItemComplete @update="updateItem" @delete="deleteItem"
-                                           v-for="item in completeItems" :data="item" :key="item.timestamp_id + 'complete'">
-                        </CheckItemComplete>
-                    </transition-group>
-                </draggable>
-            </Spoiler>
+                <div class="checklist__item-list complete" v-if="completeItems.length > 0">
+                    <Spoiler>
+                        <draggable v-model="completeItems" group="complete" @start="drag=true" @end="drag=false"
+                                   handle=".handle" :sortable="false">
+                            <transition-group name="list" >
+                                <CheckItemComplete @update="updateItem" @delete="deleteItem"
+                                                   v-for="item in completeItems" :data="item" :key="item.timestamp_id + 'complete'">
+                                </CheckItemComplete>
+                            </transition-group>
+                        </draggable>
+                    </Spoiler>
+                </div>
+            </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -47,6 +49,9 @@
     export default {
         name: "CheckList",
         computed: {
+            canCreateItem() {
+                return this.$store.state.checkItem.canCreate;
+            },
             completeItems: {
                 get() {
                     return this.$store.getters.completeItems;

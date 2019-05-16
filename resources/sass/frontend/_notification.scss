@@ -14,14 +14,14 @@
   &.error {
     display: flex;
     .notification-content {
-      background: #f84759;
+      background: $red_light;
       color: #fff;
     }
   }
   &.success {
     display: flex;
     .notification-content {
-      background-color: #ccefe2;
+      background-color: $green_light;
       color: rgba(#01b06d, 0.9);
     }
     @include phone {

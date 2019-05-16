@@ -10,9 +10,10 @@
                     </svg>
                 </span>
             </div>
-
-            <button  @click="closeMenu" class="close-delete"></button>
-            <h3>Comments</h3>
+            <h3>
+                Comments
+                <button  @click="closeMenu" class="close-delete"></button>
+            </h3>
             <Comments></Comments>
         </div>
     </div>

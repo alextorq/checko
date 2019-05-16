@@ -13,27 +13,37 @@
                         Sign in or Sign up
                     </router-link>
                 </div>
-                <div v-else>
+                <router-link v-else :to="{ name: 'SettingsAccount'}">
                     <span v-if="avatarStatus" class="avatar-wrapper image"
-                          :style="{ backgroundImage: 'url(' + avatar + ')' }">
+                        :style="{ backgroundImage: 'url(' + avatar + ')' }">
                     </span>
                     <span v-else class="avatar-wrapper">
                         {{userInitials}}
                     </span>
-                    {{userName }}
+                    {{userName}}
+                </router-link>
+            </li>
 
-                </div>
-
+            <li class="navbar__menu__item phone-only-b">
+                <router-link :to="{ name: 'SettingsList'}">
+                    Settings
+                </router-link>
             </li>
 
             <li class="navbar__menu__item">
-                about
+                <router-link :to="{ name: 'SettingsList'}">
+                    about
+                </router-link>
             </li>
             <li class="navbar__menu__item">
-                help
+                <router-link :to="{ name: 'SettingsList'}">
+                    help
+                </router-link>
             </li>
             <li class="navbar__menu__item">
-                contacts
+                <router-link :to="{ name: 'SettingsList'}">
+                    contacts
+                </router-link>
             </li>
         </ul>
     </div>

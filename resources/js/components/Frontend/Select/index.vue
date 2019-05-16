@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: "index",
+        name: "Select",
         data() {
           return {
              item: {
@@ -31,7 +31,7 @@
         methods: {
           change(item) {
               this.open = false;
-              if (item !== this.item) {
+              if (item.value !== this.item.value) {
                   this.item = item;
                   this.$emit('change', {
                       nameSetting: this.name,
@@ -62,6 +62,11 @@
                         value: null
                     }
                 }
+            }
+        },
+        watch: {
+            default_value(val) {
+                this.item = val;
             }
         },
         created() {

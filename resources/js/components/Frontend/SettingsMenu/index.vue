@@ -1,11 +1,9 @@
 <template>
     <div class="settings-menu__wrapper" :class="menuOpenStatus">
         <ul class="settings-menu__list">
-            <MenuItem v-for="route in settings_routers" @selectMenu="openMenu" :item="route" :key="route.name"></MenuItem>
+            <MenuItem v-for="route in settings_routers" @selectMenu="openMenu"
+                      :item="route" :key="route.name"></MenuItem>
         </ul>
-        <button class="button" @click="openMenu">
-            <span>Settings</span>
-        </button>
     </div>
 </template>
 
@@ -14,11 +12,6 @@
 
     export default {
         name: "SettingsMenu",
-        data() {
-          return {
-              isMenuOpen: false
-          }
-        },
         computed: {
             settings_routers() {
                 let parentRoute = this.$router.options.routes[0].children;
@@ -26,16 +19,22 @@
                 return settingsRoute.children
             },
             menuOpenStatus() {
-              return {open: this.isMenuOpen}
+              return {open: this.open}
             }
         },
         methods: {
           openMenu() {
-              this.isMenuOpen = !this.isMenuOpen;
+              this.$emit('update:open', !this.open);
           }
         },
         components: {
             MenuItem
+        },
+        props: {
+            open: {
+                type: Boolean,
+                required: true
+            }
         }
     }
 </script>

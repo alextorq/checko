@@ -17,9 +17,14 @@ html {
 
 #app {
   overflow: hidden;
-  font-family: 'Open Sans', sans-serif;
 }
 
+.phone-only-b {
+  display: none !important;
+  @include phone {
+    display: block !important;
+  }
+}
 
 .overlay {
   position: fixed;
@@ -33,10 +38,15 @@ html {
   &.open {
     display: block;
   }
+  @include phone {
+    display: none !important;
+  }
 }
 body {
   padding: 0;
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: $black;
 }
 .main_content {
   margin-top: 160px;
@@ -62,8 +72,7 @@ body {
     border-bottom: 1px solid rgba(#a4b7be, 0.15);
     padding: 0 20px;
     opacity: 0.9;
-    color: #221600;
-    font-family: "Open Sans";
+    color: $black;
     font-size: 14px;
     font-weight: 400;
     line-height: 45px;
@@ -75,42 +84,37 @@ body {
 }
 
 main {
-  padding-top: 150px;
+  padding-top: 60px;
   height: 100vh;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-face-color: $color_3;
-  scrollbar-track-color: $color_3;
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: $color_1;
-    border-radius: 5px;
-  }
-  &::-webkit-scrollbar-track {
-    background: $color_6;
-    border-radius: 5px;
-  }
+
   @include phone {
-    padding-top: 100px;
+    padding-top: 49px;
   }
   .container {
     width: 80%;
     margin: 0 auto;
     @include phone {
-      width: 90%;
+      width: 100%;
+      padding: 0 10px;
     }
     .content {
       max-width: 100%;
       padding-bottom: 80px;
+      padding-top: 80px;
       min-height: calc(100vh - 150px);
+      @include phone {
+        padding-bottom: 40px;
+        padding-top: 40px;
+      }
     }
   }
 }
 
 .left-col {
   min-width: $left-col;
+  @include phone {
+    margin-left: 10px;
+  }
 }
 
 .flex-row {
@@ -126,6 +130,7 @@ main {
 
 input {
   font-family: 'Open Sans', sans-serif;
+  color: $black;
   &:focus {
     outline: none;
   }
@@ -134,10 +139,60 @@ textarea {
   white-space: pre;
   width: 100%;
   font-family: 'Open Sans', sans-serif;
+  color: $black;
   resize: none;
   outline: none;
 }
+.overlay-open {
+  overflow: hidden !important;
+}
 
+.scrolled {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-face-color: $color_3;
+  scrollbar-track-color: $color_3;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color_1;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $color_6;
+    border-radius: 5px;
+  }
+}
+
+/*Arrow*/
+.arrow {
+  width: 12px;
+  height: 8px;
+  transition: all 0.4s;
+  position: relative;
+  &:after {
+    content: '';
+    width: 9px;
+    left: 0;
+    height: 1px;
+    position: absolute;
+    background-color: $grey_3;
+    transform: rotate(45deg);
+    transform-origin: left top;
+  }
+  &:before {
+    content: '';
+    width: 9px;
+    height: 1px;
+    right: 0;
+    position: absolute;
+    background-color: $grey_3;
+    transform: rotate(-45deg);
+    transform-origin: right top;
+  }
+}
+/*Arrow end*/
 
 /*Buttons*/
 button {
@@ -148,7 +203,7 @@ button {
 button.button {
   box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
   border-radius: 5px;
-  background-color: #01b06d;
+  background-color: $green;
   border: none;
   color: #ffffff;
   font-size: 14px;

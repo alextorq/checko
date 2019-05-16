@@ -15,6 +15,8 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Checko\Models\CheckItem;
 use Illuminate\Support\Facades\Auth;
 use App\Checko\Models\CheckItemComment;
+use App\Checko\Models\CheckList;
+
 
 
 class CheckItemCommentController extends BaseController
@@ -26,10 +28,19 @@ class CheckItemCommentController extends BaseController
         $this->middleware('web')->only('allComments');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addComment(Request $request)
     {
         $data = $request->all();
         $data['user_id'] = Auth::id();
+
+        $checkListId =  $request->get('check_list_id');
+        $checkListOwner = CheckList::findOrFail($checkListId)->user;
+        $data['check_list_owner'] = $checkListOwner->getKey();
+
         $comment =  CheckItemComment::create($data);
         $comment['owner'] = $comment->owner;
 
@@ -37,6 +48,10 @@ class CheckItemCommentController extends BaseController
     }
 
 
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function allComments(int $id)
     {
         $comments = CheckItemComment::where('check_item_id', '=', $id)->With('owner')->get();
@@ -44,6 +59,11 @@ class CheckItemCommentController extends BaseController
     }
 
 
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function edit(Request $request, int $id)
     {
         $comment = CheckItemComment::findOrFail($id);
@@ -60,6 +80,10 @@ class CheckItemCommentController extends BaseController
         }
     }
 
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function delete(int $id)
     {
         $comment = CheckItemComment::findOrFail($id);
@@ -70,7 +94,5 @@ class CheckItemCommentController extends BaseController
         }else {
             return response()->json(['error' => 'you don\'t have permissions'], 422);
         }
-
-
     }
 }

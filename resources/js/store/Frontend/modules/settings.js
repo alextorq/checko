@@ -94,9 +94,11 @@ const userSettings = {
         },
         loadUserSettings(state, payload) {
             if (payload.user.profile && payload.user.profile.user_settings) {
+
                 try {
                     let settings = JSON.parse(payload.user.profile.user_settings);
                     state.settings = settings;
+                    console.log(settings);
                 }catch (e) {
                     console.log(e);
                 }

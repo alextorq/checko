@@ -23,6 +23,7 @@ function stopLoader(context) {
 const checkItems = {
     state: {
         checkItems: [],
+        canCreate: true,
         last: null,
         URI: {
             pref: '/frontend/checkitem/',
@@ -93,9 +94,9 @@ const checkItems = {
             state.checkItems.splice(index, 1);
         },
         updateCheckItemField(state, data) {
-            let id = data.id;
+            let id = data.timestamp_id;
             let field = data.field;
-            let item = state.checkItems.find((item) => {return item.check_item_id === id});
+            let item = state.checkItems.find((item) => {return item.timestamp_id === id});
             item[field] = data.value;
         },
         updateId(state, data) {
@@ -147,11 +148,12 @@ const checkItems = {
             context.commit('updateCheckItemField', payload);
             if (payload.update) {
                 runLoader(context);
-                axios
-                    .post(`${context.state.URI.pref}${context.state.URI.PUT.edit}/${payload.id}`, {item: payload.item})
-                    .then(response => {
-                        // console.log(response.data);
-                    }).catch((err) => {
+                if (!payload.item.check_item_id) {
+                    axios
+                        .post(`${context.state.URI.pref}${context.state.URI.PUT.edit}/${payload.id}`, {item: payload.item})
+                        .then(response => {
+                            // console.log(response.data);
+                        }).catch((err) => {
                         console.log(err);
                         this._vm.$notify({
                             duration: 3000,
@@ -161,6 +163,22 @@ const checkItems = {
                     }).finally(() => {
                         stopLoader(context);
                     });
+                }else {
+                    axios
+                        .post(`${context.state.URI.pref}${context.state.URI.PUT.edit}/${payload.id}`, {item: payload.item})
+                        .then(response => {
+                            // console.log(response.data);
+                        }).catch((err) => {
+                        console.log(err);
+                        this._vm.$notify({
+                            duration: 3000,
+                            type: 'error',
+                            text: 'Task is not change',
+                        });
+                    }).finally(() => {
+                        stopLoader(context);
+                    });
+                }
             }
         },
         deleteCheckItem(context, id) {

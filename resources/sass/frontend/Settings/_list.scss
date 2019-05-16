@@ -5,13 +5,12 @@
   }
   .settings-menu__item {
     display: flex;
-    width: 50%;
+    width: 100%;
     margin-bottom: 40px;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     @include phone {
-      width: 100%;
       padding-right: 3px;
     }
   }
@@ -22,7 +21,10 @@
     color: #a4b5be;
     font-size: 12px;
     font-weight: 400;
-    line-height: 50px;
+    line-height: 1.5;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-right: 35px;
     letter-spacing: 0.08px;
   }
 

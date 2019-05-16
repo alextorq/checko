@@ -1,19 +1,21 @@
 <template>
     <li class="comments__item">
-        <button class="close-delete" @click="deleteComment"></button>
-
-        <div class="comment-content" @click="changeClass" :class="editClass">
+        <button class="close-delete" v-if="canDelete" @click="deleteComment"></button>
+        <div class="comment-content" v-if="canEdit" @click="changeClass" :class="editClass">
             <div class="comment__name-parse" v-html="parse"></div>
-             <textarea wrap="hard" v-autosize="cache.content"
+             <textarea  wrap="hard" v-autosize="cache.content"
                    class="comment__name" rows="1" v-model.trim="cache.content" cols="20" autofocus
                        @change="update" @blur="onBluer" ref="comment" @keyup.esc="onBluer(); update();"
              ></textarea>
         </div>
+        <div class="comment-content" v-else>
+            <div class="comment__name-parse" v-html="parse"></div>
+        </div>
+
         <div class="comment-info">
             <div class="comment-user">
                 {{comment.owner.name}}
             </div>
-
             <div class="comment-date">
                 {{dateFormat}}
             </div>
@@ -40,6 +42,15 @@
                     edit: this.editStatus
                 }
             },
+
+            canDelete() {
+                return this.comment.owner.user_id === this.$store.getters.userID
+                    || this.comment.check_list_owner === this.$store.getters.userID;
+            },
+            canEdit() {
+                return this.comment.owner.user_id === this.$store.getters.userID;
+            },
+
             dateFormat() {
                 let formatDate = this.$store.getters.getDateFormatDefault.value;
                 return moment(this.comment.updated_at).format(formatDate)
@@ -69,11 +80,6 @@
                 this.editStatus = !this.editStatus
             },
             changeClass() {
-                /*Если это не владелец коментария то ничего не делаем*/
-                //TODO сдеделать GATES
-                if (this.comment.owner.user_id !== this.$store.getters.userID) {
-                    return
-                }
                 /*Не менять при клике на textarea дважды*/
                 if (!this.editStatus) {
                     this.editStatus = true;

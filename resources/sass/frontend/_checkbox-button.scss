@@ -4,9 +4,8 @@
   height: 6px;
   box-shadow: inset 0 0 2px rgba(11, 15, 19, 0.05);
   border-radius: 3px;
-  background-color: #cdd9dd;
+  background-color: $grey_2;
   display: block;
-
   &:after {
     position: absolute;
     left: 0;
@@ -19,8 +18,7 @@
     transform: translate3d(0, -50%, 0);
     transition: all 0.4s;
     box-shadow: 1px 1px 0 rgba(164, 183, 190, 0.24);
-    background-color: #a4b5be;
-
+    background-color: $grey_3;
   }
   .input-button {
     position: absolute;
@@ -35,11 +33,10 @@
     padding: 0;
   }
   &.selected {
-    border-radius: 3px;
-    background-color: #ccefe2;
+    background-color: $green_light;
     &:after {
-      left: 10px;
-      background-color: #01b06d;
+      transform: translate3d(90%, -50%, 0);
+      background-color: $green;
     }
   }
 }

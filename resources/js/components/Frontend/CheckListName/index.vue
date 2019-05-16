@@ -8,7 +8,8 @@
                 </svg>
            </span>
         </div>
-        <input class="checklist__name" type="text" :placeholder="placeholder" v-model="name" placeholder="CheckList name"
+        <input class="checklist__name" type="text"  :size="inputSize" :placeholder="placeholder" v-model="name"
+               placeholder="CheckList name"
                @change="endEditName">
     </div>
 </template>
@@ -38,20 +39,19 @@
             completeDone() {
                 return this.$store.getters.completeDone;
             },
+            checkListCreated() {
+                return this.$store.getters.checkListIsCreate
+            },
+            inputSize() {
+                return Math.max(15, this.placeholder.length);
+            }
         },
         methods: {
             endEditName() {
-                this.$store.dispatch('updateCheckListField')
+                if (this.checkListCreated) {
+                    this.$store.dispatch('updateCheckListField');
+                }
             },
-            select(event) {
-                let target = event.target;
-                target.select();
-            },
-            changeWidthForName() {
-                /*
-                * Изменение длинны инпута для имени
-                * */
-            }
         }
     }
 </script>

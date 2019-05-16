@@ -28,10 +28,34 @@
   span {
     margin-right: 20px;
     opacity: 0.9;
-    color: #a4b5be;
+    color: $grey_3;
     font-size: 14px;
     font-weight: 400;
     line-height: 25px;
     letter-spacing: 0.03px;
+  }
+}
+.form-sign {
+
+  .flex-row.jcb.aic {
+    flex-wrap: wrap;
+  }
+  @include phone {
+    .button {
+      margin-bottom: 40px;
+    }
+    .form-links {
+      width: 100%;
+      justify-content: center;
+      display: flex;
+    }
+    h2 {
+      margin-bottom: 25px;
+    }
+    .sing-with-wrapper {
+      width: 100%;
+      margin-bottom: 50px;
+      justify-content: flex-start;
+    }
   }
 }

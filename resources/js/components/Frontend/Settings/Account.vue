@@ -1,6 +1,5 @@
 <template>
     <div class="settings account">
-
         <div class="account-info" v-if="userLoginStatus">
             <Avatar></Avatar>
             <div class="info-wrapper">
@@ -13,7 +12,7 @@
             </div>
         </div>
 
-        <h3>Change Password</h3>
+        <div class="form-title">Change Password</div>
         <form method="post" action="/frontend/user/change_password" @submit.prevent="send">
             <inputFormPassword name="oldPassword" label="Old password" @error="errorUpdate" :min="8"
                                icon="password" ref="oldPassword" :required="true" autocomplete="current-password"
@@ -92,7 +91,6 @@
         methods: {
             errorUpdate(error) {
                 this.clearError(error.name);
-
                 let errors = this.form[error.name].errors;
                 let fieldError = error.filed;
 
@@ -186,7 +184,7 @@
         components: {
             inputFormPassword,
             nameInput,
-            Avatar
+            Avatar,
         }
     }
 </script>

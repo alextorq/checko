@@ -4,12 +4,7 @@
         <div class="left-col">
             <label class="check-item__label">
                 <input v-model="cache.complete" type="checkbox" @change="updateWithDate('complete')">
-                <span class="checkbox-svg-wrapper">
-                    <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 0 15.1 8.3" style="enable-background:new 0 0 15.1 8.3;" xml:space="preserve">
-                      <polyline class="st0" points="1,1 8.3,7.3 14.1,1.6 "/>
-                    </svg>
-                </span>
+                <span class="checkbox-svg-wrapper"></span>
             </label>
         </div>
         <div class="check-item__name-wrapper" :class="editClass" v-focus="data.check_item_id"
@@ -70,6 +65,9 @@
             }
         },
         computed: {
+            canCreateItem() {
+                return this.$store.state.checkItem.canCreate;
+            },
             editClass() {
                 return {
                     edit: this.editStatus
@@ -123,6 +121,7 @@
                     field: 'date_complete',
                     value: date,
                     id: this.data.check_item_id,
+                    timestamp_id: this.data.timestamp_id,
                     item: this.data,
                     update: false
                 });
@@ -137,13 +136,16 @@
                     value: this.cache[field],
                     id: this.data.check_item_id,
                     item: this.data,
+                    timestamp_id: this.data.timestamp_id,
                     update: true
                 });
             },
             createNewItem(event) {
                 if (!event.shiftKey) {
                     event.preventDefault();
-                    this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
+                    if (!!this.cache.name) {
+                        this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
+                    }
                 }
             },
             openCommentMenu() {

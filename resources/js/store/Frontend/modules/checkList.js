@@ -49,6 +49,9 @@ const checkList = {
         },
         checkListId(state) {
             return state.list.check_list_id;
+        },
+        checkListIsCreate(state) {
+            return !!state.list.check_list_id;
         }
     },
     mutations: {

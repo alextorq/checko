@@ -16,18 +16,17 @@
 }
 
 .check-item {
-  border-bottom: 1px solid #e8f0f3;
+  border-bottom: 1px solid $grey_2;
   padding: 10px 40px 10px 0;
   display: flex;
   position: relative;
   max-width: 100%;
   align-items: flex-start;
-  color: #0c0f14;
   font-size: 14px;
   font-weight: 400;
   line-height: 25px;
   a {
-    color: #0c0f14;
+    color: inherit;
     font-size: 14px;
     font-weight: 400;
     line-height: 25px;
@@ -35,11 +34,14 @@
   .left-col {
     padding-left: 10px;
     margin-top: 5px;
+    flex-shrink: 0;
+    @include phone {
+      padding-left: 0;
+    }
   }
   textarea {
     width:100%;
     border: none;
-    color: #0c0f14;
     font-size: 14px;
     font-weight: 400;
     line-height: 25px;
@@ -61,17 +63,21 @@
 
 
   .context-menu-wrapper {
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 0;
     .context-menu__list {
       position: absolute;
       visibility: hidden;
       list-style: none;
       padding-left: 0;
       width: 141px;
+      color: $black;
       box-shadow: 0 0 20px 2px rgba(164, 183, 190, 0.45);
       border-radius: 5px;
       background-color: #ffffff;
-      right: -40px;
+      right: -3px;
+      top: 50%;
       z-index: 5;
     }
     .context-menu__item {
@@ -79,16 +85,14 @@
       padding-left: 10px;
       padding-right: 10px;
       opacity: 0.9;
-      color: #0c0f14;
       font-size: 14px;
       font-weight: 400;
       line-height: 2.5;
       letter-spacing: 0.09px;
       &:hover {
-        background: #c8c8c83d;
+        background: $grey_1;
       }
     }
-    
     &.open {
       .context-menu__list {
         visibility: visible;
@@ -126,9 +130,9 @@
     left: -20px;
     top: 50%;
     transform: translateY(-50%);
-    width: 16px;
-    height: 14px;
-    background: linear-gradient(to bottom, #a4b7be 0%, #a4b7be 20%, transparent 20%, transparent 40%, #a4b7be 40%, #a4b7be 60%, transparent 60%, transparent 80%, #a4b7be 80%, #a4b7be 100%);
+    width: 13px;
+    height: 12px;
+    background: linear-gradient(to bottom, $grey_3 0%, $grey_3 20%, transparent 20%, transparent 40%, $grey_3 40%, $grey_3 60%, transparent 60%, transparent 80%, $grey_3 80%, $grey_3 100%);
     opacity: 0;
     transition: all 0.2s;
     cursor: pointer;
@@ -137,6 +141,7 @@
   @include phone {
     .handle {
       opacity: 1;
+      background: linear-gradient(to bottom, $grey_3 0%, $grey_3 10%, transparent 10%, transparent 40%, $grey_3 40%, $grey_3 50%, transparent 50%, transparent 90%, $grey_3 90%, $grey_3 100%);
       left: -5px;
       top: 15px;
       transform: translateY(0%);
@@ -198,24 +203,20 @@
   background: transparent;
   margin: 0;
   cursor: pointer;
-  position: absolute;
-  right: 0;
-  top: 9px;
+  font-weight: 400;
   opacity: 0;
   transition: all 0.2s;
-  transform: translate3d(200%, -50%, 0);
-  color: #808f98;
+  color: $grey_3;
   padding: 5px;
-  line-height: 14px;
+  line-height: 16px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   @include phone {
     opacity: 1;
     transform: none;
-    top: 2px;
   }
   .icon {
     width: 14px;
@@ -227,7 +228,7 @@
       position: absolute;
       width: 2px;
       height: 100%;
-      background-color: #cdd9dd;
+      background-color: $grey_3;
       content: '';
       top: 0;
       left: calc(50% - 1px);
@@ -236,7 +237,7 @@
       position: absolute;
       width: 100%;
       height: 2px;
-      background-color: #cdd9dd;
+      background-color: $grey_3;
       content: '';
       top: calc(50% - 1px);
       left: 0;
@@ -254,6 +255,9 @@
 /*CheckBox complete*/
 .checklist__item-list.complete {
 
+  .check-item__name-parse {
+    text-decoration: line-through;
+  }
   .check-item__data-complete {
     flex-shrink: 0;
     @include phone {
@@ -261,7 +265,7 @@
     }
   }
   input {
-    color: #a4b5be;
+    color: $grey_3;
     font-size: 14px;
     font-weight: 400;
     line-height: 25px;
@@ -269,18 +273,16 @@
     letter-spacing: 0.03px;
   }
   span {
-    color: #a4b5be;
+    color: $grey_3;
     font-size: 14px;
     font-weight: 400;
     line-height: 25px;
     letter-spacing: 0.03px;
   }
   .checklist__description {
-    //width: 72px;
-    //height: 15px;
     display: flex;
     align-items: center;
-    color: #a4b5be;
+    color: $grey_3;
     font-size: 14px;
     font-weight: 400;
     line-height: 25px;
@@ -301,7 +303,7 @@
           left: 0;
           height: 1px;
           position: absolute;
-          background-color: #cdd9dd;
+          background-color: $grey_3;
           transform: rotate(45deg);
           transform-origin: left top;
         }
@@ -311,7 +313,7 @@
           height: 1px;
           right: 0;
           position: absolute;
-          background-color: #cdd9dd;
+          background-color: $grey_3;
           transform: rotate(-45deg);
           transform-origin: right top;
         }
@@ -343,13 +345,13 @@
   position: relative;
   &:after {
     position: absolute;
-    width: 96%;
-    height: 96%;
-    left: 10%;
+    width: 100%;
+    height: 100%;
+    left: 0;
     top: 2%;
     z-index: -1;
     content: '';
-    border: 1px solid #cdd9dd;
+    border: 1px solid $grey_3;
     border-radius: 50%;
   }
   svg {
@@ -360,7 +362,7 @@
       fill: none;
       stroke-dasharray: 100;
       stroke-dashoffset: 100;
-      stroke: $color_1;
+      stroke: $green;
       stroke-width: 2;
       transition: all 0.4s;
     }

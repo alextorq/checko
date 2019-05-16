@@ -3,14 +3,10 @@
         <notifications position="top right" classes="my-style"/>
         <Header></Header>
         <CommentsLayout :open="commentIsOpen"></CommentsLayout>
-        <main>
-            <div class="container">
-                <div class="content">
-                    <transition name="fade">
-                        <router-view></router-view>
-                    </transition>
-                </div>
-            </div>
+        <main class="scrolled" :class="{'overlay-open': overlayOpen}">
+            <transition name="fade">
+                <router-view></router-view>
+            </transition>
         </main>
     </div>
 </template>
@@ -28,6 +24,9 @@
         },
         computed: {
             commentIsOpen() {
+                return this.$store.state.comments.commentOpen;
+            },
+            overlayOpen() {
                 return this.$store.state.comments.commentOpen;
             }
         },

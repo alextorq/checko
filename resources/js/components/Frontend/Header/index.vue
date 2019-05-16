@@ -13,7 +13,14 @@
                         <span></span>
                     </span>
                 </span>
-                <a  href="/" target="_blank" aria-label="Add new checklist" class="navbar__add-new" type="button"></a>
+                <a  href="/" target="_blank" aria-label="Add new checklist" class="navbar__add-new" type="button">
+                    <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 40.3 40.3" style="enable-background:new 0 0 40.3 40.3;" xml:space="preserve">
+                        <path class="st1" d="M38.8,18.6H21.6V1.5C21.6,0.7,21,0,20.1,0c-0.8,0-1.5,0.7-1.5,1.5v17.1H1.5c-0.8,0-1.5,0.7-1.5,1.5
+                        c0,0.8,0.7,1.5,1.5,1.5h17.1v17.1c0,0.8,0.7,1.5,1.5,1.5c0.8,0,1.5-0.7,1.5-1.5V21.6h17.1c0.8,0,1.5-0.7,1.5-1.5
+                        C40.3,19.3,39.6,18.6,38.8,18.6z"/>
+                    </svg>
+                </a>
 
                 <div class="button-wrapper" :class="isShareOpenStatus" >
                     <button class="navbar__share" ref="openShareMenu" @click="openShareMenu"
@@ -37,7 +44,7 @@
                             copy link
                         </li>
                         <li class="dropdown-menu__item" @click="">
-                            <a :href="telegramLink">
+                            <a :href="'tg://msg?url=' + this.href">
                                 <span class="icon">
                                      <img src="/images/telegram.svg" alt="telegram">
                                 </span>
@@ -45,16 +52,20 @@
                             </a>
                         </li>
                         <li class="dropdown-menu__item">
-                            <span class="icon">
-                                 <img src="/images/facebook.svg" alt="facebook">
-                            </span>
-                            facebook
+                            <a target="_blank" :href="'https://www.facebook.com/sharer.php?u=' + this.href">
+                                <span class="icon">
+                                     <img src="/images/facebook.svg" alt="facebook">
+                                </span>
+                                facebook
+                            </a>
                         </li>
                         <li class="dropdown-menu__item">
-                            <span class="icon">
-                                 <img src="/images/whatsapp.svg" alt="whatsapp">
-                            </span>
-                            whatsapp
+                            <a target="_blank" :href="'https://wa.me/?text=' + this.href">
+                               <span class="icon">
+                                     <img src="/images/whatsapp.svg" alt="whatsapp">
+                                </span>
+                                whatsapp
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -80,9 +91,18 @@
                 <div class="navbar__menu-wrapper">
                     <button class="navbar__menu-button" type="button" aria-label="open menu settings"
                             :class="isMenuOpenStatus" @click="isMenuOpen = !isMenuOpen">
-                        <div class="hamburger-box">
-                            <div class="hamburger-inner"></div>
-                        </div>
+                        <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 65 65" style="enable-background:new 0 0 65 65;" xml:space="preserve">
+                             <path id="line_x5F_1_1_" class="st1 line_1" d="M57,12.8H33h-2.2H8c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h22.8H33h24
+                            c0.8,0,1.5-0.7,1.5-1.5S57.8,12.8,57,12.8z"/>
+
+                            <path id="line_x5F_2_1_" class="st1 line_2" d="M57,30.8h-3.5H51H8c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h43h2.5H57
+                            c0.9,0,1.5-0.7,1.5-1.5S57.8,30.8,57,30.8z"/>
+
+                            <path id="line_x5F_3_1_" class="st1 line_3" d="M57,48.7H33.5h-2.7H8c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h22.8h2.7H57
+                            c0.8,0,1.5-0.7,1.5-1.5S57.8,48.7,57,48.7z"/>
+                        </svg>
+
                     </button>
                     <Menu :open="isMenuOpen" @close="isMenuOpen = !isMenuOpen"></Menu>
                </div>
@@ -134,9 +154,6 @@
                     open: this.isMenuOpen
                 }
             },
-            telegramLink() {
-                return `tg://msg?url=${this.href}`
-            }
         },
         watch:{
             $route (to, from){
@@ -144,9 +161,6 @@
             }
         },
         methods: {
-            shareByTelegram() {
-
-            },
             openShareMenu() {
                 if (!this.isShareOpen) {
                     window._self = this;
@@ -202,5 +216,8 @@
             AppSelect,
             Menu
         },
+        created() {
+            this.href = window.location.href;
+        }
     }
 </script>

@@ -21,12 +21,9 @@ class CheckListController extends BaseController
         return view('welcome');
     }
 
-    public function indexPost($checklist)
+    public function indexPost(int $checklist)
     {
-        $checklist = CheckList::with('checkItems')->whereIn('check_list_id', [$checklist])->first();
-        if (!$checklist) {
-            return response()->json(null, 404);
-        }
+        $checklist = CheckList::with('checkItems')->findOrFail($checklist);
         return response()->json($checklist);
     }
 
@@ -48,6 +45,5 @@ class CheckListController extends BaseController
         $checklist = CheckList::findOrFail($inputParam['check_list_id']);
         $checklist->update($inputParam);
         return response()->json($checklist);
-
     }
 }

@@ -6,12 +6,12 @@
   h2 {
     margin-bottom: 50px;
     span {
-      color: #01b06d;
+      color: $green;
     }
   }
   .flex-row {
     a {
-      color: #a4b5be;
+      color: $grey_3;
       font-size: 14px;
       font-weight: 400;
       line-height: 25px;
@@ -27,12 +27,12 @@
     padding: 70px 90px;
     max-width: 850px;
     @include small {
-      width: 90%;
+      width: 100%;
       padding: 40px 60px;
     }
     @include phone {
       width: 100%;
-      padding: 20px 40px;
+      padding: 20px 15px;
     }
 
   }

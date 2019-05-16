@@ -32,7 +32,7 @@ class CheckItemCommentPermission extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('deleteComment', function ($user, $comment) {
-            return  $user->user_id === $comment->user_id || $user->user_id === $comment->checkListOwner->user_id;
+            return  $user->user_id === $comment->user_id || $user->user_id === $comment->checkListOwner->getKey();
         });
 
         Gate::define('edit', function ($user, $comment) {

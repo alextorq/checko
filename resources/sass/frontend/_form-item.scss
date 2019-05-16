@@ -8,7 +8,7 @@ $left-offset: 24px;
     input {
       width: 100%;
       border: none;
-      border-bottom: 1px solid #cdd9dd;
+      border-bottom: 1px solid $grey_2;
     }
     label {
         top: $label-top;
@@ -17,11 +17,11 @@ $left-offset: 24px;
   }
   &.error {
     input {
-      border-bottom: 1px solid #f83f51;
+      border-bottom: 1px solid $red;
     }
     .icon {
       svg {
-          fill: #f83f51;
+          fill: $red;
       }
     }
 
@@ -35,14 +35,14 @@ $left-offset: 24px;
     svg {
       width: 100%;
       height: 100%;
-      fill: #a4b5be;
+      fill: $grey_3;
     }
   }
 
   input {
     width: 100%;
     border: none;
-    border-bottom: 1px solid #cdd9dd;
+    border-bottom: 1px solid $grey_2;
     transition: all 0.4s;
     padding-left: $left-offset;
     color: #0c0f14;
@@ -66,7 +66,7 @@ $left-offset: 24px;
     left: $left-offset;
     will-change: transform;
     transition: all 0.4s;
-    color: #a4b5be;
+    color: $grey_3;
     font-size: 14px;
     font-weight: 400;
     line-height: 2.5;
@@ -85,7 +85,7 @@ $left-offset: 24px;
       display: flex;
       visibility: hidden;
       position: relative;
-      fill:#01B06D;
+      fill: $green;
       svg {
         width: 100%;
         height: 100%;
@@ -98,7 +98,7 @@ $left-offset: 24px;
       display: flex;
       position: absolute;
       visibility: hidden;
-      fill: #f83f51;
+      fill: $red;
       svg {
         width: 100%;
         height: 100%;
@@ -127,19 +127,17 @@ $left-offset: 24px;
     }
   }
 
-
   .error-message {
-    color: #f84759;
+    color: $red;
     font-size: 12px;
     font-weight: 400;
-    line-height: 25px;
+    line-height: 1.6;
     letter-spacing: 0.03px;
-    padding-left: 0;
+    padding-left: 24px;
     margin: 0;
     list-style: none;
   }
 }
-
 
 /*Элемент формы для ввода пароля*/
 .form-item.password {
@@ -159,10 +157,10 @@ $left-offset: 24px;
     svg {
       width: 100%;
       height: 100%;
-      fill: #a4b5be;
+      fill: $grey_3;
     }
     path {
-      fill: #a4b5be;
+      fill: $grey_3;
     }
   }
   /*Кнопка показать пароль end*/

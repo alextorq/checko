@@ -17,8 +17,10 @@
 
   @include phone {
     width: 100vw;
-    height: calc(100% - 60px);
+    height: calc(100% - 49px);
     padding: 10px 0 0 10px;
+    top: 49px;
+    bottom: 0;
   }
   &.open {
     transform: translate3d(0, 0, 0);
@@ -35,14 +37,17 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    position: relative;
+
   }
   /*Заголовок comments end*/
 
   /*Кнопка закрытия меню*/
   .close-delete {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
   }
   /*Кнопка закрытия меню end*/
 

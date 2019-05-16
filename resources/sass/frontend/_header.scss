@@ -8,7 +8,7 @@
   padding: 10px 40px;
   box-shadow: 0 0 12px 6px rgba(164, 183, 190, 0.2);
   @include phone {
-    padding: 10px 20px;
+    padding: 10px;
   }
 }
 .navbar .content {
@@ -38,6 +38,9 @@
     margin-right: 30px !important;
     @include phone {
       margin-right: 15px !important;
+      &:last-child {
+        margin-right: 0 !important;
+      }
     }
     &:last-child {
       margin-right: 0;
@@ -80,8 +83,7 @@
   margin: 0;
   width: 40px;
   height: 40px;
-  box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
-  background-color: $color_1;
+  background-color: $green;
   border-radius: 50%;
   padding: 10px;
   justify-content: center;
@@ -91,20 +93,38 @@
   z-index: 0;
   overflow: visible;
   display: block;
+  &:hover {
+    box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
+  }
   svg {
     width: 100%;
     height: 100%;
+    transform: translateX(-3%);
   }
   svg path{
     fill: #ffffff;
   }
-
+  @include phone {
+    background: transparent;
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    svg path{
+      fill: $black;
+    }
+    &:hover {
+      box-shadow: none;
+    }
+  }
 }
 
 .button-wrapper {
   @include phone {
     margin-right: 0 !important;
   }
+}
+.navbar__settings-wrapper {
+  margin-right: 20px !important;
 }
 
 .navbar__settings {
@@ -121,7 +141,7 @@
   cursor: pointer;
   &:hover {
     box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
-    background-color: #e8f0f3;
+    background-color: $grey_1;
   }
   svg {
     width: 100%;
@@ -131,8 +151,8 @@
     }
     circle {
       transition: all 0.2s;
-      fill:#FFFFFF;
-      stroke:#0C0F14;
+      fill: #FFFFFF;
+      stroke: $black;
       stroke-width:3;
       stroke-miterlimit:10;
     }
@@ -140,7 +160,7 @@
 
   &.open {
     box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
-    background-color: #e8f0f3;
+    background-color: $grey_1;
     svg {
       #circle_x5F_1 {
         transform: translateX(50%);
@@ -165,7 +185,7 @@
   width: 40px;
   height: 40px;
   background-color: transparent;
-  padding: 10px 5px;
+  padding: 5px;
   cursor: pointer;
   transition-timing-function: linear;
   transition-duration: .15s;
@@ -174,6 +194,32 @@
   border: 0;
   position: relative;
   overflow: hidden;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  .st0{
+    fill:#01B06D;
+    transition: all 0.4s;
+  }
+  .st1{
+    fill:#0C0F14;
+    transition: all 0.4s;
+  }
+  .st2{
+    fill:#FFFFFF;
+    stroke:#0C0F14;
+    stroke-width:3;
+    stroke-miterlimit:10;
+  }
+  .st3{
+    fill:none;
+    stroke:#000000;
+    stroke-width:3;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-miterlimit:10;
+  }
 
   .hamburger-box {
     position: relative;
@@ -182,12 +228,12 @@
     &:after, &:before {
       position: absolute;
       width: 100%;
-      height: 2px;
+      height: 1px;
       transition-timing-function: ease;
       transition-duration: .15s;
       transition-property: transform;
       border-radius: 4px;
-      background-color: $color_3;
+      background-color: $black;
       display: block;
       content: "";
       left: 0;
@@ -204,12 +250,12 @@
     transition: background-color 0s linear .13s;
     position: absolute;
     width: 100%;
-    height: 2px;
+    height: 1px;
     transition-timing-function: ease;
     transition-duration: .15s;
     transition-property: transform;
     border-radius: 4px;
-    background-color: #000;
+    background-color: $black;
     top: 50%;
     display: block;
     margin-top: -1px;
@@ -222,14 +268,42 @@
       &:before {
         top: 0;
         transition: top .1s cubic-bezier(.33333,0,.66667,.33333) .15s,transform .13s cubic-bezier(.215,.61,.355,1) .22s;
-        transform: translate3d(0,10px,0) rotate(45deg);
+        transform: translate3d(0,8px,0) rotate(45deg);
       }
       &:after {
         top: 0;
         transition: top .2s cubic-bezier(.33333,0,.66667,.33333),transform .13s cubic-bezier(.215,.61,.355,1) .22s;
-        transform: translate3d(0,10px,0) rotate(-45deg);
+        transform: translate3d(0,8px,0) rotate(-45deg);
+      }
+      @include phone {
+        &:before {
+          top: 0;
+          transform: translate3d(0,7px,0) rotate(45deg);
+        }
+        &:after {
+          top: 0;
+          transform: translate3d(0,7px,0) rotate(-45deg);
+        }
       }
     }
+
+
+
+    .line_1 {
+      transform: rotate(45deg);
+    }
+    .line_2 {
+      transform: translateX(100%);
+    }
+    .line_3 {
+      transform: rotate(-45deg);
+      transform-origin: left bottom;
+    }
+  }
+  @include phone {
+    width: 20px;
+    height: 16px;
+    padding: 0;
   }
 }
 
@@ -247,7 +321,7 @@
     bottom: 4px;
     will-change: transform;
     border-radius: 50%;
-    background: $color_3;
+    background: $black;
     padding: 1px;
     opacity: 0;
     user-select: none;
@@ -303,31 +377,17 @@
 
 
 .navbar__add-new {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   border: none;
+  padding: 10px;
   background: transparent;
   margin: 0;
-  padding: 0;
   cursor: pointer;
   position: relative;
-  &:after {
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    background-color: #0c0f14;
-    content: '';
-    top: 0;
-    left: calc(50% - 1px);
-  }
-  &:before {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #0c0f14;
-    content: '';
-    top: calc(50% - 1px);
-    left: 0;
+  @include phone {
+    width: 18px;
+    height: 18px;
   }
 }
 

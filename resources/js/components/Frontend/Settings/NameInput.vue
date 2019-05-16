@@ -97,6 +97,11 @@
         created() {
             this.name = this.value;
         },
+        watch: {
+            value(val) {
+                this.name = val;
+            }
+        },
         props: {
             value: {
                 type: String,

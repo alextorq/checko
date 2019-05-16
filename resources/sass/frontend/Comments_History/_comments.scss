@@ -17,10 +17,12 @@
     width: 100%;
     background: #ffffff;
     textarea {
-      border: 1px solid $color_7;
+      border: 1px solid $grey_2;
       min-height: 40px;
       border-radius: 2px;
       padding: 5px 40px 5px 5px;
+      overflow-wrap: break-word !important;
+      white-space: pre-wrap !important;
     }
     /*Максимальное количество символов*/
     .max-length {
@@ -53,6 +55,9 @@
         width: 100%;
         height: 100%;
       }
+    }
+    @include phone {
+      right: 20px;
     }
   }
   .comments-form-send {
@@ -162,6 +167,8 @@
           margin: 0;
           display: block;
           letter-spacing: 0.5px;
+          overflow-wrap: break-word !important;
+          white-space: pre-wrap !important;
           &:focus {
             outline: none;
           }

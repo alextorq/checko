@@ -19,14 +19,19 @@ class CheckItemComment extends Model
 
     protected $guarded = ['comment_id'];
 
-    protected $fillable = ['content', 'user_id', 'check_list_id', 'check_item_id'];
+    protected $fillable = ['content', 'user_id', 'check_list_id', 'check_item_id', 'check_list_owner'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function checkItem()
     {
-        /*error*/
         return $this->hasOne(CheckItem::class, 'check_item_id', 'check_item_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function owner()
     {
         return $this->hasOne(User::class, 'user_id', 'user_id');
@@ -40,9 +45,12 @@ class CheckItemComment extends Model
         return $this->hasOne(CheckList::class, 'check_list_id', 'check_list_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function checkListOwner()
     {
-        return $this->checkList->user ?? null;
-    }
+        return $this->hasOne(User::class, 'user_id', 'check_list_owner');
 
+    }
 }

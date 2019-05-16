@@ -96,6 +96,9 @@
       letter-spacing: inherit;
       font-weight: inherit;
       font-family: inherit;
+      @include phone {
+        padding-top: 10px;
+      }
     }
     &:not(.edit) textarea{
       display: none;
@@ -153,7 +156,7 @@
       position: absolute;
       width: 2px;
       height: 100%;
-      background-color: #cdd9dd;
+      background-color: $grey_2;
       content: '';
       top: 0;
       left: calc(50% - 1px);

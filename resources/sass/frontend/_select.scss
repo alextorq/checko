@@ -21,7 +21,7 @@
       left: 0;
       height: 1px;
       position: absolute;
-      background-color: $color_7;
+      background-color: $grey_3;
       transform: rotate(45deg);
       transform-origin: left top;
     }
@@ -31,7 +31,7 @@
       height: 1px;
       right: 0;
       position: absolute;
-      background-color: $color_7;
+      background-color: $grey_3;
       transform: rotate(-45deg);
       transform-origin: right top;
     }
@@ -59,7 +59,7 @@
   transform: translateX(-50%);
   box-shadow: 0 3px 8px rgba(164, 183, 190, 0.4);
   li {
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     &:last-child {
       padding-bottom: 0;
     }

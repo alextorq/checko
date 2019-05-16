@@ -1,6 +1,8 @@
 .general-settings {
+  padding: 0;
+  margin: 0;
   >li {
-    border-bottom: 1px solid rgba(#e8f0f3, 0.7);
+    border-bottom: 1px solid $grey_2;
     padding-bottom: 12px;
   }
 }

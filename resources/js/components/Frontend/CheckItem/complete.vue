@@ -20,9 +20,6 @@
                       v-autosize="cache.name" :placeholder="placeholder" @keyup.esc="onBluer(); update('name');"
                    ></textarea>
         </div>
-        <span class="check-item__data-complete">
-            {{dateFormat}}
-        </span>
         <div class="context-menu-wrapper" :class="contextMenuOpen">
             <button class="check-item__menu" :class="contextMenuOpen" ref="contextMenuButton" @click="openContextMenu" >
                 <!--<span class="icon"></span>-->
@@ -34,6 +31,10 @@
                 <li class="context-menu__item" @click="deleteItemEvent">delete</li>
             </ul>
         </div>
+
+        <span class="check-item__data-complete">
+            {{dateFormat}}
+        </span>
     </div>
 </template>
 
@@ -119,6 +120,7 @@
                     field: 'date_complete',
                     value: date,
                     id: this.data.check_item_id,
+                    timestamp_id: this.data.timestamp_id,
                     item: this.data,
                     update: false
                 });
@@ -133,6 +135,7 @@
                     value: this.cache[field],
                     id: this.data.check_item_id,
                     item: this.data,
+                    timestamp_id: this.data.timestamp_id,
                     update: true
                 });
             },

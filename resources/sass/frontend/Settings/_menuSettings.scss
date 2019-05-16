@@ -2,17 +2,13 @@
   width: 240px;
   box-shadow: 3px 4px 25px 2px rgba(164, 183, 190, 0.25);
   background-color: #ffffff;
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  padding-top: 120px;
+  height: 100%;
   list-style: none;
   @include phone {
     width: 0;
     overflow: hidden;
     transition: width 0.2s;
-    z-index: 6;
+    will-change: width;
     &.open {
       width: 100%;
     }
@@ -39,10 +35,10 @@
       display: block;
     }
     &.active {
-      background-color: rgba(#e8f0f3, 0.7);
+      background-color: $grey_1;
     }
     &:hover {
-      background-color: rgba(#e8f0f3, 0.7);
+      background-color: $grey_1;
     }
   }
   .button {
