@@ -9,20 +9,20 @@
                     <draggable v-model="inCompleteItems" group="incomplete" @start="drag=true" @end="drag=false"
                                handle=".handle" :sortable="false">
                         <transition-group name="list" >
-                            <CheckItem v-for="item in inCompleteItems" @update="updateItem" @delete="deleteItem"
+                            <CheckItem v-for="item in inCompleteItems"
                                        :data="item" :key="item.timestamp_id"></CheckItem>
                         </transition-group>
                     </draggable>
                 </div>
 
-                <addNewItem v-if="canCreateItem"></addNewItem>
+                <addNewItem></addNewItem>
 
                 <div class="checklist__item-list complete" v-if="completeItems.length > 0">
                     <Spoiler>
                         <draggable v-model="completeItems" group="complete" @start="drag=true" @end="drag=false"
                                    handle=".handle" :sortable="false">
                             <transition-group name="list" >
-                                <CheckItemComplete @update="updateItem" @delete="deleteItem"
+                                <CheckItemComplete  @delete="deleteItem"
                                                    v-for="item in completeItems" :data="item" :key="item.timestamp_id + 'complete'">
                                 </CheckItemComplete>
                             </transition-group>
@@ -70,12 +70,12 @@
             }
         },
         methods: {
-            updateItem(data) {
-                this.$store.dispatch('updateCheckItemField', data);
-                if (data.update === true)  {
-                    this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
-                }
-            },
+            // updateItem(data) {
+            //     this.$store.dispatch('updateCheckItemField', data);
+            //     if (data.update === true)  {
+            //         this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
+            //     }
+            // },
             deleteItem(id) {
                 this.$store.dispatch('deleteCheckItem', id);
                 this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);

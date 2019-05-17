@@ -11,8 +11,8 @@
              @click="changeClass">
             <div class="check-item__name-parse" v-html="parse"></div>
             <textarea wrap="hard" v-autosize="cache.name" class="check-item__name" rows="1" v-model.trim="cache.name"
-                      cols="20" @change="update('name')" ref="item" @blur="onBluer" :placeholder="placeholder"
-                      @keydown.enter="createNewItem"  @keyup.esc="onBluer(); update('name');"
+                      cols="20" @change="update()" ref="item" @blur="onBluer" :placeholder="placeholder"
+                      @keydown.enter="createNewItem"  @keyup.esc="update();"
                    ></textarea>
         </div>
         <div class="context-menu-wrapper" :class="contextMenuOpen">
@@ -23,7 +23,7 @@
             <ul class="context-menu__list">
                 <li class="context-menu__item">attach</li>
                 <li class="context-menu__item" @click="openCommentMenu">comments</li>
-                <li class="context-menu__item" @click="deleteItemEvent">delete</li>
+                <li class="context-menu__item" @click="deleteItem">delete</li>
             </ul>
         </div>
     </div>
@@ -65,9 +65,6 @@
             }
         },
         computed: {
-            canCreateItem() {
-                return this.$store.state.checkItem.canCreate;
-            },
             editClass() {
                 return {
                     edit: this.editStatus
@@ -95,7 +92,12 @@
         },
         methods: {
             onBluer() {
-                this.editStatus = !this.editStatus
+                this.editStatus = !this.editStatus;
+                if (!this.data.check_item_id) {
+                    this.$store.dispatch('addCheckItem', this.data.timestamp_id);
+                } else {
+                    this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
+                }
             },
             newItemFocus() {
                 this.editStatus = !this.editStatus;
@@ -115,36 +117,31 @@
                 }
 
             },
-            updateWithDate(field) {
+            updateWithDate() {
                let date = new Date().getTime();
-                this.$emit('update', {
-                    field: 'date_complete',
-                    value: date,
-                    id: this.data.check_item_id,
+                this.$store.commit('updateCheckItemField', {
+                    field: ['date_complete', 'complete'],
+                    value: [date, true] ,
                     timestamp_id: this.data.timestamp_id,
-                    item: this.data,
-                    update: false
                 });
-               this.update(field);
+                this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
             },
-            deleteItemEvent() {
-                this.$emit('delete', this.data.check_item_id);
+            deleteItem() {
+                this.$store.dispatch('deleteCheckItem', this.data.check_item_id);
+                this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
             },
-            update(field) {
-                this.$emit('update', {
-                    field: field,
-                    value: this.cache[field],
-                    id: this.data.check_item_id,
-                    item: this.data,
+            update() {
+                this.$store.commit('updateCheckItemField', {
                     timestamp_id: this.data.timestamp_id,
-                    update: true
+                    field: 'name',
+                    value: this.cache.name
                 });
             },
             createNewItem(event) {
                 if (!event.shiftKey) {
                     event.preventDefault();
                     if (!!this.cache.name) {
-                        this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
+                        this.$store.commit('addCheckItem', this.$store.getters.checkListId);
                     }
                 }
             },

@@ -28,7 +28,7 @@
             <ul class="context-menu__list">
                 <li class="context-menu__item">attach</li>
                 <li class="context-menu__item" @click="openCommentMenu">comments</li>
-                <li class="context-menu__item" @click="deleteItemEvent">delete</li>
+                <li class="context-menu__item" @click="deleteItem">delete</li>
             </ul>
         </div>
 
@@ -108,35 +108,35 @@
                 }
             },
             onBluer() {
-                this.editStatus = !this.editStatus
+                if (!status) {
+                    this.editStatus = !this.editStatus;
+                }else {
+                    this.editStatus = false;
+                }
+                this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
             },
             openCommentMenu() {
                 this.$store.commit('toggleComment');
                 this.$store.dispatch('loadComments', this.data.check_item_id);
             },
-            updateWithDate(field) {
+            updateWithDate() {
                 let date = new Date().getTime();
-                this.$emit('update', {
-                    field: 'date_complete',
-                    value: date,
-                    id: this.data.check_item_id,
+                console.log(date);
+                this.$store.commit('updateCheckItemField', {
+                    field: ['date_complete', 'complete'],
+                    value: [date, this.cache.complete] ,
                     timestamp_id: this.data.timestamp_id,
-                    item: this.data,
-                    update: false
                 });
-                this.update(field);
             },
-            deleteItemEvent() {
-                this.$emit('delete', this.data.check_item_id);
+            deleteItem() {
+                this.$store.dispatch('deleteCheckItem', this.data.check_item_id);
+                this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
             },
-            update(field) {
-                this.$emit('update', {
-                    field: field,
-                    value: this.cache[field],
-                    id: this.data.check_item_id,
-                    item: this.data,
+            update() {
+                this.$store.commit('updateCheckItemField', {
                     timestamp_id: this.data.timestamp_id,
-                    update: true
+                    field: 'name',
+                    value: this.cache.name
                 });
             },
             openContextMenu(event) {

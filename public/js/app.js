@@ -38738,12 +38738,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
-        updateItem: function updateItem(data) {
-            this.$store.dispatch('updateCheckItemField', data);
-            if (data.update === true) {
-                this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
-            }
-        },
+        // updateItem(data) {
+        //     this.$store.dispatch('updateCheckItemField', data);
+        //     if (data.update === true)  {
+        //         this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
+        //     }
+        // },
         deleteItem: function deleteItem(id) {
             this.$store.dispatch('deleteCheckItem', id);
             this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
@@ -38886,9 +38886,6 @@ function closeContextMenu(event) {
         }
     },
     computed: {
-        canCreateItem: function canCreateItem() {
-            return this.$store.state.checkItem.canCreate;
-        },
         editClass: function editClass() {
             return {
                 edit: this.editStatus
@@ -38917,6 +38914,11 @@ function closeContextMenu(event) {
     methods: {
         onBluer: function onBluer() {
             this.editStatus = !this.editStatus;
+            if (!this.data.check_item_id) {
+                this.$store.dispatch('addCheckItem', this.data.timestamp_id);
+            } else {
+                this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
+            }
         },
         newItemFocus: function newItemFocus() {
             var _this = this;
@@ -38939,36 +38941,31 @@ function closeContextMenu(event) {
                 });
             }
         },
-        updateWithDate: function updateWithDate(field) {
+        updateWithDate: function updateWithDate() {
             var date = new Date().getTime();
-            this.$emit('update', {
-                field: 'date_complete',
-                value: date,
-                id: this.data.check_item_id,
-                timestamp_id: this.data.timestamp_id,
-                item: this.data,
-                update: false
+            this.$store.commit('updateCheckItemField', {
+                field: ['date_complete', 'complete'],
+                value: [date, true],
+                timestamp_id: this.data.timestamp_id
             });
-            this.update(field);
+            this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
         },
-        deleteItemEvent: function deleteItemEvent() {
-            this.$emit('delete', this.data.check_item_id);
+        deleteItem: function deleteItem() {
+            this.$store.dispatch('deleteCheckItem', this.data.check_item_id);
+            this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
         },
-        update: function update(field) {
-            this.$emit('update', {
-                field: field,
-                value: this.cache[field],
-                id: this.data.check_item_id,
-                item: this.data,
+        update: function update() {
+            this.$store.commit('updateCheckItemField', {
                 timestamp_id: this.data.timestamp_id,
-                update: true
+                field: 'name',
+                value: this.cache.name
             });
         },
         createNewItem: function createNewItem(event) {
             if (!event.shiftKey) {
                 event.preventDefault();
                 if (!!this.cache.name) {
-                    this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
+                    this.$store.commit('addCheckItem', this.$store.getters.checkListId);
                 }
             }
         },
@@ -39109,7 +39106,7 @@ var render = function() {
           domProps: { value: _vm.cache.name },
           on: {
             change: function($event) {
-              return _vm.update("name")
+              return _vm.update()
             },
             blur: [
               _vm.onBluer,
@@ -39133,8 +39130,7 @@ var render = function() {
               ) {
                 return null
               }
-              _vm.onBluer()
-              _vm.update("name")
+              return _vm.update()
             },
             input: function($event) {
               if ($event.target.composing) {
@@ -39178,7 +39174,7 @@ var render = function() {
             "li",
             {
               staticClass: "context-menu__item",
-              on: { click: _vm.deleteItemEvent }
+              on: { click: _vm.deleteItem }
             },
             [_vm._v("delete")]
           )
@@ -39364,35 +39360,35 @@ function closeContextMenu(event) {
             }
         },
         onBluer: function onBluer() {
-            this.editStatus = !this.editStatus;
+            if (!status) {
+                this.editStatus = !this.editStatus;
+            } else {
+                this.editStatus = false;
+            }
+            this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
         },
         openCommentMenu: function openCommentMenu() {
             this.$store.commit('toggleComment');
             this.$store.dispatch('loadComments', this.data.check_item_id);
         },
-        updateWithDate: function updateWithDate(field) {
+        updateWithDate: function updateWithDate() {
             var date = new Date().getTime();
-            this.$emit('update', {
-                field: 'date_complete',
-                value: date,
-                id: this.data.check_item_id,
-                timestamp_id: this.data.timestamp_id,
-                item: this.data,
-                update: false
+            console.log(date);
+            this.$store.commit('updateCheckItemField', {
+                field: ['date_complete', 'complete'],
+                value: [date, this.cache.complete],
+                timestamp_id: this.data.timestamp_id
             });
-            this.update(field);
         },
-        deleteItemEvent: function deleteItemEvent() {
-            this.$emit('delete', this.data.check_item_id);
+        deleteItem: function deleteItem() {
+            this.$store.dispatch('deleteCheckItem', this.data.check_item_id);
+            this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
         },
-        update: function update(field) {
-            this.$emit('update', {
-                field: field,
-                value: this.cache[field],
-                id: this.data.check_item_id,
-                item: this.data,
+        update: function update() {
+            this.$store.commit('updateCheckItemField', {
                 timestamp_id: this.data.timestamp_id,
-                update: true
+                field: 'name',
+                value: this.cache.name
             });
         },
         openContextMenu: function openContextMenu(event) {
@@ -39603,7 +39599,7 @@ var render = function() {
             "li",
             {
               staticClass: "context-menu__item",
-              on: { click: _vm.deleteItemEvent }
+              on: { click: _vm.deleteItem }
             },
             [_vm._v("delete")]
           )
@@ -39695,12 +39691,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addItem: function addItem() {
             var _this = this;
 
-            if (this.$store.getters.checkListId) {
-                this.$store.dispatch('addCheckItem', this.$store.getters.checkListId);
+            if (this.$store.getters.checkListIsCreate) {
+                this.$store.commit('addCheckItem', this.$store.getters.checkListId);
                 this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
             } else {
                 this.$store.dispatch('createCheckList').then(function () {
-                    _this.$store.dispatch('addCheckItem', _this.$store.getters.checkListId);
+                    _this.$store.commit('addCheckItem', _this.$store.getters.checkListId);
                     _this.$store.dispatch('checkCheckListOnComplete', _this.$store.getters.completePercent);
                 });
             }
@@ -44636,8 +44632,7 @@ var render = function() {
                     _vm._l(_vm.inCompleteItems, function(item) {
                       return _c("CheckItem", {
                         key: item.timestamp_id,
-                        attrs: { data: item },
-                        on: { update: _vm.updateItem, delete: _vm.deleteItem }
+                        attrs: { data: item }
                       })
                     }),
                     1
@@ -44649,7 +44644,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm.canCreateItem ? _c("addNewItem") : _vm._e(),
+          _c("addNewItem"),
           _vm._v(" "),
           _vm.completeItems.length > 0
             ? _c(
@@ -44691,10 +44686,7 @@ var render = function() {
                               return _c("CheckItemComplete", {
                                 key: item.timestamp_id + "complete",
                                 attrs: { data: item },
-                                on: {
-                                  update: _vm.updateItem,
-                                  delete: _vm.deleteItem
-                                }
+                                on: { delete: _vm.deleteItem }
                               })
                             }),
                             1
@@ -48355,29 +48347,38 @@ var checkItems = {
             var item = state.checkItems.find(function (item) {
                 return item.timestamp_id === id;
             });
-            item[field] = data.value;
+            if (Array.isArray(field)) {
+                for (var oneField = 0; oneField < field.length; oneField++) {
+                    var fieldName = field[oneField];
+                    item[fieldName] = data.value[oneField];
+                }
+            } else {
+                item[field] = data.value;
+            }
         },
         updateId: function updateId(state, data) {
-            var item = state.checkItems.find(function (item) {
-                return item.check_item_id === data.idBefore;
-            });
+            var item = data.itemBefore;
             item.check_item_id = data.item.check_item_id;
             item.check_list_id = data.item.check_list_id;
         },
-        addCheckItem: function addCheckItem(state) {
-            var toEnd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-
+        canCreateItem: function canCreateItem(state) {
+            state.canCreate = false;
+        },
+        addCheckItem: function addCheckItem(state, checkListId) {
+            // let orderToCreate = context.rootGetters.getOrderCreateSetting;
+            // if (!orderToCreate) {
+            //     orderNumber = 0;
+            // }
+            state.canCreate = false;
             var orderNumber = state.checkItems.length;
-            if (!toEnd) {
-                orderNumber = 0;
-            }
+
             var item = {
                 name: '',
                 description: "description",
                 complete: false,
                 timestamp_id: new Date().getTime(),
                 check_item_id: null,
-                check_list_id: null,
+                check_list_id: checkListId,
                 order: orderNumber,
                 date_complete: null,
                 created_at: null,
@@ -48385,7 +48386,7 @@ var checkItems = {
             };
             state.checkItems.push(item);
             sortByOrder(state.checkItems);
-            state.last = item;
+            // state.last = item;
         }
     },
     actions: {
@@ -48405,40 +48406,43 @@ var checkItems = {
                 stopLoader(context);
             });
         },
-        updateCheckItemField: function updateCheckItemField(context, payload) {
+        updateCheckItemField: function updateCheckItemField(context, timestamp_id) {
             var _this2 = this;
 
-            context.commit('updateCheckItemField', payload);
-            if (payload.update) {
-                runLoader(context);
-                if (!payload.item.check_item_id) {
-                    axios.post('' + context.state.URI.pref + context.state.URI.PUT.edit + '/' + payload.id, { item: payload.item }).then(function (response) {
-                        // console.log(response.data);
-                    }).catch(function (err) {
-                        console.log(err);
-                        _this2._vm.$notify({
-                            duration: 3000,
-                            type: 'error',
-                            text: 'Task is not change'
-                        });
-                    }).finally(function () {
-                        stopLoader(context);
-                    });
-                } else {
-                    axios.post('' + context.state.URI.pref + context.state.URI.PUT.edit + '/' + payload.id, { item: payload.item }).then(function (response) {
-                        // console.log(response.data);
-                    }).catch(function (err) {
-                        console.log(err);
-                        _this2._vm.$notify({
-                            duration: 3000,
-                            type: 'error',
-                            text: 'Task is not change'
-                        });
-                    }).finally(function () {
-                        stopLoader(context);
-                    });
-                }
-            }
+            runLoader(context);
+            var item = context.state.checkItems.find(function (checkItem) {
+                return checkItem.timestamp_id === timestamp_id;
+            });
+            var id = item.check_item_id;
+            // if (!payload.item.check_item_id) {
+            axios.post('' + context.state.URI.pref + context.state.URI.PUT.edit + '/' + id, { item: item }).then(function (response) {
+                // console.log(response.data);
+            }).catch(function (err) {
+                console.log(err);
+                _this2._vm.$notify({
+                    duration: 3000,
+                    type: 'error',
+                    text: 'Task is not change'
+                });
+            }).finally(function () {
+                stopLoader(context);
+            });
+            // }else {
+            //     axios
+            //         .post(`${context.state.URI.pref}${context.state.URI.PUT.edit}/${payload.id}`, {item: payload.item})
+            //         .then(response => {
+            //             // console.log(response.data);
+            //         }).catch((err) => {
+            //         console.log(err);
+            //         this._vm.$notify({
+            //             duration: 3000,
+            //             type: 'error',
+            //             text: 'Task is not change',
+            //         });
+            //     }).finally(() => {
+            //         stopLoader(context);
+            //     });
+            // }
         },
         deleteCheckItem: function deleteCheckItem(context, id) {
             var _this3 = this;
@@ -48460,24 +48464,17 @@ var checkItems = {
                 });
             }
         },
-        addCheckItem: function addCheckItem(context, id) {
+        addCheckItem: function addCheckItem(context, timestamp_id) {
             var _this4 = this;
 
-            /*
-            * Создаем item без ожидания запроса и потом подменяем id
-            * */
-            var orderToCreate = context.rootGetters.getOrderCreateSetting;
-
-            /*
-                Добавлять ли новый элемент в конец или в начало
-            * */
-            context.commit('addCheckItem', orderToCreate);
             runLoader(context);
-            var item = context.state.last;
-            var itemToSend = Object.assign({}, item, { check_list_id: id });
-            axios.post('' + context.state.URI.pref + context.state.URI.POST.create, itemToSend).then(function (response) {
+            var item = context.state.checkItems.find(function (checkItem) {
+                return checkItem.timestamp_id === timestamp_id;
+            });
+
+            axios.post('' + context.state.URI.pref + context.state.URI.POST.create, item).then(function (response) {
                 /*Подмена*/
-                context.commit('updateId', { idBefore: item.check_item_id, item: response.data });
+                context.commit('updateId', { itemBefore: item, item: response.data });
             }).catch(function (err) {
                 _this4._vm.$notify({
                     duration: 3000,
