@@ -115,6 +115,7 @@
     import CheckBoxButton from '../ChekBoxButton'
     import AppSelect from '../Select'
     import Menu from  '../Menu'
+    import EventBus from 'Core/helpers/eventBus'
 
     function closeShareMenu(event) {
         let target = event.target;
@@ -192,6 +193,8 @@
                         this.lastRoute = null;
                     }
                 }
+                let eventName = (!this.$route.fullPath.includes('/settings'))  ? 'overflow_on' : 'overflow_off';
+                EventBus.$emit(eventName);
 
                 this.$router.push(pathToNavigate);
             },

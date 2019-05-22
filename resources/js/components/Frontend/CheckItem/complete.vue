@@ -12,13 +12,12 @@
                 </span>
             </label>
         </div>
-        <div class="check-item__name-wrapper" :class="editClass"
-             @click="changeClass">
+        <div class="check-item__name-wrapper" :class="editClass" @click="changeClass">
             <div class="check-item__name-parse" v-html="parse"></div>
             <textarea wrap="hard" class="check-item__name" rows="1" v-model.trim="cache.name"
                       cols="20" @change="update('name')" ref="item" @blur="onBluer"
-                      v-autosize="cache.name" :placeholder="placeholder" @keyup.esc="onBluer(); update('name');"
-                   ></textarea>
+                      v-autosize="cache.name" :placeholder="placeholder"  @keyup.esc="$refs.item.blur()">
+            </textarea>
         </div>
         <div class="context-menu-wrapper" :class="contextMenuOpen">
             <button class="check-item__menu" :class="contextMenuOpen" ref="contextMenuButton" @click="openContextMenu" >
@@ -26,13 +25,13 @@
                 ...
             </button>
             <ul class="context-menu__list">
-                <li class="context-menu__item">attach</li>
+                <!--<li class="context-menu__item">attach</li>-->
                 <li class="context-menu__item" @click="openCommentMenu">comments</li>
                 <li class="context-menu__item" @click="deleteItem">delete</li>
             </ul>
         </div>
 
-        <span class="check-item__data-complete">
+        <span class="check-item__data-complete date">
             {{dateFormat}}
         </span>
     </div>
@@ -42,6 +41,10 @@
 <script>
     import {checkItem} from 'Core/helpers/defaultValue'
     import moment from 'moment'
+    import Throttler from 'Core/helpers/Throttle'
+    import EventBus from 'Core/helpers/eventBus'
+
+    let throttleMakeDispatch = new Throttler();
 
     function closeContextMenu(event) {
         let target = event.target;
@@ -95,7 +98,6 @@
                 }
                 return(str);
             }
-
         },
         methods: {
             changeClass() {
@@ -108,29 +110,23 @@
                 }
             },
             onBluer() {
-                if (!status) {
-                    this.editStatus = !this.editStatus;
-                }else {
-                    this.editStatus = false;
-                }
-                this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
+                this.editStatus = !this.editStatus;
             },
             openCommentMenu() {
-                this.$store.commit('toggleComment');
+                EventBus.$emit('open_comments');
                 this.$store.dispatch('loadComments', this.data.check_item_id);
             },
             updateWithDate() {
                 let date = new Date().getTime();
-                console.log(date);
                 this.$store.commit('updateCheckItemField', {
                     field: ['date_complete', 'complete'],
                     value: [date, this.cache.complete] ,
                     timestamp_id: this.data.timestamp_id,
                 });
+                throttleMakeDispatch.delay(this.save);
             },
             deleteItem() {
                 this.$store.dispatch('deleteCheckItem', this.data.check_item_id);
-                this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
             },
             update() {
                 this.$store.commit('updateCheckItemField', {
@@ -138,6 +134,10 @@
                     field: 'name',
                     value: this.cache.name
                 });
+                throttleMakeDispatch.delay(this.save);
+            },
+            save() {
+                this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
             },
             openContextMenu(event) {
                 if (!this.contextMenuOpenStatus) {

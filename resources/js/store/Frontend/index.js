@@ -19,6 +19,7 @@ let store = new Vuex.Store({
     },
     state: {
         isLoad: false,
+        mobile: false
     },
     getters: {
         isLoad(state) {
@@ -32,6 +33,9 @@ let store = new Vuex.Store({
         updateLoadStatus(state, payload) {
             state.isLoad = payload;
         },
+        updateMobileViews(state, status) {
+            state.mobile = status;
+        }
     }
 
 });

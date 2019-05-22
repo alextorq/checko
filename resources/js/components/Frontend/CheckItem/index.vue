@@ -7,13 +7,12 @@
                 <span class="checkbox-svg-wrapper"></span>
             </label>
         </div>
-        <div class="check-item__name-wrapper" :class="editClass" v-focus="data.check_item_id"
-             @click="changeClass">
+        <div class="check-item__name-wrapper" :class="editClass" v-focus="data.check_item_id" @click="changeClass">
             <div class="check-item__name-parse" v-html="parse"></div>
             <textarea wrap="hard" v-autosize="cache.name" class="check-item__name" rows="1" v-model.trim="cache.name"
                       cols="20" @change="update()" ref="item" @blur="onBluer" :placeholder="placeholder"
-                      @keydown.enter="createNewItem"  @keyup.esc="update();"
-                   ></textarea>
+                      @keydown.enter="createNewItem"  @keyup.esc="$refs.item.blur()">
+            </textarea>
         </div>
         <div class="context-menu-wrapper" :class="contextMenuOpen">
             <button class="check-item__menu" :class="contextMenuOpen" ref="contextMenuButton" @click="openContextMenu" >
@@ -21,7 +20,7 @@
                 ...
             </button>
             <ul class="context-menu__list">
-                <li class="context-menu__item">attach</li>
+                <!--<li class="context-menu__item">attach</li>-->
                 <li class="context-menu__item" @click="openCommentMenu">comments</li>
                 <li class="context-menu__item" @click="deleteItem">delete</li>
             </ul>
@@ -31,7 +30,11 @@
 
 <script>
     import {checkItem} from 'Core/helpers/defaultValue'
+    import Throttler from 'Core/helpers/Throttle'
+    import EventBus from 'Core/helpers/eventBus'
 
+    let throttleMakeDispatch = new Throttler(500);
+    
     function closeContextMenu(event) {
         let target = event.target;
         if (window._self.$refs['contextMenuButton'] !== target) {
@@ -93,10 +96,9 @@
         methods: {
             onBluer() {
                 this.editStatus = !this.editStatus;
-                if (!this.data.check_item_id) {
-                    this.$store.dispatch('addCheckItem', this.data.timestamp_id);
-                } else {
-                    this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
+                /*Если итем только что создаан и пуст то сохраняем его*/
+                if (!this.cache.name && !this.data.check_item_id) {
+                    throttleMakeDispatch.delay(this.save);
                 }
             },
             newItemFocus() {
@@ -124,11 +126,10 @@
                     value: [date, true] ,
                     timestamp_id: this.data.timestamp_id,
                 });
-                this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
+                throttleMakeDispatch.delay(this.save);
             },
             deleteItem() {
                 this.$store.dispatch('deleteCheckItem', this.data.check_item_id);
-                this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
             },
             update() {
                 this.$store.commit('updateCheckItemField', {
@@ -136,6 +137,10 @@
                     field: 'name',
                     value: this.cache.name
                 });
+                throttleMakeDispatch.delay(this.save);
+            },
+            save() {
+                this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
             },
             createNewItem(event) {
                 if (!event.shiftKey) {
@@ -146,7 +151,8 @@
                 }
             },
             openCommentMenu() {
-                this.$store.commit('toggleComment');
+                EventBus.$emit('open_comments');
+
                 this.$store.dispatch('loadComments', this.data.check_item_id);
             },
             openContextMenu(event) {

@@ -8,9 +8,8 @@
                 </svg>
            </span>
         </div>
-        <input class="checklist__name" type="text"  :size="inputSize" :placeholder="placeholder" v-model="name"
-               placeholder="CheckList name"
-               @change="endEditName">
+        <input class="checklist__name" type="text" ref="item"  :size="inputSize" :placeholder="placeholder"
+               v-model="name" placeholder="CheckList name" @change="endEditName" @keyup.esc="$refs.item.blur()">
     </div>
 </template>
 
@@ -43,7 +42,10 @@
                 return this.$store.getters.checkListIsCreate
             },
             inputSize() {
-                return Math.max(15, this.placeholder.length);
+                let nameLength = (!!this.$store.state.checkList.list.name)
+                    ?  this.$store.state.checkList.list.name.length : 15;
+
+                return Math.max(nameLength, this.placeholder.length);
             }
         },
         methods: {

@@ -20,10 +20,9 @@ const comments = {
     state: {
         comment_id: null,
         comments: {},
-        commentOpen: false,
         loadStatus: false,
         URI: {
-            pref: '/frontend/checkitemcomment/',
+            pref: '/frontend/checkitem_comment/',
             POST: {
                 create: 'comments',
             },
@@ -56,9 +55,6 @@ const comments = {
             if (payload)  {
                 state.comment_id = payload;
             }
-        },
-        toggleComment(state) {
-            state.commentOpen = !state.commentOpen;
         },
         loadComments(state, payload) {
             let commentId = payload.id;
@@ -106,7 +102,7 @@ const comments = {
                     }).catch((err) => {
                         console.log(err);
                         this._vm.$notify({
-                            duration: -3000,
+                            duration: -1,
                             type: 'error',
                             text: err,
                         });

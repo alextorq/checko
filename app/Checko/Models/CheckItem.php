@@ -11,6 +11,7 @@ namespace App\Checko\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Checko\Models\CheckList;
 use App\Checko\Models\CheckItemComment;
+use App\Events\UpdateCheckItem;
 
 
 class CheckItem extends Model
@@ -24,11 +25,17 @@ class CheckItem extends Model
 
     public function cheklist()
     {
-        return $this->belongsTo(CheckList::class, 'check_list_id', 'check_lists_id');
+        return $this->belongsTo(CheckList::class, 'check_list_id', 'check_list_id');
     }
 
     public function comments()
     {
         return $this->hasMany(CheckItemComment::class, 'check_item_id', 'check_item_id');
     }
+
+//    protected $dispatchesEvents = [
+//        'created' => UpdateCheckItem::class,
+//        'deleted' => UpdateCheckItem::class,
+//        'updated' => UpdateCheckItem::class
+//    ];
 }

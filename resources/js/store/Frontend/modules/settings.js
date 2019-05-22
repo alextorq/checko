@@ -94,11 +94,8 @@ const userSettings = {
         },
         loadUserSettings(state, payload) {
             if (payload.user.profile && payload.user.profile.user_settings) {
-
                 try {
-                    let settings = JSON.parse(payload.user.profile.user_settings);
-                    state.settings = settings;
-                    console.log(settings);
+                    state.settings = JSON.parse(payload.user.profile.user_settings);
                 }catch (e) {
                     console.log(e);
                 }
@@ -124,7 +121,7 @@ const userSettings = {
                 axios.post(context.state.URI.pref, {settings: context.state.settings})
                     .then((responce) => {
                         // context.commit('updateUser',responce.data.user)
-                        console.log(responce.data);
+                        // console.log(responce.data);
                     })
                     .catch((error) => {
                         console.log(error);

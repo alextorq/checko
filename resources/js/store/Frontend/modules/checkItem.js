@@ -23,7 +23,6 @@ function stopLoader(context) {
 const checkItems = {
     state: {
         checkItems: [],
-        canCreate: true,
         last: null,
         URI: {
             pref: '/frontend/checkitem/',
@@ -63,6 +62,19 @@ const checkItems = {
                 }
             }
             return {all: 0, complete: 0};
+        },
+        allComplete(state) {
+            if (state.checkItems.length > 0) {
+                let complete = state.checkItems.filter((item) => item.complete).length;
+
+
+                let all = state.checkItems.length;
+
+                if (all === complete) {
+                    return true;
+                }
+            }
+            return false;
         },
         completePercent(state) {
             if (state.checkItems.length > 0) {
@@ -111,9 +123,6 @@ const checkItems = {
             item.check_item_id = data.item.check_item_id;
             item.check_list_id = data.item.check_list_id;
         },
-        canCreateItem(state) {
-            state.canCreate = false;
-        },
         addCheckItem(state, checkListId) {
             // let orderToCreate = context.rootGetters.getOrderCreateSetting;
             // if (!orderToCreate) {
@@ -158,41 +167,27 @@ const checkItems = {
             });
         },
         updateCheckItemField(context, timestamp_id) {
-                runLoader(context);
                 let item = context.state.checkItems.find((checkItem) => {return checkItem.timestamp_id === timestamp_id});
                 let id = item.check_item_id;
-                // if (!payload.item.check_item_id) {
-                    axios
-                        .post(`${context.state.URI.pref}${context.state.URI.PUT.edit}/${id}`, {item: item})
-                        .then(response => {
-                            // console.log(response.data);
-                        }).catch((err) => {
-                        console.log(err);
-                        this._vm.$notify({
-                            duration: 3000,
-                            type: 'error',
-                            text: 'Task is not change',
-                        });
-                    }).finally(() => {
-                        stopLoader(context);
+                if (!id) {
+                    context.dispatch('addCheckItem', timestamp_id);
+                    return
+                }
+                runLoader(context);
+                axios
+                    .post(`${context.state.URI.pref}${context.state.URI.PUT.edit}/${id}`, {item: item})
+                    .then(response => {
+                        // console.log(response.data);
+                    }).catch((err) => {
+                    console.log(err);
+                    this._vm.$notify({
+                        duration: 3000,
+                        type: 'error',
+                        text: 'Task is not change',
                     });
-                // }else {
-                //     axios
-                //         .post(`${context.state.URI.pref}${context.state.URI.PUT.edit}/${payload.id}`, {item: payload.item})
-                //         .then(response => {
-                //             // console.log(response.data);
-                //         }).catch((err) => {
-                //         console.log(err);
-                //         this._vm.$notify({
-                //             duration: 3000,
-                //             type: 'error',
-                //             text: 'Task is not change',
-                //         });
-                //     }).finally(() => {
-                //         stopLoader(context);
-                //     });
-                // }
-
+                }).finally(() => {
+                    stopLoader(context);
+                });
         },
         deleteCheckItem(context, id) {
             if (id) {

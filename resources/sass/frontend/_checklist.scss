@@ -1,7 +1,14 @@
 .checklist {
-
+  padding-bottom: 80px;
+  padding-top: 80px;
+  flex-grow: 1;
 }
 
+.content {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+}
 
 /*CheckList name */
 .checklist__name {

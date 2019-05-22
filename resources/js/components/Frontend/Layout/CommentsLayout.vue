@@ -21,23 +21,24 @@
 
 <script>
     import Comments from '../Comments'
+    import EventBus from 'Core/helpers/eventBus'
 
     export default {
         name: "CommentLayout",
         data() {
             return {
-
+                openStatus: false
             }
         },
         methods: {
             closeMenu() {
-                this.$store.commit('toggleComment');
+                this.openStatus = false;
             },
         },
         computed: {
             isMenuOpenStatus() {
                 return {
-                    open: this.open
+                    open: this.openStatus
                 }
             },
             loading() {
@@ -50,12 +51,10 @@
                 return this.$store.getters.userLoginStatus;
             }
         },
-        props: {
-            open: {
-                type: Boolean,
-                required: true,
-                default: false
-            }
+        created() {
+            EventBus.$on('open_comments', () => {
+                this.openStatus = true
+            })
         },
         components: {
             Comments,

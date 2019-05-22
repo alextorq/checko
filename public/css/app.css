@@ -113,7 +113,8 @@ main {
 }
 
 main .container {
-  width: 80%;
+  width: 100%;
+  padding: 0 5%;
   margin: 0 auto;
 }
 
@@ -126,8 +127,6 @@ main .container {
 
 main .container .content {
   max-width: 100%;
-  padding-bottom: 80px;
-  padding-top: 80px;
   min-height: calc(100vh - 150px);
 }
 
@@ -190,6 +189,7 @@ textarea {
 
 .scrolled {
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-face-color: #0c0f14;
   scrollbar-track-color: #0c0f14;
@@ -207,6 +207,14 @@ textarea {
 .scrolled::-webkit-scrollbar-track {
   background: #e8f0f3;
   border-radius: 5px;
+}
+
+.date {
+  color: #a4b5be;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0.03px;
 }
 
 /*Arrow*/
@@ -384,18 +392,41 @@ button.close-delete:before {
 
 .fade-enter-active,
 .fade-leave-active {
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
 }
 
 .fade-leave-active,
 .fade-leave-to {
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.fade-leave-active form,
+.fade-leave-to form {
+  -webkit-transform: translateX(-200px);
+          transform: translateX(-200px);
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+  opacity: 0;
 }
 
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+  overflow: hidden;
+}
+
+.fade-enter form,
+.fade-leave-to form {
+  -webkit-transform: translateX(600px);
+          transform: translateX(600px);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .my-style {
@@ -487,7 +518,6 @@ button.close-delete:before {
 }
 
 .percent-progress {
-  opacity: 0.8;
   color: #01b06d;
   font-size: 12px;
   font-weight: 400;
@@ -503,6 +533,25 @@ button.close-delete:before {
   background-color: #01af6c;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
+}
+
+.checklist {
+  padding-bottom: 80px;
+  padding-top: 80px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
 }
 
 /*CheckList name */
@@ -755,6 +804,250 @@ button.close-delete:before {
 }
 
 /*Settings end*/
+
+.wrapper-user-lists {
+  width: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  will-change: width;
+  max-height: calc(100vh - 60px);
+  /*sort*/
+  /*sort end*/
+  /*open all list button*/
+  /*open all list button*/
+  /*list of list*/
+  /*list of list end*/
+  /*item of list*/
+  /*item of list end*/
+  /*top sticky title*/
+  /*top sticky title end*/
+}
+
+.wrapper-user-lists.open {
+  width: 50%;
+  overflow: auto;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin-right: 15px;
+}
+
+@media only screen and (max-width: 767px) {
+  .wrapper-user-lists.open {
+    width: 100%;
+  }
+}
+
+.wrapper-user-lists .selected-list-wrapper .selected-list {
+  min-width: 160px;
+}
+
+.wrapper-user-lists .selected-list-wrapper .arrow {
+  margin-left: 10px;
+}
+
+.wrapper-user-lists .button {
+  position: absolute;
+  left: -52px;
+  top: 160px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 40px 0 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.wrapper-user-lists .button span {
+  text-transform: none;
+  letter-spacing: 0.4px;
+  font-weight: 400;
+}
+
+.wrapper-user-lists .button .arrow {
+  margin-left: 20px;
+}
+
+.wrapper-user-lists .button .arrow:before {
+  background-color: #fff;
+}
+
+.wrapper-user-lists .button .arrow:after {
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 767px) {
+  .wrapper-user-lists .button {
+    display: none;
+  }
+}
+
+.wrapper-user-lists .user-lists {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  padding-bottom: 20px;
+}
+
+.wrapper-user-lists .user-lists__item {
+  padding-right: 40px;
+  border-bottom: 1px solid #cdd9dd;
+  color: #1d2025;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.09px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.wrapper-user-lists .user-lists__item:hover {
+  background-color: rgba(164, 181, 190, 0.15);
+}
+
+.wrapper-user-lists .user-lists__item.active {
+  background-color: rgba(164, 181, 190, 0.15);
+}
+
+.wrapper-user-lists .user-lists__item .flex-start {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.wrapper-user-lists .user-lists__item .user-lists__item-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 20px 0;
+}
+
+.wrapper-user-lists .user-lists__item .left-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper-user-lists .user-lists__item .icon {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #cdd9dd;
+  border-radius: 50%;
+  margin-top: 2px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: -1;
+}
+
+.wrapper-user-lists .user-lists__item .icon.complete polyline {
+  stroke-dashoffset: 0;
+}
+
+.wrapper-user-lists .user-lists__item .icon svg {
+  width: 120%;
+  height: 120%;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  position: absolute;
+  left: -2px;
+  top: -4px;
+  z-index: 1;
+}
+
+.wrapper-user-lists .user-lists__item .icon svg polyline {
+  fill: none;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  stroke: #01b06d;
+  stroke-width: 2;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.wrapper-user-lists .user-lists__item .icon:after {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  content: '';
+  right: 0;
+  top: 0;
+  background: #fff;
+  z-index: -1;
+}
+
+.wrapper-user-lists .user-lists__item .percent-progress {
+  margin-left: auto;
+}
+
+.wrapper-user-lists .user-lists-title-wrapper {
+  background-color: #ffffff;
+  z-index: auto;
+  border-bottom: 1px solid #cdd9dd;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: 40px;
+}
+
+.wrapper-user-lists .user-lists-title {
+  cursor: pointer;
+  color: #1d2025;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.13px;
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper-user-lists .user-lists-title .left-col {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.wrapper-user-lists .user-lists-title .arrow {
+  margin-right: 10px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.wrapper-user-lists .user-lists.done {
+  margin-top: 40px;
+}
 
 .check-item__label {
   display: -webkit-box;
@@ -1079,14 +1372,6 @@ button.close-delete:before {
   letter-spacing: 0.03px;
 }
 
-.checklist__item-list.complete span {
-  color: #a4b5be;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 25px;
-  letter-spacing: 0.03px;
-}
-
 .checklist__item-list.complete .checklist__description {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1360,6 +1645,11 @@ button.close-delete:before {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  height: 100%;
+}
+
+.form-registration-wrapper > form {
+  margin-top: -10vh;
 }
 
 .form-registration-wrapper h2 {
@@ -1405,6 +1695,8 @@ button.close-delete:before {
   .form-registration-wrapper form {
     width: 100%;
     padding: 20px 15px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 }
 
@@ -1484,6 +1776,10 @@ button.close-delete:before {
         -ms-flex-pack: start;
             justify-content: flex-start;
   }
+}
+
+.form-forgot .text-default {
+  margin-bottom: 40px;
 }
 
 .form-item {

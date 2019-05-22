@@ -27,7 +27,17 @@ class CheckListController extends BaseController
         return response()->json($checklist);
     }
 
-    public function createCheckList(Request $request)
+    public function allUsersList()
+    {
+        if (Auth::check()) {
+            $checklist = Auth::user()->checklists()->with('checkItems')->get();
+            return response()->json($checklist);
+        }
+
+        return response()->json('you must be login', 401);
+    }
+
+    public function create(Request $request)
     {
         $inputParam = $request->all();
 
@@ -36,10 +46,11 @@ class CheckListController extends BaseController
         }
 
         $checklist = CheckList::create($inputParam);
+        $checklist['check_items'] = [];
         return response()->json($checklist);
     }
 
-    public function editCheckList(Request $request)
+    public function edit(Request $request)
     {
         $inputParam = $request->all();
         $checklist = CheckList::findOrFail($inputParam['check_list_id']);

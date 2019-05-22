@@ -1,38 +1,26 @@
 <template>
-    <div class="form-registration-wrapper form-sign">
+    <div class="form-registration-wrapper form-forgot">
 
         <form action="/" method="post" @submit.prevent="send">
 
             <div class="flex-row jcb aic">
-                <h2>Sign in</h2>
-                <div class="sing-with-wrapper flex-row jcb aic">
-                    <span>Sign in with</span>
-                    <ul class="sing-with__list flex-row jcb aic">
-                        <li class="sing-with__item"><a href="/provider?provider=google">
-                            <img src="/images/google.png" alt="google">
-                        </a></li>
-                        <li class="sing-with__item"><a href="/provider?provider=facebook">
-                            <img src="/images/facebook.png" alt="facebook">
-                        </a></li>
-                        <li class="sing-with__item"><a href="/provider?provider=twitter">
-                            <img src="/images/twitter.png" alt="twitter">
-                        </a></li>
-                    </ul>
+                <h2>Forgot your password?</h2>
+
+                <div class="text-default">
+                    Enter your email address that you used to register.
+                    We'll send you an email with your username and a link to reset your password.
                 </div>
             </div>
+
             <inputForm name="email" label="Е-mail" @error="errorUpdate" icon="mail" ref="email"
                        :required="true" :errors="emailError" :email="true" v-model="form.email.value"></inputForm>
 
-            <inputFormPassword name="password" label="Password" @error="errorUpdate" :min="8"
-                               icon="password" ref="password" :required="true"
-                               :errors="passwordError" v-model="form.password.value"></inputFormPassword>
 
             <div class="flex-row jcb aic">
-                <button class="button">Sign in </button>
+                <button class="button">Send</button>
 
                 <div class="form-links">
                     <router-link to="/registration">Create account</router-link>
-                    <router-link :to="{name: 'ForgotPassword'}">Forgot your password</router-link>
                 </div>
 
             </div>
@@ -44,8 +32,9 @@
 <script>
     import inputForm from '../FormInput'
     import inputFormPassword from '../FormInput/password'
+
     export default {
-        name: "FormLogin",
+        name: "ForgotPassword",
         data() {
             return {
                 form: {
@@ -122,19 +111,21 @@
             },
             send() {
                 if (this.validate()) {
-                    axios.post('/login', {
-                        email: this.form.email.value,
-                        password: this.form.password.value,
-                    })
-                    .then((responce) => {
-                        this.$store.commit('updateUser', responce.data);
-                        this.$router.push('/');
-                    })
-                    .catch((error) => {
-                        if (error.response.status === 422) {
-                            this.showErrors(error.response.data.errors)
-                        }
-                    });
+                        axios.post('/password/email', {
+                            email: this.form.email.value
+                        })
+                        .then((responce) => {
+                            this.$notify({
+                                duration: -1,
+                                type: 'success',
+                                text: 'A message has been sent to you by email with instructions on how to reset your password.'
+                            });
+                        })
+                        .catch((error) => {
+                            if (error.response.status === 422) {
+                                this.showErrors(error.response.data.errors)
+                            }
+                        });
                 }
             },
             showErrors(errors) {
@@ -150,4 +141,3 @@
         }
     }
 </script>
-

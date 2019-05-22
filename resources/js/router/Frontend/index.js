@@ -17,6 +17,8 @@ import  SettingsList from '../../components/Frontend/Settings/List'
 import  SettingsAccount from '../../components/Frontend/Settings/Account'
 import  SettingsNotification from '../../components/Frontend/Settings/Notification'
 import  SettingsPayment from '../../components/Frontend/Settings/Payment'
+import ForgotPassword from  '../../components/Frontend/FormForgotPassword'
+
 
 Vue.use(VueRouter);
 
@@ -119,6 +121,16 @@ const routes = [
                 component: FormLogin,
                 name: 'Login',
                 meta: {title: 'Login', breadcrumb: true, keepAlive: true,
+                    permission: {
+                        hook: null
+                    }
+                },
+            },
+            {
+                path: 'forgot_password',
+                component: ForgotPassword,
+                name: 'ForgotPassword',
+                meta: {title: 'Forgot Password', breadcrumb: true, keepAlive: true,
                     permission: {
                         hook: null
                     }

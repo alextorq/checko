@@ -91,7 +91,8 @@ main {
     padding-top: 49px;
   }
   .container {
-    width: 80%;
+    width: 100%;
+    padding: 0 5%;
     margin: 0 auto;
     @include phone {
       width: 100%;
@@ -99,8 +100,6 @@ main {
     }
     .content {
       max-width: 100%;
-      padding-bottom: 80px;
-      padding-top: 80px;
       min-height: calc(100vh - 150px);
       @include phone {
         padding-bottom: 40px;
@@ -149,6 +148,7 @@ textarea {
 
 .scrolled {
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-face-color: $color_3;
   scrollbar-track-color: $color_3;
@@ -163,6 +163,14 @@ textarea {
     background: $color_6;
     border-radius: 5px;
   }
+}
+
+.date {
+  color: $grey_3;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0.03px;
 }
 
 /*Arrow*/

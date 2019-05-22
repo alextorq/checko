@@ -18,11 +18,26 @@
 
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: all 0.8s;
 }
 .fade-leave-active, .fade-leave-to {
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  form {
+    transform: translateX(-200px);
+    transition: all 0.8s;
+    opacity: 0;
+  }
 }
 .fade-enter, .fade-leave-to  {
   opacity: 0;
+  overflow: hidden;
+  form {
+    transform: translateX(600px);
+    transition: all 0.5s;
+  }
 }

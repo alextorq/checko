@@ -1,6 +1,8 @@
 import router from '../../../router/Frontend'
-import store from "../index";
 import { Base64 } from 'js-base64';
+import Vue from  'vue'
+import moment from 'moment'
+
 
 function runLoader(context) {
     let status = context.rootGetters.isLoad;
@@ -18,6 +20,39 @@ function stopLoader(context) {
     }
 }
 
+
+
+let sortList = {
+    sortByComplete(a, b) {
+        let aComplete = a.check_items.filter((item) => {return item.complete == true}).length;
+        let bComplete = b.check_items.filter((item) => {return item.complete == true}).length;
+
+        let aAll = a.check_items.length;
+        let bAll = b.check_items.length;
+
+
+        let aValue = Math.ceil(aComplete / (aAll / 100));
+        let bValue = Math.ceil(bComplete / (bAll / 100));
+
+        if (!aComplete) {
+            aValue = 0;
+        }
+        if (!bComplete) {
+            bValue = 0;
+        }
+
+        return aValue - bValue;
+    },
+    sortByDate(a, b) {
+      return moment.utc(a.created_at).diff(moment.utc(b.created_at))
+    },
+    sortByModified(a, b) {
+        return moment.utc(a.updated_at).diff(moment.utc(b.updated_at))
+    }
+
+};
+
+
 const checkList = {
     state: {
         list: {
@@ -29,6 +64,8 @@ const checkList = {
             updated_at: null,
             user_id: null
         },
+        allList: [],
+        allListLoad: false,
         URI: {
             pref: '/frontend/checklist/',
             POST: {
@@ -52,19 +89,50 @@ const checkList = {
         },
         checkListIsCreate(state) {
             return !!state.list.check_list_id;
-        }
+        },
+        completeLists(state) {
+             return state.allList.filter((list) => {return list.complete == true})
+        },
+        unCompleteLists(state) {
+            return state.allList.filter((list) => {return list.complete == false})
+        },
     },
     mutations: {
-        initStateCheckList(state, data) {
-            delete data.check_items;
-            state.list = {...data};
-        },
         updateCheckList(state, data) {
             state.list = {...data};
         },
         updateCheckListField(state, data) {
             let field = data.field;
             state.list[field] = data.value;
+        },
+        loadAllCheckList(state, lists) {
+            state.allList = lists;
+            state.allListLoad = true;
+        },
+        addNewListToLists(state, list) {
+            state.allList.push(list)
+        },
+        sortListsBy(state, payload) {
+            if (payload.direction === 'ASC') {
+                state.allList.sort(sortList[payload.function_sort]);
+            } else  {
+                state.allList.sort(sortList[payload.function_sort]).reverse();
+            }
+        },
+
+        selectCheckList(state, payload) {
+            let id = payload.listID;
+            let items = payload.items;
+            let prevList = state.list;
+            prevList.check_items = items;
+
+            let prevListInArray = state.allList.findIndex((listItem) =>
+            {return listItem.check_list_id === prevList.check_list_id});
+
+            let list = state.allList.find((listItem) => {return listItem.check_list_id === id});
+            state.list = JSON.parse(JSON.stringify(list));
+
+            Vue.set(state.allList, prevListInArray, prevList);
         }
     },
     actions: {
@@ -74,6 +142,8 @@ const checkList = {
                     .post(`${context.state.URI.pref}${context.state.URI.POST.create}`, context.state.list)
                     .then(response => {
                         context.commit('updateCheckList', response.data);
+                        context.commit('addNewListToLists', response.data);
+
                         this._vm.$notify({
                             duration: 3000,
                             type: 'success',
@@ -92,6 +162,21 @@ const checkList = {
                     });
             });
         },
+        allCheckList(context) {
+            if (context.state.allListLoad) {
+                return
+            }
+            runLoader(context);
+            axios
+                .get(`${context.state.URI.pref}${context.state.URI.GET.all}`)
+                .then(response => {
+                    context.commit('loadAllCheckList', response.data)
+                }).catch((err) => {
+                console.log(err);
+            }).finally(() => {
+                stopLoader(context);
+            });
+        },
         loadCheckList(context, encodeURI) {
             if (!context.state.list.check_list_id && encodeURI) {
                 let listID;
@@ -107,7 +192,7 @@ const checkList = {
                     .post(`${context.state.URI.pref}${listID}`)
                     .then(response => {
                         context.commit('initStateCheckItems', response.data.check_items);
-                        context.commit('initStateCheckList', response.data);
+                        context.commit('updateCheckList', response.data);
                     }).catch((error) => {
                         if (error.response.status === 404) {
                             router.push({name: '404'});
@@ -120,12 +205,11 @@ const checkList = {
             }
         },
         checkCheckListOnComplete(context, payload) {
-            let value = (payload === 100);
-            //Если статус не изменился то ничего не делаем
-            if (context.state.list.complete != value)  {
+            let prevValue = context.state.list.complete;
+            if(prevValue != payload) {
                 context.commit('updateCheckListField', {
                     field: 'complete',
-                    value: value
+                    value: payload
                 });
                 context.dispatch('updateCheckListField');
             }

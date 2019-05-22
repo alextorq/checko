@@ -29,13 +29,17 @@
                 }
             },
             completeCheckList() {
-                if (this.$store.getters.completeDone) {
-                    console.log('done check list');
-                }
-                console.log(this.$store.getters.completeDone);
                 return this.$store.getters.completeDone
+            },
+            allComplete() {
+                return this.$store.getters.allComplete
             }
         },
+        watch : {
+            allComplete(value) {
+                this.$store.dispatch('checkCheckListOnComplete', value);
+            }
+        }
     }
 </script>
 

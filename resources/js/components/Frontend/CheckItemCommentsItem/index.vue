@@ -16,7 +16,7 @@
             <div class="comment-user">
                 {{comment.owner.name}}
             </div>
-            <div class="comment-date">
+            <div class="comment-date date">
                 {{dateFormat}}
             </div>
         </div>

@@ -1,6 +1,9 @@
 <template>
     <div class="container">
         <div class="content">
+
+            <AllList v-if="userLoginStatus"></AllList>
+
             <div class="checklist">
                 <CheckListName></CheckListName>
                 <ProgressBar></ProgressBar>
@@ -22,8 +25,8 @@
                         <draggable v-model="completeItems" group="complete" @start="drag=true" @end="drag=false"
                                    handle=".handle" :sortable="false">
                             <transition-group name="list" >
-                                <CheckItemComplete  @delete="deleteItem"
-                                                   v-for="item in completeItems" :data="item" :key="item.timestamp_id + 'complete'">
+                                <CheckItemComplete
+                                        v-for="item in completeItems" :data="item" :key="item.timestamp_id + 'complete'">
                                 </CheckItemComplete>
                             </transition-group>
                         </draggable>
@@ -44,7 +47,7 @@
     import ProgressBar from '../ProgressBar'
     import CheckListDescription from '../CheckListDescription'
     import CheckListName from '../CheckListName'
-    import { Base64 } from 'js-base64';
+    import AllList from  './CheckList_List'
 
     export default {
         name: "CheckList",
@@ -67,19 +70,13 @@
                 set(value) {
                     this.$store.dispatch('updateListOrder', value)
                 }
+            },
+            userLoginStatus() {
+                return this.$store.getters.userLoginStatus;
             }
         },
         methods: {
-            // updateItem(data) {
-            //     this.$store.dispatch('updateCheckItemField', data);
-            //     if (data.update === true)  {
-            //         this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
-            //     }
-            // },
-            deleteItem(id) {
-                this.$store.dispatch('deleteCheckItem', id);
-                this.$store.dispatch('checkCheckListOnComplete', this.$store.getters.completePercent);
-            },
+
         },
         components: {
             CheckItem,
@@ -89,10 +86,12 @@
             Spoiler,
             ProgressBar,
             CheckListDescription,
-            CheckListName
+            CheckListName,
+            AllList
         },
         created() {
-            this.$store.dispatch('loadCheckList', this.$route.params.list_id)
+            this.$store.dispatch('loadCheckList', this.$route.params.list_id);
         }
     }
 </script>
+>
