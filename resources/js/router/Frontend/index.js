@@ -1,24 +1,23 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from '../../store/Frontend/index'
-/*
-* Компоненты
-/* Layout */
+
+/*Компоненты*/
 
 import Layout from  '../../components/Frontend/Layout'
 import CheckList from  '../../components/Frontend/CheckList'
 import FormRegistration from  '../../components/Frontend/FormRegistration'
 import FormLogin from  '../../components/Frontend/FormLogin'
-import Reglament from  '../../components/Frontend/Reglament'
 import  NotFound from  '../../views/Frontend/404'
 import  SettingsLayout from  '../../views/Frontend/Settings'
-import  SettingsGeneral from '../../components/Frontend/Settings/General'
 import  SettingsList from '../../components/Frontend/Settings/List'
 import  SettingsAccount from '../../components/Frontend/Settings/Account'
+import ForgotPassword from  '../../components/Frontend/FormForgotPassword'
+import Reglament from  '../../components/Frontend/Reglament'
+
 import  SettingsNotification from '../../components/Frontend/Settings/Notification'
 import  SettingsPayment from '../../components/Frontend/Settings/Payment'
-import ForgotPassword from  '../../components/Frontend/FormForgotPassword'
-
+import  SettingsGeneral from '../../components/Frontend/Settings/General'
 
 Vue.use(VueRouter);
 
@@ -166,15 +165,11 @@ const router = new VueRouter({
 
 
 router.afterEach((to) => {
-
     Vue.nextTick(() => {
         if (to.meta.title) {
             document.title = to.meta.title;
         }
     });
-
-    console.log(to);
-
 });
 
 router.beforeEach((to, from, next) => {

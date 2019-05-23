@@ -35,7 +35,8 @@
         },
         methods: {
           goToHome() {
-              this.$router.push('/')
+              let hashCodeURI = Base64.encode(this.$store.getters.checkListId);
+              this.$router.push({name: 'CheckList', params: { list_id: hashCodeURI }});
           }
         },
         components: {

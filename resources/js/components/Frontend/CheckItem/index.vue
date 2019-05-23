@@ -36,12 +36,13 @@
     let throttleMakeDispatch = new Throttler(500);
     
     function closeContextMenu(event) {
-        let target = event.target;
-        if (window._self.$refs['contextMenuButton'] !== target) {
-            if(window._self.contextMenuOpenStatus) {
-                window._self.contextMenuOpenStatus = false
-            }
-        }
+        // let target = event.target;
+        // if (window._self.$refs['contextMenuButton'] !== target) {
+        //     if(window._self.contextMenuOpenStatus) {
+        //
+        //     }
+        // }
+        window._self.contextMenuOpenStatus = false;
         window._self.deleteHandler();
     }
     
@@ -152,7 +153,6 @@
             },
             openCommentMenu() {
                 EventBus.$emit('open_comments');
-
                 this.$store.dispatch('loadComments', this.data.check_item_id);
             },
             openContextMenu(event) {

@@ -44,15 +44,12 @@ const checkItems = {
             return Math.ceil(complete.length / (state.checkItems.length / 100)) === 100;
         },
         completeViewProgress(state) {
+            let complete, all  = 0;
             if (state.checkItems.length > 0) {
-                let complete = state.checkItems.filter((item) => item.complete).length;
-                let all = state.checkItems.length;
-                return {
-                    all,
-                    complete
-                }
+                complete = state.checkItems.filter((item) => item.complete).length;
+                all = state.checkItems.length;
             }
-            return {all: 0, complete: 0};
+            return {all, complete};
         }
     },
     mutations: {
@@ -99,7 +96,6 @@ const checkItems = {
             // if (!orderToCreate) {
             //     orderNumber = 0;
             // }
-            state.canCreate = false;
             let orderNumber = state.checkItems.length;
 
             let item = {

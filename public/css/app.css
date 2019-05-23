@@ -39,7 +39,7 @@ html {
 
 .overlay {
   position: fixed;
-  z-index: 2;
+  z-index: 6;
   top: 60px;
   bottom: 0;
   left: 0;
@@ -128,6 +128,14 @@ main .container {
 main .container .content {
   max-width: 100%;
   min-height: calc(100vh - 150px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
 }
 
 @media only screen and (max-width: 767px) {
@@ -164,6 +172,8 @@ main .container .content {
           align-items: center;
 }
 
+/*general normalize*/
+
 input {
   font-family: 'Open Sans', sans-serif;
   color: #1d2025;
@@ -181,6 +191,12 @@ textarea {
   resize: none;
   outline: none;
 }
+
+button:focus {
+  outline: none;
+}
+
+/*general normalize end*/
 
 .overlay-open {
   overflow: hidden !important;
@@ -208,6 +224,8 @@ textarea {
   border-radius: 5px;
 }
 
+/*all element for date*/
+
 .date {
   color: #a4b5be;
   font-size: 14px;
@@ -215,6 +233,8 @@ textarea {
   line-height: 25px;
   letter-spacing: 0.03px;
 }
+
+/*all element for date end*/
 
 /*Arrow*/
 
@@ -255,10 +275,6 @@ textarea {
 /*Arrow end*/
 
 /*Buttons*/
-
-button:focus {
-  outline: none;
-}
 
 button.button {
   -webkit-box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
@@ -326,6 +342,8 @@ button.close-delete:before {
   transition: all .2s;
 }
 
+/*preloader general*/
+
 .preloader {
   position: absolute;
   display: -webkit-box;
@@ -362,6 +380,20 @@ button.close-delete:before {
 .preloader svg {
   fill: #01b06d;
 }
+
+/*preloader general end*/
+
+/*number of complete*/
+
+.percent-progress {
+  color: #01b06d;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0.09px;
+}
+
+/*number of complete end*/
 
 .slide-left-enter-active,
 .slide-left-leave-active {
@@ -516,23 +548,19 @@ button.close-delete:before {
   overflow: hidden;
 }
 
-.percent-progress {
-  color: #01b06d;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 35px;
-  letter-spacing: 0.09px;
-}
+/*green line percent of complete*/
 
 .progress-bar__progress {
   height: 100%;
   position: absolute;
   left: 0;
-  width: 20%;
+  width: 0;
   background-color: #01af6c;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
+
+/*green line percent of complete end*/
 
 .checklist {
   padding-bottom: 80px;
@@ -547,17 +575,6 @@ button.close-delete:before {
     padding-top: 30px;
     padding-bottom: 0;
   }
-}
-
-.content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
 }
 
 /*CheckList name */
@@ -3423,7 +3440,7 @@ button.user-lists-title .arrow {
           transform: translate3d(100%, 0, 0);
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  z-index: 5;
+  z-index: 7;
   height: calc(100vh - 60px);
   display: -webkit-box;
   display: -ms-flexbox;

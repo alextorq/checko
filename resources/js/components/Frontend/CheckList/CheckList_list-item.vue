@@ -74,15 +74,14 @@
             completePercentView() {
                 let complete = this.list.check_items.filter((item) => item.complete).length;
                 let allItems = this.list.check_items.length;
+                let percent;
                 if (this.$store.getters.settingProgressViewType === '%') {
-                    if (!allItems) {
-                        return '0%'
-                    }
-                    return Math.ceil(complete / (allItems / 100))  + '%';
+                    percent = (!!allItems) ?  Math.ceil(complete / (allItems / 100))  + '%' : '0%';
                 }
                 else {
-                    return `${complete}/${allItems}`
+                    percent = `${complete}/${allItems}`
                 }
+                return percent;
             },
             contextMenuOpen() {
                 return {'open': this.contextMenuOpenStatus}
@@ -122,7 +121,6 @@
                     hashCodeURI = +hashCodeURI;
                 }
                 this.$store.dispatch('checkListDelete', this.list.check_list_id).then(() => {
-                    console.log(this.$route.params.list_id, this.list.check_list_id);
                     if (hashCodeURI === this.list.check_list_id) {
                         this.$store.commit('clearList');
                         this.$store.commit('clearItems');

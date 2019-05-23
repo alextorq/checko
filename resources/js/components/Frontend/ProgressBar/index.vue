@@ -17,22 +17,23 @@
         name: "ProgressBar",
         computed: {
             widthPercent() {
-                return this.$store.getters.completePercent + '%';
+                let config = this.$store.getters.completeViewProgress;
+                let percent = (!!config.all) ? Math.ceil(config.complete / (config.all / 100)) + '%' : '0%';
+                return percent
             },
             completePercentView() {
                 let config = this.$store.getters.completeViewProgress;
+                let percent;
                 if (this.$store.getters.settingProgressViewType === '%') {
-                    if (config.all > 0) {
-                        return Math.ceil(config.complete / (config.all / 100)) + '%';
-                    }
-                    return 0 + '%';
+                    percent = (!!config.all) ? Math.ceil(config.complete / (config.all / 100)) + '%' : '0%';
                 }
                 else {
-                    return `${config.complete}/${config.all}`
+                    percent = `${config.complete}/${config.all}`
                 }
+                return percent
             },
             allComplete() {
-                return this.$store.getters.allComplete;
+                return this.$store.getters.completeDone;
             }
         },
         watch : {

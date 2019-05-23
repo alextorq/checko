@@ -28,7 +28,7 @@ html {
 
 .overlay {
   position: fixed;
-  z-index: 2;
+  z-index: 6;
   top: 60px;
   bottom: 0;
   left: 0;
@@ -86,7 +86,6 @@ body {
 main {
   padding-top: 60px;
   height: 100vh;
-
   @include phone {
     padding-top: 49px;
   }
@@ -101,6 +100,9 @@ main {
     .content {
       max-width: 100%;
       min-height: calc(100vh - 150px);
+      display: flex;
+      align-items: flex-start;
+      align-content: flex-start;
       @include phone {
         padding-bottom: 30px;
       }
@@ -114,11 +116,9 @@ main {
     margin-left: 10px;
   }
 }
-
 .flex-row {
   display: flex;
 }
-
 .jcb {
   justify-content: space-between;
 }
@@ -126,6 +126,7 @@ main {
  align-items: center;
 }
 
+/*general normalize*/
 input {
   font-family: 'Open Sans', sans-serif;
   color: $black;
@@ -141,6 +142,13 @@ textarea {
   resize: none;
   outline: none;
 }
+button {
+  &:focus {
+    outline: none;
+  }
+}
+/*general normalize end*/
+
 .overlay-open {
   overflow: hidden !important;
 }
@@ -164,6 +172,7 @@ textarea {
   }
 }
 
+/*all element for date*/
 .date {
   color: $grey_3;
   font-size: 14px;
@@ -171,6 +180,7 @@ textarea {
   line-height: 25px;
   letter-spacing: 0.03px;
 }
+/*all element for date end*/
 
 /*Arrow*/
 .arrow {
@@ -202,11 +212,6 @@ textarea {
 /*Arrow end*/
 
 /*Buttons*/
-button {
-  &:focus {
-    outline: none;
-  }
-}
 button.button {
   box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
   border-radius: 5px;
@@ -270,7 +275,7 @@ button.close-delete {
   transition: all .2s;
 }
 
-
+/*preloader general*/
 .preloader {
   position: absolute;
   display: flex;
@@ -293,6 +298,19 @@ button.close-delete {
     fill: $color_1;
   }
 }
+/*preloader general end*/
+
+
+/*number of complete*/
+.percent-progress {
+  color: $green;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0.09px;
+}
+/*number of complete end*/
+
 
 
 

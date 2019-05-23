@@ -26,9 +26,6 @@ let store = new Vuex.Store({
             return state.isLoad;
         }
     },
-    actions: {
-
-    },
     mutations: {
         updateLoadStatus(state, payload) {
             state.isLoad = payload;
@@ -37,7 +34,6 @@ let store = new Vuex.Store({
             state.mobile = status;
         }
     }
-
 });
 
 

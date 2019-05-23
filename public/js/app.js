@@ -5357,30 +5357,30 @@ module.exports = defaults;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Frontend_FormRegistration___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_Frontend_FormRegistration__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Frontend_FormLogin__ = __webpack_require__(251);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Frontend_FormLogin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_Frontend_FormLogin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Frontend_Reglament__ = __webpack_require__(254);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Frontend_Reglament___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_Frontend_Reglament__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_Frontend_404__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_Frontend_404___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__views_Frontend_404__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_Frontend_Settings__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__views_Frontend_Settings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__views_Frontend_Settings__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Frontend_Settings_General__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Frontend_Settings_General___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_Frontend_Settings_General__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Frontend_Settings_List__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Frontend_Settings_List___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_Frontend_Settings_List__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Frontend_Settings_Account__ = __webpack_require__(283);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Frontend_Settings_Account___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_Frontend_Settings_Account__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_Frontend_404__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_Frontend_404___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__views_Frontend_404__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_Frontend_Settings__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__views_Frontend_Settings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__views_Frontend_Settings__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Frontend_Settings_List__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Frontend_Settings_List___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_Frontend_Settings_List__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Frontend_Settings_Account__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Frontend_Settings_Account___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_Frontend_Settings_Account__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Frontend_FormForgotPassword__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Frontend_FormForgotPassword___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_Frontend_FormForgotPassword__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Frontend_Reglament__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_Frontend_Reglament___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_Frontend_Reglament__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Frontend_Settings_Notification__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_Frontend_Settings_Notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_Frontend_Settings_Notification__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_Frontend_Settings_Payment__ = __webpack_require__(295);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_Frontend_Settings_Payment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_Frontend_Settings_Payment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_Frontend_FormForgotPassword__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_Frontend_FormForgotPassword___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_Frontend_FormForgotPassword__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_Frontend_Settings_General__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_Frontend_Settings_General___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_Frontend_Settings_General__);
 
 
 
-/*
-* Компоненты
-/* Layout */
+
+/*Компоненты*/
+
 
 
 
@@ -5418,7 +5418,7 @@ var routes = [{
         }
     }, {
         path: '/settings',
-        component: __WEBPACK_IMPORTED_MODULE_9__views_Frontend_Settings___default.a,
+        component: __WEBPACK_IMPORTED_MODULE_8__views_Frontend_Settings___default.a,
         name: '',
         meta: { title: 'SettingsLayout', breadcrumb: true, keepAlive: true,
             permission: {
@@ -5427,7 +5427,7 @@ var routes = [{
         },
         children: [{
             path: 'account',
-            component: __WEBPACK_IMPORTED_MODULE_12__components_Frontend_Settings_Account___default.a,
+            component: __WEBPACK_IMPORTED_MODULE_10__components_Frontend_Settings_Account___default.a,
             name: 'SettingsAccount',
             meta: { title: 'Account', breadcrumb: true, keepAlive: true,
                 permission: {
@@ -5447,7 +5447,7 @@ var routes = [{
         // },
         {
             path: '',
-            component: __WEBPACK_IMPORTED_MODULE_11__components_Frontend_Settings_List___default.a,
+            component: __WEBPACK_IMPORTED_MODULE_9__components_Frontend_Settings_List___default.a,
             name: 'SettingsList',
             meta: { title: 'Lists & tasks', breadcrumb: true, keepAlive: true,
                 permission: {
@@ -5475,7 +5475,7 @@ var routes = [{
         }
     }, {
         path: 'forgot_password',
-        component: __WEBPACK_IMPORTED_MODULE_15__components_Frontend_FormForgotPassword___default.a,
+        component: __WEBPACK_IMPORTED_MODULE_11__components_Frontend_FormForgotPassword___default.a,
         name: 'ForgotPassword',
         meta: { title: 'Forgot Password', breadcrumb: true, keepAlive: true,
             permission: {
@@ -5485,11 +5485,11 @@ var routes = [{
     }, {
         path: '/reglament',
         name: 'reglament',
-        component: __WEBPACK_IMPORTED_MODULE_7__components_Frontend_Reglament___default.a
+        component: __WEBPACK_IMPORTED_MODULE_12__components_Frontend_Reglament___default.a
     }, {
         path: '/404',
         name: '404',
-        component: __WEBPACK_IMPORTED_MODULE_8__views_Frontend_404___default.a,
+        component: __WEBPACK_IMPORTED_MODULE_7__views_Frontend_404___default.a,
         meta: { title: 'Page not found', breadcrumb: true, keepAlive: true,
             permission: {
                 hook: null
@@ -5507,14 +5507,11 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 });
 
 router.afterEach(function (to) {
-
     __WEBPACK_IMPORTED_MODULE_0_vue___default.a.nextTick(function () {
         if (to.meta.title) {
             document.title = to.meta.title;
         }
     });
-
-    console.log(to);
 });
 
 router.beforeEach(function (to, from, next) {
@@ -6449,7 +6446,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
             return state.isLoad;
         }
     },
-    actions: {},
     mutations: {
         updateLoadStatus: function updateLoadStatus(state, payload) {
             state.isLoad = payload;
@@ -6458,7 +6454,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
             state.mobile = status;
         }
     }
-
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (store);
@@ -33275,15 +33270,8 @@ var sortList = {
         var aAll = a.check_items.length;
         var bAll = b.check_items.length;
 
-        var aValue = Math.ceil(aComplete / (aAll / 100));
-        var bValue = Math.ceil(bComplete / (bAll / 100));
-
-        if (!aComplete) {
-            aValue = 0;
-        }
-        if (!bComplete) {
-            bValue = 0;
-        }
+        var aValue = !aComplete ? 0 : Math.ceil(aComplete / (aAll / 100));
+        var bValue = !bComplete ? 0 : Math.ceil(bComplete / (bAll / 100));
 
         return aValue - bValue;
     },
@@ -39098,12 +39086,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var throttleMakeDispatch = new __WEBPACK_IMPORTED_MODULE_1_Core_helpers_Throttle__["a" /* default */](500);
 
 function closeContextMenu(event) {
-    var target = event.target;
-    if (window._self.$refs['contextMenuButton'] !== target) {
-        if (window._self.contextMenuOpenStatus) {
-            window._self.contextMenuOpenStatus = false;
-        }
-    }
+    // let target = event.target;
+    // if (window._self.$refs['contextMenuButton'] !== target) {
+    //     if(window._self.contextMenuOpenStatus) {
+    //
+    //     }
+    // }
+    window._self.contextMenuOpenStatus = false;
     window._self.deleteHandler();
 }
 
@@ -39218,7 +39207,6 @@ function closeContextMenu(event) {
         },
         openCommentMenu: function openCommentMenu() {
             __WEBPACK_IMPORTED_MODULE_2_Core_helpers_eventBus__["a" /* default */].$emit('open_comments');
-
             this.$store.dispatch('loadComments', this.data.check_item_id);
         },
         openContextMenu: function openContextMenu(event) {
@@ -42636,21 +42624,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "ProgressBar",
     computed: {
         widthPercent: function widthPercent() {
-            return this.$store.getters.completePercent + '%';
+            var config = this.$store.getters.completeViewProgress;
+            var percent = !!config.all ? Math.ceil(config.complete / (config.all / 100)) + '%' : '0%';
+            return percent;
         },
         completePercentView: function completePercentView() {
             var config = this.$store.getters.completeViewProgress;
+            var percent = void 0;
             if (this.$store.getters.settingProgressViewType === '%') {
-                if (config.all > 0) {
-                    return Math.ceil(config.complete / (config.all / 100)) + '%';
-                }
-                return 0 + '%';
+                percent = !!config.all ? Math.ceil(config.complete / (config.all / 100)) + '%' : '0%';
             } else {
-                return config.complete + '/' + config.all;
+                percent = config.complete + '/' + config.all;
             }
+            return percent;
         },
         allComplete: function allComplete() {
-            return this.$store.getters.allComplete;
+            return this.$store.getters.completeDone;
         }
     },
     watch: {
@@ -45069,14 +45058,13 @@ function closeContextMenu(event) {
                 return item.complete;
             }).length;
             var allItems = this.list.check_items.length;
+            var percent = void 0;
             if (this.$store.getters.settingProgressViewType === '%') {
-                if (!allItems) {
-                    return '0%';
-                }
-                return Math.ceil(complete / (allItems / 100)) + '%';
+                percent = !!allItems ? Math.ceil(complete / (allItems / 100)) + '%' : '0%';
             } else {
-                return complete + '/' + allItems;
+                percent = complete + '/' + allItems;
             }
+            return percent;
         },
         contextMenuOpen: function contextMenuOpen() {
             return { 'open': this.contextMenuOpenStatus };
@@ -45117,7 +45105,6 @@ function closeContextMenu(event) {
                 hashCodeURI = +hashCodeURI;
             }
             this.$store.dispatch('checkListDelete', this.list.check_list_id).then(function () {
-                console.log(_this.$route.params.list_id, _this.list.check_list_id);
                 if (hashCodeURI === _this.list.check_list_id) {
                     _this.$store.commit('clearList');
                     _this.$store.commit('clearItems');
@@ -47157,7 +47144,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         goToHome: function goToHome() {
-            this.$router.push('/');
+            var hashCodeURI = Base64.encode(this.$store.getters.checkListId);
+            this.$router.push({ name: 'CheckList', params: { list_id: hashCodeURI } });
         }
     },
     components: {
@@ -49379,17 +49367,15 @@ var checkItems = {
             return Math.ceil(complete.length / (state.checkItems.length / 100)) === 100;
         },
         completeViewProgress: function completeViewProgress(state) {
+            var complete = void 0,
+                all = 0;
             if (state.checkItems.length > 0) {
-                var complete = state.checkItems.filter(function (item) {
+                complete = state.checkItems.filter(function (item) {
                     return item.complete;
                 }).length;
-                var all = state.checkItems.length;
-                return {
-                    all: all,
-                    complete: complete
-                };
+                all = state.checkItems.length;
             }
-            return { all: 0, complete: 0 };
+            return { all: all, complete: complete };
         }
     },
     mutations: {
@@ -49442,7 +49428,6 @@ var checkItems = {
             // if (!orderToCreate) {
             //     orderNumber = 0;
             // }
-            state.canCreate = false;
             var orderNumber = state.checkItems.length;
 
             var item = {

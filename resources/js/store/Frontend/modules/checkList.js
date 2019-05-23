@@ -13,16 +13,8 @@ let sortList = {
         let aAll = a.check_items.length;
         let bAll = b.check_items.length;
 
-
-        let aValue = Math.ceil(aComplete / (aAll / 100));
-        let bValue = Math.ceil(bComplete / (bAll / 100));
-
-        if (!aComplete) {
-            aValue = 0;
-        }
-        if (!bComplete) {
-            bValue = 0;
-        }
+        let aValue = (!aComplete) ? 0 : Math.ceil(aComplete / (aAll / 100));
+        let bValue = (!bComplete) ? 0 : Math.ceil(bComplete / (bAll / 100));
 
         return aValue - bValue;
     },
@@ -60,9 +52,7 @@ const checkList = {
             PUT: {
                 edit: 'edit'
             },
-            DELETE: {
-
-            }
+            DELETE: {}
         }
     },
     getters: {
@@ -126,8 +116,9 @@ const checkList = {
             let prevList = state.list;
             prevList.check_items = items;
 
-            let prevListInArray = state.allList.findIndex((listItem) =>
-            {return listItem.check_list_id === prevList.check_list_id});
+            let prevListInArray = state.allList.findIndex(
+                (listItem) => {return listItem.check_list_id === prevList.check_list_id}
+                );
 
             let list = state.allList.find((listItem) => {return listItem.check_list_id === id});
             state.list = JSON.parse(JSON.stringify(list));
