@@ -14,4 +14,6 @@ Route::group(['prefix' => 'frontend/checklist',  'as'=> 'checklist.'], function 
     Route::get('/{checklist?}', ['uses' => 'CheckListController@index', 'as' => 'index'])->where('checklist', '[\/\w\.-]*');
     Route::post('/{checklist?}', ['uses' => 'CheckListController@indexPost', 'as' => 'index'])->where('checklist', '[\/\w\.-]*');
 
+    Route::delete('/{checklist?}', ['uses' => 'CheckListController@delete', 'as' => 'delete']);
+
 });

@@ -1,4 +1,5 @@
 import Router from '../../../router/Frontend/'
+
 function updateToken(payload) {
     if (payload.token) {
         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = payload.token;

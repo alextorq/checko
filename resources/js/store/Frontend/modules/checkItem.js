@@ -1,3 +1,5 @@
+import {runLoader, stopLoader} from 'Core/helpers/RunPreloader'
+
 function sortByOrder(items) {
     items.sort((a, b) => {
         let result = (a.order - b.order) !== 0 ? a.order - b.order : b.timestamp_id - a.timestamp_id;
@@ -5,20 +7,7 @@ function sortByOrder(items) {
     });
 }
 
-function runLoader(context) {
-    let status = context.rootGetters.isLoad;
-    if (!status) {
-        context.commit('updateLoadStatus', true);
-    }
-    window.countLoad = window.countLoad + 1;
-}
 
-function stopLoader(context) {
-    window.countLoad = window.countLoad - 1;
-    if (window.countLoad < 1) {
-        context.commit('updateLoadStatus', false);
-    }
-}
 
 const checkItems = {
     state: {
@@ -48,6 +37,8 @@ const checkItems = {
         inCompleteItems(state) {
             return state.checkItems.filter((item) => !item.complete);
         },
+        /*Для отслеживания изменений на watch,
+         что бы отслеживать выполенность чеклиста*/
         completeDone(state) {
             let complete = state.checkItems.filter((item) => item.complete);
             return Math.ceil(complete.length / (state.checkItems.length / 100)) === 100;
@@ -62,26 +53,6 @@ const checkItems = {
                 }
             }
             return {all: 0, complete: 0};
-        },
-        allComplete(state) {
-            if (state.checkItems.length > 0) {
-                let complete = state.checkItems.filter((item) => item.complete).length;
-
-
-                let all = state.checkItems.length;
-
-                if (all === complete) {
-                    return true;
-                }
-            }
-            return false;
-        },
-        completePercent(state) {
-            if (state.checkItems.length > 0) {
-                let complete = state.checkItems.filter((item) => item.complete);
-                return Math.ceil(complete.length / (state.checkItems.length / 100));
-            }
-            return 0;
         }
     },
     mutations: {
@@ -179,15 +150,15 @@ const checkItems = {
                     .then(response => {
                         // console.log(response.data);
                     }).catch((err) => {
-                    console.log(err);
-                    this._vm.$notify({
-                        duration: 3000,
-                        type: 'error',
-                        text: 'Task is not change',
+                        console.log(err);
+                        this._vm.$notify({
+                            duration: 3000,
+                            type: 'error',
+                            text: 'Task is not change',
+                        });
+                    }).finally(() => {
+                        stopLoader(context);
                     });
-                }).finally(() => {
-                    stopLoader(context);
-                });
         },
         deleteCheckItem(context, id) {
             if (id) {
@@ -204,9 +175,9 @@ const checkItems = {
                             type: 'error',
                             text: 'Task is not deleted',
                         });
-                }).finally(() => {
-                    stopLoader(context);
-                });
+                    }).finally(() => {
+                        stopLoader(context);
+                    });
             }
         },
         addCheckItem(context, timestamp_id) {

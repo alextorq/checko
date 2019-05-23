@@ -2,6 +2,10 @@
   padding-bottom: 80px;
   padding-top: 80px;
   flex-grow: 1;
+  @include phone {
+    padding-top: 30px;
+    padding-bottom: 0;
+  }
 }
 
 .content {

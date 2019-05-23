@@ -83,26 +83,26 @@ const routes = [
                                 }
                             },
                         },
-                        {
-                            path: 'notification',
-                            component: SettingsNotification,
-                            name: 'SettingsNotification',
-                            meta: {title: 'Notification', breadcrumb: true, keepAlive: true,
-                                permission: {
-                                    hook: null
-                                }
-                            },
-                        },
-                        {
-                            path: 'payment',
-                            component: SettingsPayment,
-                            name: 'SettingsPayment',
-                            meta: {title: 'Payment', breadcrumb: true, keepAlive: true,
-                                permission: {
-                                    hook: null
-                                }
-                            },
-                        },
+                        // {
+                        //     path: 'notification',
+                        //     component: SettingsNotification,
+                        //     name: 'SettingsNotification',
+                        //     meta: {title: 'Notification', breadcrumb: true, keepAlive: true,
+                        //         permission: {
+                        //             hook: null
+                        //         }
+                        //     },
+                        // },
+                        // {
+                        //     path: 'payment',
+                        //     component: SettingsPayment,
+                        //     name: 'SettingsPayment',
+                        //     meta: {title: 'Payment', breadcrumb: true, keepAlive: true,
+                        //         permission: {
+                        //             hook: null
+                        //         }
+                        //     },
+                        // },
                 ]
             },
 
@@ -171,7 +171,10 @@ router.afterEach((to) => {
         if (to.meta.title) {
             document.title = to.meta.title;
         }
-    })
+    });
+
+    console.log(to);
+
 });
 
 router.beforeEach((to, from, next) => {

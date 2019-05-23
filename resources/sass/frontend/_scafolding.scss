@@ -102,8 +102,7 @@ main {
       max-width: 100%;
       min-height: calc(100vh - 150px);
       @include phone {
-        padding-bottom: 40px;
-        padding-top: 40px;
+        padding-bottom: 30px;
       }
     }
   }

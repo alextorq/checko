@@ -5,6 +5,14 @@
             <AllList v-if="userLoginStatus"></AllList>
 
             <div class="checklist">
+
+                <button v-if="userLoginStatus" class="user-lists-title" @click="openAllList">
+                    My lists
+                    <div class="left-col">
+                        <div class="arrow"></div>
+                    </div>
+                </button>
+
                 <CheckListName></CheckListName>
                 <ProgressBar></ProgressBar>
                 <CheckListDescription></CheckListDescription>
@@ -49,6 +57,8 @@
     import CheckListName from '../CheckListName'
     import AllList from  './CheckList_List'
 
+    import EventBus from 'Core/helpers/eventBus'
+
     export default {
         name: "CheckList",
         computed: {
@@ -76,7 +86,9 @@
             }
         },
         methods: {
-
+            openAllList() {
+                EventBus.$emit('CheckList:openAllList')
+            }
         },
         components: {
             CheckItem,

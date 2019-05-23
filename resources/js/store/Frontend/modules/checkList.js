@@ -2,24 +2,7 @@ import router from '../../../router/Frontend'
 import { Base64 } from 'js-base64';
 import Vue from  'vue'
 import moment from 'moment'
-
-
-function runLoader(context) {
-    let status = context.rootGetters.isLoad;
-    if (!status) {
-        context.commit('updateLoadStatus', true);
-    }
-    window.countLoad = window.countLoad + 1;
-}
-
-
-function stopLoader(context) {
-    window.countLoad = window.countLoad - 1;
-    if (window.countLoad < 1) {
-        context.commit('updateLoadStatus', false);
-    }
-}
-
+import {runLoader, stopLoader} from 'Core/helpers/RunPreloader'
 
 
 let sortList = {
@@ -77,7 +60,9 @@ const checkList = {
             PUT: {
                 edit: 'edit'
             },
-            DELETE: {}
+            DELETE: {
+
+            }
         }
     },
     getters: {
@@ -101,6 +86,18 @@ const checkList = {
         updateCheckList(state, data) {
             state.list = {...data};
         },
+        clearList(state) {
+            let  list =  {
+                    name: '',
+                    check_list_id: null,
+                    complete: false,
+                    description: 'description',
+                    created_at: null,
+                    updated_at: null,
+                    user_id: null
+                };
+            state.list = list;
+        },
         updateCheckListField(state, data) {
             let field = data.field;
             state.list[field] = data.value;
@@ -119,7 +116,10 @@ const checkList = {
                 state.allList.sort(sortList[payload.function_sort]).reverse();
             }
         },
-
+        deleteList(state, id) {
+            let listForDelete = state.allList.findIndex((item) => {return item.check_list_id === id});
+            state.allList.splice(listForDelete, 1);
+        },
         selectCheckList(state, payload) {
             let id = payload.listID;
             let items = payload.items;
@@ -213,6 +213,21 @@ const checkList = {
                 });
                 context.dispatch('updateCheckListField');
             }
+        },
+        checkListDelete(context, id) {
+            runLoader(context);
+            return new Promise((resolve, reject) => {
+                axios
+                    .delete(`${context.state.URI.pref}${id}`)
+                    .then(response => {
+                        resolve()
+                    }).catch((err) => {
+                        console.log(err);
+                        reject();
+                    }).finally(() => {
+                        stopLoader(context);
+                    });
+            });
         },
         updateCheckListField(context) {
             runLoader(context);

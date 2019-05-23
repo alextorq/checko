@@ -22,17 +22,17 @@
             completePercentView() {
                 let config = this.$store.getters.completeViewProgress;
                 if (this.$store.getters.settingProgressViewType === '%') {
-                    return this.$store.getters.completePercent + '%';
+                    if (config.all > 0) {
+                        return Math.ceil(config.complete / (config.all / 100)) + '%';
+                    }
+                    return 0 + '%';
                 }
                 else {
                     return `${config.complete}/${config.all}`
                 }
             },
-            completeCheckList() {
-                return this.$store.getters.completeDone
-            },
             allComplete() {
-                return this.$store.getters.allComplete
+                return this.$store.getters.allComplete;
             }
         },
         watch : {

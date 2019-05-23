@@ -20,7 +20,6 @@
             </div>
         </div>
 
-
         <ul class="user-lists">
             <list v-for="list in unCompleteLists" :list="list" :key="list.check_list_id"></list>
         </ul>
@@ -38,6 +37,8 @@
     import list from './CheckList_list-item';
     import Spoiler from '../Spoiler'
     import AppSelect from '../Select'
+    import EventBus from 'Core/helpers/eventBus'
+
     export default {
         name: "CheckList_List",
         data() {
@@ -79,6 +80,7 @@
         },
         created() {
             this.$store.dispatch('allCheckList');
+            EventBus.$on('CheckList:openAllList', () => {this.open()})
         },
     }
 </script>

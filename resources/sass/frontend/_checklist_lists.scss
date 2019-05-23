@@ -4,16 +4,61 @@
   transition: all 0.4s;
   will-change: width;
   max-height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
+  &:after {
+    content: '';
+    right: 100%;
+    width: 1000px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+  }
   &.open {
     width: 50%;
     overflow: auto;
     flex-shrink: 0;
-    margin-right: 15px;
-    @include phone {
-      width: 100%;
+    margin-right: 40px;
+    box-shadow: 10px 0px 13px rgba(164, 183, 190, 0.43);
+  }
+  @include phone {
+    right: 0;
+    left: 0;
+    top: 45px;
+    bottom: 0;
+    position: absolute;
+    z-index: 5;
+    padding-top: 30px;
+    transform: translateX(-100%);
+    background-color: #fff;
+    transition: all 0.4s;
+    width: 100% !important;
+    &.open {
+      transform: translateX(0);
+      margin-right: 0;
     }
   }
 
+  .checklist__description {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .left-col {
+      display: flex;
+      justify-content: center;
+
+      .arrow {
+        transition: all 0.4s;
+      }
+
+      &.open {
+        .arrow {
+          transition: all 0.4s;
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
   /*sort*/
   .selected-list-wrapper {
     .selected-list {
@@ -21,6 +66,9 @@
     }
     .arrow {
       margin-left: 10px;
+    }
+    @include  phone {
+      margin-bottom: 20px;
     }
   }
   /*sort end*/
@@ -68,8 +116,10 @@
 
   /*item of list*/
   .user-lists__item {
-    padding-right: 40px;
+    padding-right: 50px;
     border-bottom: 1px solid $grey_2;
+    position: relative;
+
     color: $black;
     font-size: 14px;
     font-weight: 400;
@@ -80,6 +130,11 @@
     flex-wrap: wrap;
     &:hover {
       background-color: rgba($grey_3, 0.15);
+    }
+    &:hover {
+      .check-item__menu {
+        opacity: 1;
+      }
     }
     &.active {
       background-color: rgba($grey_3, 0.15);
@@ -143,6 +198,44 @@
     .percent-progress {
       margin-left: auto;
     }
+
+    .context-menu-wrapper {
+      position: absolute;
+      top: 20px;
+      right: 10px;
+      .context-menu__list {
+        position: absolute;
+        visibility: hidden;
+        list-style: none;
+        padding-left: 0;
+        width: 141px;
+        color: $black;
+        box-shadow: 0 0 20px 2px rgba(164, 183, 190, 0.45);
+        border-radius: 5px;
+        background-color: #ffffff;
+        right: -3px;
+        top: 90%;
+        z-index: 5;
+      }
+      .context-menu__item {
+        cursor: pointer;
+        padding-left: 10px;
+        padding-right: 10px;
+        opacity: 0.9;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 2.5;
+        letter-spacing: 0.09px;
+        &:hover {
+          background: $grey_1;
+        }
+      }
+      &.open {
+        .context-menu__list {
+          visibility: visible;
+        }
+      }
+    }
   }
   /*item of list end*/
 
@@ -150,7 +243,7 @@
   /*top sticky title*/
   .user-lists-title-wrapper {
     background-color: #ffffff;
-    z-index: auto;
+    z-index: 5;
     border-bottom: 1px solid $grey_2;
     position: sticky;
     top: 0;
@@ -158,6 +251,9 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 40px;
+    @include  phone {
+      padding-right: 20px;
+    }
   }
   .user-lists-title {
     cursor: pointer;
@@ -166,8 +262,10 @@
     font-weight: 700;
     line-height: 1.4;
     letter-spacing: 0.13px;
-    padding: 20px 0;
+    user-select: none;
+    padding: 35px 0;
     display: flex;
+    margin: 0;
     align-items: center;
     .left-col {
       justify-content: center;
@@ -177,14 +275,48 @@
       margin-right: 10px;
       transform: rotate(90deg);
     }
+    @include phone {
+      padding: 0;
+      margin-bottom: 20px;
+    }
   }
   /*top sticky title end*/
 
   .user-lists.done {
-    margin-top: 40px;
+
   }
 
 
 
 }
+
+
+/*Button open all list on phone*/
+button.user-lists-title {
+  cursor: pointer;
+  color: $black;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.13px;
+  padding: 0;
+  margin-bottom: 20px;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  display: none;
+  margin-left: 20px;
+  .left-col {
+    justify-content: center;
+    display: flex;
+  }
+  .arrow {
+    margin-right: 10px;
+    transform: rotate(-90deg);
+  }
+  @include phone {
+    display: flex;
+  }
+}
+/*Button open all list on phone end*/
 

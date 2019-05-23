@@ -5104,6 +5104,19 @@ if (false) {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+
+
+var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
+
+/* harmony default export */ __webpack_exports__["a"] = (EventBus);
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 var g;
@@ -5128,19 +5141,6 @@ try {
 
 module.exports = g;
 
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-
-
-var EventBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
-
-/* harmony default export */ __webpack_exports__["a"] = (EventBus);
 
 /***/ }),
 /* 6 */
@@ -5454,24 +5454,6 @@ var routes = [{
                     hook: null
                 }
             }
-        }, {
-            path: 'notification',
-            component: __WEBPACK_IMPORTED_MODULE_13__components_Frontend_Settings_Notification___default.a,
-            name: 'SettingsNotification',
-            meta: { title: 'Notification', breadcrumb: true, keepAlive: true,
-                permission: {
-                    hook: null
-                }
-            }
-        }, {
-            path: 'payment',
-            component: __WEBPACK_IMPORTED_MODULE_14__components_Frontend_Settings_Payment___default.a,
-            name: 'SettingsPayment',
-            meta: { title: 'Payment', breadcrumb: true, keepAlive: true,
-                permission: {
-                    hook: null
-                }
-            }
         }]
     }, {
         path: 'registration',
@@ -5531,6 +5513,8 @@ router.afterEach(function (to) {
             document.title = to.meta.title;
         }
     });
+
+    console.log(to);
 });
 
 router.beforeEach(function (to, from, next) {
@@ -18996,7 +18980,7 @@ module.exports = Component.exports
     return {Base64: global.Base64}
 }));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 152 */
@@ -31005,7 +30989,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(155).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(155).setImmediate))
 
 /***/ }),
 /* 155 */
@@ -31075,7 +31059,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 156 */
@@ -31268,7 +31252,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(15)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(15)))
 
 /***/ }),
 /* 157 */
@@ -33270,6 +33254,7 @@ var index_esm = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__ = __webpack_require__(316);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -33277,20 +33262,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
-function runLoader(context) {
-    var status = context.rootGetters.isLoad;
-    if (!status) {
-        context.commit('updateLoadStatus', true);
-    }
-    window.countLoad = window.countLoad + 1;
-}
-
-function stopLoader(context) {
-    window.countLoad = window.countLoad - 1;
-    if (window.countLoad < 1) {
-        context.commit('updateLoadStatus', false);
-    }
-}
 
 var sortList = {
     sortByComplete: function sortByComplete(a, b) {
@@ -33376,6 +33347,18 @@ var checkList = {
         updateCheckList: function updateCheckList(state, data) {
             state.list = _extends({}, data);
         },
+        clearList: function clearList(state) {
+            var list = {
+                name: '',
+                check_list_id: null,
+                complete: false,
+                description: 'description',
+                created_at: null,
+                updated_at: null,
+                user_id: null
+            };
+            state.list = list;
+        },
         updateCheckListField: function updateCheckListField(state, data) {
             var field = data.field;
             state.list[field] = data.value;
@@ -33393,6 +33376,12 @@ var checkList = {
             } else {
                 state.allList.sort(sortList[payload.function_sort]).reverse();
             }
+        },
+        deleteList: function deleteList(state, id) {
+            var listForDelete = state.allList.findIndex(function (item) {
+                return item.check_list_id === id;
+            });
+            state.allList.splice(listForDelete, 1);
         },
         selectCheckList: function selectCheckList(state, payload) {
             var id = payload.listID;
@@ -33443,13 +33432,13 @@ var checkList = {
             if (context.state.allListLoad) {
                 return;
             }
-            runLoader(context);
+            Object(__WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
             axios.get('' + context.state.URI.pref + context.state.URI.GET.all).then(function (response) {
                 context.commit('loadAllCheckList', response.data);
             }).catch(function (err) {
                 console.log(err);
             }).finally(function () {
-                stopLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
             });
         },
         loadCheckList: function loadCheckList(context, encodeURI) {
@@ -33462,7 +33451,7 @@ var checkList = {
                     __WEBPACK_IMPORTED_MODULE_0__router_Frontend__["a" /* default */].push({ name: '404' });
                     return;
                 }
-                runLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
                 axios.post('' + context.state.URI.pref + listID).then(function (response) {
                     context.commit('initStateCheckItems', response.data.check_items);
                     context.commit('updateCheckList', response.data);
@@ -33473,7 +33462,7 @@ var checkList = {
                         console.log(error);
                     }
                 }).finally(function () {
-                    stopLoader(context);
+                    Object(__WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
                 });
             }
         },
@@ -33487,14 +33476,27 @@ var checkList = {
                 context.dispatch('updateCheckListField');
             }
         },
+        checkListDelete: function checkListDelete(context, id) {
+            Object(__WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
+            return new Promise(function (resolve, reject) {
+                axios.delete('' + context.state.URI.pref + id).then(function (response) {
+                    resolve();
+                }).catch(function (err) {
+                    console.log(err);
+                    reject();
+                }).finally(function () {
+                    Object(__WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
+                });
+            });
+        },
         updateCheckListField: function updateCheckListField(context) {
-            runLoader(context);
+            Object(__WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
             axios.put('' + context.state.URI.pref + context.state.URI.PUT.edit, context.state.list).then(function (response) {
                 // console.log(response.data);
             }).catch(function (err) {
                 console.log(err);
             }).finally(function () {
-                stopLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
             });
         }
     }
@@ -36237,7 +36239,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Header__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CommentsLayout__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CommentsLayout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__CommentsLayout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Core_helpers_eventBus__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Core_helpers_eventBus__ = __webpack_require__(4);
 //
 //
 //
@@ -36353,7 +36355,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Select__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Menu__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Menu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Menu__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Core_helpers_eventBus__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Core_helpers_eventBus__ = __webpack_require__(4);
 //
 //
 //
@@ -37566,7 +37568,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Comments__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Comments___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Comments__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Core_helpers_eventBus__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Core_helpers_eventBus__ = __webpack_require__(4);
 //
 //
 //
@@ -38892,6 +38894,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__CheckListName___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__CheckListName__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__CheckList_List__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__CheckList_List___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__CheckList_List__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_Core_helpers_eventBus__ = __webpack_require__(4);
 //
 //
 //
@@ -38932,6 +38935,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
@@ -38970,7 +38983,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.getters.userLoginStatus;
         }
     },
-    methods: {},
+    methods: {
+        openAllList: function openAllList() {
+            __WEBPACK_IMPORTED_MODULE_9_Core_helpers_eventBus__["a" /* default */].$emit('CheckList:openAllList');
+        }
+    },
     components: {
         CheckItem: __WEBPACK_IMPORTED_MODULE_0__CheckItem___default.a,
         CheckItemComplete: __WEBPACK_IMPORTED_MODULE_1__CheckItem_complete___default.a,
@@ -39042,7 +39059,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Core_helpers_defaultValue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Core_helpers_Throttle__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Core_helpers_eventBus__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Core_helpers_eventBus__ = __webpack_require__(4);
 //
 //
 //
@@ -39479,7 +39496,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Core_helpers_Throttle__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Core_helpers_eventBus__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Core_helpers_eventBus__ = __webpack_require__(4);
 //
 //
 //
@@ -42624,13 +42641,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         completePercentView: function completePercentView() {
             var config = this.$store.getters.completeViewProgress;
             if (this.$store.getters.settingProgressViewType === '%') {
-                return this.$store.getters.completePercent + '%';
+                if (config.all > 0) {
+                    return Math.ceil(config.complete / (config.all / 100)) + '%';
+                }
+                return 0 + '%';
             } else {
                 return config.complete + '/' + config.all;
             }
-        },
-        completeCheckList: function completeCheckList() {
-            return this.$store.getters.completeDone;
         },
         allComplete: function allComplete() {
             return this.$store.getters.allComplete;
@@ -44498,7 +44515,7 @@ if (true) {
 }
 })(this || (typeof window !== 'undefined' ? window : global));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 233 */
@@ -44831,6 +44848,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Spoiler___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Spoiler__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Select__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Core_helpers_eventBus__ = __webpack_require__(4);
 //
 //
 //
@@ -44866,7 +44884,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
+
+
 
 
 
@@ -44905,7 +44924,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     created: function created() {
+        var _this = this;
+
         this.$store.dispatch('allCheckList');
+        __WEBPACK_IMPORTED_MODULE_3_Core_helpers_eventBus__["a" /* default */].$on('CheckList:openAllList', function () {
+            _this.open();
+        });
     }
 });
 
@@ -44997,12 +45021,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+function closeContextMenu(event) {
+    var target = event.target;
+    if (window._self.$refs['contextMenuButton'] !== target) {
+        if (window._self.contextMenuOpenStatus) {
+            window._self.contextMenuOpenStatus = false;
+        }
+    }
+    window._self.deleteHandler();
+}
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "CheckList_list-item",
+    data: function data() {
+        return {
+            contextMenuOpenStatus: false
+        };
+    },
+
     computed: {
         dateFormat: function dateFormat() {
             var formatDate = this.$store.getters.getDateFormatDefault.value;
@@ -45026,6 +45077,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 return complete + '/' + allItems;
             }
+        },
+        contextMenuOpen: function contextMenuOpen() {
+            return { 'open': this.contextMenuOpenStatus };
         }
     },
     methods: {
@@ -45034,14 +45088,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (currentListID === this.list.check_list_id) {
                 return;
             }
-
             var items = this.$store.state.checkItem.checkItems;
-
             this.$store.commit('selectCheckList', { listID: this.list.check_list_id, items: items });
             this.$store.commit('initStateCheckItems', JSON.parse(JSON.stringify(this.list.check_items)));
 
             var hashCodeURI = __WEBPACK_IMPORTED_MODULE_1_js_base64__["Base64"].encodeURI(this.list.check_list_id);
             this.$router.push({ name: 'CheckList', params: { list_id: hashCodeURI } });
+        },
+        openContextMenu: function openContextMenu(event) {
+            if (!this.contextMenuOpenStatus) {
+                window._self = this;
+                event.stopPropagation();
+                document.addEventListener('click', closeContextMenu, { passive: true });
+            } else {
+                this.deleteHandler();
+            }
+            this.contextMenuOpenStatus = !this.contextMenuOpenStatus;
+        },
+        deleteHandler: function deleteHandler() {
+            document.removeEventListener('click', closeContextMenu);
+            window._self = null;
+        },
+        deleteList: function deleteList() {
+            var _this = this;
+
+            var hashCodeURI = __WEBPACK_IMPORTED_MODULE_1_js_base64__["Base64"].decode(this.$route.params.list_id);
+            if (hashCodeURI) {
+                hashCodeURI = +hashCodeURI;
+            }
+            this.$store.dispatch('checkListDelete', this.list.check_list_id).then(function () {
+                console.log(_this.$route.params.list_id, _this.list.check_list_id);
+                if (hashCodeURI === _this.list.check_list_id) {
+                    _this.$store.commit('clearList');
+                    _this.$store.commit('clearItems');
+                    _this.$router.push('/');
+                }
+                _this.$store.commit('deleteList', _this.list.check_list_id);
+            });
         }
     },
     props: {
@@ -45123,6 +45206,34 @@ var render = function() {
         _c("div", { staticClass: "complete percent-progress" }, [
           _vm._v(
             "\n            " + _vm._s(_vm.completePercentView) + "\n        "
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "context-menu-wrapper", class: _vm.contextMenuOpen },
+      [
+        _c(
+          "button",
+          {
+            ref: "contextMenuButton",
+            staticClass: "check-item__menu",
+            class: _vm.contextMenuOpen,
+            on: { click: _vm.openContextMenu }
+          },
+          [_vm._v("\n            ...\n        ")]
+        ),
+        _vm._v(" "),
+        _c("ul", { staticClass: "context-menu__list" }, [
+          _c(
+            "li",
+            {
+              staticClass: "context-menu__item",
+              on: { click: _vm.deleteList }
+            },
+            [_vm._v("delete")]
           )
         ])
       ]
@@ -45259,6 +45370,20 @@ var render = function() {
           "div",
           { staticClass: "checklist" },
           [
+            _vm.userLoginStatus
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "user-lists-title",
+                    on: { click: _vm.openAllList }
+                  },
+                  [
+                    _vm._v("\n                My lists\n                "),
+                    _vm._m(0)
+                  ]
+                )
+              : _vm._e(),
+            _vm._v(" "),
             _c("CheckListName"),
             _vm._v(" "),
             _c("ProgressBar"),
@@ -45376,7 +45501,16 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "left-col" }, [
+      _c("div", { staticClass: "arrow" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -49191,28 +49325,16 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__ = __webpack_require__(316);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+
 
 function sortByOrder(items) {
     items.sort(function (a, b) {
         var result = a.order - b.order !== 0 ? a.order - b.order : b.timestamp_id - a.timestamp_id;
         return result;
     });
-}
-
-function runLoader(context) {
-    var status = context.rootGetters.isLoad;
-    if (!status) {
-        context.commit('updateLoadStatus', true);
-    }
-    window.countLoad = window.countLoad + 1;
-}
-
-function stopLoader(context) {
-    window.countLoad = window.countLoad - 1;
-    if (window.countLoad < 1) {
-        context.commit('updateLoadStatus', false);
-    }
 }
 
 var checkItems = {
@@ -49247,6 +49369,9 @@ var checkItems = {
                 return !item.complete;
             });
         },
+
+        /*Для отслеживания изменений на watch,
+         что бы отслеживать выполенность чеклиста*/
         completeDone: function completeDone(state) {
             var complete = state.checkItems.filter(function (item) {
                 return item.complete;
@@ -49265,29 +49390,6 @@ var checkItems = {
                 };
             }
             return { all: 0, complete: 0 };
-        },
-        allComplete: function allComplete(state) {
-            if (state.checkItems.length > 0) {
-                var complete = state.checkItems.filter(function (item) {
-                    return item.complete;
-                }).length;
-
-                var all = state.checkItems.length;
-
-                if (all === complete) {
-                    return true;
-                }
-            }
-            return false;
-        },
-        completePercent: function completePercent(state) {
-            if (state.checkItems.length > 0) {
-                var complete = state.checkItems.filter(function (item) {
-                    return item.complete;
-                });
-                return Math.ceil(complete.length / (state.checkItems.length / 100));
-            }
-            return 0;
         }
     },
     mutations: {
@@ -49365,7 +49467,7 @@ var checkItems = {
             var _this = this;
 
             context.commit('updateListOrder', payload);
-            runLoader(context);
+            Object(__WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
             axios.post('' + context.state.URI.pref + context.state.URI.POST.order, { items: payload }).then(function (response) {}).catch(function (err) {
                 _this._vm.$notify({
                     duration: 3000,
@@ -49374,7 +49476,7 @@ var checkItems = {
                 });
                 console.log(err);
             }).finally(function () {
-                stopLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
             });
         },
         updateCheckItemField: function updateCheckItemField(context, timestamp_id) {
@@ -49388,7 +49490,7 @@ var checkItems = {
                 context.dispatch('addCheckItem', timestamp_id);
                 return;
             }
-            runLoader(context);
+            Object(__WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
             axios.post('' + context.state.URI.pref + context.state.URI.PUT.edit + '/' + id, { item: item }).then(function (response) {
                 // console.log(response.data);
             }).catch(function (err) {
@@ -49399,7 +49501,7 @@ var checkItems = {
                     text: 'Task is not change'
                 });
             }).finally(function () {
-                stopLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
             });
         },
         deleteCheckItem: function deleteCheckItem(context, id) {
@@ -49407,7 +49509,7 @@ var checkItems = {
 
             if (id) {
                 context.commit('deleteCheckItem', id);
-                runLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
                 axios.delete('' + context.state.URI.pref + context.state.URI.DELETE.delete + '/' + id).then(function (response) {
                     // console.log(response.data)
                 }).catch(function (err) {
@@ -49418,14 +49520,14 @@ var checkItems = {
                         text: 'Task is not deleted'
                     });
                 }).finally(function () {
-                    stopLoader(context);
+                    Object(__WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
                 });
             }
         },
         addCheckItem: function addCheckItem(context, timestamp_id) {
             var _this4 = this;
 
-            runLoader(context);
+            Object(__WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
             var item = context.state.checkItems.find(function (checkItem) {
                 return checkItem.timestamp_id === timestamp_id;
             });
@@ -49441,7 +49543,7 @@ var checkItems = {
                 });
                 console.log(err);
             }).finally(function () {
-                stopLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
             });
         }
     }
@@ -49609,24 +49711,11 @@ var userSettings = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Core_helpers_RunPreloader__ = __webpack_require__(316);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 
 
-function runLoader(context) {
-    var status = context.rootGetters.isLoad;
-    if (!status) {
-        context.commit('updateLoadStatus', true);
-    }
-    window.countLoad = window.countLoad + 1;
-}
-
-function stopLoader(context) {
-    window.countLoad = window.countLoad - 1;
-    if (window.countLoad < 1) {
-        context.commit('updateLoadStatus', false);
-    }
-}
 
 var comments = {
     state: {
@@ -49733,7 +49822,7 @@ var comments = {
         },
         addComment: function addComment(context, comment) {
             return new Promise(function (resolve, reject) {
-                runLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_1_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
                 axios.post('' + context.state.URI.pref + context.state.URI.POST.create, comment).then(function (response) {
                     context.commit('addComment', response.data);
                     resolve();
@@ -49741,14 +49830,14 @@ var comments = {
                     console.log(err);
                     reject();
                 }).finally(function () {
-                    stopLoader(context);
+                    Object(__WEBPACK_IMPORTED_MODULE_1_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
                 });
             });
         },
         deleteComment: function deleteComment(context, id) {
             var _this2 = this;
 
-            runLoader(context);
+            Object(__WEBPACK_IMPORTED_MODULE_1_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
             axios.delete('' + context.state.URI.pref + context.state.URI.DELETE.delete + id).then(function (response) {
                 context.commit('deleteComment', response.data);
             }).catch(function (error) {
@@ -49762,7 +49851,7 @@ var comments = {
                     text: errorText
                 });
             }).finally(function () {
-                stopLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_1_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
             });
         },
         editComment: function editComment(context, _ref3) {
@@ -49771,7 +49860,7 @@ var comments = {
             var id = _ref3.id,
                 comment = _ref3.comment;
 
-            runLoader(context);
+            Object(__WEBPACK_IMPORTED_MODULE_1_Core_helpers_RunPreloader__["a" /* runLoader */])(context);
             axios.put('' + context.state.URI.pref + context.state.URI.PUT.edit + id, comment).then(function (response) {
                 context.commit('editComment', response.data);
             }).catch(function (error) {
@@ -49785,7 +49874,7 @@ var comments = {
                     text: errorText
                 });
             }).finally(function () {
-                stopLoader(context);
+                Object(__WEBPACK_IMPORTED_MODULE_1_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
             });
         }
     }
@@ -49799,6 +49888,7 @@ var comments = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__router_Frontend___ = __webpack_require__(9);
+
 
 function updateToken(payload) {
     if (payload.token) {
@@ -51461,6 +51551,34 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return runLoader; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return stopLoader; });
+function runLoader(context) {
+    var status = context.rootGetters.isLoad;
+    if (!status) {
+        context.commit('updateLoadStatus', true);
+    }
+    window.countLoad = window.countLoad + 1;
+}
+
+function stopLoader(context) {
+    window.countLoad = window.countLoad - 1;
+    if (window.countLoad < 1) {
+        context.commit('updateLoadStatus', false);
+    }
+}
+
+
 
 /***/ })
 /******/ ]);

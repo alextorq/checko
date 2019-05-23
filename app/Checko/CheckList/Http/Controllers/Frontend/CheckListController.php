@@ -50,6 +50,14 @@ class CheckListController extends BaseController
         return response()->json($checklist);
     }
 
+    public function delete(int $checklist)
+    {
+        $checklist = CheckList::findOrFail($checklist);
+        $checklist->delete();
+
+        return response()->json(true);
+    }
+
     public function edit(Request $request)
     {
         $inputParam = $request->all();
