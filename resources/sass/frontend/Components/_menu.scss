@@ -1,0 +1,115 @@
+.navbar__menu {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  position: fixed;
+  top: 60px;
+  width: 250px;
+  right: 0;
+  background: #ffffff;
+  bottom: 0;
+  transform: translate3d(100%, 0, 0);
+  transition: all 0.4s;
+  z-index: 6;
+  @include phone {
+    width: 100vw;
+    top: 49px;
+  }
+  &.open {
+    transform: translate3d(0, 0, 0);
+  }
+  .navbar__menu__item.sing-in {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #ccefe2;
+    opacity: 0.9;
+    color: #01b06d;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 0.09px;
+    a {
+      background: transparent !important;
+    }
+
+    /*Avatar*/
+    .avatar-wrapper {
+      display: flex;
+      width: 50px;
+      height: 50px;
+      box-shadow: 0 0 8px rgba(164, 183, 190, 0.8);
+      background-color: #01b06d;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 8px;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      font-size: 23px;
+      user-select: none;
+      margin-left: -2 px;
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: white;
+        transform: translateY(20%);
+      }
+      &.image {
+        background-position: center;
+        background-size: cover;
+      }
+    }
+    /*Avatar end*/
+
+
+    a {
+      text-decoration: none;
+      opacity: inherit;
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
+    }
+  }
+
+  .navbar__menu__item {
+    a {
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      display: block;
+      cursor: pointer;
+      padding-left: 37px;
+      padding-right: 20px;
+    }
+  }
+  >li {
+    border-bottom: 1px solid rgba(#a4b7be, 0.15);
+    color: rgba(#14171b, 0.9);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 0.09px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      background: $grey_1;
+    }
+    .router-link-active {
+      background: $grey_1;
+    }
+  }
+}

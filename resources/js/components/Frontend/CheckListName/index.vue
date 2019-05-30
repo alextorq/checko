@@ -8,8 +8,10 @@
                 </svg>
            </span>
         </div>
-        <input class="checklist__name" type="text" ref="item"  :size="inputSize" :placeholder="placeholder"
-               v-model="name" placeholder="CheckList name" @change="endEditName" @keyup.esc="$refs.item.blur()">
+        <textarea class="checklist__name" type="text" ref="item" v-autosize="name"   :placeholder="placeholder"
+               v-model="name" @keydown.enter="preventEnter" placeholder="CheckList name"
+                  @change="endEditName" @keyup.esc="$refs.item.blur()">
+        </textarea>
     </div>
 </template>
 
@@ -54,6 +56,9 @@
                     this.$store.dispatch('updateCheckListField');
                 }
             },
+            preventEnter(event) {
+                event.preventDefault();
+            }
         }
     }
 </script>

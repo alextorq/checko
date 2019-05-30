@@ -7,11 +7,14 @@
  */
 
 
-Route::group(['prefix' => 'admin_api/v1//checklist',  'as'=> 'admin.checklist.'], function () {
-    Route::put('/edit', ['uses' => 'CheckListController@editCheckList', 'as' => 'edit']);
-    Route::get('/edit', ['uses' => 'CheckListController@editCheckList', 'as' => 'edit']);
-    Route::get('/{checklist?}', ['uses' => 'CheckListController@index', 'as' => 'index'])->where('checklist', '[\/\w\.-]*');
-    Route::post('/{checklist?}', ['uses' => 'CheckListController@indexPost', 'as' => 'index'])->where('checklist', '[\/\w\.-]*');
+Route::group(['prefix' => 'admin_api/v1/checklist',  'as'=> 'admin.checklist.'], function () {
+    Route::get('/all', ['uses' => 'CheckListController@all', 'as' => 'all']);
+    Route::delete('/{checklist?}', ['uses' => 'CheckListController@delete', 'as' => 'delete']);
+    Route::get('/{checklist?}', ['uses' => 'CheckListController@getList', 'as' => 'getOne']);
+
+    Route::post('/create', ['uses' => 'CheckListController@create', 'as' => 'create']);
+    Route::put('/edit', ['uses' => 'CheckListController@edit', 'as' => 'edit']);
+
+
 
 });
-

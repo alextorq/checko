@@ -194,6 +194,9 @@ return [
 
 
         App\Checko\CheckList\Providers\Frontend\CheckListProvider::class,
+        App\Checko\CheckList\Providers\AdminPanel\CheckListProvider::class,
+
+
         App\Checko\CheckItem\Providers\Frontend\CheckItemProvider::class,
         App\Checko\CheckItemComment\Providers\Frontend\CheckItemCommentProvider::class,
         App\Checko\CheckItemComment\Providers\Frontend\CheckItemCommentPermission::class,

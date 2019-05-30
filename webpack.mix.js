@@ -32,8 +32,8 @@ mix.webpackConfig({
 });
 
 mix.browserSync('checko.loc');
-// mix.js('resources/js/main.js', 'public/js')
-//     .sass('resources/sass/backend/app.scss', 'public/css/backend');
+mix.js('resources/js/main.js', 'public/js/backend')
+    .sass('resources/sass/backend/app.scss', 'public/css/backend');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/frontend/app.scss', 'public/css');

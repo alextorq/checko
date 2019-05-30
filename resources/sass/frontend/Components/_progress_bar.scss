@@ -1,0 +1,31 @@
+.progress-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .left-col {
+    text-align: center;
+  }
+}
+
+.progress-bar__wrapper {
+  height: 6px;
+  box-shadow: inset 0 0 2px rgba(11, 15, 19, 0.05);
+  border-radius: 3px;
+  background-color: $grey_1;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/*green line percent of complete*/
+.progress-bar__progress {
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  width: 0;
+  background-color: #01af6c;
+  transition: all 0.4s;
+}
+/*green line percent of complete end*/
+

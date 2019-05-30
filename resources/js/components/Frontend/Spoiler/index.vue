@@ -1,6 +1,6 @@
 <template>
     <div class="spoiler-wrapper">
-       <div class="checklist__description"  @click="open" >
+       <div class="spoiler-title"  @click="open" >
            <div class="left-col" :class="{'open': isOpen}">
                 <span class="arrow"></span>
            </div>

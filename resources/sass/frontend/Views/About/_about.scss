@@ -1,0 +1,24 @@
+.page_about {
+  .heroimage__about {
+    background-color: #01b06d;
+    text-align: center;
+    padding-top: 8vh;
+    padding-bottom: 4vh;
+  }
+  img {
+    max-width: 100%;
+  }
+  .form-registration-wrapper > form {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  h1 {
+    margin-top: 0;
+    color: #ffffff;
+    font-family: "Open Sans - Semi Bold";
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 60px;
+    letter-spacing: 0.2px;
+  }
+}

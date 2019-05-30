@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use App\Checko\Models\CheckList;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\User;
+
 
 class CheckListController extends BaseController
 {

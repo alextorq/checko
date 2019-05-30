@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 65 65" style="enable-background:new 0 0 65 65;" xml:space="preserve">
+	 viewBox="0 0 30.8 23.9" style="enable-background:new 0 0 30.8 23.9;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#01B06D;}
-	.st1{fill:#0C0F14;}
-	.st2{fill:#FFFFFF;stroke:#0C0F14;stroke-width:3;stroke-miterlimit:10;}
+	.st0{fill:none;stroke:#0C0F14;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+	.st1{fill:#FFFFFF;stroke:#0C0F14;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+	.st2{fill:#FFFFFF;stroke:#0C0F14;stroke-width:2;stroke-miterlimit:10;}
 </style>
-<path id="line_x5F_3" class="st1" d="M57,48.7H33.5h-2.7H8c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h22.8h2.7H57
-	c0.8,0,1.5-0.7,1.5-1.5S57.8,48.7,57,48.7z"/>
-<path id="line_x5F_2" class="st1" d="M57,30.8h-3.5H51H8c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h43h2.5H57c0.9,0,1.5-0.7,1.5-1.5
-	S57.8,30.8,57,30.8z"/>
-<path id="line_x5F_1" class="st1" d="M57,12.8H33h-2.2H8c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h22.8H33h24c0.8,0,1.5-0.7,1.5-1.5
-	S57.8,12.8,57,12.8z"/>
-<circle id="circle_x5F_3" class="st2" cx="21.3" cy="50.2" r="7.4"/>
-<circle id="circle_x5F_2" class="st2" cx="44.3" cy="32.3" r="7.4"/>
-<circle id="circle_x5F_1" class="st2" cx="21.3" cy="13.9" r="7.4"/>
+<line class="st1" x1="25.1" y1="19.9" x2="7" y2="19.9"/>
+<line class="st1" x1="25.1" y1="11.9" x2="7" y2="11.9"/>
+<line class="st1" x1="25.1" y1="4" x2="7" y2="4"/>
+<circle id="circle_x5F_1_9_" class="st2" cx="11.3" cy="4" r="2.9"/>
+<circle id="circle_x5F_1_8_" class="st2" cx="20.8" cy="11.9" r="2.9"/>
+<circle id="circle_x5F_1_7_" class="st2" cx="11.3" cy="19.9" r="2.9"/>
 </svg>

@@ -19,7 +19,7 @@
 <div id="app"></div>
 
 <!-- import JavaScript -->
-<script src="{{ env('APP_URL') . '/js/main.js'}}"></script>
+<script src="{{ env('APP_URL') . '/js/backend/main.js'}}"></script>
 
 </body>
 </html>

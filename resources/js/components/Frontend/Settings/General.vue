@@ -8,8 +8,7 @@
 </template>
 
 <script>
-    import CheckBoxButton from '../ChekBoxButton'
-    import AppSelect from '../Select'
+
 
     export default {
         name: "General",
@@ -22,8 +21,7 @@
             },
         },
         components: {
-            CheckBoxButton,
-            AppSelect
+
         }
     }
 </script>

@@ -5,15 +5,17 @@ import store from '../../store/Frontend/index'
 /*Компоненты*/
 
 import Layout from  '../../components/Frontend/Layout'
-import CheckList from  '../../components/Frontend/CheckList'
-import FormRegistration from  '../../components/Frontend/FormRegistration'
-import FormLogin from  '../../components/Frontend/FormLogin'
+import CheckList from '../../views/Frontend/CheckList'
+import FormRegistration from  '../../views/Frontend/FormRegistration'
+import FormLogin from  '../../views/Frontend/FormLogin'
+import ForgotPassword from  '../../views/Frontend/FormForgotPassword'
+
 import  NotFound from  '../../views/Frontend/404'
 import  SettingsLayout from  '../../views/Frontend/Settings'
 import  SettingsList from '../../components/Frontend/Settings/List'
 import  SettingsAccount from '../../components/Frontend/Settings/Account'
-import ForgotPassword from  '../../components/Frontend/FormForgotPassword'
-import Reglament from  '../../components/Frontend/Reglament'
+
+import About from  '../../views/Frontend/About'
 
 import  SettingsNotification from '../../components/Frontend/Settings/Notification'
 import  SettingsPayment from '../../components/Frontend/Settings/Payment'
@@ -136,9 +138,14 @@ const routes = [
                 },
             },
             {
-                path: '/reglament',
-                name: 'reglament',
-                component: Reglament,
+                path: '/about',
+                name: 'about',
+                component: About,
+                meta: {title: 'About us', breadcrumb: true, keepAlive: true,
+                    permission: {
+                        hook: null
+                    }
+                }
             },
             {
                 path: '/404',

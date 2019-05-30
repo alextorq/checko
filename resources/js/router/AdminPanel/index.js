@@ -19,6 +19,11 @@ import RolePage from '../../components/AdminPanel/Permissions/RoleItem'
 import Availability from '../../components/AdminPanel/Permissions/Availability'
 
 
+import CheckListLayput from '../../views/AdminPanel/checkList/layout'
+import ChecklistsTable from  '../../components/AdminPanel/Table/ChecklistsTable'
+import CheckList from '../../views/AdminPanel/checkList_page'
+
+
 
 Vue.use(VueRouter);
 
@@ -61,6 +66,29 @@ const routes = [
                         props: true,
                         hidden: true,
                         meta: {title: 'User page', breadcrumb: true, keepAlive: true},
+                    }
+                ]
+            },
+            {
+                path: 'checklists/',
+                name: '',
+                component: CheckListLayput,
+                meta: {title: 'checklists', breadcrumb: true, icon: 'el-icon-finished', keepAlive: true},
+                children: [
+                    {
+                        path: '',
+                        component: ChecklistsTable,
+                        name: 'check_list',
+                        hidden: false,
+                        meta: {title: 'checklists', breadcrumb: true, icon: 'el-icon-finished', keepAlive: true},
+                    },
+                    {
+                        path: ':id',
+                        component: CheckList,
+                        name: 'check_list_page',
+                        props: true,
+                        hidden: true,
+                        meta: {title: 'CheckList page', breadcrumb: true, keepAlive: true},
                     }
                 ]
             },

@@ -26,6 +26,31 @@ html {
   }
 }
 
+/*tooltip*/
+.tooltip-wrapper {
+  position: relative;
+  &:hover {
+    .tooltip {
+      display: block;
+    }
+  }
+}
+.tooltip {
+  position: absolute;
+  background-color: white;
+  color: $black;
+  display: none;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 80%);
+  white-space: nowrap;
+  @include phone {
+    display: none !important;
+  }
+}
+/*tooltip end*/
+
+/*overlay*/
 .overlay {
   position: fixed;
   z-index: 6;
@@ -42,22 +67,21 @@ html {
     display: none !important;
   }
 }
+/*overlay end*/
+
 body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   color: $black;
+  letter-spacing: 0.4px;
+  font-size: 14px;
 }
 .main_content {
   margin-top: 160px;
 }
 
-.open {
-  >.dropdown-menu {
-    display: block;
-  }
-}
-
+/*dropdown menu*/
 .dropdown-menu {
   margin: 0;
   list-style: none;
@@ -82,6 +106,13 @@ body {
     }
   }
 }
+.open {
+  >.dropdown-menu {
+    display: block;
+  }
+}
+/*dropdown menu*/
+
 
 main {
   padding-top: 60px;
@@ -112,10 +143,9 @@ main {
 
 .left-col {
   min-width: $left-col;
-  @include phone {
-    margin-left: 10px;
-  }
 }
+
+
 .flex-row {
   display: flex;
 }
@@ -130,19 +160,26 @@ main {
 input {
   font-family: 'Open Sans', sans-serif;
   color: $black;
+  letter-spacing: 0.4px;
   &:focus {
     outline: none;
   }
 }
 textarea {
-  white-space: pre;
   width: 100%;
   font-family: 'Open Sans', sans-serif;
   color: $black;
   resize: none;
   outline: none;
+  padding: 0;
+  margin: 0;
+  overflow-wrap: break-word !important;
+  white-space: pre-wrap !important;
+  letter-spacing: 0.4px;
 }
 button {
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.4px;
   &:focus {
     outline: none;
   }
@@ -157,17 +194,17 @@ button {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  scrollbar-face-color: $color_3;
-  scrollbar-track-color: $color_3;
+  scrollbar-face-color: $green;
+  scrollbar-track-color: $green;
   &::-webkit-scrollbar {
     width: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background: $color_1;
+    background: $green;
     border-radius: 5px;
   }
   &::-webkit-scrollbar-track {
-    background: $color_6;
+    background: $green;
     border-radius: 5px;
   }
 }
@@ -175,7 +212,6 @@ button {
 /*all element for date*/
 .date {
   color: $grey_3;
-  font-size: 14px;
   font-weight: 400;
   line-height: 25px;
   letter-spacing: 0.03px;
@@ -184,7 +220,7 @@ button {
 
 /*Arrow*/
 .arrow {
-  width: 12px;
+  width: 10px;
   height: 8px;
   transition: all 0.4s;
   position: relative;
@@ -192,21 +228,23 @@ button {
     content: '';
     width: 9px;
     left: 0;
-    height: 1px;
+    height: 2px;
     position: absolute;
     background-color: $grey_3;
     transform: rotate(45deg);
     transform-origin: left top;
+    border-radius: 2px;
   }
   &:before {
     content: '';
     width: 9px;
-    height: 1px;
+    height: 2px;
     right: 0;
     position: absolute;
     background-color: $grey_3;
     transform: rotate(-45deg);
     transform-origin: right top;
+    border-radius: 2px;
   }
 }
 /*Arrow end*/
@@ -253,7 +291,7 @@ button.close-delete {
     height: 125%;
     width: $line-height;
     left: calc(50% - (#{$line-height} / 2));
-    background: $color_7;
+    background: $black;
     //top: calc(#{$line-height} / 2 * -1);
     top: -12.5%;
   }
@@ -268,39 +306,6 @@ button.close-delete {
 /*Buttons end*/
 
 
-.spoiler:not(.open) {
-  overflow: hidden;
-}
-.spoiler {
-  transition: all .2s;
-}
-
-/*preloader general*/
-.preloader {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(#000, 0.08);
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 5;
-  span {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    user-select: none;
-    animation: rotate 3s linear 0s infinite;
-  }
-  svg {
-    fill: $color_1;
-  }
-}
-/*preloader general end*/
-
-
 /*number of complete*/
 .percent-progress {
   color: $green;
@@ -311,6 +316,78 @@ button.close-delete {
 }
 /*number of complete end*/
 
+/*cross*/
+.cross {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  display: block;
+  &:after {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: $grey_3;
+    content: '';
+    top: 0;
+    left: calc(50% - 1px);
+  }
+  &:before {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: $grey_3;
+    content: '';
+    top: calc(50% - 1px);
+    left: 0;
+  }
+}
+/*cross end*/
+
+/*tree point*/
+.three_point {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  margin: 0;
+  cursor: pointer;
+  padding: 4px;
+  &:after {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background-color: $grey_3;
+    content: '';
+    left: calc(50% - 1px);
+    top: calc(50% - 1px);
+  }
+  span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &:after, &:before {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background-color: $grey_3;
+      content: '';
+      left: 0;
+      top: calc(50% - 1px);
+    }
+    &:before {
+      right: 0;
+      left: unset;
+    }
+  }
+}
+/*tree point end*/
 
 
+button[hidden] {
+  display: none !important;
+}
 

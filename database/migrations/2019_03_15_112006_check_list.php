@@ -15,9 +15,9 @@ class CheckList extends Migration
     {
         Schema::create('check_lists', function (Blueprint $table) {
             $table->increments('check_list_id');
-            $table->string('name')->nullable();
+            $table->longText('name')->nullable();
             $table->boolean('complete');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

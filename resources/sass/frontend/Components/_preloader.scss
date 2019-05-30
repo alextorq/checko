@@ -1,0 +1,22 @@
+.preloader {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(#000, 0.08);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+  span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    user-select: none;
+    animation: rotate 3s linear 0s infinite;
+  }
+  svg {
+    fill: $green;
+  }
+}

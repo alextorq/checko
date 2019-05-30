@@ -20,9 +20,8 @@
             </textarea>
         </div>
         <div class="context-menu-wrapper" :class="contextMenuOpen">
-            <button class="check-item__menu" :class="contextMenuOpen" ref="contextMenuButton" @click="openContextMenu" >
-                <!--<span class="icon"></span>-->
-                ...
+            <button class="check-item__menu three_point" :class="contextMenuOpen" ref="contextMenuButton" @click="openContextMenu" >
+                <span></span>
             </button>
             <ul class="context-menu__list">
                 <!--<li class="context-menu__item">attach</li>-->

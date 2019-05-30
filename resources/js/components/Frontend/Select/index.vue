@@ -1,5 +1,5 @@
 <template>
-    <div class="selected-list-wrapper" :class="isOpen">
+    <div class="selected-list-wrapper" :class="isOpen" v-clickoutside="closeList">
         <span @click="openList">{{item.name}}
             <span class="arrow"></span>
         </span>
@@ -10,6 +10,9 @@
 </template>
 
 <script>
+
+    import Clickoutside from '../Directive/clickoutside'
+
     export default {
         name: "Select",
         data() {
@@ -21,6 +24,8 @@
               open: false
           }
         },
+        directives: { Clickoutside },
+
         computed: {
           isOpen() {
               return {
@@ -42,6 +47,9 @@
           },
           openList() {
               this.open = !this.open
+          },
+          closeList() {
+              this.open = false;
           }
         },
         props: {
@@ -71,12 +79,6 @@
         },
         created() {
             this.item = this.default_value;
-            document.addEventListener('click', (event) => {
-                let target = event.target;
-                if (this.open &&!target.closest('.selected-list-wrapper')) {
-                    this.openList();
-                }
-            })
         }
     }
 </script>

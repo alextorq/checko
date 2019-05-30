@@ -1,35 +1,38 @@
 <template>
     <div class="wrapper-user-lists scrolled" :class="openClass">
-        <button class="button" @click="open" v-show="!openStatus">
-            <span>My lists</span>
-            <div class="arrow"></div>
-        </button>
-
-        <div class="user-lists-title-wrapper">
-            <h2 class="user-lists-title" @click="open">
-                <div class="left-col">
-                    <div class="arrow"></div>
+        <div class="wrapper-user-list-content">
+            <div class="user-lists-title-wrapper">
+                <h2 class="user-lists-title" @click="open">
+                    <div class="left-col">
+                        <div class="arrow"></div>
+                    </div>
+                    My lists
+                </h2>
+                <div class="sort-lists">
+                    <AppSelect :list="sortOptions" name="sortLists"
+                               :default_value="sortOptions[1]"
+                               @change="sort">
+                    </AppSelect>
                 </div>
-                My lists
-            </h2>
-            <div class="sort-lists">
-                <AppSelect :list="sortOptions" name="sortLists"
-                           :default_value="sortOptions[1]"
-                           @change="sort">
-                </AppSelect>
             </div>
-        </div>
 
-        <ul class="user-lists">
-            <list v-for="list in unCompleteLists" :list="list" :key="list.check_list_id"></list>
-        </ul>
-
-        <Spoiler>
-            <ul class="user-lists done">
-                <list v-for="list in completeLists" :complete="true" :list="list" :key="list.check_list_id"></list>
+            <ul class="user-lists">
+                <list v-for="list in unCompleteLists" :list="list" :key="list.check_list_id"></list>
             </ul>
-        </Spoiler>
 
+            <!--<button class="add-new-list">-->
+                <!--<span class="left-col">-->
+                    <!--<span class="cross"></span>-->
+                <!--</span>-->
+                <!--Add list-->
+            <!--</button>-->
+
+            <Spoiler v-if="completeLists.length > 0">
+                <ul class="user-lists done">
+                    <list v-for="list in completeLists" :complete="true" :list="list" :key="list.check_list_id"></list>
+                </ul>
+            </Spoiler>
+        </div>
     </div>
 </template>
 
@@ -43,7 +46,7 @@
         name: "CheckList_List",
         data() {
           return {
-              openStatus: true,
+              openStatus: false,
               sortOptions: [
                   {name: 'first new', value: {function_sort: 'sortByDate', direction: 'ASC'}},
                   {name: 'last new', value: {function_sort: 'sortByDate', direction: 'DESC'}},
@@ -72,7 +75,8 @@
         },
         methods: {
             open() {
-                this.openStatus = !this.openStatus
+                this.openStatus = !this.openStatus;
+                EventBus.$emit('CheckList:closeAllList')
             },
             sort(payload) {
                 this.$store.commit('sortListsBy', payload.value)

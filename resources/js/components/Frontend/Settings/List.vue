@@ -14,22 +14,21 @@
             </li>
             <li class="settings-menu__item">
                 Add new items to the end of the list
-                <CheckBoxButton @update="updateSettings" :default_value="getOrderCreateSettingDefault" name="addToEndList">
-                </CheckBoxButton>
+                <SwitchButton @update="updateSettings" :default_value="getOrderCreateSettingDefault" name="addToEndList">
+                </SwitchButton>
             </li>
 
-
-            <li class="settings-menu__item">
-                Private lists (access by e-mail)
-                <CheckBoxButton @update="updateSettings" :default_value="getOrderCreateSettingDefault" name="addToEndList">
-                </CheckBoxButton>
-                <span class="settings-menu__item-caption">Non-privatized list can be viewed by anyone who has a link to projects</span>
-            </li>
+            <!--<li class="settings-menu__item">-->
+                <!--Private lists (access by e-mail)-->
+                <!--<CheckBoxButton @update="updateSettings" :default_value="getOrderCreateSettingDefault" name="addToEndList">-->
+                <!--</CheckBoxButton>-->
+                <!--<span class="settings-menu__item-caption">Non-privatized list can be viewed by anyone who has a link to projects</span>-->
+            <!--</li>-->
         </ul>
 </template>
 
 <script>
-    import CheckBoxButton from '../ChekBoxButton'
+    import SwitchButton from '../SwitchButton'
     import AppSelect from '../Select'
 
     export default {
@@ -60,7 +59,7 @@
             },
         },
         components: {
-            CheckBoxButton,
+            SwitchButton,
             AppSelect,
         }
     }

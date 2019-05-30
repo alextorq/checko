@@ -1,0 +1,29 @@
+.spoiler-wrapper {
+  .spoiler-title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    .left-col {
+      display: flex;
+      justify-content: center;
+      .arrow {
+        transition: all 0.4s;
+      }
+      &.open {
+        .arrow {
+          transition: all 0.4s;
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .spoiler:not(.open) {
+    overflow: hidden;
+  }
+  .spoiler {
+    transition: all .2s;
+  }
+}
+
+

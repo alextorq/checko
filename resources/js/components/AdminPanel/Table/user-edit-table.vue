@@ -30,7 +30,7 @@
             </el-col>
         </el-row>
 
-        <el-table v-loading="listLoading" max-height="650" stripe :data="list"
+        <el-table v-loading="listLoading"  stripe :data="list"
           border fit highlight-current-row>
 
             <el-table-column prop="user_id" align="center" label="ID" width="80"

@@ -44,7 +44,7 @@ const checkItems = {
             return Math.ceil(complete.length / (state.checkItems.length / 100)) === 100;
         },
         completeViewProgress(state) {
-            let complete, all  = 0;
+            let complete = 0, all  = 0;
             if (state.checkItems.length > 0) {
                 complete = state.checkItems.filter((item) => item.complete).length;
                 all = state.checkItems.length;
@@ -179,7 +179,9 @@ const checkItems = {
         addCheckItem(context, timestamp_id) {
             runLoader(context);
             let item = context.state.checkItems.find((checkItem) => {return checkItem.timestamp_id === timestamp_id});
-
+            /*После создания (добавления в массив) checkItem отправляем запрос на создание
+            * и после получения результата подменяем у созданного итема id
+            * */
             axios.post(`${context.state.URI.pref}${context.state.URI.POST.create}`, item)
                 .then(response => {
                     /*Подмена*/

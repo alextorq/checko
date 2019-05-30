@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <LogoWelcome></LogoWelcome>
         <notifications position="top right" classes="my-style"/>
         <Header></Header>
         <CommentsLayout :open="commentIsOpen"></CommentsLayout>
@@ -15,6 +16,7 @@
     import Header from '../Header'
     import  CommentsLayout from './CommentsLayout'
     import EventBus from 'Core/helpers/eventBus'
+    import LogoWelcome from '../LogoWelcome'
 
     export default {
         name: "Layout",
@@ -35,7 +37,8 @@
         },
         components: {
             Header,
-            CommentsLayout
+            CommentsLayout,
+            LogoWelcome
         },
         created() {
             EventBus.$on('overflow_on', () => {

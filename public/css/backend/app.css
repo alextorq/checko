@@ -622,6 +622,12 @@ button.default:hover {
   border-bottom: 1px solid #dcdfe6;
 }
 
+.checklist_page h2 {
+  font-size: 40px;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
 .m-r-1 {
   margin-right: 5px;
 }

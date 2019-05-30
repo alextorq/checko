@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import Comment from '../CheckItemCommentsItem'
+    import Comment from './CommentItem'
     import CommentForm from  '../Comments/CommentForm'
     export default {
         name: "index",

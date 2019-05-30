@@ -31,7 +31,7 @@ class UsersProvider extends ServiceProvider
      */
     protected function adminPanelRoutes()
     {
-        Route::middleware(['web', 'auth'])
+        Route::middleware(['web', 'auth', 'admin_pass'])
             ->namespace($this->namespace)
             ->group(base_path('app/Checko/Users/routes/adminPanel.php'));
     }

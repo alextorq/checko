@@ -3,7 +3,7 @@
          @click="changeDescription">
         <div v-html="getDescriptionMarkdownRender" class="checklist__description-markdown"></div>
         <textarea @change="updateDescription" @blur="checkListDescriptionEditStatus = !checkListDescriptionEditStatus"
-                  ref="description"
+                  ref="description" v-autosize="description"
                   class="checklist__description" @keyup="rowLength"
                   :style="{ 'min-height': checkListDescriptionAmountRow + 'px' }"
                   v-model.trim="description"></textarea>
