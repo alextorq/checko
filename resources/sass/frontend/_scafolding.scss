@@ -37,7 +37,7 @@ html {
 }
 .tooltip {
   position: absolute;
-  background-color: white;
+  background-color: transparent;
   color: $black;
   display: none;
   top: 100%;
@@ -195,7 +195,7 @@ button {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-face-color: $green;
-  scrollbar-track-color: $green;
+  scrollbar-track-color: white;
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -204,7 +204,7 @@ button {
     border-radius: 5px;
   }
   &::-webkit-scrollbar-track {
-    background: $green;
+    background: white;
     border-radius: 5px;
   }
 }

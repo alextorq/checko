@@ -16,12 +16,19 @@
     <link rel="shortcut icon" href="{{ asset('/images/favicon_16.png') }}" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/images/favicon_72.png') }}">
     <link rel="apple-touch-icon" sizes="115x115" href="{{ asset('/images/favicon_115.png') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&amp;subset=cyrillic" rel="stylesheet">
 
     <meta name="theme-color" content="#01b06d">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:url" content={{ config('app.url', 'Laravel') }}>
+    <meta property="og:image" content="https://yastatic.net/s3/home/logos/share/share-logo_ru.png">
+    <meta property="og:title" content="Checko">
+    <meta property="og:description" content="Make live easy">
+
     <link rel="icon" sizes="72x72" href="{{ asset('/images/favicon_72.png') }}">
 
     <!-- Styles -->

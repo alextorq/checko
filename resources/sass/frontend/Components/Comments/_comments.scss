@@ -95,7 +95,7 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-face-color: $green;
-    scrollbar-track-color: $green;
+    scrollbar-track-color: white;
     &::-webkit-scrollbar {
       width: 7px;
     }
@@ -104,7 +104,7 @@
       border-radius: 5px;
     }
     &::-webkit-scrollbar-track {
-      background: $green;
+      background: white;
       border-radius: 5px;
     }
 

@@ -11,12 +11,22 @@
                     <h2>{{list.name}}</h2>
                 </el-row>
 
-                <div>{{list.complete}}</div>
-                <div>Create: {{list.created_at}}</div>
-                <div>Description: {{list.description}}</div>
-                <div>Modified: {{list.updated_at}}</div>
 
-                <h2>CheckItems</h2>
+
+                <el-row :gutter="20" class="info-list">
+                    <el-col :span="19">
+                        <div class="info-item grid-content bg-purple">Create: {{list.created_at}}</div>
+                        <div class="info-item grid-content bg-purple">Description: {{list.description}}</div>
+                        <div class="info-item grid-content bg-purple">Modified: {{list.updated_at}}</div>
+                    </el-col>
+                    <el-col :span="1">
+                        <div class="info-item">
+                            <el-tag v-if="list.complete" type="success">Complete</el-tag>
+                            <el-tag v-else type="warning">Incomplete</el-tag>
+                        </div>
+                    </el-col>
+                </el-row>
+
                 <el-table
                         :data="list.check_items"
                         style="width: 100%">
@@ -62,7 +72,7 @@
                             width="180">
                     </el-table-column>
 
-                    <el-table-column label="Complete"  sortable prop="complete">
+                    <el-table-column label="Complete" width="180" sortable prop="complete">
                         <template slot-scope="scope">
                             <el-switch
                                     style="display: block; margin-bottom: 5px"

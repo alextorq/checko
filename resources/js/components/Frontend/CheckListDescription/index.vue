@@ -6,24 +6,25 @@
                   ref="description" v-autosize="description"
                   class="checklist__description" @keyup="rowLength"
                   :style="{ 'min-height': checkListDescriptionAmountRow + 'px' }"
-                  v-model.trim="description"></textarea>
+                  v-model.trim="description" :placeholder="placeholder"></textarea>
     </div>
 </template>
 
 <script>
     import  marked from 'marked'
-
+    import {checkList} from 'Core/helpers/defaultValue'
     export default {
         name: "CheckListDescription",
         data() {
             return {
                 checkListDescriptionEditStatus: false,
                 checkListDescriptionAmountRow: 5,
+                placeholder: checkList.description
             }
         },
         computed: {
             getDescriptionMarkdownRender() {
-                return marked(this.$store.state.checkList.list.description, { sanitize: true });
+                return marked(this.$store.state.checkList.list.description || this.placeholder, { sanitize: true });
             },
             descriptionEditClass() {
                 return {

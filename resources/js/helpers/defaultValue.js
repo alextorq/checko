@@ -1,5 +1,6 @@
 let checkList = {
   name: 'CheckList name',
+  description: 'description'
 };
 
 

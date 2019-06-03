@@ -4,21 +4,129 @@
     text-align: center;
     padding-top: 8vh;
     padding-bottom: 4vh;
+    margin-bottom: 10vh;
+    .container {
+      position: relative;
+    }
+    img {
+      width: 100%;
+
+    }
+    h1 {
+      margin-top: 0;
+      color: #ffffff;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 60px;
+      letter-spacing: 0.2px;
+      margin-bottom: 5vh;
+    }
+    .image-wrapper {
+      position: relative;
+      width: 60%;
+      margin: 0 auto;
+      @include small {
+        width: 100%;
+      }
+    }
+    .video {
+      position: absolute;
+      width: 92%;
+      height: 64.5%;
+      top: 5%;
+      left: 4%;
+      video {
+        width: 100%;
+        height: 100%;
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
-  img {
-    max-width: 100%;
-  }
+
   .form-registration-wrapper > form {
-    margin-top: 100px;
+    margin-top: 0;
     margin-bottom: 100px;
   }
-  h1 {
-    margin-top: 0;
-    color: #ffffff;
-    font-family: "Open Sans - Semi Bold";
-    font-size: 30px;
-    font-weight: 400;
+
+
+
+  .advantages {
+    margin-bottom: 10vh;
+    .logo-icon {
+      display: inline-flex;
+      width: 20px;
+      height: 20px;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      img {
+        width: 100%;
+      }
+    }
+    ul {
+      display: flex;
+      padding-left: 0;
+      list-style: none;
+      width: 60%;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      @include small {
+        width: 100%;
+      }
+      li {
+        width: 50%;
+        .title {
+          display: flex;
+          align-items: center;
+        }
+        .text {
+          max-width: 340px;
+          padding-left: 30px;
+        }
+        @include phone  {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+
+  .caption {
+    color: $black;
+    font-size: 20px;
+    font-weight: 600;
     line-height: 60px;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.13px;
+  }
+
+
+  .all_check-list {
+    text-align: center;
+    margin-bottom: 10vh;
+    color: $black;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 60px;
+    letter-spacing: 0.13px;
+    .amount {
+      opacity: 0.9;
+      color: #01b06d;
+      font-size: 80px;
+      font-weight: 700;
+      line-height: 104.81px;
+    }
+    .logo-icon {
+      display: inline-flex;
+      width: 16px;
+      height: 16px;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 100%;
+      }
+    }
   }
 }

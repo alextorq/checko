@@ -3,6 +3,11 @@ body{
   background-color: #212533;
 }
 
+
+.el-scrollbar {
+  flex-shrink: 0;
+}
+
 .content{
   height: 100%;
   background-color: $contentColor;
@@ -34,6 +39,16 @@ h1 {
   transition: max-width .3s linear;
 }
 
+.info-list {
+  border: 3px solid white;
+  margin-bottom: 20px;
+  .info-item {
+    padding: 10px 0;
+    &:nth-child(2n) {
+      background-color: #fff;
+    }
+  }
+}
 
 .fas{
   margin-right: 10px;

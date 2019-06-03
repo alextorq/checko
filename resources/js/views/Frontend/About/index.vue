@@ -8,20 +8,43 @@
                     and share a check-list
                 </h1>
 
-                <img src="/images/about_heroimage.png" alt="Monitor">
+                <div class="image-wrapper">
+                    <img src="/images/monitor.svg" alt="Monitor">
+
+
+                    <div class="video">
+                        <video autoplay muted>
+                            <source src="/video/introduce.mp4">
+                        </video>
+                        <!--<canvas id="myCanvas" width="660" height="370"></canvas>-->
+                    </div>
+                </div>
+
+
             </div>
         </section>
 
-        
-        <section class="adver">
+        <section class="advantages">
             <div class="container">
                 <ul>
-                    <li>Simple interface
+                    <li>
+                        <div class="title caption">
+                            <span class="logo-icon">
+                                <img src="/images/check_green.svg" alt="checko">
+                            </span>
+                            Simple interface
+                        </div>
                         <div class="text">
                             We’ve tried to create a truly simple and convenient service for managing check-lists
                         </div>
                     </li>
-                    <li>Time-saving
+                    <li>
+                        <div class="title caption">
+                            <span class="logo-icon">
+                                <img src="/images/check_green.svg" alt="checko">
+                            </span>
+                            Time-saving
+                        </div>
                         <div class="text">
                             It is not an obligatory step to sign in so that you can create and share a check-list.
                             It’s enough to create tasks and share a link with an executor.
@@ -29,64 +52,18 @@
                     </li>
                 </ul>
             </div>
-
         </section>
 
-
-        <section class="plans">
-            <div class="container">
-                <h2>Free and a Pro versions </h2>
-                <div class="text">Basic Checko.me functional is accessible completely for free and without any
-                    sign-in. Using Pro version you’ll receive additional check-lists managing interface.
-                </div>
-
-                <ul>
-                    <li>
-                        month
-                    </li>
-                    <li>
-                        -30%
-                        6 months
-                    </li>
-                    <li>
-                        -50%
-                        12 months
-                    </li>
-                </ul>
-
-                <ul>
-                    <li>
-                        Free version
-                        0 $ / month
-                        <ul>
-                            <li>Accessible with no registration</li>
-                            <li>Public access to check-lists</li>
-                            <li>Basic functional</li>
-                        </ul>
-                        <button class="button">ChOOSE</button>
-                    </li>
-                    <li>
-                        Pro version 11,88 $
-                        year
-                        0,99 $ / month
-                        <ul>
-                            <li>Check-lists control panel</li>
-                            <li>Notifications settings</li>
-                            <li>Access permissions settings</li>
-                            <li>PDF export and printing option</li>
-                            <li>Pictures downloading and comments adding</li>
-                            <li>dozens of additional functions and possibilities</li>
-                        </ul>
-                        <button class="button">ChOOSE</button>
-                    </li>
-                </ul>
-            </div>
-        </section>
 
         <section class="all_check-list">
             <div class="container">
-                check    sheets created
-                <h2>256 658</h2>
+                <div class="caption">
+                    check<span class="logo-icon">
+                    <img src="/images/check_green.svg" alt="checko">
+                    </span> sheets created
+                </div>
+
+                <div class="amount">{{allList}}</div>
             </div>
         </section>
 
@@ -105,8 +82,24 @@
 
     export default {
         name: "index",
+        data() {
+          return {
+              allList: 1
+          }
+        },
         components: {
             RegistrationForm
+        },
+        created() {
+            axios.get('frontend/checklist/amountLst')
+                .then((response) => {
+                    this.allList = +response.data;
+                    // videoPlay(videoSource);
+                })
+                .catch((error) => {
+                    console.log(error);
+            });
+
         }
     }
 </script>

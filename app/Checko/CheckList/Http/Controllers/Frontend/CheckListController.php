@@ -68,4 +68,11 @@ class CheckListController extends BaseController
         $checklist->update($inputParam);
         return response()->json($checklist);
     }
+
+    public function amountLists()
+    {
+        $allList = CheckList::all();
+        $amoutList = $allList->count();
+        return response()->json($amoutList);
+    }
 }

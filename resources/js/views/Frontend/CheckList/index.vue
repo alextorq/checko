@@ -109,6 +109,15 @@
             CheckListName,
             AllList
         },
+        beforeRouteUpdate (to, from, next) {
+            console.log(to, from);
+            if (from.fullPath === '/') {
+                next();
+                return
+            }
+
+            next()
+        },
         created() {
             this.$store.dispatch('loadCheckList', this.$route.params.list_id);
             EventBus.$on('CheckList:closeAllList', () => {this.allListIsOpen = !this.allListIsOpen;})

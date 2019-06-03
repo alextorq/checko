@@ -34,7 +34,7 @@ const checkList = {
             name: '',
             check_list_id: null,
             complete: false,
-            description: 'description',
+            description: '',
             created_at: null,
             updated_at: null,
             user_id: null
@@ -81,7 +81,7 @@ const checkList = {
                     name: '',
                     check_list_id: null,
                     complete: false,
-                    description: 'description',
+                    description: '',
                     created_at: null,
                     updated_at: null,
                     user_id: null

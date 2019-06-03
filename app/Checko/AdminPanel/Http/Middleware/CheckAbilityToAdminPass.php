@@ -46,8 +46,6 @@ class CheckAbilityToAdminPass
             return $next($request);
         }
 
-        return $next($request);
-
         return abort(404);
     }
 }

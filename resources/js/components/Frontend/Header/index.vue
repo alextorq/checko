@@ -2,9 +2,9 @@
     <nav class="navbar">
         <div class="content">
             <div class="left-col">
-                <router-link to="/" class="navbar__logo">
+                <div @click="goToHome" class="navbar__logo">
                     <img src="/images/logo.svg" alt="checko logo">
-                </router-link>
+                </div>
             </div>
             <div class="right_col">
                 <span class="navbar__autosave-icon tooltip-wrapper" :class="{'loading': isLoading}">
@@ -175,6 +175,11 @@
             }
         },
         methods: {
+            goToHome() {
+                this.$store.commit('clearList');
+                this.$store.commit('clearItems');
+                this.$router.push('/')
+            },
             openShareMenu() {
                 if (!this.isShareOpen) {
                     window._self = this;
