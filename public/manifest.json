@@ -1,0 +1,29 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "Checko",
+    "description": "Make live easy",
+    "short_name": "Checko",
+    "icons": [{
+        "src": "/images/favicon_16.png",
+        "sizes": "16x16",
+        "type": "image/webp"
+    },{
+        "src": "/images/favicon_72.png",
+        "sizes": "72x72"
+    },
+	{
+        "src": "/images/logo_512.png",
+        "sizes": "512x512"
+    },
+     {
+        "src": "/images/favicon_115.png",
+        "sizes": "115x115"
+    }],
+
+    "display": "fullscreen",
+    "orientation": "landscape",
+    "theme_color": "aliceblue",
+    "background_color": "white"
+
+}
