@@ -251,7 +251,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-135" />
+    <option name="x" value="1672" />
     <option name="y" value="-4" />
     <option name="width" value="1920" />
     <option name="height" value="1084" />
@@ -337,7 +337,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.watch-poll">
+  <component name="RunManager" selected="npm.production">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
@@ -364,8 +364,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.watch-poll" />
         <item itemvalue="npm.production" />
+        <item itemvalue="npm.watch-poll" />
       </list>
     </recent_temporary>
   </component>
