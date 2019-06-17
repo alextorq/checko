@@ -61,7 +61,7 @@ task('build', function () {
 });
 
 task('create_simlink_to_storage', function () {
-  run('php artisan storage:link');
+    run('{{bin/php}} {{release_path}}/artisan storage:link');
 });
 
 task('deploy', [
