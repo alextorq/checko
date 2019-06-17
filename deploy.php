@@ -1,11 +1,12 @@
 <?php
 namespace Deployer;
+//dep deploy production
 
 require 'recipe/laravel.php';
 
 // Project name
 set('application', 'checko');
-
+set('keep_releases', 5);
 // Project repository
 set('repository', 'git@github.com:alextorq/checko.git');
 
@@ -31,7 +32,6 @@ add('writable_dirs', [
 
 
 // Hosts
-
 host('checko.me')
     ->stage('production')
     ->user('web2')
@@ -60,9 +60,8 @@ task('build', function () {
     run('cd {{release_path}} && build');
 });
 
-task('pwd', function () {
-    $result = run('pwd');
-    writeln("Current dir: $result");
+task('create_simlink_to_storage', function () {
+  run('php artisan storage:link');
 });
 
 task('deploy', [
@@ -78,6 +77,7 @@ task('deploy', [
     'artisan:cache:clear',
     'artisan:config:cache',
     'artisan:migrate',
+    'create_simlink_to_storage',
     'deploy:symlink',
     'php-fpm:restart',
     'deploy:unlock',

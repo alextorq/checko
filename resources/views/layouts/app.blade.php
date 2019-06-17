@@ -20,7 +20,6 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&amp;subset=cyrillic" rel="stylesheet">
 
     <meta name="theme-color" content="#01b06d">
     <meta property="og:locale" content="en_GB">
