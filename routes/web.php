@@ -11,10 +11,27 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+Route::get('mail', function () {
+    $user = Auth::user();
+
+    Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+        $m->from('hello@app.com', 'Your Application');
+
+        $m->to($user->email, $user->name)->subject('Your Reminder!');
+    });
+
+});
+
+
+
+
 Auth::routes();
+
+
+
 
 
 Route::get('/{front?}', function () {
