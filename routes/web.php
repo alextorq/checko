@@ -18,7 +18,7 @@ Route::get('mail', function () {
     $user = Auth::user();
 
     Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-        $m->from('hello@app.com', 'Your Application');
+        $m->from('info@checko.me', 'Your Application');
 
         $m->to($user->email, $user->name)->subject('Your Reminder!');
     });
