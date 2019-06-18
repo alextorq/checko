@@ -27,6 +27,7 @@
     <meta property="og:image" content="https://yastatic.net/s3/home/logos/share/share-logo_ru.png">
     <meta property="og:title" content="Checko">
     <meta property="og:description" content="Make live easy">
+    <meta name="Description" content="Make live easy">
 
     <link rel="icon" sizes="72x72" href="{{ asset('/images/favicon_72.png') }}">
 
