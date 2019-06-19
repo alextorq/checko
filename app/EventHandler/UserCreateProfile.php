@@ -10,6 +10,8 @@ namespace App\EventHandler;
 
 use Illuminate\Auth\Events\Registered;
 
+use App\Jobs\SendEmail;
+
 
 class UserCreateProfile
 {
@@ -25,5 +27,8 @@ class UserCreateProfile
         $userId = $user->getKey();
 
         $user->profile()->create(array('user_id' => $userId));
+
+        dispatch(new SendEmail($user, ['view' => 'emails.welcome']));
+
     }
 }

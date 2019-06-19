@@ -11,26 +11,14 @@
 |
 */
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
-Route::get('mail', function () {
-    $user = Auth::user();
+Auth::routes(['reset' => false]);
 
-    Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
-        $m->from('info@checko.me', 'Your Application');
 
-        $m->to($user->email, $user->name)->subject('Your Reminder!');
-    });
-
+Route::group(['prefix' => 'password/',  'as'=> 'password.'], function () {
+    Route::post('/email', ['uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail', 'as' => 'email']);
+    Route::post('/reset', ['uses' => 'Auth\ResetPasswordController@reset', 'as' => 'update']);
 });
-
-
-
-
-Auth::routes();
-
-
 
 
 

@@ -26,18 +26,7 @@ class ForgotPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
-    }
-
-
-    /**
-     * Display the form to request a password reset link.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showLinkRequestForm()
-    {
-        return view('welcome');
+//        $this->middleware('guest');
     }
 
     /**
@@ -50,12 +39,15 @@ class ForgotPasswordController extends Controller
     {
         $this->validateEmail($request);
 
+        dd($this->broker());
+
         // We will send the password reset link to this user. Once we have attempted
         // to send the link, we will examine the response then see the message we
         // need to show to the user. Finally, we'll send out a proper response.
         $response = $this->broker()->sendResetLink(
             $request->only('email')
         );
+
 
         return $response == Password::RESET_LINK_SENT
             ? $this->sendResetLinkResponse($request, $response)
