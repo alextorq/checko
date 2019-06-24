@@ -28,7 +28,8 @@ class UserCreateProfile
 
         $user->profile()->create(array('user_id' => $userId));
 
-        dispatch(new SendEmail($user, ['view' => 'emails.welcome']));
+        dispatch(new SendEmail($user, ['view' => 'emails.welcome',
+                                        'subject' => 'welcome']));
 
     }
 }

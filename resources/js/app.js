@@ -5,6 +5,9 @@ import Vuex from './store/Frontend'
 import Notifications from 'vue-notification'
 import VueAutosize from'vue-autosize'
 import router from './router/Frontend';
+import ErrorVueHandler from  './helpers/Frontend/ErrorVueHandler'
+import ErrorGlobalHandler from './helpers/Frontend/ErrorGlobalHandler'
+import ErrorRESTHandler from  './helpers/Frontend/ErrorRESTHandler'
 
 
 
@@ -23,10 +26,24 @@ if (token) {
     // console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
+
+
+axios.interceptors.response.use(
+    response => response,
+    ErrorRESTHandler
+);
+
+
+
 window.countLoad = 0;
 
 Vue.use(Notifications);
 Vue.use(VueAutosize);
+
+
+window.onerror = ErrorGlobalHandler;
+Vue.config.errorHandler = ErrorVueHandler;
+
 
 const app = new Vue({
     el: '#app',
@@ -34,6 +51,4 @@ const app = new Vue({
     router,
     render: h => h(App)
 });
-
-
 

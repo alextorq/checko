@@ -169,8 +169,6 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
 
 
-
-
         /*
          * Debug bar
          * */
@@ -189,12 +187,16 @@ return [
         App\Checko\Permissions\Providers\PermissionsProvider::class,
 
 
+        App\Checko\Services\Errors\Providers\ErrorProvider::class,
+
+
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
 
 
         App\Checko\CheckList\Providers\Frontend\CheckListProvider::class,
         App\Checko\CheckList\Providers\AdminPanel\CheckListProvider::class,
+
 
 
         App\Checko\CheckItem\Providers\Frontend\CheckItemProvider::class,

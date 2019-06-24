@@ -18,6 +18,8 @@ import RolesTable from '../../components/AdminPanel/Table/roles-table'
 import RolePage from '../../components/AdminPanel/Permissions/RoleItem'
 import Availability from '../../components/AdminPanel/Permissions/Availability'
 
+import ErrorsLayout from '../../views/AdminPanel/errors'
+import ErrorTable from '../../components/AdminPanel/Table/ErrorTable';
 
 import CheckListLayput from '../../views/AdminPanel/checkList/layout'
 import ChecklistsTable from  '../../components/AdminPanel/Table/ChecklistsTable'
@@ -89,6 +91,21 @@ const routes = [
                         props: true,
                         hidden: true,
                         meta: {title: 'CheckList page', breadcrumb: true, keepAlive: true},
+                    }
+                ]
+            },
+            {
+                path: 'errors/',
+                name: '',
+                component: ErrorsLayout,
+                meta: {title: 'Errors', breadcrumb: true, icon: 'el-icon-error', keepAlive: true},
+                children: [
+                    {
+                        path: '',
+                        component: ErrorTable,
+                        name: 'error_list',
+                        hidden: false,
+                        meta: {title: 'Error List', breadcrumb: true, icon: 'el-icon-error', keepAlive: true},
                     }
                 ]
             },

@@ -46,13 +46,13 @@
     }
     
     export default {
-        name: "completeItem",
+        name: "CheckItem",
         data() {
             return {
                 cache: {
                     name: null
                 },
-                placeholder: checkItem.name,
+                placeholder: checkItem.name0,
                 editStatus: false,
                 height: 10,
                 contextMenuOpenStatus: false

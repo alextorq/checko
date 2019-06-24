@@ -57,7 +57,7 @@
 
 
     export default {
-        name: "completeItem",
+        name: "CheckItemComplete",
         data() {
             return {
                 cache: {

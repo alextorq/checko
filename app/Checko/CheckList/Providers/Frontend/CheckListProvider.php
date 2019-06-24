@@ -7,8 +7,10 @@
  */
 
 namespace App\Checko\CheckList\Providers\Frontend;
+
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+
 class CheckListProvider extends ServiceProvider
 {
     protected $namespace = 'App\Checko\CheckList\Http\Controllers\Frontend';
