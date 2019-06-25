@@ -52,7 +52,7 @@
                 cache: {
                     name: null
                 },
-                placeholder: checkItem.name0,
+                placeholder: checkItem.name,
                 editStatus: false,
                 height: 10,
                 contextMenuOpenStatus: false

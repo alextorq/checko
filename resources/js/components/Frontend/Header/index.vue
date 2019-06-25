@@ -46,8 +46,8 @@
                             </span>
                             copy link
                         </li>
-                        <li class="dropdown-menu__item" @click="">
-                            <a :href="'tg://msg?url=' + this.href + '&text=' + checkListName">
+                        <li class="dropdown-menu__item">
+                            <a :href="'tg://msg?url=' + this.href + '&text=' + checkListName" rel="noopener">
                                 <span class="icon">
                                      <img src="/images/telegram.svg" alt="telegram">
                                 </span>
@@ -55,7 +55,7 @@
                             </a>
                         </li>
                         <li class="dropdown-menu__item">
-                            <a target="_blank" :href="'https://www.facebook.com/sharer.php?u=' + this.href">
+                            <a target="_blank" :href="'https://www.facebook.com/sharer.php?u=' + this.href" rel="noopener">
                                 <span class="icon">
                                      <img src="/images/facebook.svg" alt="facebook">
                                 </span>
@@ -63,7 +63,7 @@
                             </a>
                         </li>
                         <li class="dropdown-menu__item">
-                            <a target="_blank" :href="'https://wa.me/?text=' + this.href">
+                            <a target="_blank" :href="'https://wa.me/?text=' + this.href" rel="noopener">
                                <span class="icon">
                                      <img src="/images/whatsapp.svg" alt="whatsapp">
                                 </span>

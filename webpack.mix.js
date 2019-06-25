@@ -14,6 +14,10 @@ const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 
 // Set up the spritemap plugin
 mix.webpackConfig({
+    output: {
+        chunkFilename: 'js/[name].bundle.js',
+        publicPath: '/',
+    },
     resolve: {
         alias: {
             Core: path.resolve(__dirname, 'resources/js/'),

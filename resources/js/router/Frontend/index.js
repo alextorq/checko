@@ -6,16 +6,17 @@ import store from '../../store/Frontend/index'
 
 import Layout from  '../../components/Frontend/Layout'
 import CheckList from '../../views/Frontend/CheckList'
-import FormRegistration from  '../../views/Frontend/FormRegistration'
-import FormLogin from  '../../views/Frontend/FormLogin'
-import ForgotPassword from  '../../views/Frontend/FormForgotPassword'
 
-import  NotFound from  '../../views/Frontend/404'
+const FormRegistration = () =>  import('../../views/Frontend/FormRegistration');
+const FormLogin = () =>  import('../../views/Frontend/FormLogin');
+const ForgotPassword  = () =>  import('../../views/Frontend/FormForgotPassword');
+
+const NotFound = () => import('../../views/Frontend/404');
 import  SettingsLayout from  '../../views/Frontend/Settings'
 import  SettingsList from '../../components/Frontend/Settings/List'
 import  SettingsAccount from '../../components/Frontend/Settings/Account'
 
-import About from  '../../views/Frontend/About'
+const About = () => import('../../views/Frontend/About/index.vue');
 
 import  SettingsNotification from '../../components/Frontend/Settings/Notification'
 import  SettingsPayment from '../../components/Frontend/Settings/Payment'

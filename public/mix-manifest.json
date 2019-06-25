@@ -3,6 +3,6 @@
     "/css/backend/app.css": "/css/backend/app.css",
     "/css/app.css": "/css/app.css",
     "/js/app.js": "/js/app.js",
-    "/spritemap.js": "/spritemap.js",
+    "/js/spritemap.bundle.js": "/js/spritemap.bundle.js",
     "/sprites.svg": "/sprites.svg"
 }

@@ -1022,6 +1022,7 @@ button[hidden] {
   background-color: #01af6c;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
+  will-change: width;
 }
 
 /*green line percent of complete end*/
@@ -4064,6 +4065,10 @@ button[hidden] {
 }
 
 .checklist__name::-webkit-input-placeholder {
+  color: #a4b5be;
+}
+
+.checklist__name::-moz-placeholder {
   color: #a4b5be;
 }
 
