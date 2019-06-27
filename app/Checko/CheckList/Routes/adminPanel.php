@@ -14,7 +14,4 @@ Route::group(['prefix' => 'admin_api/v1/checklist',  'as'=> 'admin.checklist.'],
 
     Route::post('/create', ['uses' => 'CheckListController@create', 'as' => 'create']);
     Route::put('/edit', ['uses' => 'CheckListController@edit', 'as' => 'edit']);
-
-
-
 });

@@ -149,6 +149,22 @@ body {
       flex-shrink: 0;
 }
 
+.mb_1 {
+  margin-bottom: 1em;
+}
+
+.mb_2 {
+  margin-bottom: 2em;
+}
+
+.mt_1 {
+  margin-top: 1em;
+}
+
+.mt_2 {
+  margin-top: 2em;
+}
+
 .content {
   height: 100%;
   background-color: #383d4e;
@@ -622,6 +638,10 @@ button.default:hover {
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  height: 40vh;
 }
 
 .user_page {

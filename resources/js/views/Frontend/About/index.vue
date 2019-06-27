@@ -73,6 +73,13 @@
             </div>
         </section>
 
+
+        <section class="copyright">
+            <div class="container">
+                <router-link to="/pages/term-of-services">Term of services</router-link>
+            </div>
+        </section>
+
     </div>
 
 </template>

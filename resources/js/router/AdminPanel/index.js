@@ -25,6 +25,11 @@ import CheckListLayput from '../../views/AdminPanel/checkList/layout'
 import ChecklistsTable from  '../../components/AdminPanel/Table/ChecklistsTable'
 import CheckList from '../../views/AdminPanel/checkList_page'
 
+import DefaultPages from  '../../views/AdminPanel/default_pages'
+import defaultPagesTable from '../../components/AdminPanel/Table/PagesDefault'
+import defaultPageCreate from '../../components/AdminPanel/Forms/CreatePage'
+import defaultPage from '../../components/AdminPanel/DefaultPage/onePage'
+
 
 
 Vue.use(VueRouter);
@@ -68,6 +73,35 @@ const routes = [
                         props: true,
                         hidden: true,
                         meta: {title: 'User page', breadcrumb: true, keepAlive: true},
+                    }
+                ]
+            },
+            {
+                path: 'pages',
+                name: '',
+                component: DefaultPages,
+                meta: {title: 'Pages', breadcrumb: true, icon: 'el-icon-document', keepAlive: true},
+                children: [
+                    {
+                        path: '',
+                        component: defaultPagesTable,
+                        name: 'page_list',
+                        meta: {title: 'All Page', breadcrumb: true, keepAlive: true},
+                    },
+                    {
+                        path: 'new',
+                        component: defaultPageCreate,
+                        name: 'new_page',
+                        hidden: true,
+                        meta: {title: 'New Page', breadcrumb: true, keepAlive: true},
+                    },
+                    {
+                        path: ':id',
+                        component: defaultPage,
+                        name: 'one_page',
+                        props: true,
+                        hidden: true,
+                        meta: {title: 'Page', breadcrumb: true, keepAlive: true},
                     }
                 ]
             },

@@ -8,6 +8,24 @@ body{
   flex-shrink: 0;
 }
 
+
+.mb_1{
+  margin-bottom: 1em;
+}
+
+.mb_2 {
+  margin-bottom: 2em;
+}
+
+.mt_1{
+  margin-top: 1em;
+}
+
+.mt_2 {
+  margin-top: 2em;
+}
+
+
 .content{
   height: 100%;
   background-color: $contentColor;

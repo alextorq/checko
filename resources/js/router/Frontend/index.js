@@ -18,6 +18,10 @@ import  SettingsAccount from '../../components/Frontend/Settings/Account'
 
 const About = () => import('../../views/Frontend/About/index.vue');
 
+
+const PageDefault = () => import('../../views/Frontend/PageDefault/index.vue');
+
+
 import  SettingsNotification from '../../components/Frontend/Settings/Notification'
 import  SettingsPayment from '../../components/Frontend/Settings/Payment'
 import  SettingsGeneral from '../../components/Frontend/Settings/General'
@@ -148,6 +152,41 @@ const routes = [
                     }
                 }
             },
+
+            {
+                path: '/pages/:page',
+                name: 'page',
+                props: true,
+                component: PageDefault,
+                meta: {title: 'Pages', breadcrumb: true, keepAlive: true,
+                    permission: {
+                        hook: null
+                    }
+                }
+            },
+
+
+
+            // {
+            //     path: '/terms_of_service',
+            //     name: 'term',
+            //     component: Term,
+            //     meta: {title: 'Terms of Service', breadcrumb: true, keepAlive: true,
+            //         permission: {
+            //             hook: null
+            //         }
+            //     }
+            // },
+            // {
+            //     path: '/privacy',
+            //     name: 'privacy',
+            //     component: Privacy,
+            //     meta: {title: 'Privacy', breadcrumb: true, keepAlive: true,
+            //         permission: {
+            //             hook: null
+            //         }
+            //     }
+            // },
             {
                 path: '/404',
                 name: '404',
