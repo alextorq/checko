@@ -23,11 +23,6 @@
     }
     .image-wrapper {
       position: relative;
-      width: 60%;
-      margin: 0 auto;
-      @include small {
-        width: 100%;
-      }
     }
     .video {
       position: absolute;
@@ -70,12 +65,7 @@
       display: flex;
       padding-left: 0;
       list-style: none;
-      width: 60%;
-      margin: 0 auto;
       flex-wrap: wrap;
-      @include small {
-        width: 100%;
-      }
       li {
         width: 50%;
         .title {

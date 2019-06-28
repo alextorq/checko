@@ -1,0 +1,15 @@
+.copyright {
+  padding: 40px 0;
+  .default-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  a {
+    color: $grey_3;
+    text-decoration: none;
+  }
+  span {
+    color: $grey_3;
+  }
+}

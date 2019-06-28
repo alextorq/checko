@@ -141,6 +141,24 @@ main {
   }
 }
 
+.about-content {
+  width: 60%;
+  margin: 0 auto;
+  @include small {
+    width: 100%;
+  }
+}
+
+.default-content {
+  width: 70%;
+  margin: 0 auto;
+  max-width: 720px;
+  @include small {
+    width: 100%;
+    max-width: unset;
+  }
+}
+
 .left-col {
   min-width: $left-col;
 }
