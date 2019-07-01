@@ -175,7 +175,7 @@
                 }
             },
             isShareApi() {
-                return (window.navigator.share !== undefined);
+                return (window.navigator.share === undefined);
             }
         },
         watch:{
