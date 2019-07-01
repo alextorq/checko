@@ -21,7 +21,7 @@
                     </span>
                 </a>
 
-                <div class="button-wrapper" :class="isShareOpenStatus" >
+                <div class="button-wrapper" :class="isShareOpenStatus" v-if="isShareApi">
                     <button class="navbar__share tooltip-wrapper" ref="openShareMenu" @click="openShareMenu"
                             type="button" aria-label="share checklist in soc network">
                         <span class="tooltip">Share</span>
@@ -46,7 +46,6 @@
                             </span>
                             copy link
                         </li>
-                        <template v-if="isShareApi">
                             <li class="dropdown-menu__item">
                                 <a :href="'tg://msg?url=' + this.href + '&text=' + checkListName" rel="noopener">
                                 <span class="icon">
@@ -71,12 +70,27 @@
                                     whatsapp
                                 </a>
                             </li>
-                        </template>
-                        <template v-else>
-                            <li @click="shareApi">share</li>
-                        </template>
-
                     </ul>
+                </div>
+
+                <div class="button-wrapper" :class="isShareOpenStatus" v-else>
+                    <button class="navbar__share tooltip-wrapper" ref="openShareMenu" @click="shareApi"
+                            type="button" aria-label="share checklist in soc network">
+                        <span class="tooltip">Share</span>
+                        <span class="wrapper">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </span>
+                        <!--<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"-->
+                        <!--viewBox="0 0 30.8 23.9" style="enable-background:new 0 0 30.8 23.9;" xml:space="preserve">-->
+                        <!--<line class="st1" x1="22.5" y1="20.4" x2="6.9" y2="12.3"/>-->
+                        <!--<line class="st1" x1="21.5" y1="3.4" x2="7.1" y2="12.2"/>-->
+                        <!--<circle id="circle_x5F_1_4_" class="st2" cx="20.1" cy="4" r="2.9"/>-->
+                        <!--<circle id="circle_x5F_1_5_" class="st2" cx="20.1" cy="19.9" r="2.9"/>-->
+                        <!--<circle id="circle_x5F_1_6_" class="st2" cx="8.8" cy="11.9" r="2.9"/>-->
+                        <!--</svg>-->
+
+                    </button>
                 </div>
 
                 <div class="navbar__settings-wrapper">
