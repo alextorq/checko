@@ -46,30 +46,36 @@
                             </span>
                             copy link
                         </li>
-                        <li class="dropdown-menu__item">
-                            <a :href="'tg://msg?url=' + this.href + '&text=' + checkListName" rel="noopener">
+                        <template v-if="isShareApi">
+                            <li class="dropdown-menu__item">
+                                <a :href="'tg://msg?url=' + this.href + '&text=' + checkListName" rel="noopener">
                                 <span class="icon">
                                      <img src="/images/telegram.svg" alt="telegram">
                                 </span>
-                                telegram
-                            </a>
-                        </li>
-                        <li class="dropdown-menu__item">
-                            <a target="_blank" :href="'https://www.facebook.com/sharer.php?u=' + this.href" rel="noopener">
+                                    telegram
+                                </a>
+                            </li>
+                            <li class="dropdown-menu__item">
+                                <a target="_blank" :href="'https://www.facebook.com/sharer.php?u=' + this.href" rel="noopener">
                                 <span class="icon">
                                      <img src="/images/facebook.svg" alt="facebook">
                                 </span>
-                                facebook
-                            </a>
-                        </li>
-                        <li class="dropdown-menu__item">
-                            <a target="_blank" :href="'https://wa.me/?text=' + this.href" rel="noopener">
+                                    facebook
+                                </a>
+                            </li>
+                            <li class="dropdown-menu__item">
+                                <a target="_blank" :href="'https://wa.me/?text=' + this.href" rel="noopener">
                                <span class="icon">
                                      <img src="/images/whatsapp.svg" alt="whatsapp">
                                 </span>
-                                whatsapp
-                            </a>
-                        </li>
+                                    whatsapp
+                                </a>
+                            </li>
+                        </template>
+                        <template v-else>
+                            <li @click="shareApi">share</li>
+                        </template>
+
                     </ul>
                 </div>
 
@@ -168,6 +174,9 @@
                     open: this.isMenuOpen
                 }
             },
+            isShareApi() {
+                return (window.navigator.share !== undefined);
+            }
         },
         watch:{
             $route (){
@@ -179,6 +188,13 @@
                 this.$store.commit('clearList');
                 this.$store.commit('clearItems');
                 this.$router.push('/')
+            },
+            shareApi() {
+                navigator.share({
+                    title: document.title,
+                    text: 'Checko',
+                    url: this.href,
+                });
             },
             openShareMenu() {
                 if (!this.isShareOpen) {
