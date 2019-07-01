@@ -1,8 +1,25 @@
 <template>
-    <div class="form-registration-wrapper">
+    <div class="form-registration form-center-wrapper">
 
         <form action="/" method="post" @submit.prevent="send">
-            <h2>Sign up and start your <span>7 day free trial</span></h2>
+
+            <div class="flex-row jcb ais top-row">
+                <h2>Sign up and start your <span>7 day free trial</span></h2>
+                <div class="sing-with-wrapper flex-row jcb aic">
+                    <span>Sign in with</span>
+                    <ul class="sing-with__list flex-row jcb aic">
+                        <li class="sing-with__item"><a href="/provider?provider=google">
+                            <img src="/images/google.png" alt="google">
+                        </a></li>
+                        <li class="sing-with__item"><a href="/provider?provider=facebook">
+                            <img src="/images/facebook.png" alt="facebook">
+                        </a></li>
+                        <li class="sing-with__item"><a href="/provider?provider=twitter">
+                            <img src="/images/twitter.png" alt="twitter">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
 
             <inputForm name="name" label="Username" @error="errorUpdate" icon="user" ref="name"
                        :required="true" :errors="nameError" :min="4" v-model="form.name.value"></inputForm>
@@ -21,7 +38,7 @@
             </inputFormPassword>
 
 
-            <div class="flex-row jcb aic">
+            <div class="flex-row jcb aic form-links">
                 <button class="button">SING UP</button>
                 <router-link to="/login">I have an account</router-link>
             </div>

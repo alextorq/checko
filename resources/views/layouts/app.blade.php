@@ -6,30 +6,24 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-
-    <!-- Scripts -->
-    {{--<script src="{{ asset('js/default.js') }}" defer></script>--}}
 
     <link rel="shortcut icon" href="{{ asset('/images/favicon_16.png') }}" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/images/favicon_72.png') }}">
     <link rel="apple-touch-icon" sizes="115x115" href="{{ asset('/images/favicon_115.png') }}">
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
-
-    <!-- Fonts -->
+    <link rel="icon" sizes="72x72" href="{{ asset('/images/favicon_72.png') }}">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
     <meta name="theme-color" content="#01b06d">
     <meta property="og:locale" content="en_GB">
     <meta property="og:url" content={{ config('app.url', 'Laravel') }}>
-    <meta property="og:image" content="https://yastatic.net/s3/home/logos/share/share-logo_ru.png">
-    <meta property="og:title" content="Checko">
-    <meta property="og:description" content="Make live easy">
+    <meta property="og:image" content="{{ asset('/images/logo_512.png') }}">
+    <meta property="og:title" content="Easy way to create a checklist">
+    <meta property="og:description" content="No registration required. You can quickly create and manage your checklist via a short link.">
     <meta name="Description" content="Make live easy">
 
-    <link rel="icon" sizes="72x72" href="{{ asset('/images/favicon_72.png') }}">
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

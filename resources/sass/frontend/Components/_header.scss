@@ -377,6 +377,7 @@
       background-color: $black;
       content: '';
       transition: all 0.4s;
+      transform-origin: 0 50%;
     }
 
     &:after {
@@ -388,6 +389,7 @@
       background-color: $black;
       content: '';
       transition: all 0.4s;
+      transform-origin: 0 50%;
     }
   }
 
@@ -462,12 +464,12 @@
 
       &:after {
         transform: rotate(-45deg);
-        transform-origin: 0 50%;
+
         width: 121%;
       }
       &:before {
         transform: rotate(45deg);
-        transform-origin: 0 50%;
+
         width: 121%;
       }
     }

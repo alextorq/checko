@@ -1,9 +1,9 @@
 <template>
-    <div class="form-registration-wrapper form-forgot">
+    <div class="form-forgot form-center-wrapper">
 
         <form action="/" method="post" @submit.prevent="send">
 
-            <div>
+            <div class="top-row">
                 <h2>Forgot your password?</h2>
 
                 <div class="text-default">
@@ -15,16 +15,13 @@
             <inputForm name="email" label="Е-mail" @error="errorUpdate" icon="mail" ref="email"
                        :required="true" :errors="emailError" :email="true" v-model="form.email.value"></inputForm>
 
-
             <div class="flex-row jcb aic">
                 <button class="button">Send</button>
 
                 <div class="form-links">
                     <router-link to="/registration">Create account</router-link>
                 </div>
-
             </div>
-
         </form>
     </div>
 </template>

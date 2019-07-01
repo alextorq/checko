@@ -1,9 +1,9 @@
 <template>
-    <div class="form-registration-wrapper form-sign">
+    <div class="form-sign form-center-wrapper">
 
         <form action="/" method="post" @submit.prevent="send">
 
-            <div class="flex-row jcb aic">
+            <div class="flex-row jcb ais top-row">
                 <h2>Sign in</h2>
                 <div class="sing-with-wrapper flex-row jcb aic">
                     <span>Sign in with</span>
