@@ -189,6 +189,7 @@ return [
 
         App\Checko\Services\Errors\Providers\ErrorProvider::class,
         App\Checko\DefaultPages\Providers\DefaultPageProvider::class,
+        App\Checko\Offers\Providers\OfferProvider::class,
 
 
         // App\Providers\BroadcastServiceProvider::class,

@@ -15,10 +15,6 @@ use Illuminate\Routing\Controller as BaseController;
 class DefaultPageController extends  BaseController
 {
 
-
-    /**
-     * @param PageDefault $page
-     */
     public function getPage(PageDefault $page)
     {
         return response()->json($page);

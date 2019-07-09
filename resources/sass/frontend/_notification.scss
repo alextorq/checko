@@ -15,7 +15,7 @@
     display: flex;
     .notification-content {
       background: $red_light;
-      color: #fff;
+      color: $red;
     }
   }
   &.success {
@@ -28,6 +28,18 @@
       justify-content: flex-end;
       padding-right: 20px;
     }
+  }
+  &.warning {
+    display: flex;
+    .notification-content {
+      background-color: $notify_warning;
+      color: $notify_warning_color;
+    }
+    @include phone {
+      justify-content: flex-end;
+      padding-right: 20px;
+    }
+
   }
 }
 .notification-wrapper {

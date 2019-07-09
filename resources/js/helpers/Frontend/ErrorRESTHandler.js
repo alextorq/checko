@@ -12,7 +12,7 @@ function errorHandler(error) {
     if (error.response && onlyStatus.includes(error.response.status)) {
         reportError(error);
     }
-
+    return Promise.reject(error.response);
 }
 
 

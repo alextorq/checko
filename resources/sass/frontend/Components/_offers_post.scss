@@ -1,0 +1,58 @@
+.offer__item {
+  margin-bottom: 50px;
+  border-bottom: 1px solid $grey_2;
+  padding-bottom: 40px;
+  .meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+  }
+  .user_avatar {
+    margin-right: 15px;
+  }
+  .user_name {
+    opacity: 0.9;
+    color: $green;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 50px;
+    letter-spacing: 0.11px;
+  }
+
+  .like_button {
+    margin-left: auto;
+    border: none;
+    background-color: transparent;
+    color: $grey_3;
+    opacity: 0.9;
+    line-height: 1;
+    letter-spacing: 0.09px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      margin-right: 10px;
+      width: 18px;
+      height: 16px;
+    }
+    svg {
+      fill: $grey_3;
+    }
+    &:hover {
+      color: $green;
+      svg {
+        fill: $green;
+      }
+    }
+    &.liked:hover {
+      color: $grey_3;
+      svg {
+        fill: $grey_3;
+      }
+    }
+  }
+}

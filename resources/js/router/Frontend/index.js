@@ -6,19 +6,18 @@ import store from '../../store/Frontend/index'
 
 import Layout from  '../../components/Frontend/Layout'
 import CheckList from '../../views/Frontend/CheckList'
-
-const FormRegistration = () =>  import('../../views/Frontend/FormRegistration');
-const FormLogin = () =>  import('../../views/Frontend/FormLogin');
-const ForgotPassword  = () =>  import('../../views/Frontend/FormForgotPassword');
-
-const NotFound = () => import('../../views/Frontend/404');
+import Offers from '../../views/Frontend/Offers'
 import  SettingsLayout from  '../../views/Frontend/Settings'
 import  SettingsList from '../../components/Frontend/Settings/List'
 import  SettingsAccount from '../../components/Frontend/Settings/Account'
 
+
+/*Динамические импорты*/
+const FormRegistration = () =>  import('../../views/Frontend/FormRegistration');
+const FormLogin = () =>  import('../../views/Frontend/FormLogin');
+const ForgotPassword  = () =>  import('../../views/Frontend/FormForgotPassword');
+const NotFound = () => import('../../views/Frontend/404');
 const About = () => import('../../views/Frontend/About/index.vue');
-
-
 const PageDefault = () => import('../../views/Frontend/PageDefault/index.vue');
 
 
@@ -44,6 +43,17 @@ const routes = [
                 component: CheckList,
                 name: 'CheckList',
                 meta: {title: 'CheckList', breadcrumb: true, keepAlive: true,
+                    permission: {
+                        hook: null
+                    }
+                },
+            },
+            {
+                path: 'offers',
+                component: Offers,
+                name: 'Offers',
+                props:  (route) => ({ urlPage: +route.query.urlPage }),
+                meta: {title: 'Offers', breadcrumb: true, keepAlive: true,
                     permission: {
                         hook: null
                     }
@@ -164,29 +174,6 @@ const routes = [
                     }
                 }
             },
-
-
-
-            // {
-            //     path: '/terms_of_service',
-            //     name: 'term',
-            //     component: Term,
-            //     meta: {title: 'Terms of Service', breadcrumb: true, keepAlive: true,
-            //         permission: {
-            //             hook: null
-            //         }
-            //     }
-            // },
-            // {
-            //     path: '/privacy',
-            //     name: 'privacy',
-            //     component: Privacy,
-            //     meta: {title: 'Privacy', breadcrumb: true, keepAlive: true,
-            //         permission: {
-            //             hook: null
-            //         }
-            //     }
-            // },
             {
                 path: '/404',
                 name: '404',

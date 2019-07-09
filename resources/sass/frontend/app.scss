@@ -18,6 +18,10 @@
 @import "Components/logo_welcome";
 @import "Components/menu";
 @import "Components/copyright";
+@import "Components/offers_post";
+@import "Components/offers_form";
+@import "Components/user_avatar";
+@import "Components/pagination";
 
 @import "Views/Settings/menuSettings";
 @import "Views/Settings/general";
@@ -31,3 +35,4 @@
 @import "Views/CheckList/checklist";
 @import "Views/CheckList/checklist_lists";
 @import "Views/About/about";
+@import "Views/Offers/offers";

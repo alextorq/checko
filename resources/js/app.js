@@ -35,14 +35,18 @@ axios.interceptors.response.use(
 
 
 
+
 window.countLoad = 0;
 
 Vue.use(Notifications);
 Vue.use(VueAutosize);
 
 
-window.onerror = ErrorGlobalHandler;
-Vue.config.errorHandler = ErrorVueHandler;
+if  (process.env.NODE_ENV !== 'development') {
+    window.onerror = ErrorGlobalHandler;
+    Vue.config.errorHandler = ErrorVueHandler;
+}
+
 
 
 const app = new Vue({

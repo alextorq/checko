@@ -1,4 +1,4 @@
-<template>
+<template functional>
     <section class="copyright">
         <div class="container">
             <div class="default-content">
