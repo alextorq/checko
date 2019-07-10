@@ -6,6 +6,12 @@
             <p>Сюда нужно написать текст, предложите свои пожелания замечание,
                 нам очень важно ваше мнение, чтобы сделать наш сервис лучше
             </p>
+            <div class="sort">
+                <appSelect :list="sortOptions"
+                    @change="sortHandler" name="sort" :default_value="sortOptions[1]"
+                ></appSelect>
+
+            </div>
             <div class="offers__list">
                 <transition-group name="list">
                     <offer v-for="post in posts.data" :key="post.post_id" :post="post"></offer>
@@ -13,7 +19,7 @@
             </div>
 
             <pagination @change_page="loadPage" :current-page="posts.current_page" :all-page="posts.last_page"></pagination>
-            <offerForm v-if="userAuth" @send="refresh"></offerForm>
+            <offerForm  @send="refresh"></offerForm>
             <copyright></copyright>
         </div>
     </div>
@@ -25,6 +31,7 @@
     import copyright from '../../../components/Frontend/Copyright'
     import pagination from '../../../components/Frontend/Pagination'
     import preloader from '../../../components/Frontend/Preloader'
+    import appSelect from '../../../components/Frontend/Select'
 
     export default {
         name: "index",
@@ -32,14 +39,15 @@
             return {
                 posts: {},
                 allPost: {},
-                loading: true
+                sortBy: 'likes.like_count',
+                loading: true,
+                sortOptions: [
+                    {name: 'by date', value: 'created_at'},
+                    {name: 'by popular', value: 'likes.like_count'}
+                ]
             }
         },
-        computed: {
-          userAuth() {
-              return this.$store.getters.userLoginStatus;
-          }
-        },
+
         methods: {
             loadPage(page) {
                 if (page in this.allPost) {
@@ -49,7 +57,8 @@
                 this.loading = true;
                 axios.get('frontend/offers/all', {
                     params: {
-                        page: page
+                        page: page,
+                        sortBy: this.sortBy
                     }
                 })
                 .then((responce) => {
@@ -64,6 +73,10 @@
             refresh() {
                 this.allPost = {};
                 this.loadPage(this.posts.current_page || 1);
+            },
+            sortHandler(data) {
+                this.sortBy = data.value;
+                this.refresh();
             }
         },
         components: {
@@ -71,7 +84,8 @@
             offerForm,
             copyright,
             pagination,
-            preloader
+            preloader,
+            appSelect
         },
         props: {
             urlPage: {

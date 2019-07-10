@@ -1,10 +1,10 @@
 <template>
     <div class="offer__item">
         <div class="meta">
-            <Avatar :user="post.author"></Avatar>
+            <Avatar :avatar="post.avatar" :name="post.name"></Avatar>
             <div>
                 <div class="user_name">
-                    {{post.author.name}}
+                    {{post.name}}
                 </div>
                 <div class="date">
                     {{dateFormat}}
@@ -16,7 +16,8 @@
                         <use xlink:href="/images/sprites.svg#sprite-like"></use>
                     </svg>
                 </span>
-                {{likeCount}}</button>
+                <span class="like_count">{{likeCount}}</span>
+                </button>
         </div>
         <p>{{post.content}}</p>
     </div>
@@ -60,16 +61,17 @@
                   return
               }
 
+              if (!this.likes.includes(this.$store.getters.userID)) {
+                  this.likes.push(this.$store.getters.userID);
+              }else {
+                  let index = this.likes.findIndex((id) => {
+                      return id === this.$store.getters.userID;
+                  });
+                  this.likes.splice(index, 1);
+              }
+
               axios.post(`/frontend/offers/like/${this.post.post_id}`)
               .then(() => {
-                  if (!this.userLiked) {
-                      this.likes.push(this.$store.getters.userID);
-                  }else {
-                      let index = this.likes.findIndex((id) => {
-                          return id === this.$store.getters.userID;
-                      });
-                      this.likes.splice(index, 1);
-                  }
               }).catch((err) => {
                   console.log(err)
               })
@@ -80,12 +82,7 @@
             Avatar
         },
         created() {
-            let stringArray = (this.post.likes) ? this.post.likes.users_id.split(',') : [];
-            this.likes = stringArray.filter(el => {
-                if (el) {
-                    return +el
-                }
-            });
+            this.likes = JSON.parse(this.post.users_id);
         },
         props: {
             post: {

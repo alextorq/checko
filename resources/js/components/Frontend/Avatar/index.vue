@@ -1,7 +1,7 @@
 <template>
     <div class="user_avatar">
         <span v-if="avatarStatus" class="avatar-wrapper image"
-            :style="{ backgroundImage: 'url(' + user.avatar + ')' }">
+            :style="{ backgroundImage: 'url(' + avatarPath + ')' }">
         </span>
         <span v-else class="avatar-wrapper">
             {{userInitials}}
@@ -14,10 +14,14 @@
         name: "index",
         computed: {
             avatarStatus() {
-                return !!this.user.avatar;
+                return (this.user) ?  !!this.user.avatar : !!this.avatar;
+            },
+            avatarPath() {
+              return  (this.user) ?  this.user.avatar : this.avatar;
             },
             userInitials() {
-                let userWord = this.user.name.split(' ');
+                let name = this.user || this.name;
+                let userWord = name.split(' ');
                 let userInitials = [];
                 userInitials.push(userWord[0].split('')[0]);
                 if (userWord.length > 1) {
@@ -29,7 +33,15 @@
         props: {
             user: {
                 type: Object,
-                required: true
+                required: false
+            },
+            name: {
+                type: String,
+                required: false
+            },
+            avatar: {
+                type: String,
+                required: false
             }
         }
     }

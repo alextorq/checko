@@ -35,6 +35,13 @@
                     about
                 </router-link>
             </li>
+
+            <li class="navbar__menu__item">
+                <router-link :to="{ name: 'Offers'}">
+                    offers
+                </router-link>
+            </li>
+
             <!--<li class="navbar__menu__item">-->
                 <!--<router-link :to="{ name: 'SettingsList'}">-->
                     <!--help-->

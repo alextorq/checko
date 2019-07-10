@@ -19,10 +19,10 @@ use App\User;
 class CheckListController extends BaseController
 {
 
-    public function index()
-    {
-        return view('welcome');
-    }
+//    public function index()
+//    {
+//        return view('welcome');
+//    }
 
     public function indexPost(int $checklist)
     {
@@ -30,7 +30,11 @@ class CheckListController extends BaseController
         return response()->json($checklist);
     }
 
-    public function allUsersList()
+    /**
+     * Get all lists of the user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function allListsUser()
     {
         if (Auth::check()) {
             $checklist = Auth::user()->checklists()->with('checkItems')->get();
@@ -40,6 +44,12 @@ class CheckListController extends BaseController
         return response()->json('you must be login', 401);
     }
 
+
+    /**
+     * Crete new list
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function create(Request $request)
     {
         $inputParam = $request->all();
@@ -53,6 +63,12 @@ class CheckListController extends BaseController
         return response()->json($checklist);
     }
 
+
+    /**
+     * Delete list by id
+     * @param int $checklist id list for delete
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function delete(int $checklist)
     {
         $checklist = CheckList::findOrFail($checklist);
@@ -61,6 +77,11 @@ class CheckListController extends BaseController
         return response()->json(true);
     }
 
+    /**
+     * Edit ald list
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function edit(Request $request)
     {
         $inputParam = $request->all();
@@ -69,6 +90,10 @@ class CheckListController extends BaseController
         return response()->json($checklist);
     }
 
+    /**
+     * All lists were created
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function amountLists()
     {
         $allList = CheckList::all();

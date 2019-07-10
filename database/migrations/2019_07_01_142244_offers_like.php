@@ -16,7 +16,7 @@ class OffersLike extends Migration
         Schema::create('offers_likes_users', function (Blueprint $table) {
             $table->increments('offer_likes_id');
             $table->unsignedBigInteger('post_id')->references('post_id')->on('offers_post')->onDelete('cascade');
-            $table->longText('users_id');
+            $table->json('users_id');
             $table->timestamps();
         });
     }

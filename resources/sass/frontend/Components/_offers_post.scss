@@ -2,10 +2,17 @@
   margin-bottom: 50px;
   border-bottom: 1px solid $grey_2;
   padding-bottom: 40px;
+  @include small {
+    padding-bottom: 25px;
+    margin-bottom: 40px;
+  }
   .meta {
     display: flex;
     align-items: center;
     margin-bottom: 35px;
+  }
+  p {
+    margin-left: 60px;
   }
   .user_avatar {
     margin-right: 15px;
@@ -15,10 +22,12 @@
     color: $green;
     font-weight: 700;
     font-size: 16px;
-    line-height: 50px;
+    line-height: 30px;
     letter-spacing: 0.11px;
   }
-
+  .like_count {
+    line-height: 30px;
+  }
   .like_button {
     margin-left: auto;
     border: none;
@@ -31,6 +40,8 @@
     display: flex;
     align-items: center;
     padding: 0;
+    align-self: flex-end;
+    margin-bottom: -1px;
     .icon {
       display: flex;
       justify-content: center;
@@ -38,6 +49,7 @@
       margin-right: 10px;
       width: 18px;
       height: 16px;
+      margin-bottom: 3px;
     }
     svg {
       fill: $grey_3;
@@ -48,10 +60,10 @@
         fill: $green;
       }
     }
-    &.liked:hover {
-      color: $grey_3;
+    &.liked {
+      color: $green;
       svg {
-        fill: $grey_3;
+        fill: $green;
       }
     }
   }

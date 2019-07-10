@@ -1,24 +1,20 @@
 webpackJsonp([13],{
 
-/***/ 614:
+/***/ 632:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(615)
-}
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(617)
+var __vue_script__ = __webpack_require__(643)
 /* template */
-var __vue_template__ = __webpack_require__(618)
+var __vue_template__ = __webpack_require__(644)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-7eb71b46"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/views/Frontend/Term/index.vue"
+Component.options.__file = "resources/js/views/Frontend/FormForgotPassword/index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7eb71b46", Component.options)
+    hotAPI.createRecord("data-v-012eacb3", Component.options)
   } else {
-    hotAPI.reload("data-v-7eb71b46", Component.options)
+    hotAPI.reload("data-v-012eacb3", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,49 +48,55 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 615:
+/***/ 636:
 /***/ (function(module, exports, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(637)
+/* template */
+var __vue_template__ = __webpack_require__(638)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Frontend/FormInput/index.vue"
 
-// load the styles
-var content = __webpack_require__(616);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("55d7354e", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7eb71b46\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7eb71b46\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-00b2e637", Component.options)
+  } else {
+    hotAPI.reload("data-v-00b2e637", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ }),
 
-/***/ 616:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 617:
+/***/ 637:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -147,156 +149,476 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "index"
+  name: "FormInput",
+  data: function data() {
+    return {};
+  },
+  computed: {
+    pathToIcon: function pathToIcon() {
+      return "<use  xlink:href=\"/images/sprites.svg#sprite-".concat(this.icon, "\"></use>");
+    },
+    focus: function focus() {
+      return {
+        focus: !!this.value,
+        error: !!this.errors.length
+      };
+    }
+  },
+  methods: {
+    validate: function validate() {
+      if (this.required) {
+        if (!this.value) {
+          this.$emit('error', {
+            action: true,
+            filed: 'empty',
+            name: "".concat(this.name),
+            message: "The ".concat(this.label, " field is required.")
+          });
+        } else {
+          this.$emit('error', {
+            action: false,
+            filed: 'empty',
+            name: "".concat(this.name),
+            message: ''
+          });
+        }
+      }
+
+      if (this.min) {
+        this.minValidate();
+      }
+
+      if (this.email) {
+        this.emailValidate(this.min);
+      }
+    },
+    minValidate: function minValidate() {
+      if (this.value.length < this.min) {
+        if (!!this.value) {
+          this.$emit('error', {
+            action: true,
+            filed: 'length',
+            name: this.name,
+            message: "min chars is ".concat(this.min)
+          });
+        }
+      } else {
+        this.$emit('error', {
+          action: false,
+          filed: 'length',
+          name: this.name,
+          message: ''
+        });
+      }
+    },
+    emailValidate: function emailValidate() {
+      var rex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      if (!rex.test(this.value) && this.value) {
+        this.$emit('error', {
+          action: true,
+          filed: 'email',
+          name: this.name,
+          message: 'Е-mail fail. Please type in your correct e-mail.'
+        });
+      } else {
+        this.$emit('error', {
+          action: false,
+          filed: 'email',
+          name: this.name,
+          message: ''
+        });
+      }
+    }
+  },
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    icon: {
+      type: String,
+      required: false
+    },
+    min: {
+      type: Number,
+      required: false
+    },
+    value: {
+      type: String,
+      required: true
+    },
+    required: {
+      type: Boolean,
+      required: false
+    },
+    errors: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      },
+      required: false
+    },
+    email: {
+      type: Boolean,
+      required: false
+    }
+  }
 });
 
 /***/ }),
 
-/***/ 618:
+/***/ 638:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "form-item", class: _vm.focus }, [
+    _vm.icon
+      ? _c("span", { staticClass: "icon" }, [
+          _c("svg", { domProps: { innerHTML: _vm._s(_vm.pathToIcon) } })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("input", {
+      attrs: { type: "text", name: _vm.name, id: _vm.name },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: _vm.validate,
+        input: function($event) {
+          return _vm.$emit("input", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("label", { attrs: { for: _vm.name } }, [
+      _vm._v("\n        " + _vm._s(_vm.label) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c("span", { staticClass: "correct-icon" }, [
+      _c("span", { staticClass: "correct" }, [
+        _c(
+          "svg",
+          {
+            staticStyle: { "enable-background": "new 0 0 16.8 10.9" },
+            attrs: {
+              version: "1.1",
+              id: "Слой_1",
+              xmlns: "http://www.w3.org/2000/svg",
+              "xmlns:xlink": "http://www.w3.org/1999/xlink",
+              x: "0px",
+              y: "0px",
+              viewBox: "0 0 16.8 10.9",
+              "xml:space": "preserve"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "st1",
+              attrs: {
+                d:
+                  "M14.4,0.5L9.6,6.1C9.5,6.2,9.4,6.4,9.2,6.5l-0.9,1L6.1,4.8l0,0L2.4,0.5C1.9-0.1,1-0.2,0.5,0.3\n            c-0.6,0.5-0.6,1.3-0.1,1.9l7,8.2c0.4,0.4,0.9,0.6,1.4,0.4c0,0,0,0,0,0c0,0,0.1,0,0.1,0c0,0,0,0,0,0c0,0,0.1,0,0.1,0c0,0,0,0,0,0\n            c0,0,0.1,0,0.1,0c0,0,0,0,0,0c0,0,0,0,0.1,0c0,0,0,0,0.1,0c0,0,0,0,0,0c0,0,0,0,0,0c0,0,0,0,0.1,0c0,0,0,0,0-0.1c0,0,0,0,0,0\n            l7.1-8.2c0.5-0.6,0.4-1.4-0.1-1.9C15.8-0.2,14.9-0.1,14.4,0.5z"
+              }
+            })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "incorrect" }, [
+        _c(
+          "svg",
+          {
+            staticStyle: { "enable-background": "new 0 0 26.5 26.5" },
+            attrs: {
+              version: "1.1",
+              id: "Слой_1",
+              xmlns: "http://www.w3.org/2000/svg",
+              "xmlns:xlink": "http://www.w3.org/1999/xlink",
+              x: "0px",
+              y: "0px",
+              viewBox: "0 0 26.5 26.5",
+              "xml:space": "preserve"
+            }
+          },
+          [
+            _c("path", {
+              staticClass: "st1",
+              attrs: {
+                d:
+                  "M15.4,13.2L26,2.6C26.6,2,26.6,1,26,0.4c-0.6-0.6-1.5-0.6-2.1,0L13.2,11.1L2.6,0.4C2-0.1,1-0.1,0.4,0.4\n                    C-0.1,1-0.1,2,0.4,2.6l10.7,10.7L0.4,23.9c-0.6,0.6-0.6,1.5,0,2.1s1.5,0.6,2.1,0l10.7-10.7L23.9,26c0.6,0.6,1.5,0.6,2.1,0\n                    c0.6-0.6,0.6-1.5,0-2.1L15.4,13.2z"
+              }
+            })
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "error-message" },
+      _vm._l(_vm.errors, function(error) {
+        return _c("li", [
+          error.message
+            ? _c("span", [_vm._v(_vm._s(error.message))])
+            : _c("span", [_vm._v(" " + _vm._s(error))])
+        ])
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-00b2e637", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 643:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__ = __webpack_require__(636);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ForgotPassword",
+  data: function data() {
+    return {
+      form: {
+        email: {
+          value: '',
+          errors: [],
+          serverErrors: []
+        },
+        password: {
+          value: '',
+          errors: [],
+          serverErrors: []
+        }
+      }
+    };
+  },
+  computed: {
+    emailError: function emailError() {
+      return this.form.email.errors.concat(this.form.email.serverErrors);
+    },
+    passwordError: function passwordError() {
+      return this.form.password.errors.concat(this.form.password.serverErrors);
+    }
+  },
+  methods: {
+    errorUpdate: function errorUpdate(error) {
+      this.clearError(error.name);
+      var errors = this.form[error.name].errors;
+      var fieldError = error.filed;
+      var errorIndex = -1;
+      errors.forEach(function (item, index) {
+        if (item.filed === fieldError) {
+          errorIndex = index;
+        }
+      });
+      var statusSearch = !!(errorIndex + 1);
+
+      if (error.action && !statusSearch) {
+        errors.push(error);
+      } else {
+        if (statusSearch && !error.action) {
+          errors.splice(errorIndex, 1);
+        }
+      }
+    },
+    validate: function validate() {
+      for (var filed in this.form) {
+        if (this.$refs[filed]) {
+          this.$refs[filed].validate();
+        }
+      }
+
+      for (var _filed in this.form) {
+        _filed = this.form[_filed];
+        var errors = _filed.errors;
+
+        if (errors.length) {
+          return false;
+        }
+      }
+
+      return true;
+    },
+    clearError: function clearError(name) {
+      if (!name) {
+        for (var filed in this.form) {
+          filed = this.form[filed];
+          filed.serverErrors = [];
+        }
+      } else {
+        var _filed2 = this.form[name];
+        _filed2.serverErrors = [];
+      }
+    },
+    send: function send() {
+      var _this = this;
+
+      if (this.validate()) {
+        axios.post('/password/email', {
+          email: this.form.email.value
+        }).then(function (responce) {
+          _this.$notify({
+            duration: -1,
+            type: 'success',
+            text: 'A message has been sent to you by email with instructions on how to reset your password.'
+          });
+        })["catch"](function (error) {
+          if (error.response.status === 422) {
+            _this.showErrors(error.response.data.errors);
+          }
+        });
+      }
+    },
+    showErrors: function showErrors(errors) {
+      for (var error in errors) {
+        var _this$form$error$serv;
+
+        var errorMessages = errors[error];
+
+        (_this$form$error$serv = this.form[error].serverErrors).push.apply(_this$form$error$serv, _toConsumableArray(errorMessages));
+      }
+    }
+  },
+  components: {
+    inputForm: __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput___default.a,
+    inputFormPassword: __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password___default.a
+  }
+});
+
+/***/ }),
+
+/***/ 644:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "form-forgot form-center-wrapper" }, [
+    _c(
+      "form",
+      {
+        attrs: { action: "/", method: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.send($event)
+          }
+        }
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("inputForm", {
+          ref: "email",
+          attrs: {
+            name: "email",
+            label: "Е-mail",
+            icon: "mail",
+            required: true,
+            errors: _vm.emailError,
+            email: true
+          },
+          on: { error: _vm.errorUpdate },
+          model: {
+            value: _vm.form.email.value,
+            callback: function($$v) {
+              _vm.$set(_vm.form.email, "value", $$v)
+            },
+            expression: "form.email.value"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex-row jcb aic" }, [
+          _c("button", { staticClass: "button" }, [_vm._v("Send")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-links" },
+            [
+              _c("router-link", { attrs: { to: "/registration" } }, [
+                _vm._v("Create account")
+              ])
+            ],
+            1
+          )
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "heroimage__about" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h1", [_vm._v("\n            Terms of Service\n        ")]),
-        _vm._v(" "),
-        _c("div", [
-          _c("p", [
-            _vm._v(
-              '\n            By using the Checko.me and Checko.me Premium web site ("Service") and Checko.me Premium alone ("Premium Service"), you are agreeing to be bound by the following terms and conditions ("Terms").\n            '
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v('\n            User account ("Account")\n            ')
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n            To use the Premium Service you need to sign up for an Account using your username and a valid email address.\n            One Account may be used by one person. One person may have more than one Account.\n            Multi-user Accounts are groups of single Accounts gathered under one Account, which acts as an administrator of the group.\n            "
-            )
-          ]),
-          _vm._v("\n\n            Your activity\n            "),
-          _c("p", [
-            _vm._v(
-              "\n            You are responsible for all the activity and content associated with your Account.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n            Checko.me claims no intellectual property rights over the material you provide to the Service. Your profile and materials uploaded remain yours.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n            You are responsible for keeping your password to the Premium Service safe at all times. Checko.me will not be held liable for any damage from your failure to comply with this security obligation.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n            You are responsible for using the Service in a legal manner and you must not violate any laws in your jurisdiction (including but not limited to copyright laws).\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n            In the event that Checko.me, in its sole discretion, considers that you are making any illegal and/or unauthorized use of the Service, and/or your use of the Service is in breach of these Terms, Checko.me reserves the right to take any action that it deems necessary, including terminating without notice your Account and, in the case of illegal use, instigating legal proceedings.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n            You have the right to terminate using the Premium Service and cancel your account. You can cancel your account at any time by clicking on the Account link in the global navigation bar at the top of the screen. The Account screen provides a simple, no questions asked two-click instant cancellation process. All of your Content may be immediately deleted from the Service upon cancellation.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n            Verbal, physical, written or other abuse (including threats of abuse or retribution) of any Checko.me customer, employee, member, or officer may result in immediate account termination.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n            You understand that the technical processing and transmission of the Service, including your content, may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices.\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n            If your bandwidth usage significantly exceeds the average bandwidth usage (as determined solely by Checko.me) of other Account holders, Checko.me reserves the right to immediately disable your account.\n            "
-            )
-          ]),
-          _vm._v(
-            "\n\n            Payments / Billing\n\n            Checko.me is using an authorized reseller (Fastspring) to sell Accounts.\n\n            You may need an active PayPal account or a valid credit card to buy from our authorized resellers.\n\n            The Premium Service is billed in advance on a monthly or yearly basis and is non-refundable once your account has been charged. There are no refunds or credits for partial use of the service. If the user has not entered his payment data after 14 days the account will be disabled. The contract agreement will be cancelled retroactively, the user will not be charged. Once the account is locked the data may be deleted in due course. The contract runs for an indefinite period.\n\n            You may only upgrade to a higher plan with the same or longer billing cycle. You may upgrade at any time and if you do, you will be charged the full price of the new payment plan in the next billing cycle if you are billed monthly. If you are billed annually you will be refunded a pro-month rata of your old payment plan and charged a pro-month rata of your new payment plan.\n\n            You may downgrade or cancel at any time. If you downgrade or cancel, you will be responsible for all the charges already incurred - Checko.me doesn't offer pro-rata refunds.\n\n            Downgrading your Service may cause the loss of content, features, or capacity of your Account. Checko.me does not accept any liability for such loss.If you are an EU (European Union) citizen, you will be charged the VAT tax. If you are a company based in EU and have an EU-registered valid VAT-number, you will not be charged the VAT tax. The prices don't include the VAT tax.\n\n            If you cancel the Service before the end of your payment cycle, your cancellation will take effect at the end of the payment cycle and you will not be charged again.\n\n\n            Service\n\n            Checko.me may suspend the Service for any reason whatsoever, including but not limited to, repairs, planned maintenance or upgrades, and will not be liable to you for any such suspension.\n\n            Checko.me reserves the right to make any changes to the Service or to discontinue any aspect or feature of the Service without notice, and will not be liable to you for any such change.\n\n            Checko.me, in its sole discretion, has the right to suspend or terminate your Account and refuse any and all current or future use of the Service, for any reason at any time.\n\n            Such termination of the Service will result in the deactivation or deletion of your Account or your access to your Account, and the forfeiture and relinquishment of all Content in your Account.\n\n            Checko.me reserves the right to refuse service to anyone for any reason at any time.\n\n            You agree not to reproduce, duplicate, copy, sell, resell or exploit any portion of the Service, use of the Service, or access to the Service without the express written permission by Checko.me.\n\n            Disclaimer of Warranties, Limitation of Liabilities\n\n            Checho.me does not warrant for the website and the service it is providing. Checko.me disclaims any warranty of title, merchantability, non-infringement, or fitness for a particular purpose. the service and the website are distributed on the \"as is\" basis without warranties of any kind, either expressed or implied. You agree to use the Service at your own risk.\n\n            Checko.me is not responsible for any delay or failure in performance due to Force Majeure or other occurrences that are beyond Checho.me's reasonable control. Checko.me is not responsible for short, temporary and accidental suspension of the Service, as the result of the circumstances which Checko.me could not foresee or suspect.\n\n            In no event shall Cheko.me or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on Checko.me's Internet site, even if Checko.me or a Checko.me authorized representative has been notified orally or in writing of the possibility of such damage.\n\n            The Customer recognizes that Checko.me does not own or control other networks, information and systems outside of its own network, nor is Checko.me responsible for performance or non-performance within such networks.\n\n            Final\n\n            The most current version of the Terms is available at any time\n        "
-          )
-        ])
+    return _c("div", { staticClass: "top-row" }, [
+      _c("h2", [_vm._v("Forgot your password?")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-default" }, [
+        _vm._v(
+          "\n                Enter your email address that you used to register.\n                We'll send you an email with your username and a link to reset your password.\n            "
+        )
       ])
     ])
   }
@@ -306,7 +628,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7eb71b46", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-012eacb3", module.exports)
   }
 }
 

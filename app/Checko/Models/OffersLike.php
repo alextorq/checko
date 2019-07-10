@@ -16,7 +16,7 @@ class OffersLike extends Model
     protected $table = 'offers_likes_users';
     protected $primaryKey = 'offer_likes_id';
 
-    protected $fillable = ['post_id', 'users_id'];
+    protected $fillable = ['post_id', 'users_id', 'like_count'];
 
     public function offerPost()
     {

@@ -1,14 +1,14 @@
 webpackJsonp([12],{
 
-/***/ 592:
+/***/ 631:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(602)
+var __vue_script__ = __webpack_require__(641)
 /* template */
-var __vue_template__ = __webpack_require__(603)
+var __vue_template__ = __webpack_require__(642)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/views/Frontend/FormForgotPassword/index.vue"
+Component.options.__file = "resources/js/views/Frontend/FormLogin/index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-012eacb3", Component.options)
+    hotAPI.createRecord("data-v-8ed66c6c", Component.options)
   } else {
-    hotAPI.reload("data-v-012eacb3", Component.options)
+    hotAPI.reload("data-v-8ed66c6c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,15 +48,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 595:
+/***/ 636:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(596)
+var __vue_script__ = __webpack_require__(637)
 /* template */
-var __vue_template__ = __webpack_require__(597)
+var __vue_template__ = __webpack_require__(638)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -96,7 +96,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 596:
+/***/ 637:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -273,7 +273,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 597:
+/***/ 638:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -386,14 +386,14 @@ if (false) {
 
 /***/ }),
 
-/***/ 602:
+/***/ 641:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__ = __webpack_require__(595);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__ = __webpack_require__(636);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -434,10 +434,22 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ForgotPassword",
+  name: "FormLogin",
   data: function data() {
     return {
       form: {
@@ -516,14 +528,13 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var _this = this;
 
       if (this.validate()) {
-        axios.post('/password/email', {
-          email: this.form.email.value
+        axios.post('/login', {
+          email: this.form.email.value,
+          password: this.form.password.value
         }).then(function (responce) {
-          _this.$notify({
-            duration: -1,
-            type: 'success',
-            text: 'A message has been sent to you by email with instructions on how to reset your password.'
-          });
+          _this.$store.commit('updateUser', responce.data);
+
+          _this.$router.push('/');
         })["catch"](function (error) {
           if (error.response.status === 422) {
             _this.showErrors(error.response.data.errors);
@@ -549,14 +560,14 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /***/ }),
 
-/***/ 603:
+/***/ 642:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-registration-wrapper form-forgot" }, [
+  return _c("div", { staticClass: "form-sign form-center-wrapper" }, [
     _c(
       "form",
       {
@@ -591,8 +602,28 @@ var render = function() {
           }
         }),
         _vm._v(" "),
+        _c("inputFormPassword", {
+          ref: "password",
+          attrs: {
+            name: "password",
+            label: "Password",
+            min: 8,
+            icon: "password",
+            required: true,
+            errors: _vm.passwordError
+          },
+          on: { error: _vm.errorUpdate },
+          model: {
+            value: _vm.form.password.value,
+            callback: function($$v) {
+              _vm.$set(_vm.form.password, "value", $$v)
+            },
+            expression: "form.password.value"
+          }
+        }),
+        _vm._v(" "),
         _c("div", { staticClass: "flex-row jcb aic" }, [
-          _c("button", { staticClass: "button" }, [_vm._v("Send")]),
+          _c("button", { staticClass: "button" }, [_vm._v("Sign in ")]),
           _vm._v(" "),
           _c(
             "div",
@@ -600,6 +631,10 @@ var render = function() {
             [
               _c("router-link", { attrs: { to: "/registration" } }, [
                 _vm._v("Create account")
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: { name: "ForgotPassword" } } }, [
+                _vm._v("Forgot your password")
               ])
             ],
             1
@@ -615,13 +650,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h2", [_vm._v("Forgot your password?")]),
+    return _c("div", { staticClass: "flex-row jcb ais top-row" }, [
+      _c("h2", [_vm._v("Sign in")]),
       _vm._v(" "),
-      _c("div", { staticClass: "text-default" }, [
-        _vm._v(
-          "\n                Enter your email address that you used to register.\n                We'll send you an email with your username and a link to reset your password.\n            "
-        )
+      _c("div", { staticClass: "sing-with-wrapper flex-row jcb aic" }, [
+        _c("span", [_vm._v("Sign in with")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "sing-with__list flex-row jcb aic" }, [
+          _c("li", { staticClass: "sing-with__item" }, [
+            _c("a", { attrs: { href: "/provider?provider=google" } }, [
+              _c("img", { attrs: { src: "/images/google.png", alt: "google" } })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "sing-with__item" }, [
+            _c("a", { attrs: { href: "/provider?provider=facebook" } }, [
+              _c("img", {
+                attrs: { src: "/images/facebook.png", alt: "facebook" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "sing-with__item" }, [
+            _c("a", { attrs: { href: "/provider?provider=twitter" } }, [
+              _c("img", {
+                attrs: { src: "/images/twitter.png", alt: "twitter" }
+              })
+            ])
+          ])
+        ])
       ])
     ])
   }
@@ -631,7 +688,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-012eacb3", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-8ed66c6c", module.exports)
   }
 }
 

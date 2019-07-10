@@ -1,14 +1,123 @@
-webpackJsonp([10],{
+webpackJsonp([10,11],{
 
-/***/ 590:
+/***/ 253:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(598)
+var __vue_script__ = __webpack_require__(573)
 /* template */
-var __vue_template__ = __webpack_require__(599)
+var __vue_template__ = __webpack_require__(574)
+/* template functional */
+var __vue_template_functional__ = true
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Frontend/Copyright/index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-85364150", Component.options)
+  } else {
+    hotAPI.rerender("data-v-85364150", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 573:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "copyright"
+});
+
+/***/ }),
+
+/***/ 574:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function(_h, _vm) {
+  var _c = _vm._c
+  return _c("section", { staticClass: "copyright" }, [
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "div",
+        { staticClass: "default-content" },
+        [
+          _c("router-link", { attrs: { to: "/pages/term-of-services" } }, [
+            _vm._v("Term |")
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { to: "/pages/privacy" } }, [
+            _vm._v(" Privacy | ")
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v(" © 2019 checko.me")])
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-85364150", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 630:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(639)
+/* template */
+var __vue_template__ = __webpack_require__(640)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,15 +157,63 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 595:
+/***/ 634:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(596)
+var __vue_script__ = __webpack_require__(649)
 /* template */
-var __vue_template__ = __webpack_require__(597)
+var __vue_template__ = __webpack_require__(650)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/views/Frontend/About/index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-16219b52", Component.options)
+  } else {
+    hotAPI.reload("data-v-16219b52", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 636:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(637)
+/* template */
+var __vue_template__ = __webpack_require__(638)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -96,7 +253,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 596:
+/***/ 637:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -273,7 +430,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 597:
+/***/ 638:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -386,14 +543,14 @@ if (false) {
 
 /***/ }),
 
-/***/ 598:
+/***/ 639:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__ = __webpack_require__(595);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__ = __webpack_require__(636);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -403,6 +560,23 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -569,14 +743,14 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /***/ }),
 
-/***/ 599:
+/***/ 640:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-registration-wrapper" }, [
+  return _c("div", { staticClass: "form-registration form-center-wrapper" }, [
     _c(
       "form",
       {
@@ -674,7 +848,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "flex-row jcb aic" },
+          { staticClass: "flex-row jcb aic form-links" },
           [
             _c("button", { staticClass: "button" }, [_vm._v("SING UP")]),
             _vm._v(" "),
@@ -694,9 +868,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h2", [
-      _vm._v("Sign up and start your "),
-      _c("span", [_vm._v("7 day free trial")])
+    return _c("div", { staticClass: "flex-row jcb ais top-row" }, [
+      _c("h2", [
+        _vm._v("Sign up and start your "),
+        _c("span", [_vm._v("7 day free trial")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sing-with-wrapper flex-row jcb aic" }, [
+        _c("span", [_vm._v("Sign in with")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "sing-with__list flex-row jcb aic" }, [
+          _c("li", { staticClass: "sing-with__item" }, [
+            _c("a", { attrs: { href: "/provider?provider=google" } }, [
+              _c("img", { attrs: { src: "/images/google.png", alt: "google" } })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "sing-with__item" }, [
+            _c("a", { attrs: { href: "/provider?provider=facebook" } }, [
+              _c("img", {
+                attrs: { src: "/images/facebook.png", alt: "facebook" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "sing-with__item" }, [
+            _c("a", { attrs: { href: "/provider?provider=twitter" } }, [
+              _c("img", {
+                attrs: { src: "/images/twitter.png", alt: "twitter" }
+              })
+            ])
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -706,6 +910,276 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-96785164", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 649:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormRegistration__ = __webpack_require__(630);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormRegistration___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormRegistration__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Frontend_Copyright__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Frontend_Copyright___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Frontend_Copyright__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "index",
+  data: function data() {
+    return {
+      allList: 1
+    };
+  },
+  components: {
+    RegistrationForm: __WEBPACK_IMPORTED_MODULE_0__FormRegistration___default.a,
+    copyright: __WEBPACK_IMPORTED_MODULE_1__components_Frontend_Copyright___default.a
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('frontend/checklist/amountLst').then(function (response) {
+      _this.allList = +response.data; // videoPlay(videoSource);
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  }
+});
+
+/***/ }),
+
+/***/ 650:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "page_about" },
+    [
+      _c("section", { staticClass: "heroimage__about" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "about-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "image-wrapper" }, [
+              _c("img", {
+                attrs: { src: "/images/monitor.svg", alt: "Monitor" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "video" }, [
+                _c(
+                  "video",
+                  {
+                    attrs: { autoplay: "", muted: "" },
+                    domProps: { muted: true }
+                  },
+                  [_c("source", { attrs: { src: "/video/introduce.mp4" } })]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("section", { staticClass: "all_check-list" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "about-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "amount" }, [_vm._v(_vm._s(_vm.allList))])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "form" }, [
+        _c("div", { staticClass: "container" }, [_c("RegistrationForm")], 1)
+      ]),
+      _vm._v(" "),
+      _vm._m(3)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", [
+      _vm._v("\n                    A simple way to create"),
+      _c("br"),
+      _vm._v("\n                    and share a check-list\n                ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "advantages" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "about-content" }, [
+          _c("ul", [
+            _c("li", [
+              _c("div", { staticClass: "title caption" }, [
+                _c("span", { staticClass: "logo-icon" }, [
+                  _c("img", {
+                    attrs: { src: "/images/check_green.svg", alt: "checko" }
+                  })
+                ]),
+                _vm._v(
+                  "\n                            Simple interface\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text" }, [
+                _vm._v(
+                  "\n                            We’ve tried to create a truly simple and convenient service for managing check-lists\n                        "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("div", { staticClass: "title caption" }, [
+                _c("span", { staticClass: "logo-icon" }, [
+                  _c("img", {
+                    attrs: { src: "/images/check_green.svg", alt: "checko" }
+                  })
+                ]),
+                _vm._v(
+                  "\n                            Time-saving\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text" }, [
+                _vm._v(
+                  "\n                            It is not an obligatory step to sign in so that you can create and share a check-list.\n                            It’s enough to create tasks and share a link with an executor.\n                        "
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "caption" }, [
+      _vm._v("\n                    check"),
+      _c("span", { staticClass: "logo-icon" }, [
+        _c("img", { attrs: { src: "/images/check_green.svg", alt: "checko" } })
+      ]),
+      _vm._v(" sheets created\n                ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("copyright")
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-16219b52", module.exports)
   }
 }
 
