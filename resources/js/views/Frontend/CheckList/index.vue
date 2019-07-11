@@ -94,7 +94,7 @@
         },
         methods: {
             openAllList() {
-
+                this.allListIsOpen = false;
                 EventBus.$emit('CheckList:openAllList');
             }
         },
@@ -120,7 +120,7 @@
         },
         created() {
             this.$store.dispatch('loadCheckList', this.$route.params.list_id);
-            EventBus.$on('CheckList:closeAllList', () => {this.allListIsOpen = !this.allListIsOpen;})
+            EventBus.$on('CheckList:showButton', () => {this.allListIsOpen = true;})
         }
     }
 </script>

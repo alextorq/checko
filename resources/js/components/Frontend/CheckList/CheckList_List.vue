@@ -2,7 +2,7 @@
     <div class="wrapper-user-lists scrolled" :class="openClass">
         <div class="wrapper-user-list-content">
             <div class="user-lists-title-wrapper">
-                <h2 class="user-lists-title" @click="open">
+                <h2 class="user-lists-title" @click="close">
                     <div class="left-col">
                         <div class="arrow"></div>
                     </div>
@@ -19,13 +19,6 @@
             <ul class="user-lists">
                 <list v-for="list in unCompleteLists" :list="list" :key="list.check_list_id"></list>
             </ul>
-
-            <!--<button class="add-new-list">-->
-                <!--<span class="left-col">-->
-                    <!--<span class="cross"></span>-->
-                <!--</span>-->
-                <!--Add list-->
-            <!--</button>-->
 
             <Spoiler v-if="completeLists.length > 0">
                 <ul class="user-lists done">
@@ -74,9 +67,9 @@
             }
         },
         methods: {
-            open() {
-                this.openStatus = !this.openStatus;
-                EventBus.$emit('CheckList:closeAllList')
+            close() {
+                this.openStatus = false;
+                EventBus.$emit('CheckList:showButton')
             },
             sort(payload) {
                 this.$store.commit('sortListsBy', payload.value)
@@ -84,7 +77,7 @@
         },
         created() {
             this.$store.dispatch('allCheckList');
-            EventBus.$on('CheckList:openAllList', () => {this.open()})
+            EventBus.$on('CheckList:openAllList', () => {this.openStatus = true;})
         },
     }
 </script>

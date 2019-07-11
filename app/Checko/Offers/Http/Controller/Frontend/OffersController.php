@@ -73,6 +73,10 @@ class OffersController extends BaseController
     public function create(Request $request)
     {
         $data = $request->all();
+        Validator::make($request->all(), [
+            'content' => 'required|min:10',
+        ])->validate();
+
         $data['like_count'] = 0;
         $data['users_id'] = json_encode(array());;
         $data['author'] = Auth::id();

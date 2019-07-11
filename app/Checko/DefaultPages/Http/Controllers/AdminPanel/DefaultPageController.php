@@ -33,7 +33,6 @@ class DefaultPageController extends  BaseController
 
     public function one($id)
     {
-
         $page = PageDefault::findOrFail($id);
         return response()->json($page);
     }

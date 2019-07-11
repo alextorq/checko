@@ -669,14 +669,6 @@ var staticRenderFns = [
                 attrs: { src: "/images/facebook.png", alt: "facebook" }
               })
             ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "sing-with__item" }, [
-            _c("a", { attrs: { href: "/provider?provider=twitter" } }, [
-              _c("img", {
-                attrs: { src: "/images/twitter.png", alt: "twitter" }
-              })
-            ])
           ])
         ])
       ])

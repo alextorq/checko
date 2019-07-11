@@ -90,7 +90,7 @@
     import copyright from '../../../components/Frontend/Copyright'
 
     export default {
-        name: "index",
+        name: "About",
         data() {
           return {
               allList: 1

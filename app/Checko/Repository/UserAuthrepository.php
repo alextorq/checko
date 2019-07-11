@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UserAuthrepository
 {
+    /**
+     * generate password for user login by social network
+     * @return string
+     */
     private function generatePassword()
     {
         $chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP";

@@ -59,7 +59,7 @@
     }
 
     export default {
-        name: "index",
+        name: "welcome_animation",
         data() {
           return {
               visible: true

@@ -41,17 +41,6 @@
                     offers
                 </router-link>
             </li>
-
-            <!--<li class="navbar__menu__item">-->
-                <!--<router-link :to="{ name: 'SettingsList'}">-->
-                    <!--help-->
-                <!--</router-link>-->
-            <!--</li>-->
-            <!--<li class="navbar__menu__item">-->
-                <!--<router-link :to="{ name: 'SettingsList'}">-->
-                    <!--contacts-->
-                <!--</router-link>-->
-            <!--</li>-->
         </ul>
     </div>
 </template>

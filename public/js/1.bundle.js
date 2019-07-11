@@ -890,14 +890,6 @@ var staticRenderFns = [
                 attrs: { src: "/images/facebook.png", alt: "facebook" }
               })
             ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "sing-with__item" }, [
-            _c("a", { attrs: { href: "/provider?provider=twitter" } }, [
-              _c("img", {
-                attrs: { src: "/images/twitter.png", alt: "twitter" }
-              })
-            ])
           ])
         ])
       ])
@@ -1014,7 +1006,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "index",
+  name: "About",
   data: function data() {
     return {
       allList: 1

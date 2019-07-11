@@ -24,15 +24,15 @@ class CheckItemCommentController extends BaseController
 
     public function __construct()
     {
-        $this->middleware(['web', 'auth'])->except('allComments');
-        $this->middleware('web')->only('allComments');
+        $this->middleware(['web', 'auth'])->except('all');
+        $this->middleware('web')->only('all');
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addComment(Request $request)
+    public function create(Request $request)
     {
         $data = $request->all();
         $data['user_id'] = Auth::id();
@@ -52,7 +52,7 @@ class CheckItemCommentController extends BaseController
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function allComments(int $id)
+    public function all(int $id)
     {
         $comments = CheckItemComment::where('check_item_id', '=', $id)->With('owner')->get();
         return response()->json($comments);

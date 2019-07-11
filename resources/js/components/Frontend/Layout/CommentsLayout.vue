@@ -52,7 +52,7 @@
             }
         },
         created() {
-            EventBus.$on('open_comments', () => {
+            EventBus.$on('comments:open_layout', () => {
                 this.openStatus = true
             })
         },

@@ -23,7 +23,6 @@
 
                     <textarea v-model="content" name="content" cols="30" rows="10"></textarea>
                 </label>
-
                 <button type="submit" class="button">TO OFFER</button>
             </form>
         </div>
@@ -33,7 +32,7 @@
 
 <script>
     export default {
-        name: "index",
+        name: "offers_form",
         data() {
             return {
                 list: [],
@@ -53,17 +52,13 @@
                 if (!this.content) {
                     return
                 }
-                axios.post('/frontend/offers/create', {content: this.content}).then((responce) => {
+                axios.post('/frontend/offers/create', {content: this.content}).then(() => {
                     this.content = '';
                     this.$emit('send')
-                }).catch(() => {
-                    console.log
+                }).catch((error) => {
+                    console.log(error)
                 })
             }
-        },
-        created() {
-
         }
-
     }
 </script>

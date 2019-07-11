@@ -12,8 +12,6 @@ Route::group(['prefix' => 'frontend/checklist',  'as'=> 'checklist.'], function 
     Route::put('/edit', ['uses' => 'CheckListController@edit', 'as' => 'edit']);
     Route::get('/all', ['uses' => 'CheckListController@allListsUser', 'as' => 'allUserList']);
     Route::get('/amountLst', ['uses' => 'CheckListController@amountLists', 'as' => 'amount']);
-//    Route::get('/{checklist?}', ['uses' => 'CheckListController@index', 'as' => 'index'])->where('checklist', '[\/\w\.-]*');
-    Route::post('/{checklist?}', ['uses' => 'CheckListController@indexPost', 'as' => 'index'])->where('checklist', '[\/\w\.-]*');
+    Route::post('/{checklist?}', ['uses' => 'CheckListController@index', 'as' => 'index'])->where('checklist', '[\/\w\.-]*');
     Route::delete('/{checklist?}', ['uses' => 'CheckListController@delete', 'as' => 'delete']);
-
 });

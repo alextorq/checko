@@ -14,6 +14,11 @@ use App\Checko\Services\Errors\Models\Error;
 
 class ErrorController extends BaseController
 {
+    /**
+     * save client error
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function save(Request $request)
     {
         $data = $request->all();

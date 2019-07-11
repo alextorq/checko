@@ -1,3 +1,11 @@
+$animate_step_1: 600;
+$animate_step_2: 600;
+$animate_step_3: 600;
+$animate_step_4: 600;
+$animate_step_6: 600;
+$animate_step_7: 600;
+$animate_step_8: 600;
+
 .logo-welcome {
   display: flex;
   position: fixed;
@@ -41,6 +49,8 @@
     stroke-dashoffset: -84;
     animation: draw_1 500ms cubic-bezier(0.39, 0.575, 0.565, 1) 1200ms forwards;
   }
+
+
   .letter.c {
     stroke-dasharray: 57 59;
     stroke-dashoffset: -57;

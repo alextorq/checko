@@ -172,7 +172,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Frontend_Pagination___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Frontend_Pagination__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Frontend_Preloader__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Frontend_Preloader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_Frontend_Preloader__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Frontend_Select__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Frontend_Select__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Frontend_Select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_Frontend_Select__);
 //
 //
@@ -718,9 +718,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "index",
+  name: "offers_form",
   data: function data() {
     return {
       list: [],
@@ -747,16 +746,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.post('/frontend/offers/create', {
         content: this.content
-      }).then(function (responce) {
+      }).then(function () {
         _this.content = '';
 
         _this.$emit('send');
-      })["catch"](function () {
-        console.log;
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
-  },
-  created: function created() {}
+  }
 });
 
 /***/ }),

@@ -3,7 +3,7 @@
         <LogoWelcome></LogoWelcome>
         <notifications position="top right" classes="my-style"/>
         <Header></Header>
-        <CommentsLayout :open="commentIsOpen"></CommentsLayout>
+        <CommentsLayout></CommentsLayout>
         <main class="scrolled" :class="{'overlay-open': overflowStatus}">
             <transition name="fade">
                 <router-view></router-view>
@@ -24,11 +24,6 @@
           return {
                 overflowStatus: false
           }
-        },
-        computed: {
-            commentIsOpen() {
-                return this.$store.state.comments.commentOpen;
-            }
         },
         methods: {
             detectMobileViews(media) {

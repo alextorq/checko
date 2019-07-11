@@ -15,14 +15,23 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckItemController extends BaseController
 {
-    public function createItem(Request $request)
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function create(Request $request)
     {
         $item = $request->all();
         $checkItem = CheckItem::create($item);
         return response()->json($checkItem);
     }
 
-    public function editItem(Request $request, $id)
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function edit(Request $request, $id)
     {
         $checkItem = CheckItem::findOrFail($id);
         $item = $request->input('item');
@@ -31,13 +40,22 @@ class CheckItemController extends BaseController
         return response()->json($checkItem);
     }
 
-    public function deleteItem($id)
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
     {
         $checkItem = CheckItem::findOrFail($id);
         $checkItem->delete();
         return response()->json(true);
     }
 
+    /**
+     * edit order items by user select
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function changeOrder(Request $request)
     {
         $items = $request->input('items');

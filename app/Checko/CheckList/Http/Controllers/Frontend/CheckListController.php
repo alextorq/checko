@@ -19,14 +19,15 @@ use App\User;
 class CheckListController extends BaseController
 {
 
-//    public function index()
-//    {
-//        return view('welcome');
-//    }
-
-    public function indexPost(int $checklist)
+    /**
+     * get checklist by id
+     * @param int $checklist id of checklist
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index(int $checklist)
     {
         $checklist = CheckList::with('checkItems')->findOrFail($checklist);
+
         return response()->json($checklist);
     }
 
@@ -60,6 +61,7 @@ class CheckListController extends BaseController
 
         $checklist = CheckList::create($inputParam);
         $checklist['check_items'] = [];
+
         return response()->json($checklist);
     }
 
@@ -87,6 +89,7 @@ class CheckListController extends BaseController
         $inputParam = $request->all();
         $checklist = CheckList::findOrFail($inputParam['check_list_id']);
         $checklist->update($inputParam);
+
         return response()->json($checklist);
     }
 
@@ -98,6 +101,7 @@ class CheckListController extends BaseController
     {
         $allList = CheckList::all();
         $amoutList = $allList->count();
+
         return response()->json($amoutList);
     }
 }

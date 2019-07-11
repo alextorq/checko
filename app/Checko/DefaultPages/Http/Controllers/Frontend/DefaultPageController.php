@@ -14,7 +14,11 @@ use Illuminate\Routing\Controller as BaseController;
 
 class DefaultPageController extends  BaseController
 {
-
+    /**
+     * get page content by slug
+     * @param PageDefault $page
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getPage(PageDefault $page)
     {
         return response()->json($page);

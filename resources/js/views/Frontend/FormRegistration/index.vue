@@ -14,9 +14,9 @@
                         <li class="sing-with__item"><a href="/provider?provider=facebook">
                             <img src="/images/facebook.png" alt="facebook">
                         </a></li>
-                        <li class="sing-with__item"><a href="/provider?provider=twitter">
-                            <img src="/images/twitter.png" alt="twitter">
-                        </a></li>
+                        <!--<li class="sing-with__item"><a href="/provider?provider=twitter">-->
+                            <!--<img src="/images/twitter.png" alt="twitter">-->
+                        <!--</a></li>-->
                     </ul>
                 </div>
             </div>
