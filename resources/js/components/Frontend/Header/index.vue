@@ -14,12 +14,12 @@
                     </span>
                     <span class="bg"></span>
                 </span>
-                <a  href="/" target="_blank" aria-label="Add new checklist" class="navbar__add-new tooltip-wrapper" type="button">
+                <button @click="goToHome"  href="/" target="_blank" aria-label="Add new checklist" class="navbar__add-new tooltip-wrapper" type="button">
                     <span class="tooltip">New list</span>
                     <span class="wrapper">
                         <span class="line"></span>
                     </span>
-                </a>
+                </button>
 
                 <div class="button-wrapper" :class="isShareOpenStatus" v-if="isShareApi">
                     <button class="navbar__share tooltip-wrapper" ref="openShareMenu" @click="openShareMenu"

@@ -3,12 +3,8 @@ import VueRouter from 'vue-router';
 import store from '../../store/Frontend/index'
 
 /*Компоненты*/
-
 import Layout from  '../../components/Frontend/Layout'
 import CheckList from '../../views/Frontend/CheckList'
-import  SettingsLayout from  '../../views/Frontend/Settings'
-import  SettingsList from '../../components/Frontend/Settings/List'
-import  SettingsAccount from '../../components/Frontend/Settings/Account'
 
 
 /*Динамические импорты*/
@@ -19,10 +15,13 @@ const NotFound = () => import('../../views/Frontend/404');
 const About = () => import('../../views/Frontend/About/index.vue');
 const PageDefault = () => import('../../views/Frontend/PageDefault/index.vue');
 const Offers = () => import('../../views/Frontend/Offers');
+const SettingsLayout = () => import('../../views/Frontend/Settings');
+const SettingsList = () => import('../../components/Frontend/Settings/List');
+const SettingsAccount = () => import('../../components/Frontend/Settings/Account');
 
-import  SettingsNotification from '../../components/Frontend/Settings/Notification'
-import  SettingsPayment from '../../components/Frontend/Settings/Payment'
-import  SettingsGeneral from '../../components/Frontend/Settings/General'
+// import  SettingsNotification from '../../components/Frontend/Settings/Notification'
+// import  SettingsPayment from '../../components/Frontend/Settings/Payment'
+// import  SettingsGeneral from '../../components/Frontend/Settings/General'
 
 Vue.use(VueRouter);
 

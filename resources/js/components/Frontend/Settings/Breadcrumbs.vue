@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: "Breadcrump",
+        name: "breadcrumbs",
         computed: {
             path() {
                 return this.$route.meta.title;

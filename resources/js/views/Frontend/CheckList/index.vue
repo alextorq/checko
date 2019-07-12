@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
+    <div class="container" :class="overflow">
         <div class="content">
 
             <AllList v-if="userLoginStatus"></AllList>
 
-            <div class="checklist">
+            <div class="checklist" :class="overflow">
 
                 <button class="button user-lists-title-phone" v-show="allListIsOpen"
                         v-if="userLoginStatus" @click="openAllList">
@@ -69,8 +69,10 @@
           }
         },
         computed: {
-            canCreateItem() {
-                return this.$store.state.checkItem.canCreate;
+            overflow() {
+              return {
+                  scrolled: !this.allListIsOpen
+              }
             },
             completeItems: {
                 get() {
@@ -95,6 +97,7 @@
         methods: {
             openAllList() {
                 this.allListIsOpen = false;
+                EventBus.$emit('overflow_on');
                 EventBus.$emit('CheckList:openAllList');
             }
         },
@@ -109,18 +112,12 @@
             CheckListName,
             AllList
         },
-        beforeRouteUpdate (to, from, next) {
-            console.log(to, from);
-            if (from.fullPath === '/') {
-                next();
-                return
-            }
-
-            next()
-        },
         created() {
             this.$store.dispatch('loadCheckList', this.$route.params.list_id);
-            EventBus.$on('CheckList:showButton', () => {this.allListIsOpen = true;})
+            EventBus.$on('CheckList:showButton', () => {
+                this.allListIsOpen = true;
+                EventBus.$emit('overflow_off');
+            })
         }
     }
 </script>

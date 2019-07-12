@@ -1,5 +1,4 @@
 <template>
-
     <div class="page_about">
         <section class="heroimage__about">
             <div class="container">

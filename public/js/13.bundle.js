@@ -1,14 +1,306 @@
 webpackJsonp([13],{
 
-/***/ 632:
+/***/ 251:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(643)
+var __vue_script__ = __webpack_require__(581)
 /* template */
-var __vue_template__ = __webpack_require__(644)
+var __vue_template__ = __webpack_require__(582)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Frontend/FormInput/password.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-63b834c6", Component.options)
+  } else {
+    hotAPI.reload("data-v-63b834c6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 581:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "index",
+  data: function data() {
+    return {
+      type: 'password'
+    };
+  },
+  computed: {
+    pathToIcon: function pathToIcon() {
+      return "<use  xlink:href=\"/images/sprites.svg#sprite-".concat(this.icon, "\"></use>");
+    },
+    focus: function focus() {
+      return {
+        focus: !!this.value,
+        error: !!this.errors.length
+      };
+    }
+  },
+  methods: {
+    validate: function validate() {
+      if (this.required) {
+        if (!this.value) {
+          this.$emit('error', {
+            action: true,
+            filed: 'empty',
+            name: this.name,
+            message: "The ".concat(this.label, " field is required.")
+          });
+        } else {
+          this.$emit('error', {
+            action: false,
+            filed: 'empty',
+            name: this.name,
+            message: ''
+          });
+        }
+      }
+
+      if (this.repeat) {
+        this.repeatValidate();
+      }
+
+      if (this.min) {
+        this.minValidate(this.min);
+      }
+    },
+    repeatValidate: function repeatValidate() {
+      if (this.repeat !== this.value && this.value) {
+        this.$emit('error', {
+          action: true,
+          filed: 'repeat',
+          name: this.name,
+          message: "the password not equal"
+        });
+      } else {
+        this.$emit('error', {
+          action: false,
+          filed: 'repeat',
+          name: this.name,
+          message: ''
+        });
+      }
+    },
+    minValidate: function minValidate(min) {
+      if (this.value.length < min && this.value) {
+        this.$emit('error', {
+          action: true,
+          filed: 'length',
+          name: this.name,
+          message: "min chars is ".concat(min)
+        });
+      } else {
+        this.$emit('error', {
+          action: false,
+          filed: 'length',
+          name: this.name,
+          message: ''
+        });
+      }
+    }
+  },
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    min: {
+      type: Number,
+      required: false
+    },
+    value: {
+      type: String,
+      required: true
+    },
+    icon: {
+      type: String,
+      required: false
+    },
+    repeat: {
+      type: String,
+      required: false
+    },
+    required: {
+      type: Boolean,
+      required: false
+    },
+    errors: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      },
+      required: false
+    },
+    autocomplete: {
+      type: String,
+      required: false
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 582:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "form-item password", class: _vm.focus }, [
+    _vm.icon
+      ? _c("span", { staticClass: "icon" }, [
+          _c("svg", { domProps: { innerHTML: _vm._s(_vm.pathToIcon) } })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("input", {
+      attrs: {
+        type: _vm.type,
+        name: _vm.name,
+        id: _vm.name,
+        autocomplete: _vm.autocomplete
+      },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: _vm.validate,
+        input: function($event) {
+          return _vm.$emit("input", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("label", { attrs: { for: _vm.name } }, [
+      _vm._v("\n        " + _vm._s(_vm.label) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "span",
+      {
+        staticClass: "show-password",
+        on: {
+          mousedown: function($event) {
+            _vm.type = "text"
+          },
+          mouseup: function($event) {
+            _vm.type = "password"
+          }
+        }
+      },
+      [
+        _c("svg", [
+          _c("use", {
+            attrs: { "xlink:href": "/images/sprites.svg#sprite-view" }
+          })
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "error-message" },
+      _vm._l(_vm.errors, function(error) {
+        return _c("li", [
+          error.message
+            ? _c("span", [_vm._v(_vm._s(error.message))])
+            : _c("span", [_vm._v(" " + _vm._s(error))])
+        ])
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-63b834c6", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 614:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(629)
+/* template */
+var __vue_template__ = __webpack_require__(630)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,15 +340,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 636:
+/***/ 619:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(637)
+var __vue_script__ = __webpack_require__(620)
 /* template */
-var __vue_template__ = __webpack_require__(638)
+var __vue_template__ = __webpack_require__(621)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -96,7 +388,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 637:
+/***/ 620:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -273,7 +565,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 638:
+/***/ 621:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -386,14 +678,14 @@ if (false) {
 
 /***/ }),
 
-/***/ 643:
+/***/ 629:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__ = __webpack_require__(636);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__ = __webpack_require__(619);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__ = __webpack_require__(251);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -546,7 +838,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /***/ }),
 
-/***/ 644:
+/***/ 630:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

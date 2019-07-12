@@ -5,7 +5,6 @@
 <script>
     export default {
         name: "FrontApp",
-
         created() {
             this.$store.commit('loadSettings');
             this.$store.dispatch('getUser');

@@ -1,7 +1,7 @@
-<template>
-    <div class="logo-welcome" v-if="visible">
+<template functional>
+    <div class="logo-welcome">
         <svg version="1.1" id="Ð¡Ð»Ð¾Ð¹_1" xmlns="http://www.w3.org/2000/svg"
-             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200.7 188.8" style="" xml:space="preserve">
+             x="0px" y="0px" viewBox="0 0 200.7 188.8" style="" xml:space="preserve">
 
             <g id="C">
               <path class="letter c" d="M35.3,44.2c-2.1,1.4-4.6,2.1-7.2,2.1c-7.1,0-13-5.9-13-13s5.9-13,13-13c2.8,0,5.6,0.9,7.8,2.6"></path>
@@ -48,34 +48,7 @@
 </template>
 
 <script>
-
-    function firstEnter() {
-        let status = localStorage.getItem('firstEnter');
-        if (status) {
-            return false
-        }
-        localStorage.setItem('firstEnter', 'true');
-        return true;
-    }
-
     export default {
         name: "welcome_animation",
-        data() {
-          return {
-              visible: true
-          }
-        },
-        created() {
-            this.visible = firstEnter();
-            if (this.visible)  {
-                setTimeout(() => {
-                    this.visible = false
-                }, 7000)
-            }
-        }
     }
 </script>
-
-<style >
-
-</style>

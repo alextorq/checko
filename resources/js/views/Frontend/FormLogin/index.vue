@@ -44,6 +44,7 @@
 <script>
     import inputForm from 'ComponentsF/FormInput'
     import inputFormPassword from 'ComponentsF/FormInput/password'
+
     export default {
         name: "FormLogin",
         data() {
@@ -128,9 +129,11 @@
                     })
                     .then((responce) => {
                         this.$store.commit('updateUser', responce.data);
+                        this.$store.commit('loadUserSettings', responce.data);
                         this.$router.push('/');
                     })
                     .catch((error) => {
+                        console.log(error);
                         if (error.response.status === 422) {
                             this.showErrors(error.response.data.errors)
                         }

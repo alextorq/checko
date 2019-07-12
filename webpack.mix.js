@@ -34,10 +34,10 @@ mix.webpackConfig({
         })
     ]
 });
-mix.disableNotifications();
+
 mix.browserSync('checko.loc');
 mix.js('resources/js/main.js', 'public/js/backend')
-    // .version();
+
 mix.sass('resources/sass/backend/app.scss', 'public/css/backend');
 
 mix.js('resources/js/app.js', 'public/js')

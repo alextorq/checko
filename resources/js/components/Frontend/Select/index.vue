@@ -1,7 +1,15 @@
 <template>
     <div class="selected-list-wrapper" :class="isOpen" v-clickoutside="closeList">
         <span @click="openList">{{item.name}}
-            <span class="arrow"></span>
+            <span class="svg-arrow">
+                <svg class="lh-chevron" title="See audits" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <g class="lh-chevron__lines">
+                        <path class="lh-chevron__line lh-chevron__line-left" d="M10 50h40" stroke="#707173"></path>
+                        <path class="lh-chevron__line lh-chevron__line-right" d="M90 50H50" stroke="#707173"></path>
+                    </g>
+                </svg>
+            </span>
+
         </span>
         <ul class="selected-list" :class="isOpen">
             <li v-for="item in list" @click="change(item)">{{item.name}}</li>
@@ -21,7 +29,9 @@
                  name: 'Select value',
                  value: null
              },
-              open: false
+              open: false,
+              active: false,
+              arrow_open: false
           }
         },
         directives: { Clickoutside },
@@ -29,13 +39,15 @@
         computed: {
           isOpen() {
               return {
-                  open: this.open
+                  open: this.open,
+                  active: this.active,
+                  arrow_open: this.arrow_open
               }
           }
         },
         methods: {
           change(item) {
-              this.open = false;
+              this.closeList();
               if (item.value !== this.item.value) {
                   this.item = item;
                   this.$emit('change', {
@@ -46,10 +58,22 @@
               }
           },
           openList() {
-              this.open = !this.open
+              if (this.open) {
+                  this.closeList();
+                  return
+              }
+              this.arrow_open = true;
+              this.open = true;
+              setTimeout(() => {
+                 this.active = true;
+              }, 200);
           },
           closeList() {
-              this.open = false;
+              this.arrow_open = false;
+              this.active = false;
+              setTimeout(() => {
+                  this.open = false;
+              }, 200);
           }
         },
         props: {

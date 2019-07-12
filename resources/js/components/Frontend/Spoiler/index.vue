@@ -2,7 +2,14 @@
     <div class="spoiler-wrapper">
        <div class="spoiler-title"  @click="open" >
            <div class="left-col" :class="{'open': isOpen}">
-                <span class="arrow"></span>
+              <span class="svg-arrow">
+                <svg class="lh-chevron" title="See audits" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <g class="lh-chevron__lines">
+                        <path class="lh-chevron__line lh-chevron__line-left" d="M10 50h40" stroke="#707173"></path>
+                        <path class="lh-chevron__line lh-chevron__line-right" d="M90 50H50" stroke="#707173"></path>
+                    </g>
+                </svg>
+            </span>
            </div>
             Completed
         </div>

@@ -166,6 +166,11 @@
         created() {
             this.cache = JSON.parse(JSON.stringify(this.data));
         },
-        props: ['data']
+        props: {
+            data: {
+                type: Object,
+                required: true
+            }
+        }
     }
 </script>

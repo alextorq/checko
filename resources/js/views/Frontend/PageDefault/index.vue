@@ -28,23 +28,23 @@
         beforeRouteEnter (to, from, next) {
             next(vm => {
                 axios.post('/frontend/pages/' + vm.page).then((responce) => {
-                    vm.info = responce.data;
+                    vm.info = Object.freeze(responce.data);
+                    document.title = responce.data.pagetitle;
                 })
             })
         },
 
         beforeRouteUpdate (to, from, next) {
             axios.post('/frontend/pages/' + to.params.page).then((responce) => {
-                this.info = responce.data;
+                this.info = Object.freeze(responce.data);
+                document.title = responce.data.pagetitle;
                 setTimeout(() => {
-                    let top = document.querySelector('.default-content');
-                    if (top)  {
-                        top.scrollIntoView({
-                            behavior: "smooth",
-                            block:    "start"
-                        });
-                    }
-                }, 50)
+                    window.scrollTo({
+                        top: 0,
+                        left: 100,
+                        behavior: 'smooth'
+                    });
+                }, 20)
             });
             next();
         },

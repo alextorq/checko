@@ -3,9 +3,11 @@
         <div class="user-lists__item-info" @click="changeCheckList">
             <div class="left-col">
               <span class="icon" :class="{complete: complete}">
-                    <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 15.1 8.3" style="enable-background:new 0 0 15.1 8.3;" xml:space="preserve">
-                    <polyline class="st0" points="1,1 8.3,7.3 14.1,1.6 "/>
+                    <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"
+                          x="0px" y="0px"
+                         viewBox="0 0 16.6 15.4" style="enable-background:new 0 0 16.6 15.4;" xml:space="preserve">
+                        <circle id="circle_x5F_1" class="st0" cx="8.9" cy="7.5" r="6.8"/>
+                        <polyline class="st1" points="1.6,3.8 8.9,10.1 14.7,4.4 "/>
                     </svg>
                </span>
             </div>
@@ -138,9 +140,6 @@
                 type: Boolean,
                 required: false
             }
-        },
-        components: {
-
         }
     }
 </script>

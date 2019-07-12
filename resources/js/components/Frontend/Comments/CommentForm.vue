@@ -6,7 +6,7 @@
         <div class="button-wrapper">
             <Preloader :active="load"></Preloader>
             <button v-if="!load" :disabled="disabled" title="send" type="submit" class="comments-form-send">
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  x="0px"
                      y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                 <g>
                     <path d="M507.6,4.4c-4.2-4.2-10.6-5.5-16.2-3.3L9.4,193.9c-5.5,2.2-9.2,7.5-9.4,13.4c-0.2,5.9,3.1,11.4,8.4,14l190.1,92.2
@@ -42,9 +42,6 @@
             }
         },
         methods: {
-            updateComments() {
-
-            },
             sendOrNewLine(event) {
                 if (!event.shiftKey) {
                     event.preventDefault();

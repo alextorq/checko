@@ -1,5 +1,5 @@
-<template>
-    <div class="preloader" v-if="active">
+<template functional>
+    <div class="preloader" v-if="props.active">
         <span>
             <svg >
               <use xlink:href="/images/sprites.svg#sprite-circle"></use>
@@ -11,13 +11,11 @@
 <script>
     export default {
         name: "Preloader",
-        methods: {
-
-        },
         props: {
             active: {
                 type: Boolean,
-                required: true
+                required: true,
+                default: false
             }
         }
     }

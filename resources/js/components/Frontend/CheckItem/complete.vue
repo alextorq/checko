@@ -5,7 +5,7 @@
             <label class="check-item__label">
                 <input v-model="cache.complete" type="checkbox" @change="updateWithDate('complete')">
                 <span class="checkbox-svg-wrapper">
-                    <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
                          viewBox="0 0 15.1 8.3" style="enable-background:new 0 0 15.1 8.3;" xml:space="preserve">
                       <polyline class="st0" points="1,1 8.3,7.3 14.1,1.6 "/>
                     </svg>
@@ -111,10 +111,6 @@
             onBluer() {
                 this.editStatus = !this.editStatus;
             },
-            openCommentMenu() {
-                EventBus.$emit('open_comments');
-                this.$store.dispatch('loadComments', this.data.check_item_id);
-            },
             updateWithDate() {
                 let date = new Date().getTime();
                 this.$store.commit('updateCheckItemField', {
@@ -138,6 +134,10 @@
             save() {
                 this.$store.dispatch('updateCheckItemField', this.data.timestamp_id);
             },
+            openCommentMenu() {
+                EventBus.$emit('comments:open_layout');
+                this.$store.dispatch('loadComments', this.data.check_item_id);
+            },
             openContextMenu(event) {
                 if (!this.contextMenuOpenStatus) {
                     window._self = this;
@@ -156,6 +156,11 @@
         created() {
             this.cache = JSON.parse(JSON.stringify(this.data));
         },
-        props: ['data']
+        props: {
+            data: {
+                type: Object,
+                required: true
+            }
+        }
     }
 </script>

@@ -2,14 +2,7 @@
     <div>
         <div  class="overlay" :class="isMenuOpenStatus" @click="closeMenu"></div>
         <div class="comments-layout" :class="isMenuOpenStatus">
-
-            <div class="preloader" v-if="loading">
-                <span>
-                    <svg >
-                      <use xlink:href="/images/sprites.svg#sprite-circle"></use>
-                    </svg>
-                </span>
-            </div>
+            <preload :active="loading"></preload>
             <h3>
                 Comments
                 <button  @click="closeMenu" class="close-delete"></button>
@@ -22,6 +15,7 @@
 <script>
     import Comments from '../Comments'
     import EventBus from 'Core/helpers/eventBus'
+    import preload from '../Preloader'
 
     export default {
         name: "CommentLayout",
@@ -58,6 +52,7 @@
         },
         components: {
             Comments,
+            preload
         }
     }
 </script>

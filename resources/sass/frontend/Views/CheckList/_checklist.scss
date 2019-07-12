@@ -2,6 +2,10 @@
   padding-bottom: 80px;
   padding-top: 80px;
   flex-grow: 1;
+  &.scrolled {
+    height: calc(100vh - 60px);
+    padding-right: 45px;
+  }
   @include phone {
     padding-top: 30px;
     padding-bottom: 0;
@@ -43,8 +47,6 @@
   .icon {
     width: 20px;
     height: 20px;
-    border: 2px solid #cdd9dd;
-    border-radius: 50%;
     position: relative;
     display: flex;
     z-index: 1;
@@ -56,29 +58,29 @@
       left: -2px;
       top: -4px;
       z-index: 3;
-      polyline {
+      .st0 {
+        fill: none;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 60;
+        stroke: $grey_2;
+        stroke-width: 1.5;
+        transition: all 1s;
+        transform: rotate(-15deg);
+        transform-origin: center;
+      }
+      .st1 {
         fill: none;
         stroke-dasharray: 100;
         stroke-dashoffset: 100;
-        stroke:$green;
+        stroke: $green;
         stroke-width: 2;
         transition: all 1s;
       }
     }
-    &:after {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      content: '';
-      right: 0;
-      top: 0;
-      background: #fff;
-      z-index: 1;
-    }
   }
   &.complete {
     svg {
-      polyline {
+      .st1 {
         stroke-dashoffset: 0;
       }
     }

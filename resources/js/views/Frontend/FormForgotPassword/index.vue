@@ -30,6 +30,7 @@
     import inputForm from 'ComponentsF/FormInput'
     import inputFormPassword from 'ComponentsF/FormInput/password'
 
+
     export default {
         name: "ForgotPassword",
         data() {

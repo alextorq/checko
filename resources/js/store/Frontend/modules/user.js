@@ -55,7 +55,6 @@ const user = {
             }
             return '';
         }
-
     },
     mutations: {
         updateUser(state, payload) {
@@ -74,11 +73,13 @@ const user = {
         getUser(context) {
             axios.get(`${context.state.URI.pref}${context.state.URI.GET.iam}`)
                 .then((responce) => {
-                    context.commit('updateUser', responce.data.user);
+                    context.commit('updateUser', responce.data);
                     context.commit('loadUserSettings', responce.data)
                 })
                 .catch((error) => {
-                    console.log(error);
+                    if  (process.env.NODE_ENV === 'development') {
+                        console.log(error);
+                    }
                 });
         },
         logout(context) {

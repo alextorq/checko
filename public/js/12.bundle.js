@@ -1,14 +1,14 @@
 webpackJsonp([12],{
 
-/***/ 631:
+/***/ 251:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(641)
+var __vue_script__ = __webpack_require__(581)
 /* template */
-var __vue_template__ = __webpack_require__(642)
+var __vue_template__ = __webpack_require__(582)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/views/Frontend/FormLogin/index.vue"
+Component.options.__file = "resources/js/components/Frontend/FormInput/password.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8ed66c6c", Component.options)
+    hotAPI.createRecord("data-v-63b834c6", Component.options)
   } else {
-    hotAPI.reload("data-v-8ed66c6c", Component.options)
+    hotAPI.reload("data-v-63b834c6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,15 +48,307 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 636:
+/***/ 581:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "index",
+  data: function data() {
+    return {
+      type: 'password'
+    };
+  },
+  computed: {
+    pathToIcon: function pathToIcon() {
+      return "<use  xlink:href=\"/images/sprites.svg#sprite-".concat(this.icon, "\"></use>");
+    },
+    focus: function focus() {
+      return {
+        focus: !!this.value,
+        error: !!this.errors.length
+      };
+    }
+  },
+  methods: {
+    validate: function validate() {
+      if (this.required) {
+        if (!this.value) {
+          this.$emit('error', {
+            action: true,
+            filed: 'empty',
+            name: this.name,
+            message: "The ".concat(this.label, " field is required.")
+          });
+        } else {
+          this.$emit('error', {
+            action: false,
+            filed: 'empty',
+            name: this.name,
+            message: ''
+          });
+        }
+      }
+
+      if (this.repeat) {
+        this.repeatValidate();
+      }
+
+      if (this.min) {
+        this.minValidate(this.min);
+      }
+    },
+    repeatValidate: function repeatValidate() {
+      if (this.repeat !== this.value && this.value) {
+        this.$emit('error', {
+          action: true,
+          filed: 'repeat',
+          name: this.name,
+          message: "the password not equal"
+        });
+      } else {
+        this.$emit('error', {
+          action: false,
+          filed: 'repeat',
+          name: this.name,
+          message: ''
+        });
+      }
+    },
+    minValidate: function minValidate(min) {
+      if (this.value.length < min && this.value) {
+        this.$emit('error', {
+          action: true,
+          filed: 'length',
+          name: this.name,
+          message: "min chars is ".concat(min)
+        });
+      } else {
+        this.$emit('error', {
+          action: false,
+          filed: 'length',
+          name: this.name,
+          message: ''
+        });
+      }
+    }
+  },
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    min: {
+      type: Number,
+      required: false
+    },
+    value: {
+      type: String,
+      required: true
+    },
+    icon: {
+      type: String,
+      required: false
+    },
+    repeat: {
+      type: String,
+      required: false
+    },
+    required: {
+      type: Boolean,
+      required: false
+    },
+    errors: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      },
+      required: false
+    },
+    autocomplete: {
+      type: String,
+      required: false
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 582:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "form-item password", class: _vm.focus }, [
+    _vm.icon
+      ? _c("span", { staticClass: "icon" }, [
+          _c("svg", { domProps: { innerHTML: _vm._s(_vm.pathToIcon) } })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("input", {
+      attrs: {
+        type: _vm.type,
+        name: _vm.name,
+        id: _vm.name,
+        autocomplete: _vm.autocomplete
+      },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: _vm.validate,
+        input: function($event) {
+          return _vm.$emit("input", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("label", { attrs: { for: _vm.name } }, [
+      _vm._v("\n        " + _vm._s(_vm.label) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "span",
+      {
+        staticClass: "show-password",
+        on: {
+          mousedown: function($event) {
+            _vm.type = "text"
+          },
+          mouseup: function($event) {
+            _vm.type = "password"
+          }
+        }
+      },
+      [
+        _c("svg", [
+          _c("use", {
+            attrs: { "xlink:href": "/images/sprites.svg#sprite-view" }
+          })
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "error-message" },
+      _vm._l(_vm.errors, function(error) {
+        return _c("li", [
+          error.message
+            ? _c("span", [_vm._v(_vm._s(error.message))])
+            : _c("span", [_vm._v(" " + _vm._s(error))])
+        ])
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-63b834c6", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 612:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(637)
+var __vue_script__ = __webpack_require__(625)
 /* template */
-var __vue_template__ = __webpack_require__(638)
+var __vue_template__ = __webpack_require__(626)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/views/Frontend/FormRegistration/index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-96785164", Component.options)
+  } else {
+    hotAPI.reload("data-v-96785164", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 619:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(620)
+/* template */
+var __vue_template__ = __webpack_require__(621)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -96,7 +388,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 637:
+/***/ 620:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -273,7 +565,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 638:
+/***/ 621:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -386,14 +678,14 @@ if (false) {
 
 /***/ }),
 
-/***/ 641:
+/***/ 625:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__ = __webpack_require__(636);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__ = __webpack_require__(619);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_ComponentsF_FormInput__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__ = __webpack_require__(251);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ComponentsF_FormInput_password__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -446,13 +738,24 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "FormLogin",
+  name: "FormRegistration",
   data: function data() {
     return {
       form: {
+        name: {
+          value: '',
+          errors: [],
+          serverErrors: []
+        },
         email: {
           value: '',
           errors: [],
@@ -462,16 +765,27 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           value: '',
           errors: [],
           serverErrors: []
+        },
+        password_confirmation: {
+          value: '',
+          errors: [],
+          serverErrors: []
         }
       }
     };
   },
   computed: {
+    nameError: function nameError() {
+      return this.form.name.errors.concat(this.form.name.serverErrors);
+    },
     emailError: function emailError() {
       return this.form.email.errors.concat(this.form.email.serverErrors);
     },
     passwordError: function passwordError() {
       return this.form.password.errors.concat(this.form.password.serverErrors);
+    },
+    password_confirmationError: function password_confirmationError() {
+      return this.form.password_confirmation.errors.concat(this.form.password_confirmation.serverErrors);
     }
   },
   methods: {
@@ -528,13 +842,17 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var _this = this;
 
       if (this.validate()) {
-        axios.post('/login', {
+        axios.post('/register', {
+          name: this.form.name.value,
           email: this.form.email.value,
-          password: this.form.password.value
+          password: this.form.password.value,
+          password_confirmation: this.form.password_confirmation.value
         }).then(function (responce) {
           _this.$store.commit('updateUser', responce.data);
 
-          _this.$router.push('/');
+          _this.$router.push({
+            name: 'CheckList'
+          });
         })["catch"](function (error) {
           if (error.response.status === 422) {
             _this.showErrors(error.response.data.errors);
@@ -560,14 +878,14 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 /***/ }),
 
-/***/ 642:
+/***/ 626:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-sign form-center-wrapper" }, [
+  return _c("div", { staticClass: "form-registration form-center-wrapper" }, [
     _c(
       "form",
       {
@@ -581,6 +899,26 @@ var render = function() {
       },
       [
         _vm._m(0),
+        _vm._v(" "),
+        _c("inputForm", {
+          ref: "name",
+          attrs: {
+            name: "name",
+            label: "Username",
+            icon: "user",
+            required: true,
+            errors: _vm.nameError,
+            min: 4
+          },
+          on: { error: _vm.errorUpdate },
+          model: {
+            value: _vm.form.name.value,
+            callback: function($$v) {
+              _vm.$set(_vm.form.name, "value", $$v)
+            },
+            expression: "form.name.value"
+          }
+        }),
         _vm._v(" "),
         _c("inputForm", {
           ref: "email",
@@ -622,24 +960,39 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "flex-row jcb aic" }, [
-          _c("button", { staticClass: "button" }, [_vm._v("Sign in ")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "form-links" },
-            [
-              _c("router-link", { attrs: { to: "/registration" } }, [
-                _vm._v("Create account")
-              ]),
-              _vm._v(" "),
-              _c("router-link", { attrs: { to: { name: "ForgotPassword" } } }, [
-                _vm._v("Forgot your password")
-              ])
-            ],
-            1
-          )
-        ])
+        _c("inputFormPassword", {
+          ref: "password_confirmation",
+          attrs: {
+            name: "password_confirmation",
+            label: "Repeat password",
+            min: 8,
+            icon: "password",
+            required: true,
+            repeat: _vm.form.password.value,
+            errors: _vm.password_confirmationError
+          },
+          on: { error: _vm.errorUpdate },
+          model: {
+            value: _vm.form.password_confirmation.value,
+            callback: function($$v) {
+              _vm.$set(_vm.form.password_confirmation, "value", $$v)
+            },
+            expression: "form.password_confirmation.value"
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex-row jcb aic form-links" },
+          [
+            _c("button", { staticClass: "button" }, [_vm._v("SING UP")]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: "/login" } }, [
+              _vm._v("I have an account")
+            ])
+          ],
+          1
+        )
       ],
       1
     )
@@ -651,7 +1004,10 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "flex-row jcb ais top-row" }, [
-      _c("h2", [_vm._v("Sign in")]),
+      _c("h2", [
+        _vm._v("Sign up and start your "),
+        _c("span", [_vm._v("7 day free trial")])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "sing-with-wrapper flex-row jcb aic" }, [
         _c("span", [_vm._v("Sign in with")]),
@@ -669,14 +1025,6 @@ var staticRenderFns = [
                 attrs: { src: "/images/facebook.png", alt: "facebook" }
               })
             ])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "sing-with__item" }, [
-            _c("a", { attrs: { href: "/provider?provider=twitter" } }, [
-              _c("img", {
-                attrs: { src: "/images/twitter.png", alt: "twitter" }
-              })
-            ])
           ])
         ])
       ])
@@ -688,7 +1036,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8ed66c6c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-96785164", module.exports)
   }
 }
 

@@ -1,10 +1,50 @@
-$animate_step_1: 600;
-$animate_step_2: 600;
-$animate_step_3: 600;
-$animate_step_4: 600;
-$animate_step_6: 600;
-$animate_step_7: 600;
-$animate_step_8: 600;
+/*circle*/
+$animation_circle_start_time: 0;
+$animation_circle_time: 300;
+$animation_circle_delay: 120;
+
+/*letter c*/
+$animation_c_start_time: $animation_circle_delay +  ($animation_circle_time * 3) + ($animation_circle_start_time * 3);
+$animation_c_time: 200;
+$animation_c_delay: 80;
+
+/*letter h*/
+$animation_h1_start_time: $animation_c_start_time + $animation_c_time + $animation_c_delay;
+$animation_h1_time: 150;
+$animation_h1_delay: 80;
+
+$animation_h2_start_time: $animation_h1_start_time + $animation_h1_time + $animation_h1_delay;
+$animation_h2_time: 200;
+$animation_h2_delay: 80;
+
+/*letter e*/
+$animation_e_start_time: $animation_h2_start_time + $animation_h2_time + $animation_h2_delay;
+$animation_e_time: 400;
+$animation_e_delay: 80;
+
+/*letter c number 2*/
+$animation_cw_start_time: $animation_e_start_time +  $animation_e_time + $animation_e_delay;
+$animation_cw_time: 200;
+$animation_cw_delay: 80;
+
+/*letter k*/
+$animation_k1_start_time: $animation_cw_start_time +  $animation_cw_time + $animation_cw_delay;
+$animation_k1_time: 150;
+$animation_k1_delay: 80;
+
+$animation_k2_start_time: $animation_k1_start_time +  $animation_k1_time + $animation_k1_delay;
+$animation_k2_time: 150;
+$animation_k2_delay: 80;
+
+$animation_k3_start_time: $animation_k2_start_time +  $animation_k2_time + $animation_k2_delay;
+$animation_k3_time: 150;
+$animation_k3_delay: 80;
+
+/*check*/
+//$animation_check_start_time: $animation_k3_start_time + $animation_k3_time + $animation_k3_delay;
+$animation_check_start_time: 500;
+$animation_check_time: 300;
+$animation_check_delay: 100;
 
 .logo-welcome {
   display: flex;
@@ -37,76 +77,91 @@ $animate_step_8: 600;
   .circle_1 {
     stroke-dasharray: 84 86;
     stroke-dashoffset: -84;
-    animation: draw_1 500ms cubic-bezier(0.39, 0.575, 0.565, 1) 0ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_circle_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_circle_start_time}ms forwards;
   }
   .circle_2 {
     stroke-dasharray: 84 86;
     stroke-dashoffset: -84;
-    animation: draw_1 500ms cubic-bezier(0.39, 0.575, 0.565, 1) 600ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_circle_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_circle_delay +   $animation_circle_time + $animation_circle_start_time}ms forwards;
   }
   .circle_3 {
     stroke-dasharray: 84 86;
     stroke-dashoffset: -84;
-    animation: draw_1 500ms cubic-bezier(0.39, 0.575, 0.565, 1) 1200ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_circle_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_circle_delay +   ($animation_circle_time * 2) + ($animation_circle_start_time * 2)}ms forwards;
   }
 
 
   .letter.c {
     stroke-dasharray: 57 59;
     stroke-dashoffset: -57;
-    animation: draw_1 400ms cubic-bezier(0.39, 0.575, 0.565, 1) 1800ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_c_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_c_start_time}ms forwards;
   }
   .letter.h_1 {
     stroke-dasharray: 36 38;
     stroke-dashoffset: -37;
-    animation: draw_1 350ms cubic-bezier(0.39, 0.575, 0.565, 1) 2250ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_h1_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_h1_start_time}ms forwards;
   }
   .letter.h_2 {
     stroke-dasharray: 44 46;
     stroke-dashoffset: -44;
-    animation: draw_1 400ms cubic-bezier(0.39, 0.575, 0.565, 1) 2650ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_h2_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_h2_start_time}ms forwards;
   }
+
   .letter.e {
     stroke-dasharray: 96 98;
     stroke-dashoffset: -96;
-    animation: draw_1 800ms cubic-bezier(0.39, 0.575, 0.565, 1) 3100ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_e_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_e_start_time}ms forwards;
   }
   .letter.cw {
     stroke-dasharray: 57 59;
     stroke-dashoffset: -57;
-    animation: draw_1 400ms cubic-bezier(0.39, 0.575, 0.565, 1) 3900ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_cw_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_cw_start_time}ms forwards;
   }
 
   .letter.k_1 {
     stroke-dasharray: 36 38;
     stroke-dashoffset: -36;
-    animation: draw_1 350ms cubic-bezier(0.39, 0.575, 0.565, 1) 4350ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_k1_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_k1_start_time}ms forwards;
   }
   .letter.k_2 {
     stroke-dasharray: 24 26;
     stroke-dashoffset: -24;
-    animation: draw_1 300ms cubic-bezier(0.39, 0.575, 0.565, 1) 4750ms forwards;
+    stroke-dashoffset: 0;
+    //animation: draw_1 #{$animation_k2_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_k2_start_time}ms forwards;
   }
   .letter.k_3 {
     stroke-dasharray: 20 22;
     stroke-dashoffset: 21;
-    animation: draw_1 300ms cubic-bezier(0.39, 0.575, 0.565, 1) 5100ms forwards;
+    stroke-dashoffset: 0;
+
+    //animation: draw_1 #{$animation_k3_time}ms cubic-bezier(0.39, 0.575, 0.565, 1) #{$animation_k3_start_time}ms forwards;
   }
+
   .check_1 {
     stroke-dasharray: 49 51;
     stroke-dashoffset: 50;
-    animation: draw_1 300ms cubic-bezier(0.46, 0.3, 0.85, 0.48) 5500ms forwards;
+    animation: draw_1 #{$animation_check_time}ms cubic-bezier(0.46, 0.3, 0.85, 0.48) #{$animation_check_start_time}ms forwards;
   }
   .check_2 {
     stroke-dasharray: 49 51;
     stroke-dashoffset: 50;
-    animation: draw_1 300ms cubic-bezier(0.46, 0.3, 0.85, 0.48) 5950ms forwards;
+    animation: draw_1 #{$animation_check_time}ms cubic-bezier(0.46, 0.3, 0.85, 0.48) #{$animation_check_start_time + $animation_check_time + $animation_check_delay}ms forwards;
   }
   .check_3 {
     stroke-dasharray: 49 51;
     stroke-dashoffset: 50;
-    animation: draw_1 300ms cubic-bezier(0.46, 0.3, 0.85, 0.48) 6350ms forwards;
+    animation: draw_1 #{$animation_check_time}ms cubic-bezier(0.46, 0.3, 0.85, 0.48) #{$animation_check_start_time + ($animation_check_time * 2) + ($animation_check_delay * 2)}ms forwards;
   }
+
   @keyframes draw_1 {
     100% {
       stroke-dashoffset: 0;

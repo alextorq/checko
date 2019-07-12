@@ -94,9 +94,13 @@
         },
         created() {
             this.cache = this.comment;
-
         },
-        props: ['comment']
+        props: {
+            comment: {
+                type: Object,
+                required: true
+            }
+        }
     }
 </script>
 

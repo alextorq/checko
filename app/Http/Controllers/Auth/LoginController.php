@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -125,10 +126,12 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
         $this->authenticated($request, $this->guard()->user());
 
-        $user = $this->guard()->user();
+        $userID = $this->guard()->user()->user_id;
+        $user = User::with('profile')->find($userID);
+        $user = $user->toArray();
         $user['token'] = csrf_token();
 
-        return  response()->json($this->guard()->user());
+        return  response()->json($user);
     }
 
     /**

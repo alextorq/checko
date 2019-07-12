@@ -18,8 +18,8 @@
         computed: {
             widthPercent() {
                 let config = this.$store.getters.completeViewProgress;
-                let percent = (!!config.all) ? Math.ceil(config.complete / (config.all / 100)) + '%' : '0%';
-                return percent
+                let percent = (!!config.all) ? Math.ceil(config.complete / (config.all / 100)) : 0;
+                return percent  + '%'
             },
             completePercentView() {
                 let config = this.$store.getters.completeViewProgress;

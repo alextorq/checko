@@ -8,13 +8,8 @@
 </template>
 
 <script>
-
-
     export default {
         name: "General",
-        computed: {
-
-        },
         methods: {
             updateSettings(payload) {
                 this.$store.commit('updateSettings', payload)

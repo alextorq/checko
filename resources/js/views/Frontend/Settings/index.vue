@@ -24,7 +24,7 @@
 
 <script>
     import SettingsMenu from '../../../components/Frontend/SettingsMenu'
-    import Breadcrump from '../../../components/Frontend/Settings/Breadcrump'
+    import Breadcrumbs from '../../../components/Frontend/Settings/Breadcrumbs'
 
     export default {
         name: "SettingsLayout",
@@ -41,7 +41,7 @@
         },
         components: {
             SettingsMenu,
-            Breadcrump,
+            Breadcrumbs,
         },
     }
 </script>

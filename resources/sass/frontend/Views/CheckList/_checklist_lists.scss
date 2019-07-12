@@ -1,7 +1,7 @@
 .wrapper-user-lists {
   width: 0;
   overflow: hidden;
-  transition: all 0.4s;
+  transition: all 0.5s;
   will-change: width;
   max-height: calc(100vh - 60px);
   min-height: calc(100vh - 60px);
@@ -19,6 +19,9 @@
     flex-shrink: 0;
     margin-right: 40px;
     box-shadow: 10px 0px 13px rgba(164, 183, 190, 0.43);
+    .wrapper-user-list-content {
+      margin-left: 5vw;
+    }
   }
   @include phone {
     right: 0;
@@ -40,8 +43,10 @@
 
   .wrapper-user-list-content {
     width: 45vw;
+
     @include phone {
       width: 100%;
+      margin-left: 0 !important;
     }
   }
   .add-new-list {
@@ -74,9 +79,13 @@
     .selected-list {
       min-width: 160px;
     }
-    .arrow {
+    .lh-chevron__line {
+      stroke: $grey_3;
+    }
+    .svg-arrow {
       margin-left: 10px;
-      margin-top: 3px;
+      margin-top: 1px;
+
     }
     @include  phone {
       margin-bottom: 20px;
@@ -170,43 +179,35 @@
     .icon {
       width: 20px;
       height: 20px;
-      border: 2px solid #cdd9dd;
-      border-radius: 50%;
       margin-top: 2px;
       position: relative;
       display: flex;
       &.complete {
-        polyline {
+        .st1 {
           stroke-dashoffset: 0;
         }
       }
       svg {
-        width: 120%;
-        height: 120%;
-        transition: all 1s;
-        position: absolute;
-        left: -2px;
-        top: -4px;
-        z-index: 2;
-        polyline {
+        width: 100%;
+        height: 100%;
+        .st0 {
+          fill: none;
+          stroke-dasharray: 100;
+          stroke-dashoffset: 60;
+          stroke: $grey_2;
+          stroke-width: 1.5;
+          transition: all 1s;
+          transform: rotate(-15deg);
+          transform-origin: center;
+        }
+        .st1 {
           fill: none;
           stroke-dasharray: 100;
           stroke-dashoffset: 100;
           stroke: $green;
           stroke-width: 2;
           transition: all 1s;
-
         }
-      }
-      &:after {
-        position: absolute;
-        width: 3px;
-        height: 3px;
-        content: '';
-        right: 0;
-        top: 0;
-        background: #fff;
-        z-index: 1;
       }
     }
     .percent-progress {

@@ -27,7 +27,7 @@ class UserController extends BaseController
             $user = Auth::user();
             $user['token'] = csrf_token();
             $user['profile'] = $user->profile;
-            return response()->json(['user' => $user]);
+            return response()->json($user);
         }else {
             return response()->json('user not found', 500);
         }
@@ -121,7 +121,7 @@ class UserController extends BaseController
     private function createDirectoryIfNotExist(string $name) :void
     {
         if (!is_dir(storage_path('app/' . $name))) {
-            $result = Storage::makeDirectory($name);
+            Storage::makeDirectory($name);
         }
     }
 

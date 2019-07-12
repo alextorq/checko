@@ -13,7 +13,7 @@
     import Comment from './CommentItem'
     import CommentForm from  '../Comments/CommentForm'
     export default {
-        name: "index",
+        name: "list_comments",
         computed: {
           comments() {
               return this.$store.getters.activeComments;
@@ -26,4 +26,3 @@
         }
     }
 </script>
->
