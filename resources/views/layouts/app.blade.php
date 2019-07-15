@@ -39,11 +39,11 @@
         let userAuth = false;
     </script>
 @endguest
-
     <div id="app">
         <main class="main_content">
-            @yield('content')
+
         </main>
     </div>
+    @yield('content')
 </body>
 </html>

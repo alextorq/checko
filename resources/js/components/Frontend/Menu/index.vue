@@ -37,8 +37,8 @@
             </li>
 
             <li class="navbar__menu__item">
-                <router-link :to="{ name: 'Offers'}">
-                    offers
+                <router-link :to="{ name: 'Suggestions'}">
+                    suggestions
                 </router-link>
             </li>
         </ul>

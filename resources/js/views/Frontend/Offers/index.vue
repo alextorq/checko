@@ -2,9 +2,10 @@
     <div class="container">
         <div class="default-content offer-page">
             <preloader :active="loading"></preloader>
-            <h1>Offers</h1>
-            <p>Сюда нужно написать текст, предложите свои пожелания замечание,
-                нам очень важно ваше мнение, чтобы сделать наш сервис лучше
+            <h1>Suggestions</h1>
+            <p>Leave your suggestions for improving the project.
+                Together we will make checko.me the most convenient and useful online checklist.
+                Leave a suggestion
             </p>
             <div class="sort">
                 <appSelect :list="sortOptions"

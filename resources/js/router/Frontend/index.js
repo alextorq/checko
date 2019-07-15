@@ -14,7 +14,7 @@ const ForgotPassword  = () =>  import('../../views/Frontend/FormForgotPassword')
 const NotFound = () => import('../../views/Frontend/404');
 const About = () => import('../../views/Frontend/About/index.vue');
 const PageDefault = () => import('../../views/Frontend/PageDefault/index.vue');
-const Offers = () => import('../../views/Frontend/Offers');
+const Suggestions = () => import('../../views/Frontend/Offers');
 const SettingsLayout = () => import('../../views/Frontend/Settings');
 const SettingsList = () => import('../../components/Frontend/Settings/List');
 const SettingsAccount = () => import('../../components/Frontend/Settings/Account');
@@ -47,11 +47,11 @@ const routes = [
                 },
             },
             {
-                path: 'offers',
-                component: Offers,
-                name: 'Offers',
+                path: 'suggestions',
+                component: Suggestions,
+                name: 'Suggestions',
                 props:  (route) => ({ urlPage: +route.query.urlPage }),
-                meta: {title: 'Offers', breadcrumb: true, keepAlive: true,
+                meta: {title: 'Suggestions', breadcrumb: true, keepAlive: true,
                     permission: {
                         hook: null
                     }
