@@ -2,7 +2,7 @@
     <div class="settings-layout">
         <SettingsMenu :open.sync="menuOpen"></SettingsMenu>
         <div class="settings-content__wrapper">
-            <Breadcrump>
+            <Breadcrumbs>
                 <template v-slot:left>
                     <button @click="menuOpen = !menuOpen" class="menu-navigation-back">
                         <span class="arrow"></span>
@@ -13,7 +13,7 @@
                         <span class="close-delete_2"></span>
                     </button>
                 </template>
-            </Breadcrump>
+            </Breadcrumbs>
 
             <transition name="slide-left">
                 <router-view></router-view>
