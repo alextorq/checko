@@ -4,13 +4,15 @@
             element-loading-text="Loading..."
             element-loading-spinner="el-icon-loading">
 
-
         <el-col :span="24">
             <div class="checklist_page">
-                <el-row>
-                    <h2>{{list.name}}</h2>
-                </el-row>
 
+                <h2>{{list.name}}</h2>
+                <div style="margin-bottom: 20px;">
+                    <el-link :href="linkToList" target="_blank">To checklist
+                        <i class="el-icon-view el-icon--right"></i>
+                    </el-link>
+                </div>
 
 
                 <el-row :gutter="20" class="info-list">
@@ -75,50 +77,25 @@
                     <el-table-column label="Complete" width="180" sortable prop="complete">
                         <template slot-scope="scope">
                             <el-switch
-                                    style="display: block; margin-bottom: 5px"
-                                    v-model="scope.row.complete"
-                                    active-color="#13ce66"
-                                    inactive-color="#ff4949"
-                                    active-text="Complete"
-                                    inactive-text="Incomplete">
+                                style="display: block; margin-bottom: 5px"
+                                v-model="scope.row.complete"
+                                active-color="#13ce66"
+                                inactive-color="#ff4949"
+                                active-text="Complete"
+                                inactive-text="Incomplete">
                             </el-switch>
                         </template>
                     </el-table-column>
-
                 </el-table>
 
-                <!--<el-tabs v-model="activeTab">-->
-                    <!--<el-tab-pane label="Info" name="first">-->
-                        <!--<p>Активность: {{user.active}}</p>-->
-                        <!--<el-row type="flex" align="middle">-->
-                            <!--<el-col :span="1">Создан:</el-col>-->
-                            <!--<el-col :span="5">-->
-                                <!--<el-date-picker-->
-                                        <!--v-model="user.created_at"-->
-                                        <!--type="datetime"-->
-                                        <!--placeholder="Select date and time">-->
-                                <!--</el-date-picker>-->
-                            <!--</el-col>-->
-                        <!--</el-row>-->
-
-                        <!--<el-row type="flex" align="middle">-->
-                            <!--<el-col :span="1">Email:</el-col>-->
-                            <!--<el-col :span="5">-->
-                                <!--<el-input placeholder="Please input" v-model="user.email"></el-input>-->
-                            <!--</el-col>-->
-                        <!--</el-row>-->
-
-                    <!--</el-tab-pane>-->
-
-                    <!--<el-tab-pane label="Pay History" name="second">Pay History</el-tab-pane>-->
-
-                <!--</el-tabs>-->
             </div>
         </el-col>
     </el-row>
 </template>
 
 <script>
+    import { Base64 } from 'js-base64';
+
     export default {
         name: "index",
         data() {
@@ -131,6 +108,12 @@
         methods: {
             save() {
 
+            }
+        },
+        computed: {
+          linkToList() {
+              let hashCodeURI = '/t/' + Base64.encodeURI(this.id);
+              return hashCodeURI
             }
         },
         created() {
@@ -150,7 +133,3 @@
         props: ['id']
     }
 </script>
-
-<style scoped>
-
-</style>

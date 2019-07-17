@@ -1,0 +1,33 @@
+.not-found-wrapper {
+  width: 100vw;
+  height: calc(100vh - 60px);
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  h1 {
+    font-size: calc(1.6vw + 15px);
+    margin-top: 1.5em;
+  }
+  .not-found {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    @include small {
+      width: 80vw;
+    }
+  }
+  p {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .not-found a {
+    text-decoration: none;
+    color: white;
+
+  }
+}

@@ -14,7 +14,7 @@
 
             <div class="flex-start">
                 <div class="user-lists__item-title">
-                    {{list.name || 'Таинственный лист'}}
+                    {{list.name || 'noname checklist'}}
                 </div>
                 <div class="user-lists__item-created_at date">
                     {{dateFormat}}

@@ -1,15 +1,13 @@
 <template>
     <div class="offer-form-wrapper">
-        <h2>To offer</h2>
+        <h2>Help us make Checko.me better</h2>
+        <p>
+            Leave your feedback or suggestion for improving our service in the form below
+        </p>
         <div v-if="!userAuth">
-            <p>Сюда нужно написать текст, вроде того, что если вы не нашли своей проблемы среди вопросов</p>
             <button @click="singIn" class="button">Sing in</button>
         </div>
-
         <div v-else>
-            <p>Сюда нужно написать текст, вроде того, что если вы не нашли своей проблемы среди вопросов,
-                то вы можете  задать свой вопрос, и мы ответим на него в течениии стольки-то. на английскойм текст нужен
-            </p>
             <form action="/frontend/offers/create" method="post" @submit.prevent="send">
                 <label>
                     <div class="icon-wrapper">
