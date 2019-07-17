@@ -4,7 +4,8 @@
         <form action="/" method="post" @submit.prevent="send">
 
             <div class="flex-row jcb ais top-row">
-                <h2>Sign up and start your <span>7 day free trial</span></h2>
+                <!--<span>7 day free trial</span>-->
+                <h2>Sign up and start your</h2>
                 <div class="sing-with-wrapper flex-row jcb aic">
                     <span>Sign in with</span>
                     <ul class="sing-with__list flex-row jcb aic">
