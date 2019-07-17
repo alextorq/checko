@@ -22,6 +22,7 @@
     <meta property="og:title" content="Easy way to create a checklist">
     <meta property="og:description" content="No registration required. You can quickly create and manage your checklist via a short link.">
     <meta name="Description" content="Make live easy">
+    <meta property="og:site_name" content="checko.me">
 
 
 
