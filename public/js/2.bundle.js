@@ -1,1 +1,562 @@
-webpackJsonp([2],{562:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=n(563),i=n.n(s),r=n(569),u=n.n(r);e.default={name:"SettingsLayout",data:function(){return{menuOpen:!1}},methods:{goToHome:function(){var t=Base64.encode(this.$store.getters.checkListId);this.$router.push({name:"CheckList",params:{list_id:t}})}},components:{SettingsMenu:i.a,Breadcrumbs:u.a}}},563:function(t,e,n){var s=n(1)(n(564),n(568),!1,null,null,null);t.exports=s.exports},564:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s=n(565),i=n.n(s);e.default={name:"SettingsMenu",computed:{settings_routers:function(){return this.$router.options.routes[0].children.find(function(t){return"/settings"===t.path}).children},menuOpenStatus:function(){return{open:this.open}}},methods:{openMenu:function(){this.$emit("update:open",!this.open)}},components:{MenuItem:i.a},props:{open:{type:Boolean,required:!0}}}},565:function(t,e,n){var s=n(1)(n(566),n(567),!1,null,null,null);t.exports=s.exports},566:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"item",computed:{active:function(){return{active:this.$route.name===this.item.name}}},methods:{selectMenu:function(){this.$emit("selectMenu")}},props:{item:{type:Object,required:!0}}}},567:function(t,e){t.exports={render:function(){var t=this.$createElement,e=this._self._c||t;return e("li",{staticClass:"settings-menu__item",class:this.active,on:{click:this.selectMenu}},[e("router-link",{attrs:{to:{name:this.item.name}}},[this._v(this._s(this.item.meta.title))])],1)},staticRenderFns:[]}},568:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"settings-menu__wrapper",class:t.menuOpenStatus},[n("ul",{staticClass:"settings-menu__list"},t._l(t.settings_routers,function(e){return n("MenuItem",{key:e.name,attrs:{item:e},on:{selectMenu:t.openMenu}})}),1)])},staticRenderFns:[]}},569:function(t,e,n){var s=n(1)(n(570),n(571),!1,null,null,null);t.exports=s.exports},570:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"breadcrumbs",computed:{path:function(){return this.$route.meta.title}}}},571:function(t,e){t.exports={render:function(){var t=this.$createElement,e=this._self._c||t;return e("div",{staticClass:"breadcrumb-wrapper"},[this._t("left"),this._v(" "),e("span",{staticClass:"route-path"},[this._v(this._s(this.path))]),this._v(" "),this._t("right")],2)},staticRenderFns:[]}},572:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"settings-layout"},[n("SettingsMenu",{attrs:{open:t.menuOpen},on:{"update:open":function(e){t.menuOpen=e}}}),t._v(" "),n("div",{staticClass:"settings-content__wrapper"},[n("Breadcrumbs",{scopedSlots:t._u([{key:"left",fn:function(){return[n("button",{staticClass:"menu-navigation-back",on:{click:function(e){t.menuOpen=!t.menuOpen}}},[n("span",{staticClass:"arrow"})])]},proxy:!0},{key:"right",fn:function(){return[n("button",{staticClass:"settings-layout-close",on:{click:t.goToHome}},[n("span",{staticClass:"close-delete_2"})])]},proxy:!0}])}),t._v(" "),n("transition",{attrs:{name:"slide-left"}},[n("router-view")],1)],1)],1)},staticRenderFns:[]}},592:function(t,e,n){var s=n(1)(n(562),n(572),!1,null,null,null);t.exports=s.exports}});
+webpackJsonp([2],{
+
+/***/ 574:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(612)
+/* template */
+var __vue_template__ = __webpack_require__(622)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/views/Frontend/Settings/index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-56d5d358", Component.options)
+  } else {
+    hotAPI.reload("data-v-56d5d358", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 612:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Frontend_SettingsMenu__ = __webpack_require__(613);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Frontend_SettingsMenu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Frontend_SettingsMenu__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Frontend_Settings_Breadcrumbs__ = __webpack_require__(619);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Frontend_Settings_Breadcrumbs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Frontend_Settings_Breadcrumbs__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "SettingsLayout",
+  data: function data() {
+    return {
+      menuOpen: false
+    };
+  },
+  methods: {
+    goToHome: function goToHome() {
+      var hashCodeURI = Base64.encode(this.$store.getters.checkListId);
+      this.$router.push({
+        name: 'CheckList',
+        params: {
+          list_id: hashCodeURI
+        }
+      });
+    }
+  },
+  components: {
+    SettingsMenu: __WEBPACK_IMPORTED_MODULE_0__components_Frontend_SettingsMenu___default.a,
+    Breadcrumbs: __WEBPACK_IMPORTED_MODULE_1__components_Frontend_Settings_Breadcrumbs___default.a
+  }
+});
+
+/***/ }),
+
+/***/ 613:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(614)
+/* template */
+var __vue_template__ = __webpack_require__(618)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Frontend/SettingsMenu/index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-39c88872", Component.options)
+  } else {
+    hotAPI.reload("data-v-39c88872", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 614:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MenuItem__ = __webpack_require__(615);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MenuItem___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__MenuItem__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "SettingsMenu",
+  computed: {
+    settings_routers: function settings_routers() {
+      var parentRoute = this.$router.options.routes[0].children;
+      var settingsRoute = parentRoute.find(function (item) {
+        return item.path === '/settings';
+      });
+      return settingsRoute.children;
+    },
+    menuOpenStatus: function menuOpenStatus() {
+      return {
+        open: this.open
+      };
+    }
+  },
+  methods: {
+    openMenu: function openMenu() {
+      this.$emit('update:open', !this.open);
+    }
+  },
+  components: {
+    MenuItem: __WEBPACK_IMPORTED_MODULE_0__MenuItem___default.a
+  },
+  props: {
+    open: {
+      type: Boolean,
+      required: true
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 615:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(616)
+/* template */
+var __vue_template__ = __webpack_require__(617)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Frontend/SettingsMenu/MenuItem.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-49bf0f66", Component.options)
+  } else {
+    hotAPI.reload("data-v-49bf0f66", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 616:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "item",
+  computed: {
+    active: function active() {
+      var currentPath = this.$route.name;
+      var status = currentPath === this.item.name;
+      return {
+        active: status
+      };
+    }
+  },
+  methods: {
+    selectMenu: function selectMenu() {
+      this.$emit('selectMenu');
+    }
+  },
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 617:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "li",
+    {
+      staticClass: "settings-menu__item",
+      class: _vm.active,
+      on: { click: _vm.selectMenu }
+    },
+    [
+      _c("router-link", { attrs: { to: { name: _vm.item.name } } }, [
+        _vm._v(_vm._s(_vm.item.meta.title))
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-49bf0f66", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 618:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "settings-menu__wrapper", class: _vm.menuOpenStatus },
+    [
+      _c(
+        "ul",
+        { staticClass: "settings-menu__list" },
+        _vm._l(_vm.settings_routers, function(route) {
+          return _c("MenuItem", {
+            key: route.name,
+            attrs: { item: route },
+            on: { selectMenu: _vm.openMenu }
+          })
+        }),
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-39c88872", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 619:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(620)
+/* template */
+var __vue_template__ = __webpack_require__(621)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Frontend/Settings/Breadcrumbs.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-37bc25e6", Component.options)
+  } else {
+    hotAPI.reload("data-v-37bc25e6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 620:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "breadcrumbs",
+  computed: {
+    path: function path() {
+      return this.$route.meta.title;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 621:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "breadcrumb-wrapper" },
+    [
+      _vm._t("left"),
+      _vm._v(" "),
+      _c("span", { staticClass: "route-path" }, [_vm._v(_vm._s(_vm.path))]),
+      _vm._v(" "),
+      _vm._t("right")
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-37bc25e6", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 622:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "settings-layout" },
+    [
+      _c("SettingsMenu", {
+        attrs: { open: _vm.menuOpen },
+        on: {
+          "update:open": function($event) {
+            _vm.menuOpen = $event
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "settings-content__wrapper" },
+        [
+          _c("Breadcrumbs", {
+            scopedSlots: _vm._u([
+              {
+                key: "left",
+                fn: function() {
+                  return [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "menu-navigation-back",
+                        on: {
+                          click: function($event) {
+                            _vm.menuOpen = !_vm.menuOpen
+                          }
+                        }
+                      },
+                      [_c("span", { staticClass: "arrow" })]
+                    )
+                  ]
+                },
+                proxy: true
+              },
+              {
+                key: "right",
+                fn: function() {
+                  return [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "settings-layout-close",
+                        on: { click: _vm.goToHome }
+                      },
+                      [_c("span", { staticClass: "close-delete_2" })]
+                    )
+                  ]
+                },
+                proxy: true
+              }
+            ])
+          }),
+          _vm._v(" "),
+          _c(
+            "transition",
+            { attrs: { name: "slide-left" } },
+            [_c("router-view")],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-56d5d358", module.exports)
+  }
+}
+
+/***/ })
+
+});

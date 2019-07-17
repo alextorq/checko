@@ -47,7 +47,12 @@
               this.$router.push({name: 'Registration'});
             },
             send() {
-                if (!this.content) {
+                if (this.content.length < 10) {
+                    this.$notify({
+                        duration: 3000,
+                        type: 'warning',
+                        text: 'must have at least 10 characters'
+                    });
                     return
                 }
                 axios.post('/frontend/offers/create', {content: this.content}).then(() => {
