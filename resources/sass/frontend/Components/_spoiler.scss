@@ -5,7 +5,8 @@
     cursor: pointer;
     .left-col {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
+      padding-left: 8px;
       .svg-arrow {
         display: flex;
         justify-content: center;

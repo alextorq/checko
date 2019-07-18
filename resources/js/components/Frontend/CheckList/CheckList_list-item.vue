@@ -95,15 +95,27 @@
                 if (currentListID === this.list.check_list_id) {
                   return
                 }
-                let items =this.$store.state.checkItem.checkItems;
-                this.$store.commit('selectCheckList', {listID: this.list.check_list_id, items: items});
-                this.$store.commit('initStateCheckItems',  JSON.parse(JSON.stringify(this.list.check_items)));
+
+                // this.$store.commit('selectCheckList', {listID: this.list.check_list_id, items: items});
+                // this.$store.commit('initStateCheckItems',  JSON.parse(JSON.stringify(this.list.check_items)));
 
                 let hashCodeURI = Base64.encodeURI(this.list.check_list_id);
                 this.$router.push({name: 'CheckList', params: { list_id: hashCodeURI }});
             },
             cloneCheckList() {
-                this.$store.dispatch('cloneCheckList', this.list.check_list_id);
+                this.$store.dispatch('cloneCheckList', this.list.check_list_id).then(() => {
+                    this.$notify({
+                        duration: 3000,
+                        type: 'success',
+                        text: 'CheckList cloned',
+                    });
+                }).catch(() => {
+                    this.$notify({
+                        duration: 3000,
+                        type: 'error',
+                        text: 'something was wrong',
+                    });
+                });
             },
             openContextMenu(event) {
                 if (!this.contextMenuOpenStatus) {

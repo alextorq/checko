@@ -46,6 +46,11 @@ class CheckListController extends BaseController
     }
 
 
+    /**
+     * Сlone model and her relations
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function clone(int $id)
     {
         if (Auth::check()) {

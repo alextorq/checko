@@ -7,8 +7,6 @@ function sortByOrder(items) {
     });
 }
 
-
-
 const checkItems = {
     state: {
         checkItems: [],
@@ -59,8 +57,7 @@ const checkItems = {
         },
         initStateCheckItems(state, data) {
             sortByOrder(data);
-            state.checkItems = [];
-            state.checkItems.push(...data);
+            state.checkItems = data;
         },
         updateListOrder(state, data) {
             for (let i = 0; i < data.length; i++)  {

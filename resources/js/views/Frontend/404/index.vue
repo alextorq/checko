@@ -2,14 +2,10 @@
     <div class="not-found-wrapper">
         <div class="not-found">
             <img src="/images/404/404.svg" alt="not found">
-            <h1>Page not found</h1>
-            <p>Maecenas dignissim laoreet lectus id pulvinar.
-                Nunc facilisis suscipit arcu in efficitur.
-                Sed vitae eros quis lorem auctor pellentesque.
-                Nunc sollicitudin pellentesque sem eget viverra.
-            </p>
+            <h1>Ooops... Error 404</h1>
+            <p>We are sorry, but the page you are looking for does not exist</p>
             <button class="button">
-                <router-link to="/">Go to main</router-link>
+                <router-link to="/">Go back to checko.me</router-link>
             </button>
         </div>
     </div>

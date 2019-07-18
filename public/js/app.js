@@ -36333,10 +36333,6 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__ = __webpack_require__(222);
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -36413,7 +36409,7 @@ var checkList = {
   },
   mutations: {
     updateCheckList: function updateCheckList(state, data) {
-      state.list = _objectSpread({}, data);
+      state.list = data;
     },
     clearList: function clearList(state) {
       var list = {
@@ -36450,20 +36446,6 @@ var checkList = {
         return item.check_list_id === id;
       });
       state.allList.splice(listForDelete, 1);
-    },
-    selectCheckList: function selectCheckList(state, payload) {
-      var id = payload.listID;
-      var items = payload.items;
-      var prevList = state.list;
-      prevList.check_items = items;
-      var prevListInArray = state.allList.findIndex(function (listItem) {
-        return listItem.check_list_id === prevList.check_list_id;
-      });
-      var list = state.allList.find(function (listItem) {
-        return listItem.check_list_id === id;
-      });
-      state.list = JSON.parse(JSON.stringify(list));
-      __WEBPACK_IMPORTED_MODULE_2_vue___default.a.set(state.allList, prevListInArray, prevList);
     }
   },
   actions: {
@@ -36515,18 +36497,9 @@ var checkList = {
       });
     },
     cloneCheckList: function cloneCheckList(context, id) {
-      var _this2 = this;
-
       return new Promise(function (resolve, reject) {
         axios.post("/frontend/checklist/clone/".concat(id)).then(function (response) {
           context.commit('addNewListToLists', response.data);
-
-          _this2._vm.$notify({
-            duration: 3000,
-            type: 'success',
-            text: 'CheckList cloned'
-          });
-
           resolve();
         })["catch"](function () {
           reject();
@@ -36534,16 +36507,26 @@ var checkList = {
       });
     },
     loadCheckList: function loadCheckList(context, encodeURI) {
-      if (!context.state.list.check_list_id && encodeURI) {
+      if (encodeURI) {
         var listID;
         /*Декодируем строку и если не удалось то перекидываем на 404*/
 
         try {
-          listID = __WEBPACK_IMPORTED_MODULE_1_js_base64__["Base64"].decode(encodeURI);
+          listID = +__WEBPACK_IMPORTED_MODULE_1_js_base64__["Base64"].decode(encodeURI);
         } catch (e) {
           __WEBPACK_IMPORTED_MODULE_0__router_Frontend__["a" /* default */].push({
             name: '404'
           });
+          return;
+        }
+
+        var alreadyLoad = context.state.allList.find(function (element) {
+          return element.check_list_id === listID;
+        });
+
+        if (alreadyLoad) {
+          context.commit('initStateCheckItems', alreadyLoad.check_items);
+          context.commit('updateCheckList', alreadyLoad);
           return;
         }
 
@@ -39021,6 +39004,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     CheckListName: __WEBPACK_IMPORTED_MODULE_7__components_Frontend_CheckListName___default.a,
     AllList: __WEBPACK_IMPORTED_MODULE_8__components_Frontend_CheckList_CheckList_List___default.a
   },
+  beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+    this.$store.dispatch('loadCheckList', to.params.list_id);
+    next();
+  },
   created: function created() {
     var _this = this;
 
@@ -39029,7 +39016,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this.allListIsOpen = true;
       __WEBPACK_IMPORTED_MODULE_9_Core_helpers_eventBus__["a" /* default */].$emit('overflow_off');
     });
-  }
+  },
+  params: ['list_id']
 });
 
 /***/ }),
@@ -45227,14 +45215,10 @@ function closeContextMenu(event) {
 
       if (currentListID === this.list.check_list_id) {
         return;
-      }
+      } // this.$store.commit('selectCheckList', {listID: this.list.check_list_id, items: items});
+      // this.$store.commit('initStateCheckItems',  JSON.parse(JSON.stringify(this.list.check_items)));
 
-      var items = this.$store.state.checkItem.checkItems;
-      this.$store.commit('selectCheckList', {
-        listID: this.list.check_list_id,
-        items: items
-      });
-      this.$store.commit('initStateCheckItems', JSON.parse(JSON.stringify(this.list.check_items)));
+
       var hashCodeURI = __WEBPACK_IMPORTED_MODULE_1_js_base64__["Base64"].encodeURI(this.list.check_list_id);
       this.$router.push({
         name: 'CheckList',
@@ -45244,7 +45228,21 @@ function closeContextMenu(event) {
       });
     },
     cloneCheckList: function cloneCheckList() {
-      this.$store.dispatch('cloneCheckList', this.list.check_list_id);
+      var _this = this;
+
+      this.$store.dispatch('cloneCheckList', this.list.check_list_id).then(function () {
+        _this.$notify({
+          duration: 3000,
+          type: 'success',
+          text: 'CheckList cloned'
+        });
+      })["catch"](function () {
+        _this.$notify({
+          duration: 3000,
+          type: 'error',
+          text: 'something was wrong'
+        });
+      });
     },
     openContextMenu: function openContextMenu(event) {
       if (!this.contextMenuOpenStatus) {
@@ -45264,7 +45262,7 @@ function closeContextMenu(event) {
       window._self = null;
     },
     deleteList: function deleteList() {
-      var _this = this;
+      var _this2 = this;
 
       var hashCodeURI = !!this.$route.params.list_id ? __WEBPACK_IMPORTED_MODULE_1_js_base64__["Base64"].decode(this.$route.params.list_id) : null;
 
@@ -45273,15 +45271,15 @@ function closeContextMenu(event) {
       }
 
       this.$store.dispatch('checkListDelete', this.list.check_list_id).then(function () {
-        if (hashCodeURI === _this.list.check_list_id) {
-          _this.$store.commit('clearList');
+        if (hashCodeURI === _this2.list.check_list_id) {
+          _this2.$store.commit('clearList');
 
-          _this.$store.commit('clearItems');
+          _this2.$store.commit('clearItems');
 
-          _this.$router.push('/');
+          _this2.$router.push('/');
         }
 
-        _this.$store.commit('deleteList', _this.list.check_list_id);
+        _this2.$store.commit('deleteList', _this2.list.check_list_id);
       });
     }
   },
@@ -45965,14 +45963,6 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Core_helpers_RunPreloader__ = __webpack_require__(222);
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 
 
 function sortByOrder(items) {
@@ -46046,12 +46036,8 @@ var checkItems = {
       state.last = null;
     },
     initStateCheckItems: function initStateCheckItems(state, data) {
-      var _state$checkItems;
-
       sortByOrder(data);
-      state.checkItems = [];
-
-      (_state$checkItems = state.checkItems).push.apply(_state$checkItems, _toConsumableArray(data));
+      state.checkItems = data;
     },
     updateListOrder: function updateListOrder(state, data) {
       for (var i = 0; i < data.length; i++) {

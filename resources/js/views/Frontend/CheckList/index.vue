@@ -58,7 +58,6 @@
     import CheckListDescription from '../../../components/Frontend/CheckListDescription'
     import CheckListName from '../../../components/Frontend/CheckListName'
     import AllList from '../../../components/Frontend/CheckList/CheckList_List'
-
     import EventBus from 'Core/helpers/eventBus'
 
     export default {
@@ -112,13 +111,17 @@
             CheckListName,
             AllList
         },
+        beforeRouteUpdate (to, from, next) {
+            this.$store.dispatch('loadCheckList', to.params.list_id);
+            next();
+        },
         created() {
             this.$store.dispatch('loadCheckList', this.$route.params.list_id);
             EventBus.$on('CheckList:showButton', () => {
                 this.allListIsOpen = true;
                 EventBus.$emit('overflow_off');
             })
-        }
+        },
+        params: ['list_id']
     }
 </script>
->

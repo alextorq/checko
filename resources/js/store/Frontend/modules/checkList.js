@@ -74,7 +74,7 @@ const checkList = {
     },
     mutations: {
         updateCheckList(state, data) {
-            state.list = {...data};
+            state.list = data;
         },
         clearList(state) {
             let  list =  {
@@ -109,21 +109,6 @@ const checkList = {
         deleteList(state, id) {
             let listForDelete = state.allList.findIndex((item) => {return item.check_list_id === id});
             state.allList.splice(listForDelete, 1);
-        },
-        selectCheckList(state, payload) {
-            let id = payload.listID;
-            let items = payload.items;
-            let prevList = state.list;
-            prevList.check_items = items;
-
-            let prevListInArray = state.allList.findIndex(
-                (listItem) => {return listItem.check_list_id === prevList.check_list_id}
-                );
-
-            let list = state.allList.find((listItem) => {return listItem.check_list_id === id});
-            state.list = JSON.parse(JSON.stringify(list));
-
-            Vue.set(state.allList, prevListInArray, prevList);
         }
     },
     actions: {
@@ -172,11 +157,6 @@ const checkList = {
             return new Promise((resolve, reject) => {
                 axios.post(`/frontend/checklist/clone/${id}`).then((response) => {
                     context.commit('addNewListToLists', response.data);
-                    this._vm.$notify({
-                        duration: 3000,
-                        type: 'success',
-                        text: 'CheckList cloned',
-                    });
                     resolve();
                 }).catch(() => {
                     reject();
@@ -184,15 +164,23 @@ const checkList = {
             });
         },
         loadCheckList(context, encodeURI) {
-            if (!context.state.list.check_list_id && encodeURI) {
+            if (encodeURI) {
                 let listID;
                 /*Декодируем строку и если не удалось то перекидываем на 404*/
                 try {
-                    listID = Base64.decode(encodeURI);
+                    listID = +Base64.decode(encodeURI);
                 }catch (e) {
                     router.push({name: '404'});
                     return
                 }
+                let alreadyLoad = context.state.allList.find((element) => {return element.check_list_id === listID});
+
+                if (alreadyLoad) {
+                    context.commit('initStateCheckItems', alreadyLoad.check_items);
+                    context.commit('updateCheckList', alreadyLoad);
+                    return
+                }
+
                 runLoader(context);
                 axios
                     .post(`${context.state.URI.pref}${listID}`)

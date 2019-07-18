@@ -66,10 +66,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NotFound"
 });
@@ -87,18 +83,20 @@ var render = function() {
     _c("div", { staticClass: "not-found" }, [
       _c("img", { attrs: { src: "/images/404/404.svg", alt: "not found" } }),
       _vm._v(" "),
-      _c("h1", [_vm._v("Page not found")]),
+      _c("h1", [_vm._v("Ooops... Error 404")]),
       _vm._v(" "),
       _c("p", [
-        _vm._v(
-          "Maecenas dignissim laoreet lectus id pulvinar.\n            Nunc facilisis suscipit arcu in efficitur.\n            Sed vitae eros quis lorem auctor pellentesque.\n            Nunc sollicitudin pellentesque sem eget viverra.\n        "
-        )
+        _vm._v("We are sorry, but the page you are looking for does not exist")
       ]),
       _vm._v(" "),
       _c(
         "button",
         { staticClass: "button" },
-        [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Go to main")])],
+        [
+          _c("router-link", { attrs: { to: "/" } }, [
+            _vm._v("Go back to checko.me")
+          ])
+        ],
         1
       )
     ])
