@@ -27,11 +27,12 @@
         </div>
 
         <div class="context-menu-wrapper" :class="contextMenuOpen">
-            <button class="check-item__menu three_point" :class="contextMenuOpen" ref="contextMenuButton" @click="openContextMenu" >
+            <button class="check-item__menu three_point" :class="contextMenuOpen" ref="contextMenuButton"
+                    @click="openContextMenu" >
                 <span></span>
             </button>
             <ul class="context-menu__list">
-                <!--<li class="context-menu__item">attach</li>-->
+                <li class="context-menu__item" @click="cloneCheckList">clone</li>
                 <!--<li class="context-menu__item" @click="">comments</li>-->
                 <li class="context-menu__item" @click="deleteList">delete</li>
             </ul>
@@ -101,7 +102,9 @@
                 let hashCodeURI = Base64.encodeURI(this.list.check_list_id);
                 this.$router.push({name: 'CheckList', params: { list_id: hashCodeURI }});
             },
-
+            cloneCheckList() {
+                this.$store.dispatch('cloneCheckList', this.list.check_list_id);
+            },
             openContextMenu(event) {
                 if (!this.contextMenuOpenStatus) {
                     window._self = this;
@@ -117,7 +120,9 @@
                 window._self = null;
             },
             deleteList() {
-                let hashCodeURI = Base64.decode(this.$route.params.list_id);
+                let hashCodeURI =  !!this.$route.params.list_id
+                    ? Base64.decode(this.$route.params.list_id)
+                    : null;
                 if (hashCodeURI) {
                     hashCodeURI = +hashCodeURI;
                 }

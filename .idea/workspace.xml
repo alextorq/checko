@@ -2,22 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4cace02-0313-490e-bac0-b582b0a6b43d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Frontend/ModalCreateNewCheckList/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Checko/CheckList/Http/Controllers/Frontend/CheckListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Checko/CheckList/Http/Controllers/Frontend/CheckListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Checko/CheckList/Routes/frontend.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Checko/CheckList/Routes/frontend.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Checko/Models/CheckItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Checko/Models/CheckItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Checko/Models/CheckList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Checko/Models/CheckList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Checko/Models/OffersLike.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Checko/Models/OffersLike.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/backend/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/backend/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/0.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/0.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/1.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/1.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/2.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/2.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/3.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/3.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/4.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/4.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/5.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/6.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/6.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/7.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/7.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/8.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/8.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/9.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/9.bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/backend/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/backend/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Frontend/CheckList/CheckList_list-item.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Frontend/CheckList/CheckList_list-item.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Frontend/OffersForm/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Frontend/OffersForm/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/store/Frontend/modules/checkList.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/Frontend/modules/checkList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/frontend/Views/CheckList/_checklist_lists.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/frontend/Views/CheckList/_checklist_lists.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,78 +42,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/OffersForm/index.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="53" column="64" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Comments/CommentForm.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="72" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/AdminPanel/Table/ChecklistsTable.vue">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/views/AdminPanel/checkList/layout.vue">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/sass/frontend/Views/404/_index.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/CheckList/CheckList_list-item.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+            <state relative-caret-position="332">
+              <caret line="105" column="80" selection-start-line="105" selection-start-column="80" selection-end-line="105" selection-end-column="80" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Checko/Offers/Http/Controller/Frontend/OffersController.php">
+        <entry file="file://$PROJECT_DIR$/app/Checko/CheckList/Routes/frontend.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="77" column="41" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="41" />
+            <state relative-caret-position="120">
+              <caret line="9" column="45" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Checko/CheckList/Http/Controllers/Frontend/CheckListController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="40" column="69" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Checko/Models/CheckList.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="422">
+              <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
               <folding>
-                <element signature="e#141#174#0#PHP" expanded="true" />
+                <element signature="e#116#155#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/sass/frontend/app.scss">
+        <entry file="file://$PROJECT_DIR$/resources/sass/frontend/Views/CheckList/_checklist_lists.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="692">
-              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+            <state relative-caret-position="290">
+              <caret line="215" selection-start-line="215" selection-end-line="215" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/views/Frontend/404/index.vue">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/CheckList/CheckList_List.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+            <state relative-caret-position="2460">
+              <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+              <folding>
+                <element signature="e#1174#1215#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/store/Frontend/modules/checkList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="142" column="21" selection-start-line="142" selection-start-column="21" selection-end-line="142" selection-end-column="93" />
+            <state relative-caret-position="452">
+              <caret line="169" column="10" selection-start-line="169" selection-start-column="10" selection-end-line="169" selection-end-column="10" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -138,14 +120,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Vue Single File Component" />
         <option value="SCSS File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>1</find>
       <find>reset</find>
       <find>sendRE</find>
       <find>sendResetLink</find>
@@ -175,6 +156,7 @@
       <find>on('overflow_on');</find>
       <find>conta</find>
       <find>45vw</find>
+      <find>context-menu-wrapper</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/node_modules</dir>
@@ -186,16 +168,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/js/components/Frontend/CheckListName/index.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/Frontend/Select/index.vue" />
-        <option value="$PROJECT_DIR$/resources/sass/frontend/Components/_select.scss" />
-        <option value="$PROJECT_DIR$/resources/js/views/Frontend/PageDefault/index.vue" />
-        <option value="$PROJECT_DIR$/resources/sass/frontend/Views/Offers/_offers.scss" />
-        <option value="$PROJECT_DIR$/resources/js/components/Frontend/Spoiler/index.vue" />
-        <option value="$PROJECT_DIR$/resources/sass/frontend/Components/_spoiler.scss" />
         <option value="$PROJECT_DIR$/resources/sass/frontend/_scafolding.scss" />
         <option value="$PROJECT_DIR$/resources/sass/frontend/Views/CheckList/_checklist.scss" />
-        <option value="$PROJECT_DIR$/resources/sass/frontend/Views/CheckList/_checklist_lists.scss" />
         <option value="$PROJECT_DIR$/resources/js/components/Frontend/Header/index.vue" />
         <option value="$PROJECT_DIR$/resources/js/views/Frontend/CheckList/index.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Frontend/Settings/Breadcrump.vue" />
@@ -234,9 +208,17 @@
         <option value="$PROJECT_DIR$/resources/sass/frontend/app.scss" />
         <option value="$PROJECT_DIR$/resources/js/views/Frontend/404/index.vue" />
         <option value="$PROJECT_DIR$/resources/sass/frontend/Views/404/_index.scss" />
-        <option value="$PROJECT_DIR$/resources/js/components/Frontend/CheckList/CheckList_list-item.vue" />
-        <option value="$PROJECT_DIR$/app/Checko/Offers/Http/Controller/Frontend/OffersController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Frontend/OffersForm/index.vue" />
+        <option value="$PROJECT_DIR$/app/Checko/Models/CheckItem.php" />
+        <option value="$PROJECT_DIR$/app/Checko/Offers/Http/Controller/Frontend/OffersController.php" />
+        <option value="$PROJECT_DIR$/app/Checko/Models/OffersLike.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/Frontend/ModalCreateNewCheckList/index.vue" />
+        <option value="$PROJECT_DIR$/resources/sass/frontend/Views/CheckList/_checklist_lists.scss" />
+        <option value="$PROJECT_DIR$/app/Checko/CheckList/Routes/frontend.php" />
+        <option value="$PROJECT_DIR$/app/Checko/CheckList/Http/Controllers/Frontend/CheckListController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/Frontend/CheckList/CheckList_list-item.vue" />
+        <option value="$PROJECT_DIR$/resources/js/store/Frontend/modules/checkList.js" />
+        <option value="$PROJECT_DIR$/app/Checko/Models/CheckList.php" />
       </list>
     </option>
   </component>
@@ -363,46 +345,6 @@
             <path>
               <item name="checko" type="b2602c69:ProjectViewProjectNode" />
               <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Checko" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Checko" type="462c0819:PsiDirectoryNode" />
-              <item name="Offers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Checko" type="462c0819:PsiDirectoryNode" />
-              <item name="Offers" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Checko" type="462c0819:PsiDirectoryNode" />
-              <item name="Offers" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Checko" type="462c0819:PsiDirectoryNode" />
-              <item name="Offers" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -416,14 +358,14 @@
               <item name="checko" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="checko" type="b2602c69:ProjectViewProjectNode" />
               <item name="checko" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
               <item name="Frontend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -431,51 +373,9 @@
               <item name="checko" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
               <item name="Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="CheckList" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="Comments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="OffersForm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checko" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="404" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="checko" type="b2602c69:ProjectViewProjectNode" />
@@ -489,6 +389,14 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="sass" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
+              <item name="checko" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="sass" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="checko" type="b2602c69:ProjectViewProjectNode" />
@@ -497,6 +405,15 @@
               <item name="sass" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="Views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="checko" type="b2602c69:ProjectViewProjectNode" />
+              <item name="checko" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="sass" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="Views" type="462c0819:PsiDirectoryNode" />
+              <item name="CheckList" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -752,7 +669,8 @@
       <workItem from="1563257947361" duration="1365000" />
       <workItem from="1563344999533" duration="441000" />
       <workItem from="1563346174692" duration="786000" />
-      <workItem from="1563367282470" duration="6783000" />
+      <workItem from="1563367282470" duration="7554000" />
+      <workItem from="1563431909190" duration="13077000" />
     </task>
     <task id="LOCAL-00001" summary="add drag and drop">
       <created>1553525556676</created>
@@ -1069,11 +987,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563373888329</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="fix bug with validate">
+      <created>1563374634607</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1563374634607</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1117145000" />
+    <option name="totallyTimeSpent" value="1130993000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1088,7 +1013,7 @@
     <frame x="-1" y="-11" width="1922" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29028815" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29348987" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -1140,7 +1065,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="bug fix" />
     <MESSAGE value="bug fix 2" />
     <MESSAGE value="add fix fonts" />
     <MESSAGE value="add fix to deploy" />
@@ -1165,47 +1089,10 @@
     <MESSAGE value="add 404 page design" />
     <MESSAGE value="add 404 page design prod version" />
     <MESSAGE value="fix bug with validate offers" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug with validate offers" />
+    <MESSAGE value="fix bug with validate" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug with validate" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Spoiler/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/SwitchButton/index.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Settings/Avatar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2458" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Settings/General.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Settings/List.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1242" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Settings/NameInput.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2638" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Settings/Notification.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Settings/Payment.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Select/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2458">
@@ -1230,16 +1117,6 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Pagination/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4632" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/OffersPost/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-808">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <marker date="1562758203594" expanded="true" signature="1911:2275" ph="..." />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/LogoWelcome/index.vue">
@@ -1280,16 +1157,6 @@
         <state relative-caret-position="-1288" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/CheckList/CheckList_List.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
-          <folding>
-            <element signature="e#1174#1215#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/CheckItem/complete.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4182" />
@@ -1309,13 +1176,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-06-19.log" />
-    <entry file="file://$PROJECT_DIR$/resources/js/views/Frontend/Offers/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Menu/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1395,24 +1255,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/AdminPanel/Table/ChecklistsTable.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Layout/index.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/views/Frontend/CheckList/index.vue">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/store/Frontend/modules/checkList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="142" column="21" selection-start-line="142" selection-start-column="21" selection-end-line="142" selection-end-column="93" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/views/AdminPanel/checkList_page/index.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -1424,13 +1271,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/OffersForm/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Comments/CommentForm.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="72" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/AdminPanel/Table/ChecklistsTable.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/views/AdminPanel/checkList/layout.vue">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sass/frontend/Views/404/_index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/views/Frontend/404/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Checko/Models/CheckItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="27" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/OffersPost/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+          <folding>
+            <marker date="1562758203594" expanded="true" signature="1911:2275" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/ModalCreateNewCheckList/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Checko/Models/OffersLike.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+          <folding>
+            <marker date="1563435544758" expanded="true" signature="385:449" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/views/Frontend/Offers/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="39" column="20" lean-forward="true" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Checko/Offers/Http/Controller/Frontend/OffersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="70" column="30" lean-forward="true" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
+          <folding>
+            <element signature="e#141#174#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1441,41 +1363,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/frontend/Views/404/_index.scss">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/CheckList/CheckList_List.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        <state relative-caret-position="2460">
+          <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+          <folding>
+            <element signature="e#1174#1215#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sass/frontend/Views/CheckList/_checklist_lists.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="215" selection-start-line="215" selection-end-line="215" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Checko/CheckList/Routes/frontend.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/CheckList/CheckList_list-item.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        <state relative-caret-position="332">
+          <caret line="105" column="80" selection-start-line="105" selection-start-column="80" selection-end-line="105" selection-end-column="80" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Checko/Offers/Http/Controller/Frontend/OffersController.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/store/Frontend/modules/checkList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="77" column="41" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="41" />
+        <state relative-caret-position="452">
+          <caret line="169" column="10" selection-start-line="169" selection-start-column="10" selection-end-line="169" selection-end-column="10" />
           <folding>
-            <element signature="e#141#174#0#PHP" expanded="true" />
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/Comments/CommentForm.vue">
+    <entry file="file://$PROJECT_DIR$/app/Checko/CheckList/Http/Controllers/Frontend/CheckListController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="72" selection-end-column="35" />
+        <state relative-caret-position="180">
+          <caret line="40" column="69" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="69" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Frontend/OffersForm/index.vue">
+    <entry file="file://$PROJECT_DIR$/app/Observers/CheckItemObserver.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="53" column="64" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
+        <state relative-caret-position="180">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Checko/Models/CheckList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+          <folding>
+            <element signature="e#116#155#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

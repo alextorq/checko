@@ -23,6 +23,10 @@ class CheckItem extends Model
 
     protected $fillable = ['name', 'complete', 'description', 'check_list_id', 'order', 'timestamp_id', 'date_complete'];
 
+    protected $casts = [
+        'complete' => 'boolean'
+    ];
+
     public function cheklist()
     {
         return $this->belongsTo(CheckList::class, 'check_list_id', 'check_list_id');

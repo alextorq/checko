@@ -24,7 +24,6 @@
                 <button type="submit" class="button">TO OFFER</button>
             </form>
         </div>
-
     </div>
 </template>
 

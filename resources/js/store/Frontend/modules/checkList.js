@@ -168,6 +168,21 @@ const checkList = {
                 stopLoader(context);
             });
         },
+        cloneCheckList(context, id) {
+            return new Promise((resolve, reject) => {
+                axios.post(`/frontend/checklist/clone/${id}`).then((response) => {
+                    context.commit('addNewListToLists', response.data);
+                    this._vm.$notify({
+                        duration: 3000,
+                        type: 'success',
+                        text: 'CheckList cloned',
+                    });
+                    resolve();
+                }).catch(() => {
+                    reject();
+                })
+            });
+        },
         loadCheckList(context, encodeURI) {
             if (!context.state.list.check_list_id && encodeURI) {
                 let listID;

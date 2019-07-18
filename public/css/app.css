@@ -4926,8 +4926,9 @@ button[hidden] {
 
 .wrapper-user-lists .user-lists__item .context-menu-wrapper {
   position: absolute;
-  top: 20px;
+  top: 50%;
   right: 10px;
+  margin-top: -13px;
 }
 
 .wrapper-user-lists .user-lists__item .context-menu-wrapper .context-menu__list {

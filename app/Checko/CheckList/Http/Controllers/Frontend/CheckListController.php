@@ -46,6 +46,15 @@ class CheckListController extends BaseController
     }
 
 
+    public function clone(int $id)
+    {
+        if (Auth::check()) {
+            $checklist = CheckList::findOrFail($id)->clone();
+            return response()->json($checklist);
+        }
+        return response()->json('you must be login', 401);
+    }
+
     /**
      * Crete new list
      * @param Request $request

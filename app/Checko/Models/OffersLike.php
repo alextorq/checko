@@ -18,6 +18,11 @@ class OffersLike extends Model
 
     protected $fillable = ['post_id', 'users_id', 'like_count'];
 
+
+//    protected $casts = [
+//        'users_id' => 'array'
+//    ];
+
     public function offerPost()
     {
         return $this->belongsTo(OfferPost::class, 'post_id', 'post_id');

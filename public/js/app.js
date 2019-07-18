@@ -36514,6 +36514,25 @@ var checkList = {
         Object(__WEBPACK_IMPORTED_MODULE_4_Core_helpers_RunPreloader__["b" /* stopLoader */])(context);
       });
     },
+    cloneCheckList: function cloneCheckList(context, id) {
+      var _this2 = this;
+
+      return new Promise(function (resolve, reject) {
+        axios.post("/frontend/checklist/clone/".concat(id)).then(function (response) {
+          context.commit('addNewListToLists', response.data);
+
+          _this2._vm.$notify({
+            duration: 3000,
+            type: 'success',
+            text: 'CheckList cloned'
+          });
+
+          resolve();
+        })["catch"](function () {
+          reject();
+        });
+      });
+    },
     loadCheckList: function loadCheckList(context, encodeURI) {
       if (!context.state.list.check_list_id && encodeURI) {
         var listID;
@@ -45147,6 +45166,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 function closeContextMenu(event) {
   var target = event.target;
 
@@ -45223,6 +45243,9 @@ function closeContextMenu(event) {
         }
       });
     },
+    cloneCheckList: function cloneCheckList() {
+      this.$store.dispatch('cloneCheckList', this.list.check_list_id);
+    },
     openContextMenu: function openContextMenu(event) {
       if (!this.contextMenuOpenStatus) {
         window._self = this;
@@ -45243,7 +45266,7 @@ function closeContextMenu(event) {
     deleteList: function deleteList() {
       var _this = this;
 
-      var hashCodeURI = __WEBPACK_IMPORTED_MODULE_1_js_base64__["Base64"].decode(this.$route.params.list_id);
+      var hashCodeURI = !!this.$route.params.list_id ? __WEBPACK_IMPORTED_MODULE_1_js_base64__["Base64"].decode(this.$route.params.list_id) : null;
 
       if (hashCodeURI) {
         hashCodeURI = +hashCodeURI;
@@ -45370,6 +45393,15 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("ul", { staticClass: "context-menu__list" }, [
+          _c(
+            "li",
+            {
+              staticClass: "context-menu__item",
+              on: { click: _vm.cloneCheckList }
+            },
+            [_vm._v("clone")]
+          ),
+          _vm._v(" "),
           _c(
             "li",
             {
