@@ -25,6 +25,7 @@
 <script>
     import SettingsMenu from '../../../components/Frontend/SettingsMenu'
     import Breadcrumbs from '../../../components/Frontend/Settings/Breadcrumbs'
+    import EventBus from 'Core/helpers/eventBus'
 
     export default {
         name: "SettingsLayout",
@@ -43,5 +44,9 @@
             SettingsMenu,
             Breadcrumbs,
         },
+        beforeRouteLeave (to, from, next) {
+            EventBus.$emit('overflow_off');
+            next();
+        }
     }
 </script>

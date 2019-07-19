@@ -199,8 +199,6 @@
         },
         methods: {
             goToHome() {
-                this.$store.commit('clearList');
-                this.$store.commit('clearItems');
                 this.$router.push('/')
             },
             shareApi() {
@@ -241,9 +239,7 @@
                         this.lastRoute = null;
                     }
                 }
-                let eventName = (!this.$route.fullPath.includes('/settings'))  ? 'overflow_on' : 'overflow_off';
-                EventBus.$emit(eventName);
-
+                EventBus.$emit('overflow_on');
                 this.$router.push(pathToNavigate);
             },
 

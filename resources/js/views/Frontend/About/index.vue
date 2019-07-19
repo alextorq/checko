@@ -10,13 +10,10 @@
 
                     <div class="image-wrapper">
                         <img src="/images/monitor.svg" alt="Monitor">
-
-
                         <div class="video">
                             <video autoplay muted>
                                 <source src="/video/introduce.mp4">
                             </video>
-                            <!--<canvas id="myCanvas" width="660" height="370"></canvas>-->
                         </div>
                     </div>
                 </div>
@@ -69,7 +66,6 @@
 
                     <div class="amount">{{allList}}</div>
                 </div>
-
             </div>
         </section>
 

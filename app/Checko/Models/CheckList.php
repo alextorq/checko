@@ -9,9 +9,8 @@
 namespace App\Checko\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Checko\Models\CheckItem;
-
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class CheckList extends Model
 {
@@ -28,13 +27,11 @@ class CheckList extends Model
 
     public function clone()
     {
+        DB::beginTransaction();
+
         $new = $this->replicate();
         $this->load('checkItems');
         $new->push();
-//
-//        /*disable event dispatch on update model*/
-//        $dispatcher = $new->getEventDispatcher();
-//        $new->unsetEventDispatcher();
 
         foreach($this->checkItems as $item)
         {
@@ -42,9 +39,11 @@ class CheckList extends Model
             $new->checkItems()->save($itemCheck);
         }
         $new->push();
-        /*enable dispatch*/
-//        $new->setEventDispatcher($dispatcher);
-        return $new->load('checkItems');
+        $new->load('checkItems');
+
+        DB::commit();
+
+        return $new;
     }
 
 

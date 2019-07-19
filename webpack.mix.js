@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -15,7 +16,7 @@ const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 // Set up the spritemap plugin
 mix.webpackConfig({
     output: {
-        chunkFilename: 'js/[name].bundle.js',
+        chunkFilename: 'js/[name]_[hash].js',
         publicPath: '/',
     },
     resolve: {
@@ -25,6 +26,7 @@ mix.webpackConfig({
         }
     },
     plugins: [
+        // new CleanWebpackPlugin('dist', {} ),
         new SVGSpritemapPlugin({
               src: path.resolve(__dirname, 'resources/assets/*.svg'),
               filename: 'sprites.svg',

@@ -112,7 +112,12 @@
             AllList
         },
         beforeRouteUpdate (to, from, next) {
-            this.$store.dispatch('loadCheckList', to.params.list_id);
+            if  (to.path ===  "/") {
+                this.$store.commit('clearList');
+                this.$store.commit('clearItems');
+            }else {
+                this.$store.dispatch('loadCheckList', to.params.list_id);
+            }
             next();
         },
         created() {
